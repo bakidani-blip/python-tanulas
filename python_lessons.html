@@ -1,0 +1,2139 @@
+<!DOCTYPE html>
+<html lang="hu" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Python Leckek</title>
+<style>
+:root {
+  --bg-primary: #1e1e2e;
+  --bg-secondary: #181825;
+  --bg-card: #313244;
+  --bg-card-hover: #45475a;
+  --bg-surface: #11111b;
+  --text-primary: #cdd6f4;
+  --text-secondary: #a6adc8;
+  --text-muted: #6c7086;
+  --accent: #89b4fa;
+  --accent-green: #a6e3a1;
+  --accent-yellow: #f9e2af;
+  --accent-red: #f38ba8;
+  --accent-purple: #cba6f7;
+  --accent-peach: #fab387;
+  --border: #45475a;
+  --shadow: rgba(0, 0, 0, 0.3);
+  --font-size: 15px;
+  --syn-keyword: #cba6f7;
+  --syn-string: #a6e3a1;
+  --syn-comment: #6c7086;
+  --syn-number: #fab387;
+  --syn-builtin: #89b4fa;
+  --syn-decorator: #f9e2af;
+  --syn-self: #f38ba8;
+}
+
+[data-theme="light"] {
+  --bg-primary: #eff1f5;
+  --bg-secondary: #e6e9ef;
+  --bg-card: #ffffff;
+  --bg-card-hover: #dce0e8;
+  --bg-surface: #ccd0da;
+  --text-primary: #4c4f69;
+  --text-secondary: #6c6f85;
+  --text-muted: #9ca0b0;
+  --accent: #1e66f5;
+  --accent-green: #40a02b;
+  --accent-yellow: #df8e1d;
+  --accent-red: #d20f39;
+  --accent-purple: #8839ef;
+  --accent-peach: #fe640b;
+  --border: #ccd0da;
+  --shadow: rgba(0, 0, 0, 0.1);
+  --syn-keyword: #8839ef;
+  --syn-string: #40a02b;
+  --syn-comment: #9ca0b0;
+  --syn-number: #fe640b;
+  --syn-builtin: #1e66f5;
+  --syn-decorator: #df8e1d;
+  --syn-self: #d20f39;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: var(--font-size); -webkit-text-size-adjust: 100%; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+  padding-bottom: 70px;
+}
+
+.topbar {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border);
+  padding: 8px 16px;
+  display: flex; align-items: center; justify-content: space-between; gap: 8px;
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+}
+.topbar h1 { font-size: 1rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex: 1; }
+.topbar-controls { display: flex; gap: 4px; flex-shrink: 0; }
+.topbar-btn {
+  background: var(--bg-card); color: var(--text-primary);
+  border: 1px solid var(--border); border-radius: 8px;
+  padding: 6px 10px; font-size: 1rem; cursor: pointer;
+  min-width: 40px; min-height: 40px;
+  display: flex; align-items: center; justify-content: center;
+  -webkit-tap-highlight-color: transparent;
+}
+.topbar-btn:active { background: var(--bg-card-hover); }
+
+.content { max-width: 800px; margin: 0 auto; padding: 16px; }
+.file-content { animation: fadeIn 0.2s ease; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+.file-header { margin-bottom: 24px; padding-bottom: 16px; border-bottom: 2px solid var(--border); }
+.file-header h2 { font-size: 1.4rem; font-weight: 700; margin: 8px 0 4px; }
+.filename { font-family: 'SF Mono', 'Menlo', 'Monaco', 'Courier New', monospace; font-size: 0.8rem; color: var(--text-muted); }
+
+.badge { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+.badge.lesson { background: var(--accent-green); color: #1e1e2e; }
+.badge.exercise { background: var(--accent-yellow); color: #1e1e2e; }
+
+.section { margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid var(--border); }
+.section:last-child { border-bottom: none; }
+.section h3 { font-size: 1.1rem; font-weight: 700; color: var(--accent); margin: 16px 0 8px; }
+.section p { color: var(--text-secondary); margin-bottom: 12px; line-height: 1.7; }
+.section strong { color: var(--text-primary); }
+
+code.inline {
+  font-family: 'SF Mono', 'Menlo', 'Monaco', 'Courier New', monospace;
+  background: var(--bg-card); padding: 2px 6px; border-radius: 4px;
+  font-size: 0.9em; color: var(--accent-peach);
+}
+pre.box {
+  font-family: 'SF Mono', 'Menlo', 'Monaco', 'Courier New', monospace;
+  background: var(--bg-card); border: 1px solid var(--accent);
+  border-radius: 8px; padding: 12px 16px; margin: 12px 0;
+  font-size: 0.85rem; overflow-x: auto; line-height: 1.5; color: var(--accent);
+}
+pre.code-block {
+  background: var(--bg-surface); border: 1px solid var(--border);
+  border-radius: 10px; padding: 14px 16px; margin: 12px 0;
+  overflow-x: auto; -webkit-overflow-scrolling: touch;
+  font-size: 0.85rem; line-height: 1.6;
+}
+pre.code-block code {
+  font-family: 'SF Mono', 'Menlo', 'Monaco', 'Courier New', monospace;
+  color: var(--text-primary);
+}
+.syn-kw { color: var(--syn-keyword); font-weight: 500; }
+.syn-str { color: var(--syn-string); }
+.syn-cmt { color: var(--syn-comment); font-style: italic; }
+.syn-num { color: var(--syn-number); }
+.syn-bi { color: var(--syn-builtin); }
+.syn-dec { color: var(--syn-decorator); }
+.syn-self { color: var(--syn-self); }
+
+/* ============ EXERCISE EDITOR ============ */
+.exercise-editor { margin-top: 8px; }
+
+.editor-toolbar {
+  display: flex; gap: 8px; margin-bottom: 8px;
+}
+
+.run-btn {
+  background: var(--accent-green); color: #1e1e2e;
+  border: none; border-radius: 8px;
+  padding: 10px 20px; font-size: 1rem; font-weight: 700;
+  cursor: pointer; min-height: 44px;
+  -webkit-tap-highlight-color: transparent;
+  flex: 1;
+}
+.run-btn:active { opacity: 0.8; }
+.run-btn.running { background: var(--accent-yellow); }
+
+.reset-btn {
+  background: var(--bg-card); color: var(--text-secondary);
+  border: 1px solid var(--border); border-radius: 8px;
+  padding: 10px 16px; font-size: 0.9rem;
+  cursor: pointer; min-height: 44px;
+  -webkit-tap-highlight-color: transparent;
+}
+.reset-btn:active { background: var(--bg-card-hover); }
+
+.code-editor {
+  width: 100%;
+  min-height: 400px;
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 16px;
+  font-family: 'SF Mono', 'Menlo', 'Monaco', 'Courier New', monospace;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  resize: vertical;
+  -webkit-overflow-scrolling: touch;
+  tab-size: 4;
+  white-space: pre;
+  overflow-wrap: normal;
+  overflow-x: auto;
+}
+.code-editor:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
+
+.output-area {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin-top: 8px;
+  font-family: 'SF Mono', 'Menlo', 'Monaco', 'Courier New', monospace;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-word;
+  max-height: 400px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.output-placeholder { color: var(--text-muted); font-style: italic; }
+.output-error { color: var(--accent-red); }
+.output-success { color: var(--accent-green); }
+
+/* ============ BOTTOM NAV ============ */
+.bottom-nav {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 100;
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border);
+  display: flex; overflow-x: auto; -webkit-overflow-scrolling: touch;
+  padding: 4px 4px calc(4px + env(safe-area-inset-bottom));
+  gap: 2px; scrollbar-width: none;
+}
+.bottom-nav::-webkit-scrollbar { display: none; }
+
+.tab {
+  flex-shrink: 0; background: transparent; color: var(--text-muted);
+  border: none; border-radius: 8px;
+  padding: 10px 14px; font-size: 0.8rem; font-weight: 500;
+  cursor: pointer; white-space: nowrap; min-height: 44px;
+  -webkit-tap-highlight-color: transparent; transition: all 0.15s ease;
+}
+.tab.active { background: var(--accent); color: #1e1e2e; font-weight: 700; }
+.tab:not(.active):active { background: var(--bg-card); color: var(--text-primary); }
+
+.scroll-top {
+  position: fixed; bottom: 80px; right: 16px;
+  background: var(--accent); color: #1e1e2e;
+  border: none; border-radius: 50%;
+  width: 44px; height: 44px; font-size: 1.2rem;
+  cursor: pointer; display: none;
+  align-items: center; justify-content: center;
+  box-shadow: 0 2px 8px var(--shadow); z-index: 90;
+  -webkit-tap-highlight-color: transparent;
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <h1 id="current-title">Python Leckek</h1>
+  <div class="topbar-controls">
+    <button class="topbar-btn" id="font-down" title="Kisebb betu">A-</button>
+    <button class="topbar-btn" id="font-up" title="Nagyobb betu">A+</button>
+    <button class="topbar-btn" id="theme-toggle" title="Tema valtas"></button>
+  </div>
+</div>
+
+<div class="content" id="content">
+<div class="panel" data-index="0">
+<div class="file-content" id="00_python_alapok">
+<div class="file-header">
+<span class="badge lesson">Lecke</span>
+<h2>PYTHON ALAPOK — Lexikális tudás</h2>
+<span class="filename">00_python_alapok.py</span>
+</div>
+<div class="section">
+<p>1. VÁLTOZÓK — dobozok, amikbe értékeket raksz</p>
+</div>
+<div class="section">
+<h3>Szöveg (string) — idézőjelbe tesszük</h3>
+<pre class="code-block"><code>name = &quot;Kiss Péter&quot;
+greeting = &#x27;Szia!&#x27;          # egyszeres idézőjel is jó</code></pre>
+<h3>Egész szám (integer)</h3>
+<pre class="code-block"><code>age = 25
+year = 2026</code></pre>
+<h3>Tizedes szám (float)</h3>
+<pre class="code-block"><code>height = 1.78
+temperature = 36.6</code></pre>
+<h3>Igaz/hamis (boolean) — nagybetűvel!</h3>
+<pre class="code-block"><code>is_student = True
+has_car = False</code></pre>
+<h3>Kiírás a képernyőre</h3>
+<pre class="code-block"><code>print(&quot;--- 1. Változók ---&quot;)
+print(name)
+print(age)
+print(is_student)</code></pre>
+</div>
+<div class="section">
+<p>2. PRINT — kiírás a képernyőre</p>
+</div>
+<div class="section">
+<pre class="code-block"><code>print(&quot;\n--- 2. Print ---&quot;)</code></pre>
+<h3>Egyszerű kiírás</h3>
+<pre class="code-block"><code>print(&quot;Hello, világ!&quot;)</code></pre>
+<h3>Több dolog egymás mellé</h3>
+<pre class="code-block"><code>print(&quot;Név:&quot;, name, &quot;- Kor:&quot;, age)</code></pre>
+<p>f-string — a legmodernebb és legolvashatóbb módszer</p>
+<h3>A {} kapcsos zárójelbe változókat rakhatsz</h3>
+<pre class="code-block"><code>print(f&quot;Szia, {name}! Te {age} éves vagy.&quot;)
+print(f&quot;Magasság: {height} méter&quot;)</code></pre>
+</div>
+<div class="section">
+<p>3. TÍPUSOK — minden értéknek van típusa</p>
+</div>
+<div class="section">
+<pre class="code-block"><code>print(&quot;\n--- 3. Típusok ---&quot;)</code></pre>
+<h3>A type() megmondja, mi a típusa</h3>
+<pre class="code-block"><code>print(type(name))         # &lt;class &#x27;str&#x27;&gt;     → szöveg
+print(type(age))          # &lt;class &#x27;int&#x27;&gt;     → egész szám
+print(type(height))       # &lt;class &#x27;float&#x27;&gt;   → tizedes szám
+print(type(is_student))   # &lt;class &#x27;bool&#x27;&gt;    → igaz/hamis</code></pre>
+</div>
+<div class="section">
+<p>4. MŰVELETEK — mit csinálhatsz az értékekkel</p>
+</div>
+<div class="section">
+<pre class="code-block"><code>print(&quot;\n--- 4. Műveletek ---&quot;)</code></pre>
+<h3>Számokkal: matematika</h3>
+<pre class="code-block"><code>a = 10
+b = 3
+print(f&quot;{a} + {b} = {a + b}&quot;)      # összeadás → 13
+print(f&quot;{a} - {b} = {a - b}&quot;)      # kivonás → 7
+print(f&quot;{a} * {b} = {a * b}&quot;)      # szorzás → 30
+print(f&quot;{a} / {b} = {a / b}&quot;)      # osztás → 3.333...
+print(f&quot;{a} // {b} = {a // b}&quot;)    # egész osztás → 3
+print(f&quot;{a} % {b} = {a % b}&quot;)      # maradék → 1
+print(f&quot;{a} ** {b} = {a ** b}&quot;)    # hatványozás → 1000</code></pre>
+<h3>Szövegekkel</h3>
+<pre class="code-block"><code>first = &quot;Hello&quot;
+second = &quot;Világ&quot;
+together = first + &quot; &quot; + second    # összefűzés
+print(together)                    # &quot;Hello Világ&quot;
+print(first * 3)                   # &quot;HelloHelloHello&quot;</code></pre>
+</div>
+<div class="section">
+<p>5. LISTA (list) — több érték egy helyen</p>
+</div>
+<div class="section">
+<pre class="code-block"><code>print(&quot;\n--- 5. Lista ---&quot;)</code></pre>
+<h3>Lista létrehozása — szögletes zárójel</h3>
+<pre class="code-block"><code>fruits = [&quot;alma&quot;, &quot;körte&quot;, &quot;szilva&quot;, &quot;barack&quot;]
+numbers = [10, 20, 30, 40, 50]
+mixed = [&quot;szöveg&quot;, 42, True, 3.14]   # vegyes is lehet</code></pre>
+<h3>Elem elérése — indexelés 0-tól indul!</h3>
+<pre class="code-block"><code>print(fruits[0])    # &quot;alma&quot;     ← első elem
+print(fruits[1])    # &quot;körte&quot;    ← második elem
+print(fruits[-1])   # &quot;barack&quot;   ← utolsó elem</code></pre>
+<h3>Lista hossza</h3>
+<pre class="code-block"><code>print(f&quot;Gyümölcsök száma: {len(fruits)}&quot;)</code></pre>
+<h3>Elem hozzáadása</h3>
+<pre class="code-block"><code>fruits.append(&quot;meggy&quot;)
+print(fruits)       # [&quot;alma&quot;, &quot;körte&quot;, &quot;szilva&quot;, &quot;barack&quot;, &quot;meggy&quot;]</code></pre>
+<h3>Elem törlése</h3>
+<pre class="code-block"><code>fruits.remove(&quot;körte&quot;)
+print(fruits)       # [&quot;alma&quot;, &quot;szilva&quot;, &quot;barack&quot;, &quot;meggy&quot;]</code></pre>
+</div>
+<div class="section">
+<p>6. SZÓTÁR (dict) — kulcs-érték párok</p>
+</div>
+<div class="section">
+<pre class="code-block"><code>print(&quot;\n--- 6. Szótár ---&quot;)</code></pre>
+<h3>Szótár létrehozása — kapcsos zárójel</h3>
+<pre class="code-block"><code>person = {
+    &quot;name&quot;: &quot;Kiss Péter&quot;,
+    &quot;age&quot;: 25,
+    &quot;city&quot;: &quot;Budapest&quot;
+}</code></pre>
+<h3>Értékek elérése</h3>
+<pre class="code-block"><code>print(person[&quot;name&quot;])       # &quot;Kiss Péter&quot;
+print(person[&quot;age&quot;])        # 25</code></pre>
+<h3>Új kulcs hozzáadása</h3>
+<pre class="code-block"><code>person[&quot;email&quot;] = &quot;peter@example.com&quot;
+print(person)</code></pre>
+<p>Biztonságos elérés — .get() nem dob hibát, ha nincs a kulcs</p>
+<pre class="code-block"><code>print(person.get(&quot;phone&quot;, &quot;nincs megadva&quot;))</code></pre>
+</div>
+<div class="section">
+<p>7. FELTÉTELEK (if/elif/else) — döntéshozatal</p>
+</div>
+<div class="section">
+<pre class="code-block"><code>print(&quot;\n--- 7. Feltételek ---&quot;)
+
+age = 25
+
+if age &lt; 18:
+    print(&quot;Kiskorú&quot;)
+elif age &lt; 65:
+    print(&quot;Felnőtt&quot;)
+else:
+    print(&quot;Nyugdíjas&quot;)</code></pre>
+<h3>Összehasonlító operátorok:</h3>
+<p>==  egyenlő          !=  nem egyenlő<br>&lt;   kisebb            &gt;   nagyobb<br>&lt;=  kisebb-egyenlő   &gt;=  nagyobb-egyenlő</p>
+<h3>Logikai operátorok: and, or, not</h3>
+<pre class="code-block"><code>score = 85
+if score &gt;= 80 and score &lt; 90:
+    print(&quot;Jó eredmény!&quot;)
+
+has_ticket = True
+if not has_ticket:
+    print(&quot;Nincs jegyed!&quot;)
+else:
+    print(&quot;Van jegyed, mehetsz!&quot;)</code></pre>
+</div>
+<div class="section">
+<p>8. CIKLUSOK (for, while) — ismétlés</p>
+</div>
+<div class="section">
+<pre class="code-block"><code>print(&quot;\n--- 8. Ciklusok ---&quot;)</code></pre>
+<h3>FOR ciklus — végigmegy egy listán</h3>
+<pre class="code-block"><code>print(&quot;Gyümölcsök:&quot;)
+for fruit in [&quot;alma&quot;, &quot;körte&quot;, &quot;szilva&quot;]:
+    print(f&quot;  - {fruit}&quot;)</code></pre>
+<h3>FOR ciklus számokkal — range()</h3>
+<pre class="code-block"><code>print(&quot;Számok 1-től 5-ig:&quot;)
+for i in range(1, 6):       # 1, 2, 3, 4, 5 (a 6 már nincs benne!)
+    print(f&quot;  {i}&quot;)</code></pre>
+<h3>WHILE ciklus — amíg igaz a feltétel</h3>
+<pre class="code-block"><code>print(&quot;Visszaszámlálás:&quot;)
+counter = 5
+while counter &gt; 0:
+    print(f&quot;  {counter}...&quot;)
+    counter = counter - 1    # counter -= 1 is jó
+print(&quot;  Start!&quot;)</code></pre>
+</div>
+<div class="section">
+<p>9. FÜGGVÉNYEK (def) — újrahasználható kódrészletek</p>
+</div>
+<div class="section">
+<pre class="code-block"><code>print(&quot;\n--- 9. Függvények ---&quot;)</code></pre>
+<h3>Függvény definiálása</h3>
+<pre class="code-block"><code>def greet(name):
+    &quot;&quot;&quot;Köszönti a megadott személyt.&quot;&quot;&quot;
+    print(f&quot;Szia, {name}!&quot;)</code></pre>
+<h3>Függvény hívása</h3>
+<pre class="code-block"><code>greet(&quot;Anna&quot;)
+greet(&quot;Béla&quot;)</code></pre>
+<h3>Visszatérési értékkel (return)</h3>
+<pre class="code-block"><code>def add(a, b):
+    &quot;&quot;&quot;Összeadja a két számot és visszaadja az eredményt.&quot;&quot;&quot;
+    return a + b
+
+
+result = add(10, 20)
+print(f&quot;10 + 20 = {result}&quot;)</code></pre>
+<h3>Több paraméter, alapértelmezett érték</h3>
+<pre class="code-block"><code>def introduce(name, age, city=&quot;Budapest&quot;):
+    &quot;&quot;&quot;Bemutatkozás — a város opcionális, alapból Budapest.&quot;&quot;&quot;
+    print(f&quot;A nevem {name}, {age} éves vagyok, {city}-ban élek.&quot;)
+
+
+introduce(&quot;Péter&quot;, 25)
+introduce(&quot;Anna&quot;, 30, &quot;Debrecen&quot;)</code></pre>
+</div>
+<div class="section">
+<h3>10. ÖSSZEFOGLALÓ</h3>
+</div>
+<div class="section">
+<pre class="code-block"><code>print(&quot;\n--- Összefoglaló ---&quot;)
+print(&quot;&quot;&quot;
+Amit megtanultál:
+  1. Változók: name = &quot;érték&quot;
+  2. Print és f-string: print(f&quot;Szia, {name}!&quot;)
+  3. Típusok: str, int, float, bool
+  4. Műveletek: +, -, *, /, //, %, **
+  5. Lista: [1, 2, 3] — indexelés 0-tól
+  6. Szótár: {&quot;kulcs&quot;: &quot;érték&quot;}
+  7. Feltételek: if/elif/else
+  8. Ciklusok: for, while
+  9. Függvények: def my_function():
+
+Következő lépés: nyisd meg az exercise_00_practice.py fájlt
+és oldd meg a gyakorló feladatokat!
+&quot;&quot;&quot;)</code></pre>
+</div>
+</div>
+</div>
+<div class="panel" data-index="1" style="display:none">
+<div class="file-content" id="01_elnevezes_alapok">
+<div class="file-header">
+<span class="badge lesson">Lecke</span>
+<h2>1.1 LECKE: Változók és elnevezések — Clean Code</h2>
+<span class="filename">01_elnevezes_alapok.py</span>
+</div>
+<div class="section">
+<p>1. MI AZ A &quot;CLEAN CODE&quot; (TISZTA KÓD)?</p>
+</div>
+<div class="section">
+<p>Képzeld el, hogy írsz egy levelet valakinek.</p>
+<h3>Két verzió:</h3>
+<p>ROSSZ levél:  &quot;Szja! H v? É j v. Cs m lgylj.&quot;<br>JÓ levél:    &quot;Szia! Hogy vagy? Én jól vagyok. Csütörtökön majd legyél ott.&quot;</p>
+<p>Mindkettő ugyanazt mondja, de az elsőt nem érti senki.<br>A kóddal PONTOSAN ugyanez a helyzet.</p>
+<p>A &quot;clean code&quot; (tiszta kód) azt jelenti:<br>olyan kódot írsz, amit MÁS EMBEREK is könnyen megértenek.<br>(És te magad is, 3 hónap múlva, amikor már elfelejtetted mit csináltál.)</p>
+<pre class="code-block"><code>print(&quot;--- 1. Miért fontos a jó elnevezés? ---&quot;)
+print()</code></pre>
+<p>ROSSZ kód — mit csinál ez? Fogalmad sincs ránézésre:</p>
+<pre class="code-block"><code>x = 30
+y = 1000
+z = x * y
+print(f&quot;ROSSZ: x={x}, y={y}, z={z}&quot;)</code></pre>
+<p>Mi az x? Mi az y? Mi a z? Senki nem tudja...</p>
+<h3>JÓ kód — UGYANAZ a számítás, de most érted:</h3>
+<pre class="code-block"><code>hourly_wage = 30                        # órabér dollárban
+work_hours_per_year = 1000              # munkaórák száma évente
+yearly_salary = hourly_wage * work_hours_per_year  # éves fizetés
+print(f&quot;JÓ:   órabér={hourly_wage}, órák={work_hours_per_year}, fizetés={yearly_salary}&quot;)</code></pre>
+<p>Látod? UGYANAZ a kód, UGYANAZ az eredmény.<br>De a második verziót olvasva AZONNAL érted, miről van szó.</p>
+<pre class="code-block"><code>print()</code></pre>
+</div>
+<div class="section">
+<h3>2. PYTHON ELNEVEZÉSI SZABÁLYOK (KONVENCIÓK)</h3>
+</div>
+<div class="section">
+<p>A Python közösség kitalált szabályokat, hogy mindenki<br>UGYANÚGY nevezze el a dolgokat. Ezt PEP 8-nak hívják.<br>(PEP = Python Enhancement Proposal, vagyis &quot;Python Fejlesztési Javaslat&quot;)</p>
+<h3>Nem kötelező, de ha betartod:</h3>
+<p>- Más programozók azonnal értik a kódodat<br>- Profinak tűnik a munkád<br>- Könnyebb csapatban dolgozni</p>
+<pre class="code-block"><code>print(&quot;--- 2. Elnevezési konvenciók ---&quot;)
+print()</code></pre>
+<p>&quot;snake_case&quot; = minden kisbetű, szavakat alulvonás (_) választja el<br>Azért hívják &quot;snake&quot;-nek (kígyó), mert a kígyó is a földön csúszik :)</p>
+<h3>JÓ (snake_case):</h3>
+<pre class="code-block"><code>user_name = &quot;Kiss Péter&quot;
+total_price = 4500
+is_active = True                  # boolean (igaz/hamis) változóknál: is_, has_, can_</code></pre>
+<h3>ROSSZ (ezeket NE csináld):</h3>
+<p>UserName = &quot;Kiss Péter&quot;         ← ez osztályoknak van fenntartva (később)<br>username = &quot;Kiss Péter&quot;         ← ha egy szó, ez még OK, de két szónál mindig _<br>user_Name = &quot;Kiss Péter&quot;        ← keverés, csúnya<br>USERNAME = &quot;Kiss Péter&quot;         ← ez konstansoknak van fenntartva (később)</p>
+<pre class="code-block"><code>print(f&quot;Felhasználó: {user_name}&quot;)
+print(f&quot;Végösszeg: {total_price} Ft&quot;)
+print(f&quot;Aktív: {is_active}&quot;)
+print()</code></pre>
+<h3>Mi az a konstans?</h3>
+<p>Egy olyan érték, amit a program elején beállítasz, és SOHA nem változtatod meg.<br>Például: az adókulcs, a maximális próbálkozások száma, egy API URL.</p>
+<p>Ezeket CSUPA NAGYBETŰVEL írjuk, szavakat alulvonás (_) választja el.<br>Így bárki ránéz és tudja: &quot;aha, ez fix, nem változik.&quot;</p>
+<pre class="code-block"><code>MAX_RETRIES = 3                   # maximum újrapróbálkozások száma
+TAX_RATE = 0.27                   # áfa kulcs (27%)
+API_URL = &quot;https://api.example.com&quot;
+DATABASE_NAME = &quot;my_app_db&quot;</code></pre>
+<h3>ROSSZ:</h3>
+<p>maxRetries = 3                  ← ez nem Python stílus (ez JavaScript stílus)<br>max_retries = 3                 ← ez kisbetűs, tehát változónak tűnik<br>(senki nem tudja, hogy nem szabad változtatni)</p>
+<pre class="code-block"><code>print(f&quot;Max próbálkozás: {MAX_RETRIES}&quot;)
+print(f&quot;ÁFA: {TAX_RATE * 100}%&quot;)
+print()</code></pre>
+<p>Az osztályokat majd később tanulod meg részletesen.<br>Most elég annyit tudni: az osztály egy &quot;tervrajz&quot;,<br>amiből &quot;példányokat&quot; (objektumokat) készítesz.</p>
+<p>PascalCase = minden szó nagybetűvel kezdődik, NINCS alulvonás.</p>
+<h3>JÓ (PascalCase):</h3>
+<p>class UserAccount:<br>class ShoppingCart:<br>class DatabaseConnection:</p>
+<h3>ROSSZ:</h3>
+<p>class user_account:             ← ez snake_case, változónak/függvénynek való<br>class useraccount:              ← nem látni hol van a szóhatár</p>
+<pre class="code-block"><code>print(&quot;Osztályok: PascalCase (pl. UserAccount, ShoppingCart)&quot;)
+print()</code></pre>
+</div>
+<div class="section">
+<h3>3. BESZÉDES NEVEK — A LEGFONTOSABB SZABÁLY</h3>
+</div>
+<div class="section">
+<p>Az elnevezés legyen olyan, hogy OLVASVA megértsd, mit tárol/csinál.<br>Nem kell komment mellé, ha jó a név.</p>
+<pre class="code-block"><code>print(&quot;--- 3. Beszédes nevek ---&quot;)
+print()</code></pre>
+<p>ROSSZ → nem tudom mi ez:</p>
+<pre class="code-block"><code>d = 7</code></pre>
+<p>JÓ → azonnal értem:</p>
+<pre class="code-block"><code>days_until_deadline = 7</code></pre>
+<p>ROSSZ → mi az a &quot;t&quot;?</p>
+<pre class="code-block"><code>t = 36.6</code></pre>
+<p>JÓ → áhá, testhőmérséklet:</p>
+<pre class="code-block"><code>body_temperature = 36.6</code></pre>
+<p>ROSSZ → semmitmondó:</p>
+<pre class="code-block"><code>data = [85, 92, 78, 95, 88]</code></pre>
+<p>JÓ → tudom mit tartalmaz:</p>
+<pre class="code-block"><code>exam_scores = [85, 92, 78, 95, 88]
+
+print(f&quot;Határidő: {days_until_deadline} nap múlva&quot;)
+print(f&quot;Testhő: {body_temperature}°C&quot;)
+print(f&quot;Vizsgaeredmények: {exam_scores}&quot;)
+print()</code></pre>
+<p>A függvény CSINÁL valamit, ezért a neve IGÉVEL kezdődjön.<br>Gondolj úgy rá, mint egy parancsra: &quot;csináld ezt!&quot;</p>
+<h3>ROSSZ — nem tudom mit csinál:</h3>
+<pre class="code-block"><code>def process(a, b):
+    return a + b</code></pre>
+<h3>JÓ — a névből tudom mit csinál:</h3>
+<pre class="code-block"><code>def calculate_total_price(item_price, quantity):
+    &quot;&quot;&quot;Kiszámolja a teljes árat (egységár × darabszám).&quot;&quot;&quot;
+    return item_price * quantity</code></pre>
+<p>ROSSZ — mi az, hogy &quot;data&quot;? Milyen adatot ellenőriz?</p>
+<pre class="code-block"><code>def check(data):
+    return len(data) &gt; 0</code></pre>
+<h3>JÓ — azonnal értem:</h3>
+<pre class="code-block"><code>def is_list_empty(items):
+    &quot;&quot;&quot;Visszaadja True-t ha a lista üres, False-t ha nem.&quot;&quot;&quot;
+    return len(items) == 0</code></pre>
+<h3>Tipikus JÓ ige-kezdetek függvényeknél:</h3>
+<p>get_...     → valamit lekér        get_user_name()<br>calculate_... → valamit kiszámol   calculate_average()<br>is_...      → igaz/hamis kérdés    is_valid_email()<br>has_...     → van-e valami         has_permission()<br>create_...  → valamit létrehoz     create_new_account()<br>send_...    → valamit elküld       send_email()<br>validate_.. → valamit ellenőriz    validate_password()</p>
+<pre class="code-block"><code>total = calculate_total_price(1500, 3)
+print(f&quot;3 db × 1500 Ft = {total} Ft&quot;)
+print(f&quot;Üres lista? {is_list_empty([])}&quot;)
+print(f&quot;Üres lista? {is_list_empty([1, 2, 3])}&quot;)
+print()</code></pre>
+<h3>Ha egy változó True vagy False értéket tárol,</h3>
+<p>a neve legyen KÉRDÉS formájú — mintha kérdeznéd:<br>&quot;Aktív? Igen.&quot; / &quot;Van jogosultsága? Nem.&quot;</p>
+<h3>ROSSZ:</h3>
+<pre class="code-block"><code>active = True               # &quot;active&quot; önmagában nem kérdés
+login = False               # &quot;login&quot; egy főnév, nem tudom igaz/hamis-e</code></pre>
+<h3>JÓ:</h3>
+<pre class="code-block"><code>is_active = True            # &quot;aktív-e?&quot; → igen
+is_logged_in = False        # &quot;be van-e jelentkezve?&quot; → nem
+has_permission = True       # &quot;van-e jogosultsága?&quot; → igen
+can_edit = False            # &quot;szerkeszthet-e?&quot; → nem
+
+print(f&quot;Aktív: {is_active}&quot;)
+print(f&quot;Bejelentkezve: {is_logged_in}&quot;)
+print(f&quot;Van joga: {has_permission}&quot;)
+print(f&quot;Szerkeszthet: {can_edit}&quot;)
+print()</code></pre>
+</div>
+<div class="section">
+<h3>4. KERÜLENDŐ DOLGOK</h3>
+</div>
+<div class="section">
+<pre class="code-block"><code>print(&quot;--- 4. Amit NE csinálj ---&quot;)
+print()</code></pre>
+<p>SOHA ne használj egybetűs változónevet (kivéve ciklusváltozó: i, j)</p>
+<h3>ROSSZ:</h3>
+<pre class="code-block"><code>n = &quot;Kiss Péter&quot;
+a = 25
+c = &quot;Budapest&quot;</code></pre>
+<h3>JÓ:</h3>
+<pre class="code-block"><code>name = &quot;Kiss Péter&quot;
+age = 25
+city = &quot;Budapest&quot;</code></pre>
+<p>Ciklusban az i, j elfogadott — mert mindenki tudja, ez a &quot;sorszám&quot;:</p>
+<pre class="code-block"><code>for i in range(3):
+    print(f&quot;  {i + 1}. kör&quot;)
+
+print()</code></pre>
+<p>Ne rövidíts, hacsak nem közismert rövidítés (pl. URL, API, ID)</p>
+<h3>ROSSZ:</h3>
+<pre class="code-block"><code>usr_nm = &quot;Kiss Péter&quot;       # user_name rövidítve — nehéz olvasni
+calc_ttl = 4500             # calculate_total rövidítve — érthetetlen
+btn_clr = &quot;blue&quot;            # button_color — mi??</code></pre>
+<h3>JÓ:</h3>
+<pre class="code-block"><code>user_name = &quot;Kiss Péter&quot;    # teljes, érthető
+calculated_total = 4500     # teljes, érthető
+button_color = &quot;blue&quot;       # teljes, érthető</code></pre>
+<h3>Elfogadott rövidítések (mert mindenki ismeri):</h3>
+<pre class="code-block"><code>user_id = 42                # ID = identifier (azonosító)
+api_url = &quot;https://...&quot;     # API, URL — közismert
+max_hp = 100                # HP — ha játékfejlesztésben vagy
+
+print(f&quot;Felhasználó: {user_name} (ID: {user_id})&quot;)
+print()</code></pre>
+<h3>A NÉV mindig tükrözze a TARTALMAT!</h3>
+<h3>ROSSZ — félrevezető:</h3>
+<pre class="code-block"><code>user_list = {&quot;name&quot;: &quot;Anna&quot;, &quot;age&quot;: 25}</code></pre>
+<p>↑ &quot;list&quot;-nek hívja, de ez egy szótár (dict)! Félrevezető!</p>
+<h3>JÓ:</h3>
+<pre class="code-block"><code>user_data = {&quot;name&quot;: &quot;Anna&quot;, &quot;age&quot;: 25}</code></pre>
+<p>↑ &quot;data&quot; nem hazudik — ez tényleg adat</p>
+</div>
+<div class="section">
+<h3>5. ÖSSZEFOGLALÓ TÁBLÁZAT</h3>
+</div>
+<div class="section">
+<pre class="code-block"><code>print(&quot;--- 5. Összefoglaló ---&quot;)
+print()
+print(&quot;┌────────────────────┬──────────────────┬────────────────────────┐&quot;)
+print(&quot;│ Típus              │ Konvenció        │ Példa                  │&quot;)
+print(&quot;├────────────────────┼──────────────────┼────────────────────────┤&quot;)
+print(&quot;│ Változó            │ snake_case       │ user_name              │&quot;)
+print(&quot;│ Függvény           │ snake_case       │ calculate_total()      │&quot;)
+print(&quot;│ Konstans           │ UPPER_SNAKE_CASE │ MAX_RETRIES            │&quot;)
+print(&quot;│ Osztály            │ PascalCase       │ UserAccount            │&quot;)
+print(&quot;│ Boolean változó    │ is_/has_/can_    │ is_active              │&quot;)
+print(&quot;├────────────────────┼──────────────────┼────────────────────────┤&quot;)
+print(&quot;│ KERÜLENDŐ          │                  │                        │&quot;)
+print(&quot;│ Egybetűs nevek     │ ✗               │ x, n, d                │&quot;)
+print(&quot;│ Rövidítések         │ ✗               │ calc_ttl, usr_nm       │&quot;)
+print(&quot;│ Félrevezető nevek   │ ✗               │ user_list (ha dict)    │&quot;)
+print(&quot;└────────────────────┴──────────────────┴────────────────────────┘&quot;)
+print()
+print(&quot;Következő lépés: oldd meg az exercise_01_elnevezes.py feladatait!&quot;)</code></pre>
+</div>
+</div>
+</div>
+<div class="panel" data-index="2" style="display:none">
+<div class="file-content" id="02_fuggvenyek_alapok">
+<div class="file-header">
+<span class="badge lesson">Lecke</span>
+<h2>1.2 LECKE: Függvények — Egy feladat, egy függvény</h2>
+<span class="filename">02_fuggvenyek_alapok.py</span>
+</div>
+<div class="section">
+<h3>1. MI A FÜGGVÉNY ÉS MIÉRT JÓ?</h3>
+</div>
+<div class="section">
+<p>Képzeld el, hogy süteményt sütsz.</p>
+<h3>Két lehetőséged van:</h3>
+<p>A) Minden alkalommal újra leírod a teljes receptet az elejétől<br>B) Egyszer leírod a receptet, és utána csak annyit mondasz:<br>&quot;Csináld meg a csokitortát!&quot;</p>
+<p>A függvény = a recept.<br>Egyszer megírod, utána bármikor &quot;meghívod&quot; (használod) a nevével.</p>
+<pre class="code-block"><code>print(&quot;--- 1. Miért jó a függvény? ---&quot;)
+print()</code></pre>
+<h3>FÜGGVÉNY NÉLKÜL — mindig újra leírod:</h3>
+<pre class="code-block"><code>print(&quot;Szia, Anna! Üdv a rendszerben!&quot;)
+print(&quot;Szia, Béla! Üdv a rendszerben!&quot;)
+print(&quot;Szia, Cecil! Üdv a rendszerben!&quot;)</code></pre>
+<p>Ha változtatni akarod az üdvözlést, 3 helyen kell átírni!</p>
+<pre class="code-block"><code>print()</code></pre>
+<p>FÜGGVÉNNYEL — egyszer megírod, háromszor használod:</p>
+<pre class="code-block"><code>def greet_user(name):
+    &quot;&quot;&quot;Üdvözli a felhasználót.&quot;&quot;&quot;
+    print(f&quot;Szia, {name}! Üdv a rendszerben!&quot;)
+
+greet_user(&quot;Anna&quot;)      # meghívjuk Anna-val
+greet_user(&quot;Béla&quot;)      # meghívjuk Béla-val
+greet_user(&quot;Cecil&quot;)     # meghívjuk Cecil-lel</code></pre>
+<p>Ha változtatni akarod az üdvözlést, CSAK 1 helyen kell!</p>
+<pre class="code-block"><code>print()</code></pre>
+</div>
+<div class="section">
+<p>2. EGY FÜGGVÉNY = EGY FELADAT (Single Responsibility)</p>
+</div>
+<div class="section">
+<pre class="box">Ez a lecke LEGFONTOSABB szabálya:
+
+  ╔══════════════════════════════════════════════╗
+  ║  Egy függvény CSAK EGY dolgot csináljon,    ║
+  ║  és azt csinálja JÓL.                       ║
+  ╚══════════════════════════════════════════════╝
+
+Miért? Gondolj bele:
+- Ha egy függvény 10 dolgot csinál, és valami elromlik,
+  10 helyen kell keresgélned a hibát.
+- Ha egy függvény 1 dolgot csinál, és valami elromlik,
+  AZONNAL tudod hol a baj.
+
+Hasonlat: egy svájci bicska 20 dolgot tud, de egyiket sem
+csinálja olyan jól, mint egy rendes kés, olló, vagy csavarhúzó.</pre>
+<pre class="code-block"><code>print(&quot;--- 2. Egy függvény = egy feladat ---&quot;)
+print()</code></pre>
+
+<pre class="code-block"><code>def process_order_bad(product_name, price, quantity, customer_email):
+    &quot;&quot;&quot;EZ ROSSZ — túl sok mindent csinál egyszerre!&quot;&quot;&quot;</code></pre>
+<p>1. Kiszámolja az árat</p>
+<pre class="code-block"><code>total = price * quantity
+    tax = total * 0.27
+    grand_total = total + tax</code></pre>
+<p>2. Ellenőrzi az emailt</p>
+<pre class="code-block"><code>if &quot;@&quot; not in customer_email:
+        print(&quot;HIBA: érvénytelen email!&quot;)
+        return None</code></pre>
+<p>3. Kiírja a számlát</p>
+<pre class="code-block"><code>print(f&quot;--- SZÁMLA ---&quot;)
+    print(f&quot;Termék: {product_name}&quot;)
+    print(f&quot;Darab: {quantity}&quot;)
+    print(f&quot;Nettó: {total} Ft&quot;)
+    print(f&quot;ÁFA: {tax} Ft&quot;)
+    print(f&quot;Összesen: {grand_total} Ft&quot;)
+    print(f&quot;Vásárló: {customer_email}&quot;)</code></pre>
+<p>4. &quot;Elküldi&quot; az emailt</p>
+<pre class="code-block"><code>print(f&quot;Email elküldve: {customer_email}&quot;)
+
+    return grand_total</code></pre>
+<h3>Ez a függvény 4 dolgot csinál:</h3>
+<p>árat számol, emailt ellenőriz, számlát nyomtat, emailt &quot;küld&quot;.<br>Ha bármelyikben hiba van, az egész kusza.</p>
+<pre class="code-block"><code>print(&quot;ROSSZ megoldás (egy nagy függvény):&quot;)
+process_order_bad(&quot;Laptop&quot;, 250000, 2, &quot;anna@example.com&quot;)
+print()</code></pre>
+
+<pre class="code-block"><code>TAX_RATE = 0.27
+
+def calculate_order_total(price, quantity):
+    &quot;&quot;&quot;Kiszámolja a megrendelés bruttó végösszegét.
+
+    Paraméterek:
+        price: egy darab nettó ára (Ft)
+        quantity: darabszám
+
+    Visszatérési érték:
+        A bruttó végösszeg (nettó + ÁFA)
+    &quot;&quot;&quot;
+    net_total = price * quantity
+    tax_amount = net_total * TAX_RATE
+    return net_total + tax_amount</code></pre>
+<p>↑ Ez a függvény CSAK számol. Nem ír ki semmit, nem küld emailt.<br>Visszaadja (return) az eredményt, és kész.</p>
+<pre class="code-block"><code>def is_valid_email(email):
+    &quot;&quot;&quot;Ellenőrzi, hogy az email cím tartalmaz-e @-ot.
+
+    Paraméterek:
+        email: az ellenőrzendő email cím (szöveg)
+
+    Visszatérési érték:
+        True ha van benne @, False ha nincs
+    &quot;&quot;&quot;
+    return &quot;@&quot; in email</code></pre>
+<p>↑ Ez a függvény CSAK ellenőriz. Egy kérdésre válaszol: érvényes-e?</p>
+<pre class="code-block"><code>def print_invoice(product_name, quantity, net_total, tax_amount, grand_total):
+    &quot;&quot;&quot;Kiírja a számlát a képernyőre.
+
+    Paraméterek:
+        product_name: a termék neve
+        quantity: darabszám
+        net_total: nettó összeg
+        tax_amount: ÁFA összeg
+        grand_total: bruttó végösszeg
+    &quot;&quot;&quot;
+    print(f&quot;--- SZÁMLA ---&quot;)
+    print(f&quot;Termék: {product_name}&quot;)
+    print(f&quot;Darab: {quantity}&quot;)
+    print(f&quot;Nettó: {net_total} Ft&quot;)
+    print(f&quot;ÁFA: {tax_amount} Ft&quot;)
+    print(f&quot;Összesen: {grand_total} Ft&quot;)</code></pre>
+<p>↑ Ez a függvény CSAK kiír. Nem számol, nem ellenőriz.</p>
+<pre class="code-block"><code>def send_confirmation_email(email, grand_total):
+    &quot;&quot;&quot;Visszaigazoló emailt küld a vásárlónak.
+
+    Paraméterek:
+        email: a vásárló email címe
+        grand_total: a fizetendő összeg
+    &quot;&quot;&quot;
+    print(f&quot;Email elküldve ({email}): Rendelésed összege {grand_total} Ft&quot;)</code></pre>
+<p>↑ Ez a függvény CSAK &quot;küld&quot;. (Most csak kiírja, de igazi appban<br>tényleg emailt küldene.)</p>
+<h3>És most ÖSSZERAKJUK őket — mint LEGO kockákat:</h3>
+<pre class="code-block"><code>print(&quot;JÓ megoldás (kis függvények összerakva):&quot;)
+
+customer_email = &quot;anna@example.com&quot;
+product_price = 250000
+order_quantity = 2</code></pre>
+<p>1. lépés: email ellenőrzés</p>
+<pre class="code-block"><code>if not is_valid_email(customer_email):
+    print(&quot;HIBA: érvénytelen email!&quot;)
+else:</code></pre>
+<p>2. lépés: ár kiszámolása</p>
+<pre class="code-block"><code>grand_total = calculate_order_total(product_price, order_quantity)
+    net_total = product_price * order_quantity
+    tax_amount = grand_total - net_total</code></pre>
+<p>3. lépés: számla kiírása</p>
+<pre class="code-block"><code>print_invoice(&quot;Laptop&quot;, order_quantity, net_total, tax_amount, grand_total)</code></pre>
+<p>4. lépés: email küldés</p>
+<pre class="code-block"><code>send_confirmation_email(customer_email, grand_total)
+
+print()</code></pre>
+<h3>Miért jobb ez?</h3>
+<p>- Ha az ár számolás hibás → CSAK a calculate_order_total-t nézed<br>- Ha a számla csúnya → CSAK a print_invoice-t javítod<br>- Ha az email küldés nem megy → CSAK a send_confirmation_email-lel foglalkozol<br>- Bármelyik függvényt ÚJRA tudod használni más programban is!</p>
+</div>
+<div class="section">
+<h3>3. HONNAN TUDOM, HOGY SZÉT KELL BONTANI?</h3>
+</div>
+<div class="section">
+<pre class="code-block"><code>print(&quot;--- 3. Mikor kell szétbontani? ---&quot;)
+print()</code></pre>
+<p>Van pár egyszerű jel, ami arra utal, hogy a függvényed túl sokat csinál:</p>
+<p>1. A függvény neve tartalmazza az &quot;és&quot; szót (vagy &quot;and&quot;):<br>calculate_and_print()  → szedd szét: calculate() + print()</p>
+<p>2. A függvény 15 sornál hosszabb:<br>Valószínűleg több dolgot csinál. Keresd a logikai határokat.</p>
+<p>3. Kommentekkel választod el a részeket:<br># Kiszámoljuk az árat<br>...<br># Ellenőrizzük az emailt<br>...<br># Kiírjuk a számlát<br>↑ Minden komment = egy lehetséges új függvény!</p>
+<p>4. Több behúzási szint (if-ben if-ben for...):<br>Ha 3-nál mélyebb, ideje szétbontani.</p>
+<p>ROSSZ — a kommentek jelzik, hogy ez igazából 3 függvény:</p>
+<pre class="code-block"><code>def process_student_grades_bad(students):
+    &quot;&quot;&quot;Rossz: túl sok feladatot lát el.&quot;&quot;&quot;</code></pre>
+<h3>Átlagot számolunk</h3>
+<pre class="code-block"><code>total = 0
+    for student in students:
+        total = total + student[&quot;grade&quot;]
+    average = total / len(students)</code></pre>
+<h3>Megkeressük a legjobbat</h3>
+<pre class="code-block"><code>best = students[0]
+    for student in students:
+        if student[&quot;grade&quot;] &gt; best[&quot;grade&quot;]:
+            best = student</code></pre>
+<h3>Kiírjuk az eredményt</h3>
+<pre class="code-block"><code>print(f&quot;Átlag: {average}&quot;)
+    print(f&quot;Legjobb: {best[&#x27;name&#x27;]} ({best[&#x27;grade&#x27;]})&quot;)</code></pre>
+<h3>JÓ — minden kommentből önálló függvény lett:</h3>
+<pre class="code-block"><code>def calculate_average_grade(students):
+    &quot;&quot;&quot;Kiszámolja a diákok jegyeinek átlagát.&quot;&quot;&quot;
+    total = 0
+    for student in students:
+        total = total + student[&quot;grade&quot;]
+    return total / len(students)
+
+
+def find_best_student(students):
+    &quot;&quot;&quot;Megkeresi a legjobb jegyű diákot.&quot;&quot;&quot;
+    best = students[0]
+    for student in students:
+        if student[&quot;grade&quot;] &gt; best[&quot;grade&quot;]:
+            best = student
+    return best
+
+
+def print_grade_report(students):
+    &quot;&quot;&quot;Kiírja az osztályzat összesítőt.&quot;&quot;&quot;
+    average = calculate_average_grade(students)
+    best = find_best_student(students)
+    print(f&quot;Átlag: {average}&quot;)
+    print(f&quot;Legjobb: {best[&#x27;name&#x27;]} ({best[&#x27;grade&#x27;]})&quot;)</code></pre>
+<h3>Kipróbáljuk:</h3>
+<pre class="code-block"><code>students = [
+    {&quot;name&quot;: &quot;Anna&quot;, &quot;grade&quot;: 5},
+    {&quot;name&quot;: &quot;Béla&quot;, &quot;grade&quot;: 3},
+    {&quot;name&quot;: &quot;Cecil&quot;, &quot;grade&quot;: 4},
+]
+
+print(&quot;Rossz (egy nagy függvény):&quot;)
+process_student_grades_bad(students)
+print()
+print(&quot;Jó (kis függvények):&quot;)
+print_grade_report(students)
+print()</code></pre>
+</div>
+<div class="section">
+<h3>4. PARAMÉTEREK ÉS VISSZATÉRÉSI ÉRTÉKEK</h3>
+</div>
+<div class="section">
+<pre class="code-block"><code>print(&quot;--- 4. Paraméterek és return ---&quot;)
+print()</code></pre>
+<h3>Két fontos fogalom:</h3>
+<p>PARAMÉTER = amit a függvény KAP (a bemenete)<br>Olyan, mint egy recept hozzávalói: &quot;adj nekem lisztet és tojást&quot;</p>
+<p>VISSZATÉRÉSI ÉRTÉK (return) = amit a függvény VISSZAAD (a kimenete)<br>Olyan, mint a kész sütemény: &quot;tessék, itt a torta&quot;</p>
+<p>Ezek csak CSINÁLNAK valamit (pl. kiírnak), de nem adnak vissza semmit.</p>
+<pre class="code-block"><code>def say_hello(name):
+    &quot;&quot;&quot;Csak kiír — nem ad vissza semmit.&quot;&quot;&quot;
+    print(f&quot;Hello, {name}!&quot;)
+
+say_hello(&quot;Péter&quot;)</code></pre>
+<h3>Ha megpróbálod elmenteni az eredményt:</h3>
+<pre class="code-block"><code>result = say_hello(&quot;Anna&quot;)
+print(f&quot;A say_hello visszatérési értéke: {result}&quot;)</code></pre>
+<p>↑ None-t ír ki! Mert a függvényben nincs return.<br>A None = &quot;semmi&quot;, &quot;nincs érték&quot;.</p>
+<pre class="code-block"><code>print()</code></pre>
+<p>Ezek VISSZAADNAK egy értéket, amit el tudsz menteni egy változóba.</p>
+<pre class="code-block"><code>def add_numbers(a, b):
+    &quot;&quot;&quot;Összeadja a két számot és VISSZAADJA az eredményt.&quot;&quot;&quot;
+    return a + b</code></pre>
+<p>↑ A return azt mondja: &quot;itt az eredmény, tessék!&quot;</p>
+<pre class="code-block"><code>result = add_numbers(10, 20)
+print(f&quot;10 + 20 = {result}&quot;)</code></pre>
+<p>↑ Most result = 30, nem None!</p>
+<h3>A return-ös függvényekkel ÉPÍTKEZHETSZ:</h3>
+<pre class="code-block"><code>price = add_numbers(1000, 500)          # 1500
+total = add_numbers(price, 270)         # 1770
+print(f&quot;Ár: {price}, Végösszeg ÁFA-val: {total}&quot;)
+print()</code></pre>
+<p>RETURN-nel: ha a függvény KISZÁMOL vagy MEGÁLLAPÍT valamit<br>calculate_total() → return total<br>is_valid_email() → return True/False<br>find_best_student() → return best_student</p>
+<p>RETURN nélkül: ha a függvény MEGJELENÍT vagy VÉGREHAJT valamit<br>print_invoice() → kiír a képernyőre<br>send_email() → elküld egy emailt<br>save_to_file() → ment egy fájlba</p>
+</div>
+<div class="section">
+<h3>5. ALAPÉRTELMEZETT PARAMÉTEREK</h3>
+</div>
+<div class="section">
+<pre class="code-block"><code>print(&quot;--- 5. Alapértelmezett paraméterek ---&quot;)
+print()</code></pre>
+<p>Néha egy paraméternek van egy &quot;szokásos&quot; értéke,<br>amit legtöbbször nem akarsz megváltoztatni.<br>Ilyenkor adhatsz neki ALAPÉRTELMEZETT értéket.</p>
+<h3>PÉLDA: kedvezmény számolás</h3>
+<h3>A legtöbb vásárlónak nincs kedvezménye (0%),</h3>
+<p>de néhányan kapnak.</p>
+<pre class="code-block"><code>def calculate_discounted_price(price, discount_percent=0):
+    &quot;&quot;&quot;Kiszámolja az árat kedvezménnyel.
+
+    Paraméterek:
+        price: az eredeti ár
+        discount_percent: kedvezmény százalékban (alapból 0, vagyis nincs)
+                          ↑ ez az alapértelmezett érték!
+    &quot;&quot;&quot;
+    discount_amount = price * (discount_percent / 100)
+    return price - discount_amount</code></pre>
+<h3>Használat alapértelmezetten (nincs kedvezmény):</h3>
+<pre class="code-block"><code>normal_price = calculate_discounted_price(10000)
+print(f&quot;Kedvezmény nélkül: {normal_price} Ft&quot;)</code></pre>
+<p>↑ Nem adtunk meg discount_percent-et, ezért 0 lesz automatikusan.</p>
+<h3>Használat kedvezménnyel:</h3>
+<pre class="code-block"><code>sale_price = calculate_discounted_price(10000, 20)
+print(f&quot;20% kedvezménnyel: {sale_price} Ft&quot;)</code></pre>
+<p>↑ Most megadtuk: 20%</p>
+<p>Még egy példa — üdvözlés, ami alapból magyarul köszön:</p>
+<pre class="code-block"><code>def greet(name, language=&quot;hu&quot;):
+    &quot;&quot;&quot;Köszönt a megadott nyelven. Alapból magyarul.&quot;&quot;&quot;
+    if language == &quot;hu&quot;:
+        print(f&quot;Szia, {name}!&quot;)
+    elif language == &quot;en&quot;:
+        print(f&quot;Hello, {name}!&quot;)
+    else:
+        print(f&quot;Hi, {name}!&quot;)
+
+greet(&quot;Péter&quot;)               # → &quot;Szia, Péter!&quot; (alapértelmezett: hu)
+greet(&quot;John&quot;, &quot;en&quot;)          # → &quot;Hello, John!&quot; (angol)
+print()</code></pre>
+</div>
+<div class="section">
+<h3>6. ÖSSZEFOGLALÓ</h3>
+</div>
+<div class="section">
+<pre class="code-block"><code>print(&quot;--- 6. Összefoglaló ---&quot;)
+print(&quot;&quot;&quot;
+Amit megtanultál:
+
+  1. Egy függvény = egy feladat
+     Ha a függvényed neve &quot;és&quot;-t tartalmaz → bontsd szét!
+
+  2. Jelek, hogy szét kell bontani:
+     - 15 sornál hosszabb
+     - Kommentekkel választod el a részeket
+     - A neve tartalmaz &quot;és/and&quot; szót
+
+  3. Paraméter = bemenet, Return = kimenet
+     - return-nel: ha KISZÁMOL valamit
+     - return nélkül: ha MEGJELENÍT vagy VÉGREHAJT valamit
+
+  4. Alapértelmezett paraméterek:
+     def func(param=alapérték) — ha nem adod meg, az alapérték érvényes
+
+  5. Kis függvények előnyei:
+     - Könnyebb megérteni
+     - Könnyebb hibát keresni
+     - Újra tudod használni más programban
+
+Következő lépés: oldd meg az exercise_02_fuggvenyek.py feladatait!
+&quot;&quot;&quot;)</code></pre>
+</div>
+</div>
+</div>
+<div class="panel" data-index="3" style="display:none">
+<div class="file-content" id="exercise_00_practice">
+<div class="file-header">
+<span class="badge exercise">Gyakorlat</span>
+<h2>GYAKORLÓ FELADATOK — Python alapok</h2>
+<span class="filename">exercise_00_practice.py</span>
+</div>
+<div class="exercise-editor">
+<div class="editor-toolbar">
+<button class="run-btn" onclick="runCode('exercise-0')">&#9654; Futtatás</button>
+<button class="reset-btn" onclick="resetCode('exercise-0')">&#8634; Visszaállítás</button>
+</div>
+<textarea id="exercise-0" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off">&quot;&quot;&quot;
+=============================================================
+  GYAKORLÓ FELADATOK — Python alapok
+=============================================================
+
+Oldd meg az alábbi feladatokat!
+Minden feladatnál a &quot;# MEGOLDÁS IDE&quot; részt írd át.
+Ha kész vagy, futtasd a fájlt — a végén ellenőrzi magát.
+
+Futtasd:
+    python 01-python-clean-code/exercises/exercise_00_practice.py
+&quot;&quot;&quot;
+
+
+# ============================================================
+# 1. feladat: Változók
+# Hozz létre 3 változót a saját adataiddal!
+# ============================================================
+
+my_name = &quot;Dani&quot;         # ← írd be a neved (szöveg)
+my_age = 19           # ← írd be a korod (szám)
+my_city = &quot;Budapest&quot;         # ← írd be a városod (szöveg)
+
+# Írd ki egy f-string-gel: &quot;Szia! A nevem X, Y éves vagyok, Z-ban élek.&quot;
+# MEGOLDÁS IDE: 
+print(f&quot;Szia, a nevem {my_name}, {my_age} éves vagyok, {my_city}-ben élek&quot;)
+
+
+
+# ============================================================
+# 2. feladat: Műveletek
+# Számold ki egy téglalap kerületét és területét!
+# Kerület = 2 * (a + b)
+# Terület = a * b
+# ============================================================
+
+width = 5
+height = 8
+
+perimeter = (width + height) * 2   # ← számold ki a kerületet
+area = width * height        # ← számold ki a területet
+
+# MEGOLDÁS IDE:
+
+
+print(f&quot;A téglalap területe: {area}, kerülete: {perimeter}&quot;)
+
+
+# ============================================================
+# 3. feladat: Lista
+# Van egy bevásárlólista. Adj hozzá 2 új elemet,
+# és töröld a &quot;kenyér&quot; elemet!
+# ============================================================
+
+shopping_list = [&quot;tej&quot;, &quot;kenyér&quot;, &quot;sajt&quot;, &quot;tojás&quot;]
+
+# MEGOLDÁS IDE (használd az .append() és .remove() metódusokat):
+
+shopping_list.remove(&quot;kenyér&quot;)
+shopping_list.append(&quot;vaj&quot;)
+shopping_list.append(&quot;liszt&quot;)
+
+print(f&quot;Bevásárlólista: {shopping_list}&quot;)
+
+
+# ============================================================
+# 4. feladat: Feltételek
+# Írd meg az alábbi függvényt, ami eldönti,
+# hogy egy szám páros vagy páratlan!
+# Tipp: ha a szám 2-vel osztva 0 maradékot ad → páros
+# ============================================================
+
+def even_or_odd(number):
+    &quot;&quot;&quot;Visszaadja, hogy &quot;páros&quot; vagy &quot;páratlan&quot;.&quot;&quot;&quot;
+    # MEGOLDÁS IDE:
+    if number % 2 == 0:
+        return &quot;páros&quot;
+    else:
+        return &quot;páratlan&quot;  # ← töröld ezt a sort és írd meg a megoldást
+
+
+# ============================================================
+# 5. feladat: Ciklus
+# Írd ki a számokat 1-től 10-ig, de csak a párosakat!
+# Tipp: használj for ciklust és if feltételt
+# ============================================================
+
+print(&quot;Páros számok 1-10:&quot;)
+# MEGOLDÁS IDE:
+for i in range(2, 11, 2):
+    print(i)
+
+
+# ============================================================
+# 6. feladat: Függvény
+# Írj egy függvényt, ami kiszámolja egy lista átlagát!
+# Tipp: összeg / elemek száma → használd sum() és len()
+# ============================================================
+
+def calculate_average(numbers):
+    &quot;&quot;&quot;Kiszámolja és visszaadja a számok átlagát.&quot;&quot;&quot;
+    # MEGOLDÁS IDE:
+    return sum(numbers) / len(numbers)    # ← töröld ezt a sort és írd meg a megoldást
+
+# ============================================================
+# 7. feladat: Szótár
+# Hozz létre egy szótárat egy filmről! Legyen benne:
+# title, year, director, rating (1-10)
+# Aztán írd ki szépen formázva.
+# ============================================================
+
+movie = {
+    &quot;title&quot;: &quot;Interstellar&quot;,
+    &quot;year&quot;: 2014,
+    &quot;director&quot;: &quot;Christopher Nolan&quot;,
+    &quot;rating&quot;: 9.1
+}  # ← töltsd ki a szótárat
+
+# MEGOLDÁS IDE:
+
+
+
+# ============================================================
+# ELLENŐRZÉS — ne módosítsd ezt a részt!
+# ============================================================
+
+print(&quot;\n&quot; + &quot;=&quot; * 50)
+print(&quot;EREDMÉNYEK&quot;)
+print(&quot;=&quot; * 50)
+
+errors = 0
+
+# 1. feladat
+if my_name and my_age &gt; 0 and my_city:
+    print(&quot;✓ 1. feladat: Változók — OK&quot;)
+else:
+    print(&quot;✗ 1. feladat: Változók — töltsd ki a neved, korod, városod!&quot;)
+    errors += 1
+
+# 2. feladat
+if perimeter == 2 * (width + height) and area == width * height:
+    print(&quot;✓ 2. feladat: Műveletek — OK&quot;)
+else:
+    print(f&quot;✗ 2. feladat: Műveletek — kerület={perimeter} (helyes: {2*(width+height)}), terület={area} (helyes: {width*height})&quot;)
+    errors += 1
+
+# 3. feladat
+if &quot;kenyér&quot; not in shopping_list and len(shopping_list) &gt;= 5:
+    print(&quot;✓ 3. feladat: Lista — OK&quot;)
+else:
+    print(&quot;✗ 3. feladat: Lista — adj hozzá 2 elemet és töröld a &#x27;kenyér&#x27;-t!&quot;)
+    errors += 1
+
+# 4. feladat
+if even_or_odd(4) == &quot;páros&quot; and even_or_odd(7) == &quot;páratlan&quot;:
+    print(&quot;✓ 4. feladat: Feltételek — OK&quot;)
+else:
+    print(&quot;✗ 4. feladat: Feltételek — a függvény nem ad jó eredményt!&quot;)
+    errors += 1
+
+# 6. feladat
+if calculate_average([10, 20, 30]) == 20.0:
+    print(&quot;✓ 6. feladat: Függvény — OK&quot;)
+else:
+    print(&quot;✗ 6. feladat: Függvény — az átlag nem stimmel!&quot;)
+    errors += 1
+
+# 7. feladat
+if movie.get(&quot;title&quot;) and movie.get(&quot;year&quot;) and movie.get(&quot;director&quot;) and movie.get(&quot;rating&quot;):
+    print(&quot;✓ 7. feladat: Szótár — OK&quot;)
+else:
+    print(&quot;✗ 7. feladat: Szótár — töltsd ki a title, year, director, rating mezőket!&quot;)
+    errors += 1
+
+print(&quot;=&quot; * 50)
+if errors == 0:
+    print(&quot;🎉 MINDEN FELADAT KÉSZ! Szólj nekem, és megnézem!&quot;)
+else:
+    print(f&quot;Még {errors} feladat van hátra. Hajrá!&quot;)
+</textarea>
+<div id="exercise-0-output" class="output-area">
+<span class="output-placeholder">Nyomd meg a &#9654; Futtatás gombot az eredményért</span>
+</div>
+</div>
+</div>
+</div>
+<div class="panel" data-index="4" style="display:none">
+<div class="file-content" id="exercise_01_elnevezes">
+<div class="file-header">
+<span class="badge exercise">Gyakorlat</span>
+<h2>1.1 GYAKORLAT: Változók és elnevezések — Clean Code</h2>
+<span class="filename">exercise_01_elnevezes.py</span>
+</div>
+<div class="exercise-editor">
+<div class="editor-toolbar">
+<button class="run-btn" onclick="runCode('exercise-1')">&#9654; Futtatás</button>
+<button class="reset-btn" onclick="resetCode('exercise-1')">&#8634; Visszaállítás</button>
+</div>
+<textarea id="exercise-1" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off">&quot;&quot;&quot;
+=============================================================
+  1.1 GYAKORLAT: Változók és elnevezések — Clean Code
+=============================================================
+
+Az alábbi kódokban SZÁNDÉKOSAN rossz nevek vannak.
+A te feladatod: írd át MINDEN nevet a Python konvenciók szerint.
+
+Szabályok:
+  - Változók, függvények → snake_case
+  - Konstansok → UPPER_SNAKE_CASE
+  - Osztályok → PascalCase
+  - Boolean → is_/has_/can_ előtaggal
+  - Beszédes, értelmes nevek (ne rövidíts!)
+
+A kód LOGIKÁJÁT ne változtasd — csak a neveket!
+
+Futtasd:
+    python 01-python-clean-code/exercises/exercise_01_elnevezes.py
+&quot;&quot;&quot;
+
+
+# ============================================================
+# 1. feladat: Változók átnevezése
+#
+# Az alábbi változóknál rossz az elnevezés.
+# Nevezd át MINDEGYIKET a konvencióknak megfelelően.
+# A hozzájuk rendelt értéket NE változtasd!
+#
+# Tipp: gondolj bele, mit TÁROL a változó,
+#       és adj neki olyan nevet, amiből ez kiderül.
+# ============================================================
+
+user_name = &quot;Kiss Péter&quot;           # ← ez egy személy neve
+user_age = 42                     # ← ez egy életkor
+user_city = &quot;Budapest&quot;             # ← ez egy város
+body_temperature = 36.6                   # ← ez egy testhőmérséklet
+days_left = 7                      # ← ez a hátralevő napok száma
+
+# MEGOLDÁS IDE — írd felül a fenti sorokat jó nevekkel:
+
+
+
+# ============================================================
+# 2. feladat: Konstansok átnevezése
+#
+# Ezek az értékek a program futása során SOHA nem változnak.
+# Nevezd át őket a konstansok konvenciója szerint (UPPER_SNAKE_CASE).
+# Az értékeket NE változtasd!
+# ============================================================
+
+MAX_ATTEMPTS = 5                     # ← max próbálkozások száma
+TAX_RATE = 0.27                  # ← adókulcs
+API_URL = &quot;https://api.example.com/v2&quot;  # ← API webcím
+PI = 3.14159                # ← pi értéke (matematikai állandó)
+
+# MEGOLDÁS IDE — írd felül a fenti sorokat:
+
+
+
+# ============================================================
+# 3. feladat: Boolean változók átnevezése
+#
+# Boolean = igaz/hamis érték.
+# A konvenció: a nevük KÉRDÉS legyen (is_, has_, can_ előtag).
+# Példa: active → is_active (&quot;aktív-e?&quot;)
+#
+# Nevezd át mindegyiket!
+# ============================================================
+
+is_active = True               # ← aktív-e a felhasználó?
+is_admin = False               # ← adminisztrátor-e?
+is_logged_in = True             # ← be van-e jelentkezve?
+has_items = False               # ← van-e termék a kosarában?
+
+# MEGOLDÁS IDE — írd felül a fenti sorokat:
+
+
+
+# ============================================================
+# 4. feladat: Függvény átnevezése
+#
+# Az alábbi függvénynek rossz a neve ÉS a paramétereinek neve is.
+# Nevezd át a függvényt ÉS a paramétereit is.
+#
+# Mi a függvény neve most? &quot;calc&quot; — de MIT számol?
+# Mi az &quot;a&quot; és &quot;b&quot;? Ránézésre nem tudom.
+#
+# Tipp: a függvény kiszámolja a téglalap területét.
+#       A két paraméter a szélesség és a magasság.
+#       A függvények neve IGÉVEL kezdődik!
+# ============================================================
+
+def calculate_area(width, height):
+    return width * height
+
+# MEGOLDÁS IDE — írd újra a függvényt jó névvel és paraméternevekkel:
+
+
+
+# ============================================================
+# 5. feladat: Vegyes — javítsd ki az egész kódrészletet
+#
+# Az alábbi kód egy bevásárlást számol ki.
+# MINDEN elnevezés rossz benne.
+# Írd át az ÖSSZESET — változókat, konstanst, függvényt!
+#
+# A kód logikáját NE változtasd, csak a neveket.
+# ============================================================
+
+TAX_RATE = 0.27                   # ez az áfa
+
+def calculate_total_price(net_price, quantity):
+    &quot;&quot;&quot;Kiszámolja a végösszeget áfával.&quot;&quot;&quot;
+    net_total = net_price * quantity               # nettó összeg
+    tax_amount = net_total * TAX_RATE              # áfa összeg
+    return net_total + tax_amount            # bruttó összeg
+
+
+
+# MEGOLDÁS IDE — írd újra az egész kódrészletet jó nevekkel:
+
+
+
+# ============================================================
+# ELLENŐRZÉS — ne módosítsd ezt a részt!
+# ============================================================
+
+print(&quot;\n&quot; + &quot;=&quot; * 50)
+print(&quot;EREDMÉNYEK&quot;)
+print(&quot;=&quot; * 50)
+
+errors = 0
+
+# 1. feladat — változónevek ellenőrzése
+# (Az ellenőrző a &quot;jó&quot; neveket keresi a globális névtérben)
+g = globals()
+
+task1_names = {
+    &quot;személy neve&quot;: [&quot;person_name&quot;, &quot;user_name&quot;, &quot;full_name&quot;, &quot;name&quot;],
+    &quot;életkor&quot;: [&quot;age&quot;, &quot;person_age&quot;, &quot;user_age&quot;],
+    &quot;város&quot;: [&quot;city&quot;, &quot;person_city&quot;, &quot;user_city&quot;, &quot;home_city&quot;],
+    &quot;testhőmérséklet&quot;: [&quot;body_temperature&quot;, &quot;temperature&quot;, &quot;body_temp&quot;],
+    &quot;hátralevő napok&quot;: [&quot;days_until_deadline&quot;, &quot;days_remaining&quot;, &quot;remaining_days&quot;, &quot;days_left&quot;],
+}
+
+task1_ok = True
+for desc, valid_names in task1_names.items():
+    found = any(name in g for name in valid_names)
+    if not found:
+        task1_ok = False
+
+if task1_ok:
+    print(&quot;✓ 1. feladat: Változók — OK&quot;)
+else:
+    print(&quot;✗ 1. feladat: Változók — adj beszédes snake_case neveket (pl. person_name, age, city...)&quot;)
+    errors += 1
+
+# 2. feladat — konstansok
+task2_names = [&quot;MAX_RETRIES&quot;, &quot;MAX_ATTEMPTS&quot;, &quot;TAX_RATE&quot;, &quot;API_URL&quot;, &quot;PI&quot;]
+task2_found = sum(1 for name in task2_names if name in g)
+if task2_found &gt;= 4:
+    print(&quot;✓ 2. feladat: Konstansok — OK&quot;)
+else:
+    print(&quot;✗ 2. feladat: Konstansok — használj UPPER_SNAKE_CASE-t (pl. MAX_RETRIES, TAX_RATE...)&quot;)
+    errors += 1
+
+# 3. feladat — boolean
+task3_prefixes = [&quot;is_&quot;, &quot;has_&quot;, &quot;can_&quot;]
+task3_bools = [name for name, val in g.items()
+               if isinstance(val, bool) and any(name.startswith(p) for p in task3_prefixes)]
+if len(task3_bools) &gt;= 4:
+    print(&quot;✓ 3. feladat: Boolean változók — OK&quot;)
+else:
+    print(f&quot;✗ 3. feladat: Boolean — {len(task3_bools)}/4 jó. Használj is_/has_/can_ előtagot!&quot;)
+    errors += 1
+
+# 4. feladat — függvény
+task4_good_names = [&quot;calculate_area&quot;, &quot;calculate_rectangle_area&quot;, &quot;get_rectangle_area&quot;, &quot;compute_area&quot;]
+task4_ok = any(name in g and callable(g[name]) for name in task4_good_names)
+if task4_ok:
+    # Teszteljük is, hogy működik-e
+    func = next(g[name] for name in task4_good_names if name in g and callable(g[name]))
+    if func(5, 3) == 15:
+        print(&quot;✓ 4. feladat: Függvény — OK&quot;)
+    else:
+        print(&quot;✗ 4. feladat: Függvény — a név jó, de az eredmény nem stimmel!&quot;)
+        errors += 1
+else:
+    print(&quot;✗ 4. feladat: Függvény — adj igével kezdődő, beszédes nevet (pl. calculate_rectangle_area)&quot;)
+    errors += 1
+
+# 5. feladat — vegyes
+task5_ok = True
+# Van-e konstans az áfának?
+if &quot;TAX_RATE&quot; not in g:
+    task5_ok = False
+# Van-e jól elnevezett függvény?
+task5_func_names = [&quot;calculate_total_price&quot;, &quot;calculate_gross_price&quot;, &quot;calculate_total&quot;,
+                     &quot;calculate_total_with_tax&quot;, &quot;calculate_price_with_tax&quot;]
+if not any(name in g and callable(g[name]) for name in task5_func_names):
+    task5_ok = False
+
+if task5_ok:
+    func = next(g[name] for name in task5_func_names if name in g and callable(g[name]))
+    expected = 2500 * 3 * (1 + 0.27)
+    result = func(2500, 3)
+    if abs(result - expected) &lt; 0.01:
+        print(&quot;✓ 5. feladat: Vegyes — OK&quot;)
+    else:
+        print(&quot;✗ 5. feladat: Vegyes — a nevek jók, de az eredmény nem stimmel!&quot;)
+        errors += 1
+else:
+    print(&quot;✗ 5. feladat: Vegyes — használj TAX_RATE konstanst és beszédes függvénynevet!&quot;)
+    errors += 1
+
+print(&quot;=&quot; * 50)
+if errors == 0:
+    print(&quot;🎉 MINDEN FELADAT KÉSZ! Szólj nekem, és megnézem!&quot;)
+else:
+    print(f&quot;Még {errors} feladat van hátra. Hajrá!&quot;)
+</textarea>
+<div id="exercise-1-output" class="output-area">
+<span class="output-placeholder">Nyomd meg a &#9654; Futtatás gombot az eredményért</span>
+</div>
+</div>
+</div>
+</div>
+<div class="panel" data-index="5" style="display:none">
+<div class="file-content" id="exercise_01_naming">
+<div class="file-header">
+<span class="badge exercise">Gyakorlat</span>
+<h2>Exercise 01 Naming</h2>
+<span class="filename">exercise_01_naming.py</span>
+</div>
+<div class="exercise-editor">
+<div class="editor-toolbar">
+<button class="run-btn" onclick="runCode('exercise-2')">&#9654; Futtatás</button>
+<button class="reset-btn" onclick="resetCode('exercise-2')">&#8634; Visszaállítás</button>
+</div>
+<textarea id="exercise-2" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off">&quot;&quot;&quot;
+1.1 Feladat: Változók és elnevezések
+
+Javítsd ki az összes változó-, függvény- és osztálynevet a Python konvenciók szerint:
+- Változók és függvények: snake_case
+- Konstansok: UPPER_SNAKE_CASE
+- Osztályok: PascalCase
+- Használj beszédes, értelmes neveket
+
+A kód logikáját NE változtasd, csak a neveket!
+&quot;&quot;&quot;
+
+# --- Konstansok ---
+maxretries = 3
+apiurl = &quot;https://api.example.com&quot;
+t = 30  # timeout másodpercben
+
+
+# --- Függvények ---
+def calcTtl(lst):
+    &quot;&quot;&quot;Kiszámítja a lista elemeinek összegét.&quot;&quot;&quot;
+    r = 0
+    for x in lst:
+        r = r + x
+    return r
+
+
+def chkUsr(n, a):
+    &quot;&quot;&quot;Ellenőrzi, hogy a felhasználó érvényes-e.&quot;&quot;&quot;
+    if len(n) &lt; 2:
+        return False
+    if a &lt; 0 or a &gt; 150:
+        return False
+    return True
+
+
+def FetchData(ApiUrl, maxretries):
+    &quot;&quot;&quot;Adatokat tölt le egy API-ról, újrapróbálkozással.&quot;&quot;&quot;
+    for I in range(maxretries):
+        print(f&quot;Próbálkozás {I + 1}...&quot;)
+        # Szimuláljuk a letöltést
+        Data = {&quot;status&quot;: &quot;ok&quot;, &quot;items&quot;: [1, 2, 3]}
+        if Data[&quot;status&quot;] == &quot;ok&quot;:
+            return Data
+    return None
+
+
+# --- Osztály ---
+class usraccount:
+    def __init__(self, N, E, a):
+        self.N = N  # név
+        self.E = E  # email
+        self.a = a  # aktív-e
+
+    def getFullInfo(self):
+        s = &quot;aktív&quot; if self.a else &quot;inaktív&quot;
+        return f&quot;{self.N} ({self.E}) - {s}&quot;
+
+    def deactivateaccount(self):
+        self.a = False
+
+
+# --- Használat ---
+if __name__ == &quot;__main__&quot;:
+    u = usraccount(&quot;Kiss Péter&quot;, &quot;peter@example.com&quot;, True)
+    print(u.getFullInfo())
+
+    nums = [10, 20, 30, 40]
+    t2 = calcTtl(nums)
+    print(f&quot;Összeg: {t2}&quot;)
+
+    ok = chkUsr(&quot;Anna&quot;, 25)
+    print(f&quot;Érvényes felhasználó: {ok}&quot;)
+
+    d = FetchData(apiurl, maxretries)
+    print(f&quot;Letöltött adat: {d}&quot;)
+</textarea>
+<div id="exercise-2-output" class="output-area">
+<span class="output-placeholder">Nyomd meg a &#9654; Futtatás gombot az eredményért</span>
+</div>
+</div>
+</div>
+</div>
+<div class="panel" data-index="6" style="display:none">
+<div class="file-content" id="exercise_02_fuggvenyek">
+<div class="file-header">
+<span class="badge exercise">Gyakorlat</span>
+<h2>1.2 GYAKORLAT: Függvények — Egy feladat, egy függvény</h2>
+<span class="filename">exercise_02_fuggvenyek.py</span>
+</div>
+<div class="exercise-editor">
+<div class="editor-toolbar">
+<button class="run-btn" onclick="runCode('exercise-3')">&#9654; Futtatás</button>
+<button class="reset-btn" onclick="resetCode('exercise-3')">&#8634; Visszaállítás</button>
+</div>
+<textarea id="exercise-3" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off">&quot;&quot;&quot;
+=============================================================
+  1.2 GYAKORLAT: Függvények — Egy feladat, egy függvény
+=============================================================
+
+Két típusú feladat vár rád:
+  A) Függvény SZÉTBONTÁS: egy nagy függvényt kell kis részekre vágni
+  B) Függvény ÍRÁS: saját függvényeket kell írnod
+
+A kód végén automatikus ellenőrző fut.
+
+Futtasd:
+    python 01-python-clean-code/exercises/exercise_02_fuggvenyek.py
+&quot;&quot;&quot;
+
+
+# ============================================================
+# 1. feladat: Írd meg a hiányzó függvényt
+#
+# Írj egy függvényt, ami kiszámolja egy kör KERÜLETÉT.
+#
+# Képlet: kerület = 2 * pi * sugár
+# A PI legyen konstans (3.14159).
+#
+# A függvény:
+#   - KAPJA: a kör sugarát (egy szám)
+#   - VISSZAADJA: a kerületet (return-nel!)
+#   - NE írjon ki semmit (ne használj print-et benne!)
+#
+# Tipp: a függvény neve legyen igés és beszédes.
+# ============================================================
+
+PI = 3.14159
+
+def calculate_circle_circumference(radius):
+    &quot;&quot;&quot;Kiszámolja egy kör kerületét a sugár alapján.&quot;&quot;&quot;
+    pass    # ← töröld és írd meg a megoldást
+
+
+# ============================================================
+# 2. feladat: Írd meg a hiányzó függvényt
+#
+# Írj egy függvényt, ami eldönti, hogy egy diák ÁTMENT-E
+# a vizsgán.
+#
+# Szabály: ha a pontszám &gt;= 50, akkor átment.
+#
+# A függvény:
+#   - KAPJA: a diák pontszámát (egy szám, 0-100)
+#   - VISSZAADJA: True ha átment, False ha nem
+#   - NE írjon ki semmit!
+#
+# Tipp: boolean függvénynél → is_ vagy has_ előtag
+# ============================================================
+
+def is_passing_grade(score):
+    &quot;&quot;&quot;Eldönti, hogy a diák átment-e (pontszám &gt;= 50).&quot;&quot;&quot;
+    pass    # ← töröld és írd meg a megoldást
+
+
+# ============================================================
+# 3. feladat: Bontsd szét a nagy függvényt!
+#
+# Az alábbi függvény 3 dolgot csinál egyszerre:
+#   1. Kiszámolja a diákok átlagát
+#   2. Megszámolja hány diák bukott meg (&lt; 50 pont)
+#   3. Kiírja az eredményt
+#
+# A te feladatod:
+#   Írd meg az alábbi 3 KÜLÖN függvényt, amik EGY-EGY dolgot csinálnak.
+#   A nagy függvényt NE módosítsd — alatta dolgozz!
+#
+# Tipp: nézd meg a kommenteket a nagy függvényben,
+#       azok mutatják a határokat.
+# ============================================================
+
+# --- EZT a függvényt NE módosítsd, csak nézd meg mit csinál: ---
+def process_exam_results_bad(scores):
+    &quot;&quot;&quot;ROSSZ: túl sokat csinál egyszerre.&quot;&quot;&quot;
+    # Átlag számolás
+    total = 0
+    for score in scores:
+        total = total + score
+    average = total / len(scores)
+
+    # Bukottak számolása
+    failed_count = 0
+    for score in scores:
+        if score &lt; 50:
+            failed_count = failed_count + 1
+
+    # Eredmény kiírása
+    print(f&quot;  Átlag: {average}&quot;)
+    print(f&quot;  Bukott: {failed_count} diák&quot;)
+
+# --- IDE írd meg a 3 külön függvényt: ---
+
+# 3a) Átlag számolás
+#     Neve: calculate_average_score
+#     Kapja: pontszámok listáját (pl. [85, 42, 73])
+#     Visszaadja: az átlagot (return)
+#     NE írjon ki semmit!
+
+def calculate_average_score(scores):
+    &quot;&quot;&quot;Kiszámolja a pontszámok átlagát.&quot;&quot;&quot;
+    pass    # ← töröld és írd meg a megoldást
+
+
+# 3b) Bukottak számolása
+#     Neve: count_failed_students
+#     Kapja: pontszámok listáját
+#     Visszaadja: a bukott diákok számát (akiknek pontszáma &lt; 50)
+#     NE írjon ki semmit!
+
+def count_failed_students(scores):
+    &quot;&quot;&quot;Megszámolja hány diák bukott meg (pontszám &lt; 50).&quot;&quot;&quot;
+    pass    # ← töröld és írd meg a megoldást
+
+
+# 3c) Eredmény kiírása
+#     Neve: print_exam_summary
+#     Kapja: pontszámok listáját
+#     HASZNÁLJA a fenti két függvényt (calculate_average_score, count_failed_students)
+#     Kiírja az átlagot és a bukottak számát
+#     NEM ad vissza semmit (nincs return)
+
+def print_exam_summary(scores):
+    &quot;&quot;&quot;Kiírja a vizsga összesítőt a fenti függvények segítségével.&quot;&quot;&quot;
+    pass    # ← töröld és írd meg a megoldást
+
+
+# ============================================================
+# 4. feladat: Függvény alapértelmezett paraméterrel
+#
+# Írj egy függvényt, ami KÖSZÖNT egy felhasználót.
+#
+# A függvény:
+#   - KAPJA: a nevet (kötelező) ÉS az időszakot (opcionális)
+#   - Az időszak alapértelmezetten &quot;reggel&quot;
+#   - VISSZAADJA a köszönést szövegként (return!)
+#
+# Visszatérési értékek időszak szerint:
+#   &quot;reggel&quot;  → &quot;Jó reggelt, {név}!&quot;
+#   &quot;este&quot;    → &quot;Jó estét, {név}!&quot;
+#   bármi más → &quot;Szia, {név}!&quot;
+#
+# Példák:
+#   create_greeting(&quot;Anna&quot;)           → &quot;Jó reggelt, Anna!&quot;
+#   create_greeting(&quot;Béla&quot;, &quot;este&quot;)   → &quot;Jó estét, Béla!&quot;
+#   create_greeting(&quot;Cecil&quot;, &quot;dél&quot;)   → &quot;Szia, Cecil!&quot;
+# ============================================================
+
+def create_greeting(name, time_of_day=&quot;reggel&quot;):
+    &quot;&quot;&quot;Köszönést hoz létre a név és időszak alapján.&quot;&quot;&quot;
+    pass    # ← töröld és írd meg a megoldást
+
+
+# ============================================================
+# 5. feladat: Bontsd szét — Pizzarendelés
+#
+# Az alábbi függvény egy teljes pizzarendelést kezel.
+# Szedd szét 3 függvényre!
+#
+# A nagy függvényt NE módosítsd — alatta dolgozz!
+# ============================================================
+
+DELIVERY_FEE = 500  # kiszállítási díj (Ft)
+
+# --- EZT NE módosítsd: ---
+def order_pizza_bad(pizza_name, size, quantity, is_delivery):
+    &quot;&quot;&quot;ROSSZ: túl sokat csinál.&quot;&quot;&quot;
+    # Ár kiszámolás
+    base_prices = {&quot;kicsi&quot;: 1500, &quot;közepes&quot;: 2200, &quot;nagy&quot;: 2900}
+    base_price = base_prices[size]
+    total_price = base_price * quantity
+    if is_delivery:
+        total_price = total_price + DELIVERY_FEE
+
+    # Rendelés kiírása
+    print(f&quot;  Pizza: {pizza_name} ({size})&quot;)
+    print(f&quot;  Darab: {quantity}&quot;)
+    print(f&quot;  Kiszállítás: {&#x27;igen&#x27; if is_delivery else &#x27;nem&#x27;}&quot;)
+    print(f&quot;  Összesen: {total_price} Ft&quot;)
+
+# --- IDE írd meg a függvényeket: ---
+
+# 5a) Ár kiszámolás
+#     Neve: calculate_pizza_price
+#     Kapja: size (méret szövegként: &quot;kicsi&quot;/&quot;közepes&quot;/&quot;nagy&quot;),
+#            quantity (darabszám),
+#            is_delivery (True/False — kiszállítás kell-e)
+#     Visszaadja: a végösszeget
+#     Tipp: a base_prices szótárat használd!
+
+def calculate_pizza_price(size, quantity, is_delivery):
+    &quot;&quot;&quot;Kiszámolja a pizza rendelés végösszegét.&quot;&quot;&quot;
+    pass    # ← töröld és írd meg a megoldást
+
+
+# 5b) Rendelés kiírása
+#     Neve: print_order_summary
+#     Kapja: pizza_name, size, quantity, is_delivery, total_price
+#     Kiírja a rendelés adatait (pont úgy, mint a rossz verzióban)
+#     NEM ad vissza semmit
+
+def print_order_summary(pizza_name, size, quantity, is_delivery, total_price):
+    &quot;&quot;&quot;Kiírja a rendelés összesítőjét.&quot;&quot;&quot;
+    pass    # ← töröld és írd meg a megoldást
+
+
+# 5c) Összerakás
+#     Neve: process_pizza_order
+#     Kapja: pizza_name, size, quantity, is_delivery
+#     HASZNÁLJA a calculate_pizza_price és print_order_summary függvényeket
+#     NEM ad vissza semmit
+
+def process_pizza_order(pizza_name, size, quantity, is_delivery):
+    &quot;&quot;&quot;Feldolgoz egy pizza rendelést a fenti függvények segítségével.&quot;&quot;&quot;
+    pass    # ← töröld és írd meg a megoldást
+
+
+# ============================================================
+# ELLENŐRZÉS — ne módosítsd ezt a részt!
+# ============================================================
+
+print(&quot;\n&quot; + &quot;=&quot; * 50)
+print(&quot;EREDMÉNYEK&quot;)
+print(&quot;=&quot; * 50)
+
+errors = 0
+
+# 1. feladat
+try:
+    r1 = calculate_circle_circumference(10)
+    expected1 = 2 * PI * 10
+    if r1 is not None and abs(r1 - expected1) &lt; 0.01:
+        print(&quot;✓ 1. feladat: Kör kerülete — OK&quot;)
+    else:
+        print(f&quot;✗ 1. feladat: Kör kerülete — eredmény: {r1}, elvárt: {expected1:.2f}&quot;)
+        errors += 1
+except Exception as e:
+    print(f&quot;✗ 1. feladat: Kör kerülete — hiba: {e}&quot;)
+    errors += 1
+
+# 2. feladat
+try:
+    if is_passing_grade(75) == True and is_passing_grade(50) == True and is_passing_grade(49) == False:
+        print(&quot;✓ 2. feladat: Átment-e — OK&quot;)
+    else:
+        print(&quot;✗ 2. feladat: Átment-e — 50 felett True, alatta False kell legyen!&quot;)
+        errors += 1
+except Exception as e:
+    print(f&quot;✗ 2. feladat: Átment-e — hiba: {e}&quot;)
+    errors += 1
+
+# 3. feladat
+test_scores = [85, 42, 73, 91, 38, 67]
+
+try:
+    avg = calculate_average_score(test_scores)
+    expected_avg = sum(test_scores) / len(test_scores)
+    if avg is not None and abs(avg - expected_avg) &lt; 0.01:
+        print(&quot;✓ 3a. feladat: Átlag számolás — OK&quot;)
+    else:
+        print(f&quot;✗ 3a. feladat: Átlag — eredmény: {avg}, elvárt: {expected_avg:.2f}&quot;)
+        errors += 1
+except Exception as e:
+    print(f&quot;✗ 3a. feladat: Átlag — hiba: {e}&quot;)
+    errors += 1
+
+try:
+    failed = count_failed_students(test_scores)
+    if failed == 2:
+        print(&quot;✓ 3b. feladat: Bukottak száma — OK&quot;)
+    else:
+        print(f&quot;✗ 3b. feladat: Bukottak — eredmény: {failed}, elvárt: 2&quot;)
+        errors += 1
+except Exception as e:
+    print(f&quot;✗ 3b. feladat: Bukottak — hiba: {e}&quot;)
+    errors += 1
+
+try:
+    import io
+    import sys
+    captured = io.StringIO()
+    sys.stdout = captured
+    print_exam_summary(test_scores)
+    sys.stdout = sys.__stdout__
+    output = captured.getvalue()
+    if &quot;66&quot; in output and &quot;2&quot; in output:
+        print(&quot;✓ 3c. feladat: Összesítő kiírás — OK&quot;)
+    else:
+        print(&quot;✗ 3c. feladat: Összesítő — használd a calculate_average_score és count_failed_students függvényeket!&quot;)
+        errors += 1
+except Exception as e:
+    sys.stdout = sys.__stdout__
+    print(f&quot;✗ 3c. feladat: Összesítő — hiba: {e}&quot;)
+    errors += 1
+
+# 4. feladat
+try:
+    g1 = create_greeting(&quot;Anna&quot;)
+    g2 = create_greeting(&quot;Béla&quot;, &quot;este&quot;)
+    g3 = create_greeting(&quot;Cecil&quot;, &quot;dél&quot;)
+    if g1 == &quot;Jó reggelt, Anna!&quot; and g2 == &quot;Jó estét, Béla!&quot; and g3 == &quot;Szia, Cecil!&quot;:
+        print(&quot;✓ 4. feladat: Köszönés — OK&quot;)
+    else:
+        print(f&quot;✗ 4. feladat: Köszönés — ellenőrizd a visszatérési értékeket!&quot;)
+        if g1 != &quot;Jó reggelt, Anna!&quot;:
+            print(f&quot;  create_greeting(&#x27;Anna&#x27;) → &#x27;{g1}&#x27; (elvárt: &#x27;Jó reggelt, Anna!&#x27;)&quot;)
+        if g2 != &quot;Jó estét, Béla!&quot;:
+            print(f&quot;  create_greeting(&#x27;Béla&#x27;, &#x27;este&#x27;) → &#x27;{g2}&#x27; (elvárt: &#x27;Jó estét, Béla!&#x27;)&quot;)
+        if g3 != &quot;Szia, Cecil!&quot;:
+            print(f&quot;  create_greeting(&#x27;Cecil&#x27;, &#x27;dél&#x27;) → &#x27;{g3}&#x27; (elvárt: &#x27;Szia, Cecil!&#x27;)&quot;)
+        errors += 1
+except Exception as e:
+    print(f&quot;✗ 4. feladat: Köszönés — hiba: {e}&quot;)
+    errors += 1
+
+# 5. feladat
+try:
+    p1 = calculate_pizza_price(&quot;kicsi&quot;, 2, False)
+    p2 = calculate_pizza_price(&quot;nagy&quot;, 1, True)
+    if p1 == 3000 and p2 == 3400:
+        print(&quot;✓ 5a. feladat: Pizza ár — OK&quot;)
+    else:
+        print(f&quot;✗ 5a. feladat: Pizza ár — kicsi×2 kiszállítás nélkül={p1} (elvárt: 3000), nagy×1 kiszállítással={p2} (elvárt: 3400)&quot;)
+        errors += 1
+except Exception as e:
+    print(f&quot;✗ 5a. feladat: Pizza ár — hiba: {e}&quot;)
+    errors += 1
+
+try:
+    captured = io.StringIO()
+    sys.stdout = captured
+    print_order_summary(&quot;Margherita&quot;, &quot;közepes&quot;, 2, True, 4900)
+    sys.stdout = sys.__stdout__
+    output = captured.getvalue()
+    if &quot;Margherita&quot; in output and &quot;4900&quot; in output:
+        print(&quot;✓ 5b. feladat: Rendelés kiírás — OK&quot;)
+    else:
+        print(&quot;✗ 5b. feladat: Rendelés kiírás — írd ki a pizza nevét, méretet, darabszámot és árat!&quot;)
+        errors += 1
+except Exception as e:
+    sys.stdout = sys.__stdout__
+    print(f&quot;✗ 5b. feladat: Rendelés kiírás — hiba: {e}&quot;)
+    errors += 1
+
+try:
+    captured = io.StringIO()
+    sys.stdout = captured
+    process_pizza_order(&quot;Hawaii&quot;, &quot;nagy&quot;, 3, True)
+    sys.stdout = sys.__stdout__
+    output = captured.getvalue()
+    if &quot;Hawaii&quot; in output and &quot;9200&quot; in output:
+        print(&quot;✓ 5c. feladat: Rendelés feldolgozás — OK&quot;)
+    else:
+        print(&quot;✗ 5c. feladat: Rendelés feldolgozás — használd a calculate_pizza_price és print_order_summary függvényeket!&quot;)
+        errors += 1
+except Exception as e:
+    sys.stdout = sys.__stdout__
+    print(f&quot;✗ 5c. feladat: Rendelés feldolgozás — hiba: {e}&quot;)
+    errors += 1
+
+print(&quot;=&quot; * 50)
+if errors == 0:
+    print(&quot;🎉 MINDEN FELADAT KÉSZ! Szólj nekem, és megnézem!&quot;)
+else:
+    print(f&quot;Még {errors} feladat van hátra. Hajrá!&quot;)
+</textarea>
+<div id="exercise-3-output" class="output-area">
+<span class="output-placeholder">Nyomd meg a &#9654; Futtatás gombot az eredményért</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<nav class="bottom-nav" id="bottom-nav">
+<button class="tab active" data-index="0" title="PYTHON ALAPOK — Lexikális tudás">📖 Lecke</button>
+<button class="tab " data-index="1" title="1.1 LECKE: Változók és elnevezések — Clean Code">📖 Lecke</button>
+<button class="tab " data-index="2" title="1.2 LECKE: Függvények — Egy feladat, egy függvény">📖 Lecke</button>
+<button class="tab " data-index="3" title="GYAKORLÓ FELADATOK — Python alapok">✏️ Gy.</button>
+<button class="tab " data-index="4" title="1.1 GYAKORLAT: Változók és elnevezések — Clean Code">✏️ Gy.</button>
+<button class="tab " data-index="5" title="Exercise 01 Naming">✏️ Gy.</button>
+<button class="tab " data-index="6" title="1.2 GYAKORLAT: Függvények — Egy feladat, egy függvény">✏️ Gy.</button>
+</nav>
+
+<button class="scroll-top" id="scroll-top" title="Fel">&uarr;</button>
+
+<script src="https://skulpt.org/js/skulpt.min.js"></script>
+<script src="https://skulpt.org/js/skulpt-stdlib.js"></script>
+<script>
+(function() {
+var ORIGINALS = {"exercise-0": '"""\n=============================================================\n  GYAKORLÓ FELADATOK — Python alapok\n=============================================================\n\nOldd meg az alábbi feladatokat!\nMinden feladatnál a "# MEGOLDÁS IDE" részt írd át.\nHa kész vagy, futtasd a fájlt — a végén ellenőrzi magát.\n\nFuttasd:\n    python 01-python-clean-code/exercises/exercise_00_practice.py\n"""\n\n\n# ============================================================\n# 1. feladat: Változók\n# Hozz létre 3 változót a saját adataiddal!\n# ============================================================\n\nmy_name = "Dani"         # ← írd be a neved (szöveg)\nmy_age = 19           # ← írd be a korod (szám)\nmy_city = "Budapest"         # ← írd be a városod (szöveg)\n\n# Írd ki egy f-string-gel: "Szia! A nevem X, Y éves vagyok, Z-ban élek."\n# MEGOLDÁS IDE: \nprint(f"Szia, a nevem {my_name}, {my_age} éves vagyok, {my_city}-ben élek")\n\n\n\n# ============================================================\n# 2. feladat: Műveletek\n# Számold ki egy téglalap kerületét és területét!\n# Kerület = 2 * (a + b)\n# Terület = a * b\n# ============================================================\n\nwidth = 5\nheight = 8\n\nperimeter = (width + height) * 2   # ← számold ki a kerületet\narea = width * height        # ← számold ki a területet\n\n# MEGOLDÁS IDE:\n\n\nprint(f"A téglalap területe: {area}, kerülete: {perimeter}")\n\n\n# ============================================================\n# 3. feladat: Lista\n# Van egy bevásárlólista. Adj hozzá 2 új elemet,\n# és töröld a "kenyér" elemet!\n# ============================================================\n\nshopping_list = ["tej", "kenyér", "sajt", "tojás"]\n\n# MEGOLDÁS IDE (használd az .append() és .remove() metódusokat):\n\nshopping_list.remove("kenyér")\nshopping_list.append("vaj")\nshopping_list.append("liszt")\n\nprint(f"Bevásárlólista: {shopping_list}")\n\n\n# ============================================================\n# 4. feladat: Feltételek\n# Írd meg az alábbi függvényt, ami eldönti,\n# hogy egy szám páros vagy páratlan!\n# Tipp: ha a szám 2-vel osztva 0 maradékot ad → páros\n# ============================================================\n\ndef even_or_odd(number):\n    """Visszaadja, hogy "páros" vagy "páratlan"."""\n    # MEGOLDÁS IDE:\n    if number % 2 == 0:\n        return "páros"\n    else:\n        return "páratlan"  # ← töröld ezt a sort és írd meg a megoldást\n\n\n# ============================================================\n# 5. feladat: Ciklus\n# Írd ki a számokat 1-től 10-ig, de csak a párosakat!\n# Tipp: használj for ciklust és if feltételt\n# ============================================================\n\nprint("Páros számok 1-10:")\n# MEGOLDÁS IDE:\nfor i in range(2, 11, 2):\n    print(i)\n\n\n# ============================================================\n# 6. feladat: Függvény\n# Írj egy függvényt, ami kiszámolja egy lista átlagát!\n# Tipp: összeg / elemek száma → használd sum() és len()\n# ============================================================\n\ndef calculate_average(numbers):\n    """Kiszámolja és visszaadja a számok átlagát."""\n    # MEGOLDÁS IDE:\n    return sum(numbers) / len(numbers)    # ← töröld ezt a sort és írd meg a megoldást\n\n# ============================================================\n# 7. feladat: Szótár\n# Hozz létre egy szótárat egy filmről! Legyen benne:\n# title, year, director, rating (1-10)\n# Aztán írd ki szépen formázva.\n# ============================================================\n\nmovie = {\n    "title": "Interstellar",\n    "year": 2014,\n    "director": "Christopher Nolan",\n    "rating": 9.1\n}  # ← töltsd ki a szótárat\n\n# MEGOLDÁS IDE:\n\n\n\n# ============================================================\n# ELLENŐRZÉS — ne módosítsd ezt a részt!\n# ============================================================\n\nprint("\\n" + "=" * 50)\nprint("EREDMÉNYEK")\nprint("=" * 50)\n\nerrors = 0\n\n# 1. feladat\nif my_name and my_age > 0 and my_city:\n    print("✓ 1. feladat: Változók — OK")\nelse:\n    print("✗ 1. feladat: Változók — töltsd ki a neved, korod, városod!")\n    errors += 1\n\n# 2. feladat\nif perimeter == 2 * (width + height) and area == width * height:\n    print("✓ 2. feladat: Műveletek — OK")\nelse:\n    print(f"✗ 2. feladat: Műveletek — kerület={perimeter} (helyes: {2*(width+height)}), terület={area} (helyes: {width*height})")\n    errors += 1\n\n# 3. feladat\nif "kenyér" not in shopping_list and len(shopping_list) >= 5:\n    print("✓ 3. feladat: Lista — OK")\nelse:\n    print("✗ 3. feladat: Lista — adj hozzá 2 elemet és töröld a \'kenyér\'-t!")\n    errors += 1\n\n# 4. feladat\nif even_or_odd(4) == "páros" and even_or_odd(7) == "páratlan":\n    print("✓ 4. feladat: Feltételek — OK")\nelse:\n    print("✗ 4. feladat: Feltételek — a függvény nem ad jó eredményt!")\n    errors += 1\n\n# 6. feladat\nif calculate_average([10, 20, 30]) == 20.0:\n    print("✓ 6. feladat: Függvény — OK")\nelse:\n    print("✗ 6. feladat: Függvény — az átlag nem stimmel!")\n    errors += 1\n\n# 7. feladat\nif movie.get("title") and movie.get("year") and movie.get("director") and movie.get("rating"):\n    print("✓ 7. feladat: Szótár — OK")\nelse:\n    print("✗ 7. feladat: Szótár — töltsd ki a title, year, director, rating mezőket!")\n    errors += 1\n\nprint("=" * 50)\nif errors == 0:\n    print("🎉 MINDEN FELADAT KÉSZ! Szólj nekem, és megnézem!")\nelse:\n    print(f"Még {errors} feladat van hátra. Hajrá!")\n', "exercise-1": '"""\n=============================================================\n  1.1 GYAKORLAT: Változók és elnevezések — Clean Code\n=============================================================\n\nAz alábbi kódokban SZÁNDÉKOSAN rossz nevek vannak.\nA te feladatod: írd át MINDEN nevet a Python konvenciók szerint.\n\nSzabályok:\n  - Változók, függvények → snake_case\n  - Konstansok → UPPER_SNAKE_CASE\n  - Osztályok → PascalCase\n  - Boolean → is_/has_/can_ előtaggal\n  - Beszédes, értelmes nevek (ne rövidíts!)\n\nA kód LOGIKÁJÁT ne változtasd — csak a neveket!\n\nFuttasd:\n    python 01-python-clean-code/exercises/exercise_01_elnevezes.py\n"""\n\n\n# ============================================================\n# 1. feladat: Változók átnevezése\n#\n# Az alábbi változóknál rossz az elnevezés.\n# Nevezd át MINDEGYIKET a konvencióknak megfelelően.\n# A hozzájuk rendelt értéket NE változtasd!\n#\n# Tipp: gondolj bele, mit TÁROL a változó,\n#       és adj neki olyan nevet, amiből ez kiderül.\n# ============================================================\n\nuser_name = "Kiss Péter"           # ← ez egy személy neve\nuser_age = 42                     # ← ez egy életkor\nuser_city = "Budapest"             # ← ez egy város\nbody_temperature = 36.6                   # ← ez egy testhőmérséklet\ndays_left = 7                      # ← ez a hátralevő napok száma\n\n# MEGOLDÁS IDE — írd felül a fenti sorokat jó nevekkel:\n\n\n\n# ============================================================\n# 2. feladat: Konstansok átnevezése\n#\n# Ezek az értékek a program futása során SOHA nem változnak.\n# Nevezd át őket a konstansok konvenciója szerint (UPPER_SNAKE_CASE).\n# Az értékeket NE változtasd!\n# ============================================================\n\nMAX_ATTEMPTS = 5                     # ← max próbálkozások száma\nTAX_RATE = 0.27                  # ← adókulcs\nAPI_URL = "https://api.example.com/v2"  # ← API webcím\nPI = 3.14159                # ← pi értéke (matematikai állandó)\n\n# MEGOLDÁS IDE — írd felül a fenti sorokat:\n\n\n\n# ============================================================\n# 3. feladat: Boolean változók átnevezése\n#\n# Boolean = igaz/hamis érték.\n# A konvenció: a nevük KÉRDÉS legyen (is_, has_, can_ előtag).\n# Példa: active → is_active ("aktív-e?")\n#\n# Nevezd át mindegyiket!\n# ============================================================\n\nis_active = True               # ← aktív-e a felhasználó?\nis_admin = False               # ← adminisztrátor-e?\nis_logged_in = True             # ← be van-e jelentkezve?\nhas_items = False               # ← van-e termék a kosarában?\n\n# MEGOLDÁS IDE — írd felül a fenti sorokat:\n\n\n\n# ============================================================\n# 4. feladat: Függvény átnevezése\n#\n# Az alábbi függvénynek rossz a neve ÉS a paramétereinek neve is.\n# Nevezd át a függvényt ÉS a paramétereit is.\n#\n# Mi a függvény neve most? "calc" — de MIT számol?\n# Mi az "a" és "b"? Ránézésre nem tudom.\n#\n# Tipp: a függvény kiszámolja a téglalap területét.\n#       A két paraméter a szélesség és a magasság.\n#       A függvények neve IGÉVEL kezdődik!\n# ============================================================\n\ndef calculate_area(width, height):\n    return width * height\n\n# MEGOLDÁS IDE — írd újra a függvényt jó névvel és paraméternevekkel:\n\n\n\n# ============================================================\n# 5. feladat: Vegyes — javítsd ki az egész kódrészletet\n#\n# Az alábbi kód egy bevásárlást számol ki.\n# MINDEN elnevezés rossz benne.\n# Írd át az ÖSSZESET — változókat, konstanst, függvényt!\n#\n# A kód logikáját NE változtasd, csak a neveket.\n# ============================================================\n\nTAX_RATE = 0.27                   # ez az áfa\n\ndef calculate_total_price(net_price, quantity):\n    """Kiszámolja a végösszeget áfával."""\n    net_total = net_price * quantity               # nettó összeg\n    tax_amount = net_total * TAX_RATE              # áfa összeg\n    return net_total + tax_amount            # bruttó összeg\n\n\n\n# MEGOLDÁS IDE — írd újra az egész kódrészletet jó nevekkel:\n\n\n\n# ============================================================\n# ELLENŐRZÉS — ne módosítsd ezt a részt!\n# ============================================================\n\nprint("\\n" + "=" * 50)\nprint("EREDMÉNYEK")\nprint("=" * 50)\n\nerrors = 0\n\n# 1. feladat — változónevek ellenőrzése\n# (Az ellenőrző a "jó" neveket keresi a globális névtérben)\ng = globals()\n\ntask1_names = {\n    "személy neve": ["person_name", "user_name", "full_name", "name"],\n    "életkor": ["age", "person_age", "user_age"],\n    "város": ["city", "person_city", "user_city", "home_city"],\n    "testhőmérséklet": ["body_temperature", "temperature", "body_temp"],\n    "hátralevő napok": ["days_until_deadline", "days_remaining", "remaining_days", "days_left"],\n}\n\ntask1_ok = True\nfor desc, valid_names in task1_names.items():\n    found = any(name in g for name in valid_names)\n    if not found:\n        task1_ok = False\n\nif task1_ok:\n    print("✓ 1. feladat: Változók — OK")\nelse:\n    print("✗ 1. feladat: Változók — adj beszédes snake_case neveket (pl. person_name, age, city...)")\n    errors += 1\n\n# 2. feladat — konstansok\ntask2_names = ["MAX_RETRIES", "MAX_ATTEMPTS", "TAX_RATE", "API_URL", "PI"]\ntask2_found = sum(1 for name in task2_names if name in g)\nif task2_found >= 4:\n    print("✓ 2. feladat: Konstansok — OK")\nelse:\n    print("✗ 2. feladat: Konstansok — használj UPPER_SNAKE_CASE-t (pl. MAX_RETRIES, TAX_RATE...)")\n    errors += 1\n\n# 3. feladat — boolean\ntask3_prefixes = ["is_", "has_", "can_"]\ntask3_bools = [name for name, val in g.items()\n               if isinstance(val, bool) and any(name.startswith(p) for p in task3_prefixes)]\nif len(task3_bools) >= 4:\n    print("✓ 3. feladat: Boolean változók — OK")\nelse:\n    print(f"✗ 3. feladat: Boolean — {len(task3_bools)}/4 jó. Használj is_/has_/can_ előtagot!")\n    errors += 1\n\n# 4. feladat — függvény\ntask4_good_names = ["calculate_area", "calculate_rectangle_area", "get_rectangle_area", "compute_area"]\ntask4_ok = any(name in g and callable(g[name]) for name in task4_good_names)\nif task4_ok:\n    # Teszteljük is, hogy működik-e\n    func = next(g[name] for name in task4_good_names if name in g and callable(g[name]))\n    if func(5, 3) == 15:\n        print("✓ 4. feladat: Függvény — OK")\n    else:\n        print("✗ 4. feladat: Függvény — a név jó, de az eredmény nem stimmel!")\n        errors += 1\nelse:\n    print("✗ 4. feladat: Függvény — adj igével kezdődő, beszédes nevet (pl. calculate_rectangle_area)")\n    errors += 1\n\n# 5. feladat — vegyes\ntask5_ok = True\n# Van-e konstans az áfának?\nif "TAX_RATE" not in g:\n    task5_ok = False\n# Van-e jól elnevezett függvény?\ntask5_func_names = ["calculate_total_price", "calculate_gross_price", "calculate_total",\n                     "calculate_total_with_tax", "calculate_price_with_tax"]\nif not any(name in g and callable(g[name]) for name in task5_func_names):\n    task5_ok = False\n\nif task5_ok:\n    func = next(g[name] for name in task5_func_names if name in g and callable(g[name]))\n    expected = 2500 * 3 * (1 + 0.27)\n    result = func(2500, 3)\n    if abs(result - expected) < 0.01:\n        print("✓ 5. feladat: Vegyes — OK")\n    else:\n        print("✗ 5. feladat: Vegyes — a nevek jók, de az eredmény nem stimmel!")\n        errors += 1\nelse:\n    print("✗ 5. feladat: Vegyes — használj TAX_RATE konstanst és beszédes függvénynevet!")\n    errors += 1\n\nprint("=" * 50)\nif errors == 0:\n    print("🎉 MINDEN FELADAT KÉSZ! Szólj nekem, és megnézem!")\nelse:\n    print(f"Még {errors} feladat van hátra. Hajrá!")\n', "exercise-2": '"""\n1.1 Feladat: Változók és elnevezések\n\nJavítsd ki az összes változó-, függvény- és osztálynevet a Python konvenciók szerint:\n- Változók és függvények: snake_case\n- Konstansok: UPPER_SNAKE_CASE\n- Osztályok: PascalCase\n- Használj beszédes, értelmes neveket\n\nA kód logikáját NE változtasd, csak a neveket!\n"""\n\n# --- Konstansok ---\nmaxretries = 3\napiurl = "https://api.example.com"\nt = 30  # timeout másodpercben\n\n\n# --- Függvények ---\ndef calcTtl(lst):\n    """Kiszámítja a lista elemeinek összegét."""\n    r = 0\n    for x in lst:\n        r = r + x\n    return r\n\n\ndef chkUsr(n, a):\n    """Ellenőrzi, hogy a felhasználó érvényes-e."""\n    if len(n) < 2:\n        return False\n    if a < 0 or a > 150:\n        return False\n    return True\n\n\ndef FetchData(ApiUrl, maxretries):\n    """Adatokat tölt le egy API-ról, újrapróbálkozással."""\n    for I in range(maxretries):\n        print(f"Próbálkozás {I + 1}...")\n        # Szimuláljuk a letöltést\n        Data = {"status": "ok", "items": [1, 2, 3]}\n        if Data["status"] == "ok":\n            return Data\n    return None\n\n\n# --- Osztály ---\nclass usraccount:\n    def __init__(self, N, E, a):\n        self.N = N  # név\n        self.E = E  # email\n        self.a = a  # aktív-e\n\n    def getFullInfo(self):\n        s = "aktív" if self.a else "inaktív"\n        return f"{self.N} ({self.E}) - {s}"\n\n    def deactivateaccount(self):\n        self.a = False\n\n\n# --- Használat ---\nif __name__ == "__main__":\n    u = usraccount("Kiss Péter", "peter@example.com", True)\n    print(u.getFullInfo())\n\n    nums = [10, 20, 30, 40]\n    t2 = calcTtl(nums)\n    print(f"Összeg: {t2}")\n\n    ok = chkUsr("Anna", 25)\n    print(f"Érvényes felhasználó: {ok}")\n\n    d = FetchData(apiurl, maxretries)\n    print(f"Letöltött adat: {d}")\n', "exercise-3": '"""\n=============================================================\n  1.2 GYAKORLAT: Függvények — Egy feladat, egy függvény\n=============================================================\n\nKét típusú feladat vár rád:\n  A) Függvény SZÉTBONTÁS: egy nagy függvényt kell kis részekre vágni\n  B) Függvény ÍRÁS: saját függvényeket kell írnod\n\nA kód végén automatikus ellenőrző fut.\n\nFuttasd:\n    python 01-python-clean-code/exercises/exercise_02_fuggvenyek.py\n"""\n\n\n# ============================================================\n# 1. feladat: Írd meg a hiányzó függvényt\n#\n# Írj egy függvényt, ami kiszámolja egy kör KERÜLETÉT.\n#\n# Képlet: kerület = 2 * pi * sugár\n# A PI legyen konstans (3.14159).\n#\n# A függvény:\n#   - KAPJA: a kör sugarát (egy szám)\n#   - VISSZAADJA: a kerületet (return-nel!)\n#   - NE írjon ki semmit (ne használj print-et benne!)\n#\n# Tipp: a függvény neve legyen igés és beszédes.\n# ============================================================\n\nPI = 3.14159\n\ndef calculate_circle_circumference(radius):\n    """Kiszámolja egy kör kerületét a sugár alapján."""\n    pass    # ← töröld és írd meg a megoldást\n\n\n# ============================================================\n# 2. feladat: Írd meg a hiányzó függvényt\n#\n# Írj egy függvényt, ami eldönti, hogy egy diák ÁTMENT-E\n# a vizsgán.\n#\n# Szabály: ha a pontszám >= 50, akkor átment.\n#\n# A függvény:\n#   - KAPJA: a diák pontszámát (egy szám, 0-100)\n#   - VISSZAADJA: True ha átment, False ha nem\n#   - NE írjon ki semmit!\n#\n# Tipp: boolean függvénynél → is_ vagy has_ előtag\n# ============================================================\n\ndef is_passing_grade(score):\n    """Eldönti, hogy a diák átment-e (pontszám >= 50)."""\n    pass    # ← töröld és írd meg a megoldást\n\n\n# ============================================================\n# 3. feladat: Bontsd szét a nagy függvényt!\n#\n# Az alábbi függvény 3 dolgot csinál egyszerre:\n#   1. Kiszámolja a diákok átlagát\n#   2. Megszámolja hány diák bukott meg (< 50 pont)\n#   3. Kiírja az eredményt\n#\n# A te feladatod:\n#   Írd meg az alábbi 3 KÜLÖN függvényt, amik EGY-EGY dolgot csinálnak.\n#   A nagy függvényt NE módosítsd — alatta dolgozz!\n#\n# Tipp: nézd meg a kommenteket a nagy függvényben,\n#       azok mutatják a határokat.\n# ============================================================\n\n# --- EZT a függvényt NE módosítsd, csak nézd meg mit csinál: ---\ndef process_exam_results_bad(scores):\n    """ROSSZ: túl sokat csinál egyszerre."""\n    # Átlag számolás\n    total = 0\n    for score in scores:\n        total = total + score\n    average = total / len(scores)\n\n    # Bukottak számolása\n    failed_count = 0\n    for score in scores:\n        if score < 50:\n            failed_count = failed_count + 1\n\n    # Eredmény kiírása\n    print(f"  Átlag: {average}")\n    print(f"  Bukott: {failed_count} diák")\n\n# --- IDE írd meg a 3 külön függvényt: ---\n\n# 3a) Átlag számolás\n#     Neve: calculate_average_score\n#     Kapja: pontszámok listáját (pl. [85, 42, 73])\n#     Visszaadja: az átlagot (return)\n#     NE írjon ki semmit!\n\ndef calculate_average_score(scores):\n    """Kiszámolja a pontszámok átlagát."""\n    pass    # ← töröld és írd meg a megoldást\n\n\n# 3b) Bukottak számolása\n#     Neve: count_failed_students\n#     Kapja: pontszámok listáját\n#     Visszaadja: a bukott diákok számát (akiknek pontszáma < 50)\n#     NE írjon ki semmit!\n\ndef count_failed_students(scores):\n    """Megszámolja hány diák bukott meg (pontszám < 50)."""\n    pass    # ← töröld és írd meg a megoldást\n\n\n# 3c) Eredmény kiírása\n#     Neve: print_exam_summary\n#     Kapja: pontszámok listáját\n#     HASZNÁLJA a fenti két függvényt (calculate_average_score, count_failed_students)\n#     Kiírja az átlagot és a bukottak számát\n#     NEM ad vissza semmit (nincs return)\n\ndef print_exam_summary(scores):\n    """Kiírja a vizsga összesítőt a fenti függvények segítségével."""\n    pass    # ← töröld és írd meg a megoldást\n\n\n# ============================================================\n# 4. feladat: Függvény alapértelmezett paraméterrel\n#\n# Írj egy függvényt, ami KÖSZÖNT egy felhasználót.\n#\n# A függvény:\n#   - KAPJA: a nevet (kötelező) ÉS az időszakot (opcionális)\n#   - Az időszak alapértelmezetten "reggel"\n#   - VISSZAADJA a köszönést szövegként (return!)\n#\n# Visszatérési értékek időszak szerint:\n#   "reggel"  → "Jó reggelt, {név}!"\n#   "este"    → "Jó estét, {név}!"\n#   bármi más → "Szia, {név}!"\n#\n# Példák:\n#   create_greeting("Anna")           → "Jó reggelt, Anna!"\n#   create_greeting("Béla", "este")   → "Jó estét, Béla!"\n#   create_greeting("Cecil", "dél")   → "Szia, Cecil!"\n# ============================================================\n\ndef create_greeting(name, time_of_day="reggel"):\n    """Köszönést hoz létre a név és időszak alapján."""\n    pass    # ← töröld és írd meg a megoldást\n\n\n# ============================================================\n# 5. feladat: Bontsd szét — Pizzarendelés\n#\n# Az alábbi függvény egy teljes pizzarendelést kezel.\n# Szedd szét 3 függvényre!\n#\n# A nagy függvényt NE módosítsd — alatta dolgozz!\n# ============================================================\n\nDELIVERY_FEE = 500  # kiszállítási díj (Ft)\n\n# --- EZT NE módosítsd: ---\ndef order_pizza_bad(pizza_name, size, quantity, is_delivery):\n    """ROSSZ: túl sokat csinál."""\n    # Ár kiszámolás\n    base_prices = {"kicsi": 1500, "közepes": 2200, "nagy": 2900}\n    base_price = base_prices[size]\n    total_price = base_price * quantity\n    if is_delivery:\n        total_price = total_price + DELIVERY_FEE\n\n    # Rendelés kiírása\n    print(f"  Pizza: {pizza_name} ({size})")\n    print(f"  Darab: {quantity}")\n    print(f"  Kiszállítás: {\'igen\' if is_delivery else \'nem\'}")\n    print(f"  Összesen: {total_price} Ft")\n\n# --- IDE írd meg a függvényeket: ---\n\n# 5a) Ár kiszámolás\n#     Neve: calculate_pizza_price\n#     Kapja: size (méret szövegként: "kicsi"/"közepes"/"nagy"),\n#            quantity (darabszám),\n#            is_delivery (True/False — kiszállítás kell-e)\n#     Visszaadja: a végösszeget\n#     Tipp: a base_prices szótárat használd!\n\ndef calculate_pizza_price(size, quantity, is_delivery):\n    """Kiszámolja a pizza rendelés végösszegét."""\n    pass    # ← töröld és írd meg a megoldást\n\n\n# 5b) Rendelés kiírása\n#     Neve: print_order_summary\n#     Kapja: pizza_name, size, quantity, is_delivery, total_price\n#     Kiírja a rendelés adatait (pont úgy, mint a rossz verzióban)\n#     NEM ad vissza semmit\n\ndef print_order_summary(pizza_name, size, quantity, is_delivery, total_price):\n    """Kiírja a rendelés összesítőjét."""\n    pass    # ← töröld és írd meg a megoldást\n\n\n# 5c) Összerakás\n#     Neve: process_pizza_order\n#     Kapja: pizza_name, size, quantity, is_delivery\n#     HASZNÁLJA a calculate_pizza_price és print_order_summary függvényeket\n#     NEM ad vissza semmit\n\ndef process_pizza_order(pizza_name, size, quantity, is_delivery):\n    """Feldolgoz egy pizza rendelést a fenti függvények segítségével."""\n    pass    # ← töröld és írd meg a megoldást\n\n\n# ============================================================\n# ELLENŐRZÉS — ne módosítsd ezt a részt!\n# ============================================================\n\nprint("\\n" + "=" * 50)\nprint("EREDMÉNYEK")\nprint("=" * 50)\n\nerrors = 0\n\n# 1. feladat\ntry:\n    r1 = calculate_circle_circumference(10)\n    expected1 = 2 * PI * 10\n    if r1 is not None and abs(r1 - expected1) < 0.01:\n        print("✓ 1. feladat: Kör kerülete — OK")\n    else:\n        print(f"✗ 1. feladat: Kör kerülete — eredmény: {r1}, elvárt: {expected1:.2f}")\n        errors += 1\nexcept Exception as e:\n    print(f"✗ 1. feladat: Kör kerülete — hiba: {e}")\n    errors += 1\n\n# 2. feladat\ntry:\n    if is_passing_grade(75) == True and is_passing_grade(50) == True and is_passing_grade(49) == False:\n        print("✓ 2. feladat: Átment-e — OK")\n    else:\n        print("✗ 2. feladat: Átment-e — 50 felett True, alatta False kell legyen!")\n        errors += 1\nexcept Exception as e:\n    print(f"✗ 2. feladat: Átment-e — hiba: {e}")\n    errors += 1\n\n# 3. feladat\ntest_scores = [85, 42, 73, 91, 38, 67]\n\ntry:\n    avg = calculate_average_score(test_scores)\n    expected_avg = sum(test_scores) / len(test_scores)\n    if avg is not None and abs(avg - expected_avg) < 0.01:\n        print("✓ 3a. feladat: Átlag számolás — OK")\n    else:\n        print(f"✗ 3a. feladat: Átlag — eredmény: {avg}, elvárt: {expected_avg:.2f}")\n        errors += 1\nexcept Exception as e:\n    print(f"✗ 3a. feladat: Átlag — hiba: {e}")\n    errors += 1\n\ntry:\n    failed = count_failed_students(test_scores)\n    if failed == 2:\n        print("✓ 3b. feladat: Bukottak száma — OK")\n    else:\n        print(f"✗ 3b. feladat: Bukottak — eredmény: {failed}, elvárt: 2")\n        errors += 1\nexcept Exception as e:\n    print(f"✗ 3b. feladat: Bukottak — hiba: {e}")\n    errors += 1\n\ntry:\n    import io\n    import sys\n    captured = io.StringIO()\n    sys.stdout = captured\n    print_exam_summary(test_scores)\n    sys.stdout = sys.__stdout__\n    output = captured.getvalue()\n    if "66" in output and "2" in output:\n        print("✓ 3c. feladat: Összesítő kiírás — OK")\n    else:\n        print("✗ 3c. feladat: Összesítő — használd a calculate_average_score és count_failed_students függvényeket!")\n        errors += 1\nexcept Exception as e:\n    sys.stdout = sys.__stdout__\n    print(f"✗ 3c. feladat: Összesítő — hiba: {e}")\n    errors += 1\n\n# 4. feladat\ntry:\n    g1 = create_greeting("Anna")\n    g2 = create_greeting("Béla", "este")\n    g3 = create_greeting("Cecil", "dél")\n    if g1 == "Jó reggelt, Anna!" and g2 == "Jó estét, Béla!" and g3 == "Szia, Cecil!":\n        print("✓ 4. feladat: Köszönés — OK")\n    else:\n        print(f"✗ 4. feladat: Köszönés — ellenőrizd a visszatérési értékeket!")\n        if g1 != "Jó reggelt, Anna!":\n            print(f"  create_greeting(\'Anna\') → \'{g1}\' (elvárt: \'Jó reggelt, Anna!\')")\n        if g2 != "Jó estét, Béla!":\n            print(f"  create_greeting(\'Béla\', \'este\') → \'{g2}\' (elvárt: \'Jó estét, Béla!\')")\n        if g3 != "Szia, Cecil!":\n            print(f"  create_greeting(\'Cecil\', \'dél\') → \'{g3}\' (elvárt: \'Szia, Cecil!\')")\n        errors += 1\nexcept Exception as e:\n    print(f"✗ 4. feladat: Köszönés — hiba: {e}")\n    errors += 1\n\n# 5. feladat\ntry:\n    p1 = calculate_pizza_price("kicsi", 2, False)\n    p2 = calculate_pizza_price("nagy", 1, True)\n    if p1 == 3000 and p2 == 3400:\n        print("✓ 5a. feladat: Pizza ár — OK")\n    else:\n        print(f"✗ 5a. feladat: Pizza ár — kicsi×2 kiszállítás nélkül={p1} (elvárt: 3000), nagy×1 kiszállítással={p2} (elvárt: 3400)")\n        errors += 1\nexcept Exception as e:\n    print(f"✗ 5a. feladat: Pizza ár — hiba: {e}")\n    errors += 1\n\ntry:\n    captured = io.StringIO()\n    sys.stdout = captured\n    print_order_summary("Margherita", "közepes", 2, True, 4900)\n    sys.stdout = sys.__stdout__\n    output = captured.getvalue()\n    if "Margherita" in output and "4900" in output:\n        print("✓ 5b. feladat: Rendelés kiírás — OK")\n    else:\n        print("✗ 5b. feladat: Rendelés kiírás — írd ki a pizza nevét, méretet, darabszámot és árat!")\n        errors += 1\nexcept Exception as e:\n    sys.stdout = sys.__stdout__\n    print(f"✗ 5b. feladat: Rendelés kiírás — hiba: {e}")\n    errors += 1\n\ntry:\n    captured = io.StringIO()\n    sys.stdout = captured\n    process_pizza_order("Hawaii", "nagy", 3, True)\n    sys.stdout = sys.__stdout__\n    output = captured.getvalue()\n    if "Hawaii" in output and "9200" in output:\n        print("✓ 5c. feladat: Rendelés feldolgozás — OK")\n    else:\n        print("✗ 5c. feladat: Rendelés feldolgozás — használd a calculate_pizza_price és print_order_summary függvényeket!")\n        errors += 1\nexcept Exception as e:\n    sys.stdout = sys.__stdout__\n    print(f"✗ 5c. feladat: Rendelés feldolgozás — hiba: {e}")\n    errors += 1\n\nprint("=" * 50)\nif errors == 0:\n    print("🎉 MINDEN FELADAT KÉSZ! Szólj nekem, és megnézem!")\nelse:\n    print(f"Még {errors} feladat van hátra. Hajrá!")\n'};
+
+  // ---- Skulpt Python runner ----
+  window.runCode = function(editorId) {
+    var editor = document.getElementById(editorId);
+    var outputEl = document.getElementById(editorId + '-output');
+    var code = editor.value;
+
+    // Save to localStorage
+    localStorage.setItem('code-' + editorId, code);
+
+    outputEl.innerHTML = '';
+    var outputText = '';
+
+    function outf(text) {
+      outputText += text;
+    }
+    function builtinRead(x) {
+      if (Sk.builtinFiles === undefined || Sk.builtinFiles["files"][x] === undefined)
+        throw "File not found: '" + x + "'";
+      return Sk.builtinFiles["files"][x];
+    }
+
+    Sk.configure({
+      output: outf,
+      read: builtinRead,
+      __future__: Sk.python3
+    });
+
+    Sk.misceval.asyncToPromise(function() {
+      return Sk.importMainWithBody("<stdin>", false, code, true);
+    }).then(function() {
+      // Format output with colors
+      var lines = outputText.split('\n');
+      var html = lines.map(function(line) {
+        if (line.indexOf('\u2713') >= 0 || line.indexOf('\u2714') >= 0 || line.indexOf('OK') >= 0 && line.indexOf('\u2713') >= 0) {
+          return '<span class="output-success">' + escapeHtml(line) + '</span>';
+        } else if (line.indexOf('\u2717') >= 0 || line.indexOf('\u2718') >= 0 || line.indexOf('HIBA') >= 0) {
+          return '<span class="output-error">' + escapeHtml(line) + '</span>';
+        } else if (line.indexOf('MINDEN FELADAT') >= 0 || line.indexOf('\ud83c\udf89') >= 0) {
+          return '<span class="output-success"><strong>' + escapeHtml(line) + '</strong></span>';
+        }
+        return escapeHtml(line);
+      }).join('\n');
+      outputEl.innerHTML = html;
+    }).catch(function(err) {
+      var errMsg = err.toString();
+      // Make error message more helpful
+      var match = errMsg.match(/line (\d+)/);
+      var lineInfo = match ? ' (sor: ' + match[1] + ')' : '';
+      outputEl.innerHTML = '<span class="output-error">Hiba' + lineInfo + ':\n' + escapeHtml(errMsg) + '</span>';
+    });
+  };
+
+  window.resetCode = function(editorId) {
+    if (confirm('Biztosan visszaallitod az eredeti kodot? A valtoztatasaid elvesznek!')) {
+      var editor = document.getElementById(editorId);
+      if (ORIGINALS[editorId]) {
+        editor.value = ORIGINALS[editorId];
+        localStorage.removeItem('code-' + editorId);
+        document.getElementById(editorId + '-output').innerHTML =
+          '<span class="output-placeholder">Visszaallitva. Nyomd meg a \u25b6 Futtatas gombot.</span>';
+      }
+    }
+  };
+
+  function escapeHtml(text) {
+    var div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+  }
+
+  // Restore saved code from localStorage
+  document.querySelectorAll('.code-editor').forEach(function(editor) {
+    var saved = localStorage.getItem('code-' + editor.id);
+    if (saved) editor.value = saved;
+
+    // Auto-save on change
+    editor.addEventListener('input', function() {
+      localStorage.setItem('code-' + this.id, this.value);
+    });
+
+    // Tab key support in textarea
+    editor.addEventListener('keydown', function(e) {
+      if (e.key === 'Tab') {
+        e.preventDefault();
+        var start = this.selectionStart;
+        var end = this.selectionEnd;
+        this.value = this.value.substring(0, start) + '    ' + this.value.substring(end);
+        this.selectionStart = this.selectionEnd = start + 4;
+      }
+    });
+  });
+
+  // ---- Syntax highlighting for lesson code blocks ----
+  var KW = new Set(['False','None','True','and','as','assert','async','await','break','class','continue','def','del','elif','else','except','finally','for','from','global','if','import','in','is','lambda','nonlocal','not','or','pass','raise','return','try','while','with','yield']);
+  var BI = new Set(['print','len','range','int','str','float','list','dict','set','tuple','bool','input','open','type','isinstance','enumerate','zip','map','filter','sorted','reversed','sum','min','max','abs','round','any','all','super','property','staticmethod','classmethod','hasattr','getattr','setattr']);
+
+  function hlPy(code) {
+    var r = '', i = 0;
+    while (i < code.length) {
+      if (code[i]==='@' && (i===0||code[i-1]==='\n')) { var e=code.indexOf('\n',i); if(e===-1)e=code.length; r+='<span class="syn-dec">'+code.slice(i,e)+'</span>'; i=e; continue; }
+      if (code[i]==='#') { var e=code.indexOf('\n',i); if(e===-1)e=code.length; r+='<span class="syn-cmt">'+code.slice(i,e)+'</span>'; i=e; continue; }
+      var tq='"'+'"'+'"', tq2="'"+"'"+"'";
+      if (code.slice(i,i+3)===tq||code.slice(i,i+3)===tq2) { var q=code.slice(i,i+3),e=code.indexOf(q,i+3); if(e===-1)e=code.length-3; e+=3; r+='<span class="syn-str">'+code.slice(i,e)+'</span>'; i=e; continue; }
+      if (code[i]==='"'||code[i]==="'") { var q=code[i],j=i+1; while(j<code.length&&code[j]!==q&&code[j]!=='\n'){if(code[j]==='\\')j++;j++;} if(j<code.length&&code[j]===q)j++; r+='<span class="syn-str">'+code.slice(i,j)+'</span>'; i=j; continue; }
+      if ((code[i]==='f'||code[i]==='F')&&i+1<code.length&&(code[i+1]==='"'||code[i+1]==="'")) { var q=code[i+1],j=i+2; while(j<code.length&&code[j]!==q&&code[j]!=='\n'){if(code[j]==='\\')j++;j++;} if(j<code.length&&code[j]===q)j++; r+='<span class="syn-str">'+code.slice(i,j)+'</span>'; i=j; continue; }
+      if (/\d/.test(code[i])&&(i===0||/[\s(,=+\-*/<>\[\]:]/.test(code[i-1]))) { var j=i; while(j<code.length&&/[\d._]/.test(code[j]))j++; r+='<span class="syn-num">'+code.slice(i,j)+'</span>'; i=j; continue; }
+      if (/[a-zA-Z_]/.test(code[i])) { var j=i; while(j<code.length&&/[a-zA-Z0-9_]/.test(code[j]))j++; var w=code.slice(i,j); if(w==='self')r+='<span class="syn-self">'+w+'</span>'; else if(KW.has(w))r+='<span class="syn-kw">'+w+'</span>'; else if(BI.has(w)&&j<code.length&&code[j]==='(')r+='<span class="syn-bi">'+w+'</span>'; else r+=w; i=j; continue; }
+      r+=code[i]; i++;
+    }
+    return r;
+  }
+
+  document.querySelectorAll('pre.code-block code').forEach(function(el) {
+    el.innerHTML = hlPy(el.textContent);
+  });
+
+  // ---- Tab navigation ----
+  var tabs = document.querySelectorAll('.tab');
+  var panels = document.querySelectorAll('.panel');
+  var titleEl = document.getElementById('current-title');
+
+  function showPanel(index) {
+    panels.forEach(function(p) { p.style.display = 'none'; });
+    tabs.forEach(function(t) { t.classList.remove('active'); });
+    panels[index].style.display = '';
+    tabs[index].classList.add('active');
+    titleEl.textContent = tabs[index].title;
+    window.scrollTo(0, 0);
+    tabs[index].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    localStorage.setItem('lastTab', index);
+    location.hash = 'tab-' + index;
+  }
+
+  tabs.forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      showPanel(parseInt(this.dataset.index));
+    });
+  });
+
+  var hashMatch = location.hash.match(/tab-(\d+)/);
+  var lastTab = hashMatch ? parseInt(hashMatch[1]) : parseInt(localStorage.getItem('lastTab') || '0');
+  if (lastTab >= 0 && lastTab < panels.length) showPanel(lastTab);
+
+  // ---- Theme toggle ----
+  var themeBtn = document.getElementById('theme-toggle');
+  var savedTheme = localStorage.getItem('theme') || 'dark';
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  themeBtn.textContent = savedTheme === 'dark' ? '\u2600\ufe0f' : '\ud83c\udf19';
+
+  themeBtn.addEventListener('click', function() {
+    var current = document.documentElement.getAttribute('data-theme');
+    var next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    this.textContent = next === 'dark' ? '\u2600\ufe0f' : '\ud83c\udf19';
+    localStorage.setItem('theme', next);
+  });
+
+  // ---- Font size ----
+  var fontSize = parseInt(localStorage.getItem('fontSize') || '15');
+  document.documentElement.style.setProperty('--font-size', fontSize + 'px');
+
+  document.getElementById('font-up').addEventListener('click', function() {
+    fontSize = Math.min(fontSize + 2, 24);
+    document.documentElement.style.setProperty('--font-size', fontSize + 'px');
+    localStorage.setItem('fontSize', fontSize);
+  });
+  document.getElementById('font-down').addEventListener('click', function() {
+    fontSize = Math.max(fontSize - 2, 10);
+    document.documentElement.style.setProperty('--font-size', fontSize + 'px');
+    localStorage.setItem('fontSize', fontSize);
+  });
+
+  // ---- Scroll to top ----
+  var scrollBtn = document.getElementById('scroll-top');
+  window.addEventListener('scroll', function() {
+    scrollBtn.style.display = window.scrollY > 300 ? 'flex' : 'none';
+  });
+  scrollBtn.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+})();
+
+</script>
+</body>
+</html>
