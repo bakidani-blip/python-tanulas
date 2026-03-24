@@ -29,25 +29,52 @@ OUTPUT_FILE = Path(__file__).parent / "python_lessons.html"
 # ============================================================
 
 def discover_files(directory: Path) -> list[dict]:
-    """Megkeresi es rendezi a .py fajlokat: leckek elore, gyakorlatok hatra."""
-    lessons = []
-    exercises = []
+    """Megkeresi a .py fajlokat es parosba rendezi: lecke + gyakorlat(ok)."""
+    lessons = {}
+    exercises = {}
 
     for f in sorted(directory.glob("*.py")):
         name = f.stem
         content = f.read_text(encoding="utf-8")
         title = extract_title(content, name)
-
         entry = {"name": name, "filename": f.name, "title": title, "content": content}
 
         if name.startswith("exercise"):
-            entry["type"] = "exercise"
-            exercises.append(entry)
+            num = re.match(r"exercise_(\d+)", name)
+            if num:
+                key = num.group(1)
+                entry["type"] = "exercise"
+                exercises.setdefault(key, []).append(entry)
         else:
-            entry["type"] = "lesson"
-            lessons.append(entry)
+            num = re.match(r"(\d+)_", name)
+            if num:
+                key = num.group(1)
+                entry["type"] = "lesson"
+                lessons[key] = entry
 
-    return lessons + exercises
+    # Parositas: lecke + hozza tartozo gyakorlat(ok)
+    paired = []
+    for key in sorted(lessons.keys()):
+        pair = {
+            "key": key,
+            "lesson": lessons[key],
+            "exercises": exercises.get(key, []),
+        }
+        # Rovid nev a fulhoz
+        title = lessons[key]["title"]
+        # Az elso ertelmes szo(k) a cimbol
+        short_names = {
+            "00": "Alapok",
+            "01": "Nevek",
+            "02": "Fuggvenyek",
+            "03": "DRY/KISS",
+            "04": "Tipusok",
+            "05": "Hibak",
+        }
+        pair["short_name"] = short_names.get(key, f"Lecke {key}")
+        paired.append(pair)
+
+    return paired
 
 
 def extract_title(content: str, fallback: str) -> str:
@@ -264,43 +291,62 @@ def render_exercise(file_info: dict, index: int) -> str:
 </div>'''
 
 
-def generate_html(files: list[dict]) -> str:
-    """A teljes HTML oldalt generalja."""
+def generate_html(pairs: list[dict]) -> str:
+    """A teljes HTML oldalt generalja parosított leckekbol."""
 
+    # Navigacios fulek
     tabs_html = []
-    exercise_counter = 0
-    for i, f in enumerate(files):
-        icon = "\U0001f4d6" if f["type"] == "lesson" else "\u270f\ufe0f"
-        if f["type"] == "exercise":
-            num = re.search(r"\\d+", f["name"])
-            short = f"Gy.{num.group()}" if num else "Gy."
-        else:
-            num = re.search(r"^\\d+", f["name"])
-            short = f"L.{num.group()}" if num else "Lecke"
+    for i, pair in enumerate(pairs):
         active = "active" if i == 0 else ""
+        lesson_title = html.escape(pair["lesson"]["title"])
         tabs_html.append(
-            f'<button class="tab {active}" data-index="{i}" title="{html.escape(f["title"])}">'
-            f'{icon} {short}</button>'
+            f'<button class="tab {active}" data-index="{i}" title="{lesson_title}">'
+            f'{pair["short_name"]}</button>'
         )
 
+    # Tartalom panelek: lecke + accordion gyakorlat(ok)
     panels_html = []
-    exercise_idx = 0
-    for i, f in enumerate(files):
+    exercise_global_idx = 0
+    for i, pair in enumerate(pairs):
         display = "" if i == 0 else ' style="display:none"'
         panels_html.append(f'<div class="panel" data-index="{i}"{display}>')
-        if f["type"] == "exercise":
-            panels_html.append(render_exercise(f, exercise_idx))
-            exercise_idx += 1
-        else:
-            panels_html.append(render_lesson(f))
+
+        # Lecke resz
+        panels_html.append(render_lesson(pair["lesson"]))
+
+        # Gyakorlat(ok) accordion-ban
+        for ex in pair["exercises"]:
+            ex_id = f"exercise-{exercise_global_idx}"
+            escaped_content = html.escape(ex["content"])
+            panels_html.append(f'''
+<div class="accordion">
+<button class="accordion-toggle" onclick="toggleAccordion(this)">
+<span>\u270f\ufe0f Gyakorlat: {html.escape(ex["title"])}</span>
+<span class="accordion-arrow">\u25bc</span>
+</button>
+<div class="accordion-content" style="display:none">
+<div class="exercise-editor">
+<div class="editor-toolbar">
+<button class="run-btn" onclick="runCode('{ex_id}')">\u25b6 Futtat\u00e1s</button>
+<button class="reset-btn" onclick="resetCode('{ex_id}')">\u21ba Vissza\u00e1ll\u00edt\u00e1s</button>
+</div>
+<textarea id="{ex_id}" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off">{escaped_content}</textarea>
+<div id="{ex_id}-output" class="output-area">
+<span class="output-placeholder">Nyomd meg a \u25b6 Futtat\u00e1s gombot az eredm\u00e9ny\u00e9rt</span>
+</div>
+</div>
+</div>
+</div>''')
+            exercise_global_idx += 1
+
         panels_html.append('</div>')
 
     # Original contents for reset
     originals = {}
     ex_idx = 0
-    for f in files:
-        if f["type"] == "exercise":
-            originals[f"exercise-{ex_idx}"] = f["content"]
+    for pair in pairs:
+        for ex in pair["exercises"]:
+            originals[f"exercise-{ex_idx}"] = ex["content"]
             ex_idx += 1
 
     originals_js = "var ORIGINALS = {" + ", ".join(
@@ -548,6 +594,36 @@ pre.code-block code {
 .tab.active { background: var(--accent); color: #1e1e2e; font-weight: 700; }
 .tab:not(.active):active { background: var(--bg-card); color: var(--text-primary); }
 
+/* ============ ACCORDION ============ */
+.accordion {
+  margin-top: 24px;
+  border: 2px solid var(--accent-yellow);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.accordion-toggle {
+  width: 100%;
+  background: var(--bg-card);
+  color: var(--text-primary);
+  border: none;
+  padding: 14px 16px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 50px;
+  -webkit-tap-highlight-color: transparent;
+}
+.accordion-toggle:active { background: var(--bg-card-hover); }
+.accordion-arrow { transition: transform 0.2s ease; font-size: 0.8rem; }
+.accordion-toggle.open .accordion-arrow { transform: rotate(180deg); }
+.accordion-content {
+  padding: 16px;
+  border-top: 1px solid var(--border);
+}
+
 .scroll-top {
   position: fixed; bottom: 80px; right: 16px;
   background: var(--accent); color: #1e1e2e;
@@ -593,6 +669,14 @@ pre.code-block code {
 
     # JS code - build separately to avoid escape issues
     js_code = originals_js + """
+
+  // ---- Accordion toggle ----
+  window.toggleAccordion = function(btn) {
+    var content = btn.nextElementSibling;
+    var isOpen = content.style.display !== 'none';
+    content.style.display = isOpen ? 'none' : 'block';
+    btn.classList.toggle('open', !isOpen);
+  };
 
   // ---- Skulpt Python runner ----
   window.runCode = function(editorId) {
@@ -794,17 +878,20 @@ def main():
         print(f"HIBA: Nem talalhato a mappa: {EXERCISES_DIR}")
         return
 
-    files = discover_files(EXERCISES_DIR)
-    if not files:
+    pairs = discover_files(EXERCISES_DIR)
+    if not pairs:
         print(f"HIBA: Nincs .py fajl a mappaban: {EXERCISES_DIR}")
         return
 
-    print(f"Talalt fajlok ({len(files)}):")
-    for f in files:
-        icon = "\U0001f4d6" if f["type"] == "lesson" else "\u270f\ufe0f"
-        print(f"  {icon} {f['filename']} \u2014 {f['title']}")
+    print(f"Talalt modulok ({len(pairs)}):")
+    for pair in pairs:
+        lesson = pair["lesson"]
+        exercises = pair["exercises"]
+        print(f"  \U0001f4d6 {lesson['filename']} \u2014 {lesson['title']}")
+        for ex in exercises:
+            print(f"    \u270f\ufe0f {ex['filename']}")
 
-    html_content = generate_html(files)
+    html_content = generate_html(pairs)
     OUTPUT_FILE.write_text(html_content, encoding="utf-8")
 
     size_kb = OUTPUT_FILE.stat().st_size / 1024
