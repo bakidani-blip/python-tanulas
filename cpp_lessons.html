@@ -258,6 +258,48 @@ pre.code-block code {
   border-top: 1px solid var(--border);
 }
 
+/* ============ TASK CARDS ============ */
+.task-card {
+  margin-bottom: 24px;
+  padding: 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+.task-card:last-child { margin-bottom: 0; }
+.task-header h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+.task-desc {
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+.task-desc strong { color: var(--text-primary); }
+.task-hint {
+  margin-bottom: 12px;
+  background: var(--bg-surface);
+  border-radius: 8px;
+  padding: 2px 12px;
+}
+.task-hint summary {
+  cursor: pointer;
+  padding: 8px 0;
+  color: var(--accent-yellow);
+  font-weight: 600;
+  font-size: 0.9rem;
+  -webkit-tap-highlight-color: transparent;
+}
+.task-hint p {
+  padding: 0 0 10px 0;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
 .scroll-top {
   position: fixed; bottom: 80px; right: 16px;
   background: var(--accent); color: #1e1e2e;
@@ -352,89 +394,113 @@ using namespace std;</code></pre>
 <span class="accordion-arrow">▼</span>
 </button>
 <div class="accordion-content" style="display:none">
+<div class="task-card">
+<div class="task-header">
+<h3>1. Udvozles</h3>
+</div>
+<p class="task-desc">Irasd ki a kepernyore: <strong>&quot;Szia, C++!&quot;</strong></p>
+<details class="task-hint">
+<summary>💡 Tipp</summary>
+<p>Hasznald a <code class="inline">cout</code>-ot es az <code class="inline">endl</code>-t: <code class="inline">cout &lt;&lt; &quot;szoveg&quot; &lt;&lt; endl;</code></p>
+</details>
 <div class="exercise-editor">
 <div class="editor-toolbar">
 <button class="run-btn" onclick="runCode('exercise-0')">▶ Futtatás</button>
 <button class="reset-btn" onclick="resetCode('exercise-0')">↺ Visszaállítás</button>
 </div>
-<textarea id="exercise-0" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off">/*
-=============================================================
-GYAKORLO FELADATOK — C++ alapok: Hello World
-Ird meg a megoldasokat a MEGOLDAS IDE reszekhez!
-Futtasd a Futtatas gombbal az ellenorzeshez.
-=============================================================
-*/
-
-#include &lt;iostream&gt;
+<textarea id="exercise-0" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off">#include &lt;iostream&gt;
 using namespace std;
-
 int main() {
-
-    // ============================================================
-    // 1. feladat: Udvozles
-    // Irasd ki a kepernyore: &quot;Szia, C++!&quot;
-    // Tipp: hasznald a cout-ot es az endl-t
-    // ============================================================
-
     // MEGOLDAS IDE:
-
-
-    // ============================================================
-    // 2. feladat: Ket soros uzenet
-    // Irasd ki KET KULON SORBA:
-    //   &quot;Tanulok programozni.&quot;
-    //   &quot;Ez nagyon jo!&quot;
-    // Tipp: ket kulon cout utasitas kell, mindketto endl-lel
-    // ============================================================
-
-    // MEGOLDAS IDE:
-
-
-    // ============================================================
-    // 3. feladat: Bemutatkozas
-    // Irasd ki EGYETLEN cout utasitassal:
-    //   &quot;Nevem: Anna, korom: 15&quot;
-    // Tipp: a &lt;&lt; operatorral osszefuzheted a szoveget es a szamot
-    // Pelda: cout &lt;&lt; &quot;szoveg&quot; &lt;&lt; 42 &lt;&lt; endl;
-    // ============================================================
-
-    // MEGOLDAS IDE:
-
-
-    // ============================================================
-    // 4. feladat: Keretes uzenet
-    // Irasd ki ezt a 3 sort (mindegyik kulon cout):
-    //   &quot;====================&quot;
-    //   &quot;  HELLO C++ VILAG!  &quot;
-    //   &quot;====================&quot;
-    // ============================================================
-
-    // MEGOLDAS IDE:
-
-
-    // ============================================================
-    // ELLENORZES — ne modositsd ezt a reszt!
-    // ============================================================
-
-    cout &lt;&lt; endl;
-    cout &lt;&lt; &quot;==================================================&quot; &lt;&lt; endl;
-    cout &lt;&lt; &quot;Az ellenorzes vizualis: nézd meg fentebb,&quot; &lt;&lt; endl;
-    cout &lt;&lt; &quot;hogy megjelentek-e a kert szovegek!&quot; &lt;&lt; endl;
-    cout &lt;&lt; &quot;==================================================&quot; &lt;&lt; endl;
-    cout &lt;&lt; endl;
-    cout &lt;&lt; &quot;Ellenorizd:&quot; &lt;&lt; endl;
-    cout &lt;&lt; &quot;  1. Latod a \&quot;Szia, C++!\&quot; szoveget?&quot; &lt;&lt; endl;
-    cout &lt;&lt; &quot;  2. Ket kulon sorban van a ket uzenet?&quot; &lt;&lt; endl;
-    cout &lt;&lt; &quot;  3. A bemutatkozas egy sorban van szoveggel ES szammal?&quot; &lt;&lt; endl;
-    cout &lt;&lt; &quot;  4. A keretes uzenet 3 sorbol all?&quot; &lt;&lt; endl;
-    cout &lt;&lt; endl;
-    cout &lt;&lt; &quot;Ha mind igen: MINDEN FELADAT KESZ! Szolj nekem!&quot; &lt;&lt; endl;
 
     return 0;
-}
-</textarea>
+}</textarea>
 <div id="exercise-0-output" class="output-area">
 <span class="output-placeholder">Nyomd meg a ▶ Futtatás gombot az eredményért</span>
+</div>
+</div>
+</div>
+<div class="task-card">
+<div class="task-header">
+<h3>2. Ket soros uzenet</h3>
+</div>
+<p class="task-desc">Irasd ki <strong>ket kulon sorba</strong>:
+&quot;Tanulok programozni.&quot; es &quot;Ez nagyon jo!&quot;</p>
+<details class="task-hint">
+<summary>💡 Tipp</summary>
+<p>Ket kulon <code class="inline">cout</code> utasitas kell, mindketto <code class="inline">endl</code>-lel a vegen.</p>
+</details>
+<div class="exercise-editor">
+<div class="editor-toolbar">
+<button class="run-btn" onclick="runCode('exercise-1')">▶ Futtatás</button>
+<button class="reset-btn" onclick="resetCode('exercise-1')">↺ Visszaállítás</button>
+</div>
+<textarea id="exercise-1" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off">#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    // MEGOLDAS IDE:
+
+    return 0;
+}</textarea>
+<div id="exercise-1-output" class="output-area">
+<span class="output-placeholder">Nyomd meg a ▶ Futtatás gombot az eredményért</span>
+</div>
+</div>
+</div>
+<div class="task-card">
+<div class="task-header">
+<h3>3. Bemutatkozas szammal</h3>
+</div>
+<p class="task-desc">Irasd ki <strong>egyetlen <code class="inline">cout</code> utasitassal</strong>: &quot;Nevem: Anna, korom: 15&quot;
+A szoveget es a szamot a <code class="inline">&lt;&lt;</code> operatorral fuzd ossze!</p>
+<details class="task-hint">
+<summary>💡 Tipp</summary>
+<p>Pelda: <code class="inline">cout &lt;&lt; &quot;szoveg&quot; &lt;&lt; 42 &lt;&lt; &quot;tovabbi szoveg&quot; &lt;&lt; endl;</code></p>
+</details>
+<div class="exercise-editor">
+<div class="editor-toolbar">
+<button class="run-btn" onclick="runCode('exercise-2')">▶ Futtatás</button>
+<button class="reset-btn" onclick="resetCode('exercise-2')">↺ Visszaállítás</button>
+</div>
+<textarea id="exercise-2" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off">#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    // MEGOLDAS IDE:
+
+    return 0;
+}</textarea>
+<div id="exercise-2-output" class="output-area">
+<span class="output-placeholder">Nyomd meg a ▶ Futtatás gombot az eredményért</span>
+</div>
+</div>
+</div>
+<div class="task-card">
+<div class="task-header">
+<h3>4. Keretes uzenet</h3>
+</div>
+<p class="task-desc">Irasd ki ezt a <strong>3 sort</strong> (mindegyik kulon <code class="inline">cout</code>):
+<code class="inline">====================</code>
+<code class="inline">  HELLO C++ VILAG!  </code>
+<code class="inline">====================</code></p>
+<details class="task-hint">
+<summary>💡 Tipp</summary>
+<p>Minden sorhoz egy kulon <code class="inline">cout &lt;&lt; &quot;...&quot; &lt;&lt; endl;</code> kell.</p>
+</details>
+<div class="exercise-editor">
+<div class="editor-toolbar">
+<button class="run-btn" onclick="runCode('exercise-3')">▶ Futtatás</button>
+<button class="reset-btn" onclick="resetCode('exercise-3')">↺ Visszaállítás</button>
+</div>
+<textarea id="exercise-3" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off">#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    // MEGOLDAS IDE:
+
+    return 0;
+}</textarea>
+<div id="exercise-3-output" class="output-area">
+<span class="output-placeholder">Nyomd meg a ▶ Futtatás gombot az eredményért</span>
+</div>
 </div>
 </div>
 </div>
@@ -570,133 +636,165 @@ using namespace std;</code></pre>
 <span class="accordion-arrow">▼</span>
 </button>
 <div class="accordion-content" style="display:none">
+<div class="task-card">
+<div class="task-header">
+<h3>1. Egesz szam valtozo</h3>
+</div>
+<p class="task-desc">Hozz letre egy <code class="inline">my_age</code> nevu <strong>int</strong> valtozot a koroddal, es irasd ki!</p>
+<details class="task-hint">
+<summary>💡 Tipp</summary>
+<p><code class="inline">int my_age = 25;</code> majd <code class="inline">cout &lt;&lt; my_age &lt;&lt; endl;</code></p>
+</details>
 <div class="exercise-editor">
 <div class="editor-toolbar">
-<button class="run-btn" onclick="runCode('exercise-1')">▶ Futtatás</button>
-<button class="reset-btn" onclick="resetCode('exercise-1')">↺ Visszaállítás</button>
+<button class="run-btn" onclick="runCode('exercise-4')">▶ Futtatás</button>
+<button class="reset-btn" onclick="resetCode('exercise-4')">↺ Visszaállítás</button>
 </div>
-<textarea id="exercise-1" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off">/*
-=============================================================
-GYAKORLO FELADATOK — C++ valtozok es tipusok
-Ird meg a megoldasokat a MEGOLDAS IDE reszekhez!
-Futtasd a Futtatas gombbal az ellenorzeshez.
-=============================================================
-*/
+<textarea id="exercise-4" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off">#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    // MEGOLDAS IDE:
 
-#include &lt;iostream&gt;
+    // ELLENORZES:
+    if (my_age &gt; 0 &amp;&amp; my_age &lt; 120) {
+        cout &lt;&lt; &quot;✓ OK — my_age = &quot; &lt;&lt; my_age &lt;&lt; endl;
+    } else {
+        cout &lt;&lt; &quot;✗ Adj meg valos kort!&quot; &lt;&lt; endl;
+    }
+    return 0;
+}</textarea>
+<div id="exercise-4-output" class="output-area">
+<span class="output-placeholder">Nyomd meg a ▶ Futtatás gombot az eredményért</span>
+</div>
+</div>
+</div>
+<div class="task-card">
+<div class="task-header">
+<h3>2. Tort szam</h3>
+</div>
+<p class="task-desc">Hozz letre egy <code class="inline">my_height</code> nevu <strong>double</strong> valtozot a magassagoddal meterben (pl. <code class="inline">1.72</code>), es irasd ki!</p>
+<details class="task-hint">
+<summary>💡 Tipp</summary>
+<p><code class="inline">double my_height = 1.72;</code></p>
+</details>
+<div class="exercise-editor">
+<div class="editor-toolbar">
+<button class="run-btn" onclick="runCode('exercise-5')">▶ Futtatás</button>
+<button class="reset-btn" onclick="resetCode('exercise-5')">↺ Visszaállítás</button>
+</div>
+<textarea id="exercise-5" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off">#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    // MEGOLDAS IDE:
+
+    // ELLENORZES:
+    if (my_height &gt; 0.5 &amp;&amp; my_height &lt; 2.5) {
+        cout &lt;&lt; &quot;✓ OK — my_height = &quot; &lt;&lt; my_height &lt;&lt; &quot; m&quot; &lt;&lt; endl;
+    } else {
+        cout &lt;&lt; &quot;✗ Adj meg valos magassagot meterben!&quot; &lt;&lt; endl;
+    }
+    return 0;
+}</textarea>
+<div id="exercise-5-output" class="output-area">
+<span class="output-placeholder">Nyomd meg a ▶ Futtatás gombot az eredményért</span>
+</div>
+</div>
+</div>
+<div class="task-card">
+<div class="task-header">
+<h3>3. Szoveg valtozo</h3>
+</div>
+<p class="task-desc">Hozz letre egy <code class="inline">my_name</code> nevu <strong>string</strong> valtozot a neveddel, es irasd ki!
+Ne felejtsd el: <code class="inline">#include &lt;string&gt;</code> is kell a programba!</p>
+<details class="task-hint">
+<summary>💡 Tipp</summary>
+<p><code class="inline">string my_name = &quot;Kata&quot;;</code></p>
+</details>
+<div class="exercise-editor">
+<div class="editor-toolbar">
+<button class="run-btn" onclick="runCode('exercise-6')">▶ Futtatás</button>
+<button class="reset-btn" onclick="resetCode('exercise-6')">↺ Visszaállítás</button>
+</div>
+<textarea id="exercise-6" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off">#include &lt;iostream&gt;
 #include &lt;string&gt;
 using namespace std;
-
 int main() {
-
-    // ============================================================
-    // 1. feladat: Egesz szam valtozo
-    // Hozz letre egy `my_age` nevu int valtozot a koroddal!
-    // ============================================================
-
     // MEGOLDAS IDE:
 
-
-    // ============================================================
-    // 2. feladat: Tort szam
-    // Hozz letre egy `my_height` nevu double valtozot
-    // a magassagoddal meterben (pl. 1.72)!
-    // ============================================================
-
-    // MEGOLDAS IDE:
-
-
-    // ============================================================
-    // 3. feladat: Szoveg
-    // Hozz letre egy `my_name` nevu string valtozot a neveddel!
-    // Tipp: string my_name = &quot;...&quot;;
-    // ============================================================
-
-    // MEGOLDAS IDE:
-
-
-    // ============================================================
-    // 4. feladat: Bemutatkozas
-    // Irasd ki EGYETLEN sorba:
-    //   &quot;Szia! Nevem [nev], [kor] eves vagyok.&quot;
-    // Hasznald a fenti valtozokat (my_name, my_age)!
-    // Tipp: cout &lt;&lt; &quot;szoveg&quot; &lt;&lt; valtozo &lt;&lt; &quot;szoveg&quot; &lt;&lt; endl;
-    // ============================================================
-
-    // MEGOLDAS IDE:
-
-
-    // ============================================================
-    // 5. feladat: Szamolas
-    // Hozz letre ket int valtozot: `a` erteke 15, `b` erteke 4.
-    // Szamold ki es irasd ki:
-    //   - az osszeguket (a + b)
-    //   - a kulonbseguket (a - b)
-    //   - a szorzatukat (a * b)
-    // Mindegyiket kulon sorba, peldaul: &quot;Osszeg: 19&quot;
-    // ============================================================
-
-    // MEGOLDAS IDE:
-
-
-    // ============================================================
-    // ELLENORZES — ne modositsd ezt a reszt!
-    // ============================================================
-
-    cout &lt;&lt; endl;
-    cout &lt;&lt; &quot;==================================================&quot; &lt;&lt; endl;
-    cout &lt;&lt; &quot;EREDMENYEK&quot; &lt;&lt; endl;
-    cout &lt;&lt; &quot;==================================================&quot; &lt;&lt; endl;
-
-    int errors = 0;
-
-    // 1. feladat
-    if (my_age &gt; 0 &amp;&amp; my_age &lt; 120) {
-        cout &lt;&lt; &quot;✓ 1. feladat: my_age — OK (&quot; &lt;&lt; my_age &lt;&lt; &quot;)&quot; &lt;&lt; endl;
-    } else {
-        cout &lt;&lt; &quot;✗ 1. feladat: my_age — Adj meg egy valos kort!&quot; &lt;&lt; endl;
-        errors++;
-    }
-
-    // 2. feladat
-    if (my_height &gt; 0.5 &amp;&amp; my_height &lt; 2.5) {
-        cout &lt;&lt; &quot;✓ 2. feladat: my_height — OK (&quot; &lt;&lt; my_height &lt;&lt; &quot; m)&quot; &lt;&lt; endl;
-    } else {
-        cout &lt;&lt; &quot;✗ 2. feladat: my_height — Adj meg valos magassagot meterben!&quot; &lt;&lt; endl;
-        errors++;
-    }
-
-    // 3. feladat
+    // ELLENORZES:
     if (my_name.length() &gt; 0) {
-        cout &lt;&lt; &quot;✓ 3. feladat: my_name — OK (\&quot;&quot; &lt;&lt; my_name &lt;&lt; &quot;\&quot;)&quot; &lt;&lt; endl;
+        cout &lt;&lt; &quot;✓ OK — my_name = \&quot;&quot; &lt;&lt; my_name &lt;&lt; &quot;\&quot;&quot; &lt;&lt; endl;
     } else {
-        cout &lt;&lt; &quot;✗ 3. feladat: my_name — Ne hagyd uresen a neved!&quot; &lt;&lt; endl;
-        errors++;
+        cout &lt;&lt; &quot;✗ Ne hagyd uresen a neved!&quot; &lt;&lt; endl;
     }
-
-    // 4. feladat — vizualis ellenorzes
-    cout &lt;&lt; &quot;? 4. feladat: Nezd meg fentebb, megjelent-e a bemutatkozas!&quot; &lt;&lt; endl;
-
-    // 5. feladat
-    if (a == 15 &amp;&amp; b == 4) {
-        cout &lt;&lt; &quot;✓ 5. feladat: a es b — OK&quot; &lt;&lt; endl;
-    } else {
-        cout &lt;&lt; &quot;✗ 5. feladat: a legyen 15, b legyen 4!&quot; &lt;&lt; endl;
-        errors++;
-    }
-
-    cout &lt;&lt; &quot;==================================================&quot; &lt;&lt; endl;
-    if (errors == 0) {
-        cout &lt;&lt; &quot;MINDEN FELADAT KESZ! Szolj nekem, es megnezem!&quot; &lt;&lt; endl;
-    } else {
-        cout &lt;&lt; &quot;Meg &quot; &lt;&lt; errors &lt;&lt; &quot; feladat van hatra. Hajra!&quot; &lt;&lt; endl;
-    }
+    return 0;
+}</textarea>
+<div id="exercise-6-output" class="output-area">
+<span class="output-placeholder">Nyomd meg a ▶ Futtatás gombot az eredményért</span>
+</div>
+</div>
+</div>
+<div class="task-card">
+<div class="task-header">
+<h3>4. Bemutatkozas valtozokkal</h3>
+</div>
+<p class="task-desc">Hozz letre egy <code class="inline">name</code> (string) es egy <code class="inline">age</code> (int) valtozot.
+Irasd ki egy sorban: <strong>&quot;Szia! Nevem [nev], [kor] eves vagyok.&quot;</strong>
+A valtozokat a <code class="inline">&lt;&lt;</code> operatorral fuzd bele!</p>
+<details class="task-hint">
+<summary>💡 Tipp</summary>
+<p><code class="inline">cout &lt;&lt; &quot;Szia! Nevem &quot; &lt;&lt; name &lt;&lt; &quot;, &quot; &lt;&lt; age &lt;&lt; &quot; eves vagyok.&quot; &lt;&lt; endl;</code></p>
+</details>
+<div class="exercise-editor">
+<div class="editor-toolbar">
+<button class="run-btn" onclick="runCode('exercise-7')">▶ Futtatás</button>
+<button class="reset-btn" onclick="resetCode('exercise-7')">↺ Visszaállítás</button>
+</div>
+<textarea id="exercise-7" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off">#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+int main() {
+    // MEGOLDAS IDE:
 
     return 0;
-}
-</textarea>
-<div id="exercise-1-output" class="output-area">
+}</textarea>
+<div id="exercise-7-output" class="output-area">
 <span class="output-placeholder">Nyomd meg a ▶ Futtatás gombot az eredményért</span>
+</div>
+</div>
+</div>
+<div class="task-card">
+<div class="task-header">
+<h3>5. Szamolas</h3>
+</div>
+<p class="task-desc">Hozz letre ket int valtozot: <code class="inline">a</code> erteke <strong>15</strong>, <code class="inline">b</code> erteke <strong>4</strong>.
+Irasd ki harom kulon sorba az <strong>osszeget</strong>, <strong>kulonbseget</strong> es <strong>szorzatot</strong>!
+Pelda kimenet: &quot;Osszeg: 19&quot;</p>
+<details class="task-hint">
+<summary>💡 Tipp</summary>
+<p>Az osszeg: <code class="inline">a + b</code>, kulonbseg: <code class="inline">a - b</code>, szorzat: <code class="inline">a * b</code></p>
+</details>
+<div class="exercise-editor">
+<div class="editor-toolbar">
+<button class="run-btn" onclick="runCode('exercise-8')">▶ Futtatás</button>
+<button class="reset-btn" onclick="resetCode('exercise-8')">↺ Visszaállítás</button>
+</div>
+<textarea id="exercise-8" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off">#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    // MEGOLDAS IDE:
+
+    // ELLENORZES:
+    if (a == 15 &amp;&amp; b == 4) {
+        cout &lt;&lt; &quot;✓ OK — a=&quot; &lt;&lt; a &lt;&lt; &quot;, b=&quot; &lt;&lt; b &lt;&lt; endl;
+    } else {
+        cout &lt;&lt; &quot;✗ a legyen 15, b legyen 4!&quot; &lt;&lt; endl;
+    }
+    return 0;
+}</textarea>
+<div id="exercise-8-output" class="output-area">
+<span class="output-placeholder">Nyomd meg a ▶ Futtatás gombot az eredményért</span>
+</div>
 </div>
 </div>
 </div>
@@ -873,186 +971,175 @@ using namespace std;</code></pre>
 <span class="accordion-arrow">▼</span>
 </button>
 <div class="accordion-content" style="display:none">
+<div class="task-card">
+<div class="task-header">
+<h3>1. Paros vagy paratlan?</h3>
+</div>
+<p class="task-desc">A <code class="inline">number</code> valtozo erteke <strong>7</strong>. Ird meg az if-else feltetelt:
+ha paros → irasd ki <strong>&quot;Paros&quot;</strong>, ha paratlan → irasd ki <strong>&quot;Paratlan&quot;</strong>.</p>
+<details class="task-hint">
+<summary>💡 Tipp</summary>
+<p>A <code class="inline">%</code> (modulo) operator megadja az osztas maradekat. Ha <code class="inline">number % 2 == 0</code>, akkor paros!</p>
+</details>
 <div class="exercise-editor">
 <div class="editor-toolbar">
-<button class="run-btn" onclick="runCode('exercise-2')">▶ Futtatás</button>
-<button class="reset-btn" onclick="resetCode('exercise-2')">↺ Visszaállítás</button>
+<button class="run-btn" onclick="runCode('exercise-9')">▶ Futtatás</button>
+<button class="reset-btn" onclick="resetCode('exercise-9')">↺ Visszaállítás</button>
 </div>
-<textarea id="exercise-2" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off">/*
-=============================================================
-GYAKORLO FELADATOK — C++ feltetelek (if/else, switch)
-Ird meg a megoldasokat a MEGOLDAS IDE reszekhez!
-Futtasd a Futtatas gombbal az ellenorzeshez.
-=============================================================
-*/
-
-#include &lt;iostream&gt;
-#include &lt;string&gt;
+<textarea id="exercise-9" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off">#include &lt;iostream&gt;
 using namespace std;
-
 int main() {
-
-    // ============================================================
-    // 1. feladat: Paros vagy paratlan?
-    //
-    // Adott egy `number` valtozo (erteke 7).
-    // Ird meg az if-else feltetelt, ami:
-    //   - Ha paros: kiirja &quot;Paros&quot;
-    //   - Ha paratlan: kiirja &quot;Paratlan&quot;
-    //
-    // Tipp: a % (modulo) operator megadja az osztás maradekát.
-    //       Ha number % 2 == 0, akkor paros!
-    // ============================================================
-
     int number = 7;
-    string number_result = &quot;&quot;;
 
     // MEGOLDAS IDE:
 
-
-    // ============================================================
-    // 2. feladat: Jegyezes
-    //
-    // Adott egy `points` valtozo (erteke 73).
-    // Ird meg az if / else if / else lancot, ami beallitja
-    // a `grade` valtozo erteket:
-    //   90-100 pont → grade = &quot;Jeles&quot;
-    //   75-89  pont → grade = &quot;Jo&quot;
-    //   60-74  pont → grade = &quot;Kozepes&quot;
-    //   40-59  pont → grade = &quot;Elegseges&quot;
-    //   0-39   pont → grade = &quot;Elegtelen&quot;
-    //
-    // Tipp: felulrol lefele vizsgald, a &gt;= operatorral!
-    // ============================================================
-
+    return 0;
+}</textarea>
+<div id="exercise-9-output" class="output-area">
+<span class="output-placeholder">Nyomd meg a ▶ Futtatás gombot az eredményért</span>
+</div>
+</div>
+</div>
+<div class="task-card">
+<div class="task-header">
+<h3>2. Jegyezes</h3>
+</div>
+<p class="task-desc">A <code class="inline">points</code> valtozo erteke <strong>73</strong>. Allitsd be a <code class="inline">grade</code> valtozot:
+90-100 → &quot;Jeles&quot;, 75-89 → &quot;Jo&quot;, 60-74 → &quot;Kozepes&quot;, 40-59 → &quot;Elegseges&quot;, 0-39 → &quot;Elegtelen&quot;.
+Vegul irasd ki a <code class="inline">grade</code>-et!</p>
+<details class="task-hint">
+<summary>💡 Tipp</summary>
+<p>Hasznalj <code class="inline">if / else if / else</code> lancot, felulrol lefele: <code class="inline">if (points &gt;= 90) { ... } else if ...</code></p>
+</details>
+<div class="exercise-editor">
+<div class="editor-toolbar">
+<button class="run-btn" onclick="runCode('exercise-10')">▶ Futtatás</button>
+<button class="reset-btn" onclick="resetCode('exercise-10')">↺ Visszaállítás</button>
+</div>
+<textarea id="exercise-10" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off">#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+int main() {
     int points = 73;
     string grade = &quot;&quot;;
 
     // MEGOLDAS IDE:
 
-
-    // ============================================================
-    // 3. feladat: Beleptetés
-    //
-    // Adott ket valtozo: `visitor_age` (22) es `has_id` (true).
-    // Ird meg a feltetelt:
-    //   - Ha 18 vagy idosebb ÉS van igazolványa → result = &quot;Belephet&quot;
-    //   - Kulonben → result = &quot;Nem lephet be&quot;
-    //
-    // Tipp: hasznald az &amp;&amp; (ÉS) operatort!
-    // ============================================================
-
+    // ELLENORZES:
+    if (grade == &quot;Kozepes&quot;) {
+        cout &lt;&lt; &quot;✓ OK — 73 pont = &quot; &lt;&lt; grade &lt;&lt; endl;
+    } else {
+        cout &lt;&lt; &quot;✗ 73 pont = Kozepes kene legyen! Kaptam: \&quot;&quot; &lt;&lt; grade &lt;&lt; &quot;\&quot;&quot; &lt;&lt; endl;
+    }
+    return 0;
+}</textarea>
+<div id="exercise-10-output" class="output-area">
+<span class="output-placeholder">Nyomd meg a ▶ Futtatás gombot az eredményért</span>
+</div>
+</div>
+</div>
+<div class="task-card">
+<div class="task-header">
+<h3>3. Beleptetes</h3>
+</div>
+<p class="task-desc">Ket valtozo: <code class="inline">visitor_age</code> (22) es <code class="inline">has_id</code> (true).
+Ha 18 vagy idosebb <strong>ES</strong> van igazolvanya → irasd ki <strong>&quot;Belephet&quot;</strong>, kulonben <strong>&quot;Nem lephet be&quot;</strong>.</p>
+<details class="task-hint">
+<summary>💡 Tipp</summary>
+<p>Hasznald az <code class="inline">&amp;&amp;</code> (ES) operatort: <code class="inline">if (visitor_age &gt;= 18 &amp;&amp; has_id)</code></p>
+</details>
+<div class="exercise-editor">
+<div class="editor-toolbar">
+<button class="run-btn" onclick="runCode('exercise-11')">▶ Futtatás</button>
+<button class="reset-btn" onclick="resetCode('exercise-11')">↺ Visszaállítás</button>
+</div>
+<textarea id="exercise-11" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off">#include &lt;iostream&gt;
+using namespace std;
+int main() {
     int visitor_age = 22;
     bool has_id = true;
-    string entry_result = &quot;&quot;;
 
     // MEGOLDAS IDE:
 
-
-    // ============================================================
-    // 4. feladat: Evszak
-    //
-    // Adott a `month` valtozo (erteke 8, azaz augusztus).
-    // Hasznalj switch-et, es allitsd be a `season` valtozot:
-    //   12, 1, 2  → season = &quot;Tel&quot;
-    //   3, 4, 5   → season = &quot;Tavasz&quot;
-    //   6, 7, 8   → season = &quot;Nyar&quot;
-    //   9, 10, 11 → season = &quot;Osz&quot;
-    //
-    // Tipp: tobb case-t is irhatsz egymas ala break nelkul,
-    //       hogy &quot;atfolyjanak&quot; ugyanarra az eredmenyre:
-    //       case 6: case 7: case 8: ... break;
-    // ============================================================
-
+    return 0;
+}</textarea>
+<div id="exercise-11-output" class="output-area">
+<span class="output-placeholder">Nyomd meg a ▶ Futtatás gombot az eredményért</span>
+</div>
+</div>
+</div>
+<div class="task-card">
+<div class="task-header">
+<h3>4. Evszak meghatarozasa</h3>
+</div>
+<p class="task-desc">A <code class="inline">month</code> valtozo erteke <strong>8</strong> (augusztus). Hasznalj <strong>switch</strong>-et es allitsd be a <code class="inline">season</code>-t:
+12,1,2 → &quot;Tel&quot; | 3,4,5 → &quot;Tavasz&quot; | 6,7,8 → &quot;Nyar&quot; | 9,10,11 → &quot;Osz&quot;</p>
+<details class="task-hint">
+<summary>💡 Tipp</summary>
+<p>Tobb case-t is irhatsz egymas ala break nelkul: <code class="inline">case 6: case 7: case 8: season = &quot;Nyar&quot;; break;</code></p>
+</details>
+<div class="exercise-editor">
+<div class="editor-toolbar">
+<button class="run-btn" onclick="runCode('exercise-12')">▶ Futtatás</button>
+<button class="reset-btn" onclick="resetCode('exercise-12')">↺ Visszaállítás</button>
+</div>
+<textarea id="exercise-12" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off">#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+int main() {
     int month = 8;
     string season = &quot;&quot;;
 
     // MEGOLDAS IDE:
 
-
-    // ============================================================
-    // 5. feladat: Hany eves vagy kategoria
-    //
-    // Adott a `cat_age` valtozo (erteke 10).
-    // Ird meg a feltetelt:
-    //   - Ha 0-2   → category = &quot;Csecsemo&quot;
-    //   - Ha 3-5   → category = &quot;Ovodas&quot;
-    //   - Ha 6-14  → category = &quot;Iskolás&quot;
-    //   - Ha 15-17 → category = &quot;Tinedzser&quot;
-    //   - Ha 18+   → category = &quot;Felnott&quot;
-    //
-    // Tipp: hasznalj else if lancot!
-    // ============================================================
-
+    // ELLENORZES:
+    if (season == &quot;Nyar&quot;) {
+        cout &lt;&lt; &quot;✓ OK — 8. honap = &quot; &lt;&lt; season &lt;&lt; endl;
+    } else {
+        cout &lt;&lt; &quot;✗ Augusztus = Nyar! Kaptam: \&quot;&quot; &lt;&lt; season &lt;&lt; &quot;\&quot;&quot; &lt;&lt; endl;
+    }
+    return 0;
+}</textarea>
+<div id="exercise-12-output" class="output-area">
+<span class="output-placeholder">Nyomd meg a ▶ Futtatás gombot az eredményért</span>
+</div>
+</div>
+</div>
+<div class="task-card">
+<div class="task-header">
+<h3>5. Korkategoria</h3>
+</div>
+<p class="task-desc">A <code class="inline">cat_age</code> erteke <strong>10</strong>. Allitsd be a <code class="inline">category</code> valtozot:
+0-2 → &quot;Csecsemo&quot; | 3-5 → &quot;Ovodas&quot; | 6-14 → &quot;Iskolas&quot; | 15-17 → &quot;Tinedzser&quot; | 18+ → &quot;Felnott&quot;</p>
+<details class="task-hint">
+<summary>💡 Tipp</summary>
+<p>Hasznalj <code class="inline">else if</code> lancot: <code class="inline">if (cat_age &lt;= 2) { ... } else if (cat_age &lt;= 5) { ... }</code></p>
+</details>
+<div class="exercise-editor">
+<div class="editor-toolbar">
+<button class="run-btn" onclick="runCode('exercise-13')">▶ Futtatás</button>
+<button class="reset-btn" onclick="resetCode('exercise-13')">↺ Visszaállítás</button>
+</div>
+<textarea id="exercise-13" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off">#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+int main() {
     int cat_age = 10;
     string category = &quot;&quot;;
 
     // MEGOLDAS IDE:
 
-
-    // ============================================================
-    // ELLENORZES — ne modositsd ezt a reszt!
-    // ============================================================
-
-    cout &lt;&lt; endl;
-    cout &lt;&lt; &quot;==================================================&quot; &lt;&lt; endl;
-    cout &lt;&lt; &quot;EREDMENYEK&quot; &lt;&lt; endl;
-    cout &lt;&lt; &quot;==================================================&quot; &lt;&lt; endl;
-
-    int errors = 0;
-
-    // 1. feladat
-    if (number_result == &quot;Paratlan&quot;) {
-        cout &lt;&lt; &quot;✓ 1. feladat: Paros/paratlan — OK&quot; &lt;&lt; endl;
+    // ELLENORZES:
+    if (category == &quot;Iskolas&quot;) {
+        cout &lt;&lt; &quot;✓ OK — 10 eves = &quot; &lt;&lt; category &lt;&lt; endl;
     } else {
-        cout &lt;&lt; &quot;✗ 1. feladat: Paros/paratlan — A 7 paratlan! Hasznald: number % 2&quot; &lt;&lt; endl;
-        errors++;
+        cout &lt;&lt; &quot;✗ 10 eves = Iskolas! Kaptam: \&quot;&quot; &lt;&lt; category &lt;&lt; &quot;\&quot;&quot; &lt;&lt; endl;
     }
-
-    // 2. feladat
-    if (grade == &quot;Kozepes&quot;) {
-        cout &lt;&lt; &quot;✓ 2. feladat: Jegyezes — OK (73 pont = &quot; &lt;&lt; grade &lt;&lt; &quot;)&quot; &lt;&lt; endl;
-    } else {
-        cout &lt;&lt; &quot;✗ 2. feladat: Jegyezes — 73 pont Kozepes kene legyen! Ellenorizd a hataroket.&quot; &lt;&lt; endl;
-        errors++;
-    }
-
-    // 3. feladat
-    if (entry_result == &quot;Belephet&quot;) {
-        cout &lt;&lt; &quot;✓ 3. feladat: Beleptetes — OK&quot; &lt;&lt; endl;
-    } else {
-        cout &lt;&lt; &quot;✗ 3. feladat: Beleptetes — 22 eves + van ID = Belephet! Hasznald az &amp;&amp; operatort.&quot; &lt;&lt; endl;
-        errors++;
-    }
-
-    // 4. feladat
-    if (season == &quot;Nyar&quot;) {
-        cout &lt;&lt; &quot;✓ 4. feladat: Evszak — OK (8. honap = &quot; &lt;&lt; season &lt;&lt; &quot;)&quot; &lt;&lt; endl;
-    } else {
-        cout &lt;&lt; &quot;✗ 4. feladat: Evszak — Augusztus (8) = Nyar! Hasznalj switch-et.&quot; &lt;&lt; endl;
-        errors++;
-    }
-
-    // 5. feladat
-    if (category == &quot;Iskolás&quot; || category == &quot;Iskolas&quot;) {
-        cout &lt;&lt; &quot;✓ 5. feladat: Korkategoria — OK (10 eves = &quot; &lt;&lt; category &lt;&lt; &quot;)&quot; &lt;&lt; endl;
-    } else {
-        cout &lt;&lt; &quot;✗ 5. feladat: Korkategoria — 10 eves = Iskolas! Ellenorizd az else if lancot.&quot; &lt;&lt; endl;
-        errors++;
-    }
-
-    cout &lt;&lt; &quot;==================================================&quot; &lt;&lt; endl;
-    if (errors == 0) {
-        cout &lt;&lt; &quot;MINDEN FELADAT KESZ! Szolj nekem, es megnezem!&quot; &lt;&lt; endl;
-    } else {
-        cout &lt;&lt; &quot;Meg &quot; &lt;&lt; errors &lt;&lt; &quot; feladat van hatra. Hajra!&quot; &lt;&lt; endl;
-    }
-
     return 0;
-}
-</textarea>
-<div id="exercise-2-output" class="output-area">
+}</textarea>
+<div id="exercise-13-output" class="output-area">
 <span class="output-placeholder">Nyomd meg a ▶ Futtatás gombot az eredményért</span>
+</div>
 </div>
 </div>
 </div>
@@ -1201,187 +1288,192 @@ using namespace std;</code></pre>
 <span class="accordion-arrow">▼</span>
 </button>
 <div class="accordion-content" style="display:none">
+<div class="task-card">
+<div class="task-header">
+<h3>1. Szamolas 1-tol 10-ig</h3>
+</div>
+<p class="task-desc">Irj egy <strong>for ciklust</strong>, ami osszeadja a szamokat 1-tol 10-ig a <code class="inline">sum</code> valtozoba.
+A vart eredmeny: <strong>sum = 55</strong> (1+2+3+...+10)</p>
+<details class="task-hint">
+<summary>💡 Tipp</summary>
+<p><code class="inline">for (int i = 1; i &lt;= 10; i++) { sum = sum + i; }</code></p>
+</details>
 <div class="exercise-editor">
 <div class="editor-toolbar">
-<button class="run-btn" onclick="runCode('exercise-3')">▶ Futtatás</button>
-<button class="reset-btn" onclick="resetCode('exercise-3')">↺ Visszaállítás</button>
+<button class="run-btn" onclick="runCode('exercise-14')">▶ Futtatás</button>
+<button class="reset-btn" onclick="resetCode('exercise-14')">↺ Visszaállítás</button>
 </div>
-<textarea id="exercise-3" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off">/*
-=============================================================
-GYAKORLO FELADATOK — C++ ciklusok (for, while)
-Ird meg a megoldasokat a MEGOLDAS IDE reszekhez!
-Futtasd a Futtatas gombbal az ellenorzeshez.
-=============================================================
-*/
-
-#include &lt;iostream&gt;
-#include &lt;string&gt;
+<textarea id="exercise-14" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off">#include &lt;iostream&gt;
 using namespace std;
-
 int main() {
-
-    // ============================================================
-    // 1. feladat: Szamolas 1-tol 10-ig
-    //
-    // Irj egy for ciklust, ami kiirja a szamokat 1-tol 10-ig!
-    // Kozben szamold ossze oket a `sum` valtozoba.
-    //
-    // Vart eredmeny: sum = 55 (1+2+3+...+10)
-    // Tipp: for (int i = 1; i &lt;= 10; i++) { ... }
-    // ============================================================
-
     int sum = 0;
 
     // MEGOLDAS IDE:
 
-
-    // ============================================================
-    // 2. feladat: Paros szamok
-    //
-    // Irj egy for ciklust, ami vegigmegy 1-tol 20-ig,
-    // de CSAK a paros szamokat adja hozza az `even_sum`-hoz.
-    //
-    // Vart eredmeny: even_sum = 110 (2+4+6+8+10+12+14+16+18+20)
-    // Tipp: hasznald az if-et a cikluson belul: if (i % 2 == 0)
-    // ============================================================
-
+    // ELLENORZES:
+    if (sum == 55) {
+        cout &lt;&lt; &quot;✓ OK — sum = &quot; &lt;&lt; sum &lt;&lt; endl;
+    } else {
+        cout &lt;&lt; &quot;✗ Vart: 55, kaptam: &quot; &lt;&lt; sum &lt;&lt; endl;
+    }
+    return 0;
+}</textarea>
+<div id="exercise-14-output" class="output-area">
+<span class="output-placeholder">Nyomd meg a ▶ Futtatás gombot az eredményért</span>
+</div>
+</div>
+</div>
+<div class="task-card">
+<div class="task-header">
+<h3>2. Paros szamok osszege</h3>
+</div>
+<p class="task-desc">Irj egy for ciklust 1-tol 20-ig, de <strong>csak a paros szamokat</strong> add hozza az <code class="inline">even_sum</code>-hoz.
+Vart eredmeny: <strong>even_sum = 110</strong> (2+4+6+...+20)</p>
+<details class="task-hint">
+<summary>💡 Tipp</summary>
+<p>A cikluson belul hasznalj if-et: <code class="inline">if (i % 2 == 0) { even_sum = even_sum + i; }</code></p>
+</details>
+<div class="exercise-editor">
+<div class="editor-toolbar">
+<button class="run-btn" onclick="runCode('exercise-15')">▶ Futtatás</button>
+<button class="reset-btn" onclick="resetCode('exercise-15')">↺ Visszaállítás</button>
+</div>
+<textarea id="exercise-15" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off">#include &lt;iostream&gt;
+using namespace std;
+int main() {
     int even_sum = 0;
 
     // MEGOLDAS IDE:
 
-
-    // ============================================================
-    // 3. feladat: Visszaszamlalas
-    //
-    // Irj egy for ciklust, ami visszafele szamol 10-tol 1-ig,
-    // es osszeepiti a `countdown` stringet.
-    // Minden szamot irj bele a countdown-ba ugy:
-    //   countdown = countdown + to_string(i) + &quot; &quot;;
-    //
-    // Vart eredmeny: countdown = &quot;10 9 8 7 6 5 4 3 2 1 &quot;
-    // Tipp: for (int i = 10; i &gt;= 1; i--) { ... }
-    // ============================================================
-
+    // ELLENORZES:
+    if (even_sum == 110) {
+        cout &lt;&lt; &quot;✓ OK — even_sum = &quot; &lt;&lt; even_sum &lt;&lt; endl;
+    } else {
+        cout &lt;&lt; &quot;✗ Vart: 110, kaptam: &quot; &lt;&lt; even_sum &lt;&lt; endl;
+    }
+    return 0;
+}</textarea>
+<div id="exercise-15-output" class="output-area">
+<span class="output-placeholder">Nyomd meg a ▶ Futtatás gombot az eredményért</span>
+</div>
+</div>
+</div>
+<div class="task-card">
+<div class="task-header">
+<h3>3. Visszaszamlalas</h3>
+</div>
+<p class="task-desc">Irj egy for ciklust, ami <strong>10-tol 1-ig</strong> szamol visszafele, es osszeepiti a <code class="inline">countdown</code> stringet.
+Vart eredmeny: <strong>&quot;10 9 8 7 6 5 4 3 2 1 &quot;</strong></p>
+<details class="task-hint">
+<summary>💡 Tipp</summary>
+<p><code class="inline">for (int i = 10; i &gt;= 1; i--) { countdown = countdown + to_string(i) + &quot; &quot;; }</code>
+A <code class="inline">to_string()</code> szamma alakit egy szamot szovegge.</p>
+</details>
+<div class="exercise-editor">
+<div class="editor-toolbar">
+<button class="run-btn" onclick="runCode('exercise-16')">▶ Futtatás</button>
+<button class="reset-btn" onclick="resetCode('exercise-16')">↺ Visszaállítás</button>
+</div>
+<textarea id="exercise-16" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off">#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+int main() {
     string countdown = &quot;&quot;;
 
     // MEGOLDAS IDE:
 
-
-    // ============================================================
-    // 4. feladat: Hatvanyozas while ciklussal
-    //
-    // Adott a `base` valtozo (erteke 2).
-    // Irj egy while ciklust, ami addig szorozza `power` erteket
-    // `base`-zel, amig az el nem eri vagy meghaladja az 1000-et.
-    // Szamold meg, hanyszor szorzotal (`steps` valtozoba).
-    //
-    // Vart eredmeny: power = 1024, steps = 10
-    // (mert 2^10 = 1024, ami az elso 2-hatvany &gt;= 1000)
-    // Tipp: while (power &lt; 1000) { power = power * base; steps++; }
-    // ============================================================
-
-    int base = 2;
+    // ELLENORZES:
+    if (countdown == &quot;10 9 8 7 6 5 4 3 2 1 &quot;) {
+        cout &lt;&lt; &quot;✓ OK — &quot; &lt;&lt; countdown &lt;&lt; endl;
+    } else {
+        cout &lt;&lt; &quot;✗ Vart: \&quot;10 9 8 7 6 5 4 3 2 1 \&quot;&quot; &lt;&lt; endl;
+        cout &lt;&lt; &quot;  Kaptam: \&quot;&quot; &lt;&lt; countdown &lt;&lt; &quot;\&quot;&quot; &lt;&lt; endl;
+    }
+    return 0;
+}</textarea>
+<div id="exercise-16-output" class="output-area">
+<span class="output-placeholder">Nyomd meg a ▶ Futtatás gombot az eredményért</span>
+</div>
+</div>
+</div>
+<div class="task-card">
+<div class="task-header">
+<h3>4. Duplazas while ciklussal</h3>
+</div>
+<p class="task-desc">A <code class="inline">power</code> valtozo erteke <strong>1</strong>. Irj egy <strong>while ciklust</strong>, ami addig duplazza
+(szorozza 2-vel), amig el nem eri az <strong>1000</strong>-et. Szamold a lepeseket a <code class="inline">steps</code>-be!
+Vart: <strong>power = 1024</strong>, <strong>steps = 10</strong></p>
+<details class="task-hint">
+<summary>💡 Tipp</summary>
+<p><code class="inline">while (power &lt; 1000) { power = power * 2; steps++; }</code> — a <code class="inline">steps++</code> novel eggyel.</p>
+</details>
+<div class="exercise-editor">
+<div class="editor-toolbar">
+<button class="run-btn" onclick="runCode('exercise-17')">▶ Futtatás</button>
+<button class="reset-btn" onclick="resetCode('exercise-17')">↺ Visszaállítás</button>
+</div>
+<textarea id="exercise-17" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off">#include &lt;iostream&gt;
+using namespace std;
+int main() {
     int power = 1;
     int steps = 0;
 
     // MEGOLDAS IDE:
 
-
-    // ============================================================
-    // 5. feladat: Csillag piramis
-    //
-    // Irj egymasba agyazott for ciklusokat, amik felépitik
-    // a `pyramid` stringet igy (5 sor):
-    //   &quot;*\n&quot;
-    //   &quot;**\n&quot;
-    //   &quot;***\n&quot;
-    //   &quot;****\n&quot;
-    //   &quot;*****\n&quot;
-    //
-    // A kulso ciklus a sorokon megy (1-tol 5-ig).
-    // A belso ciklus annyi *-ot ir, ahany a sorszam.
-    // Minden sor vegen adj hozza &quot;\n&quot;-t (ujsor karakter).
-    //
-    // Tipp:
-    //   for (int row = 1; row &lt;= 5; row++) {
-    //       for (int col = 1; col &lt;= row; col++) { ... }
-    //       pyramid = pyramid + &quot;\n&quot;;
-    //   }
-    // ============================================================
-
+    // ELLENORZES:
+    if (power == 1024 &amp;&amp; steps == 10) {
+        cout &lt;&lt; &quot;✓ OK — 2^&quot; &lt;&lt; steps &lt;&lt; &quot; = &quot; &lt;&lt; power &lt;&lt; endl;
+    } else {
+        cout &lt;&lt; &quot;✗ Vart: power=1024, steps=10&quot; &lt;&lt; endl;
+        cout &lt;&lt; &quot;  Kaptam: power=&quot; &lt;&lt; power &lt;&lt; &quot;, steps=&quot; &lt;&lt; steps &lt;&lt; endl;
+    }
+    return 0;
+}</textarea>
+<div id="exercise-17-output" class="output-area">
+<span class="output-placeholder">Nyomd meg a ▶ Futtatás gombot az eredményért</span>
+</div>
+</div>
+</div>
+<div class="task-card">
+<div class="task-header">
+<h3>5. Csillag piramis</h3>
+</div>
+<p class="task-desc">Irj <strong>ket egymasba agyazott for ciklust</strong>, ami felépiti a <code class="inline">pyramid</code> stringet:
+<code class="inline">*</code>, <code class="inline"><strong></code>, <code class="inline"></strong>*</code>, <code class="inline"><strong>**</code>, <code class="inline"></strong>***</code> (minden sor vegen ujsor).
+A kulso ciklus a sorok (1-5), a belso annyi <code class="inline">*</code>-ot ir, ahany a sorszam.</p>
+<details class="task-hint">
+<summary>💡 Tipp</summary>
+<p>A kulso: <code class="inline">for (int row = 1; row &lt;= 5; row++)</code>,
+belso: <code class="inline">for (int col = 1; col &lt;= row; col++) { pyramid = pyramid + &quot;*&quot;; }</code>
+Minden sor utan: <code class="inline">pyramid = pyramid + &quot;\n&quot;;</code></p>
+</details>
+<div class="exercise-editor">
+<div class="editor-toolbar">
+<button class="run-btn" onclick="runCode('exercise-18')">▶ Futtatás</button>
+<button class="reset-btn" onclick="resetCode('exercise-18')">↺ Visszaállítás</button>
+</div>
+<textarea id="exercise-18" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off">#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+int main() {
     string pyramid = &quot;&quot;;
 
     // MEGOLDAS IDE:
 
-
-    // ============================================================
-    // ELLENORZES — ne modositsd ezt a reszt!
-    // ============================================================
-
-    cout &lt;&lt; endl;
-    cout &lt;&lt; &quot;==================================================&quot; &lt;&lt; endl;
-    cout &lt;&lt; &quot;EREDMENYEK&quot; &lt;&lt; endl;
-    cout &lt;&lt; &quot;==================================================&quot; &lt;&lt; endl;
-
-    int errors = 0;
-
-    // 1. feladat
-    if (sum == 55) {
-        cout &lt;&lt; &quot;✓ 1. feladat: Osszeg 1-10 — OK (sum = &quot; &lt;&lt; sum &lt;&lt; &quot;)&quot; &lt;&lt; endl;
-    } else {
-        cout &lt;&lt; &quot;✗ 1. feladat: Osszeg 1-10 — Vart: 55, kaptam: &quot; &lt;&lt; sum &lt;&lt; endl;
-        errors++;
-    }
-
-    // 2. feladat
-    if (even_sum == 110) {
-        cout &lt;&lt; &quot;✓ 2. feladat: Paros osszeg — OK (even_sum = &quot; &lt;&lt; even_sum &lt;&lt; &quot;)&quot; &lt;&lt; endl;
-    } else {
-        cout &lt;&lt; &quot;✗ 2. feladat: Paros osszeg — Vart: 110, kaptam: &quot; &lt;&lt; even_sum &lt;&lt; endl;
-        errors++;
-    }
-
-    // 3. feladat
-    if (countdown == &quot;10 9 8 7 6 5 4 3 2 1 &quot;) {
-        cout &lt;&lt; &quot;✓ 3. feladat: Visszaszamlalas — OK&quot; &lt;&lt; endl;
-    } else {
-        cout &lt;&lt; &quot;✗ 3. feladat: Visszaszamlalas — Ellenorizd a ciklust! Kaptam: \&quot;&quot; &lt;&lt; countdown &lt;&lt; &quot;\&quot;&quot; &lt;&lt; endl;
-        errors++;
-    }
-
-    // 4. feladat
-    if (power == 1024 &amp;&amp; steps == 10) {
-        cout &lt;&lt; &quot;✓ 4. feladat: Hatvanyozas — OK (2^&quot; &lt;&lt; steps &lt;&lt; &quot; = &quot; &lt;&lt; power &lt;&lt; &quot;)&quot; &lt;&lt; endl;
-    } else {
-        cout &lt;&lt; &quot;✗ 4. feladat: Hatvanyozas — Vart: power=1024, steps=10. Kaptam: &quot; &lt;&lt; power &lt;&lt; &quot;, &quot; &lt;&lt; steps &lt;&lt; endl;
-        errors++;
-    }
-
-    // 5. feladat
-    string expected_pyramid = &quot;*\n**\n***\n****\n*****\n&quot;;
-    if (pyramid == expected_pyramid) {
-        cout &lt;&lt; &quot;✓ 5. feladat: Piramis — OK&quot; &lt;&lt; endl;
+    // ELLENORZES:
+    string expected = &quot;*\n**\n***\n****\n*****\n&quot;;
+    if (pyramid == expected) {
+        cout &lt;&lt; &quot;✓ OK&quot; &lt;&lt; endl;
         cout &lt;&lt; pyramid;
     } else {
-        cout &lt;&lt; &quot;✗ 5. feladat: Piramis — Ellenorizd a ket egymasba agyazott ciklust!&quot; &lt;&lt; endl;
-        if (pyramid.length() &gt; 0) {
-            cout &lt;&lt; &quot;  Kaptam:&quot; &lt;&lt; endl &lt;&lt; pyramid;
-        }
-        errors++;
+        cout &lt;&lt; &quot;✗ Nem stimmel a piramis!&quot; &lt;&lt; endl;
+        cout &lt;&lt; &quot;Kaptam:&quot; &lt;&lt; endl &lt;&lt; pyramid;
     }
-
-    cout &lt;&lt; &quot;==================================================&quot; &lt;&lt; endl;
-    if (errors == 0) {
-        cout &lt;&lt; &quot;MINDEN FELADAT KESZ! Szolj nekem, es megnezem!&quot; &lt;&lt; endl;
-    } else {
-        cout &lt;&lt; &quot;Meg &quot; &lt;&lt; errors &lt;&lt; &quot; feladat van hatra. Hajra!&quot; &lt;&lt; endl;
-    }
-
     return 0;
-}
-</textarea>
-<div id="exercise-3-output" class="output-area">
+}</textarea>
+<div id="exercise-18-output" class="output-area">
 <span class="output-placeholder">Nyomd meg a ▶ Futtatás gombot az eredményért</span>
+</div>
 </div>
 </div>
 </div>
@@ -1546,166 +1638,181 @@ int sum_of_squares(int a, int b) {</code></pre>
 <span class="accordion-arrow">▼</span>
 </button>
 <div class="accordion-content" style="display:none">
+<div class="task-card">
+<div class="task-header">
+<h3>1. Teglalap terulete</h3>
+</div>
+<p class="task-desc">Irj egy <code class="inline">rectangle_area</code> nevu fuggvenyt, ami kap ket <strong>int</strong> parametert
+(<code class="inline">width</code> es <code class="inline">height</code>) es <strong>visszaadja</strong> a teruletüket (szelesseg * magassag).</p>
+<details class="task-hint">
+<summary>💡 Tipp</summary>
+<p><code class="inline">int rectangle_area(int width, int height) { return width * height; }</code></p>
+</details>
 <div class="exercise-editor">
 <div class="editor-toolbar">
-<button class="run-btn" onclick="runCode('exercise-4')">▶ Futtatás</button>
-<button class="reset-btn" onclick="resetCode('exercise-4')">↺ Visszaállítás</button>
+<button class="run-btn" onclick="runCode('exercise-19')">▶ Futtatás</button>
+<button class="reset-btn" onclick="resetCode('exercise-19')">↺ Visszaállítás</button>
 </div>
-<textarea id="exercise-4" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off">/*
-=============================================================
-GYAKORLO FELADATOK — C++ fuggvenyek
-Ird meg a megoldasokat a MEGOLDAS IDE reszekhez!
-Futtasd a Futtatas gombbal az ellenorzeshez.
-=============================================================
-*/
+<textarea id="exercise-19" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off">#include &lt;iostream&gt;
+using namespace std;
 
-#include &lt;iostream&gt;
+// MEGOLDAS IDE (a fuggvenyt a main ELE ird!):
+
+
+int main() {
+    // ELLENORZES:
+    if (rectangle_area(5, 3) == 15 &amp;&amp; rectangle_area(10, 10) == 100) {
+        cout &lt;&lt; &quot;✓ OK — rectangle_area(5,3) = &quot; &lt;&lt; rectangle_area(5,3) &lt;&lt; endl;
+    } else {
+        cout &lt;&lt; &quot;✗ rectangle_area(5,3) = 15 kene legyen!&quot; &lt;&lt; endl;
+    }
+    return 0;
+}</textarea>
+<div id="exercise-19-output" class="output-area">
+<span class="output-placeholder">Nyomd meg a ▶ Futtatás gombot az eredményért</span>
+</div>
+</div>
+</div>
+<div class="task-card">
+<div class="task-header">
+<h3>2. Nagyobb szam</h3>
+</div>
+<p class="task-desc">Irj egy <code class="inline">bigger</code> nevu fuggvenyt, ami kap ket <strong>int</strong>-et (<code class="inline">a</code> es <code class="inline">b</code>)
+es <strong>visszaadja a nagyobbat</strong> a ketto kozul.</p>
+<details class="task-hint">
+<summary>💡 Tipp</summary>
+<p>Hasznalj if-else-t: <code class="inline">if (a &gt;= b) { return a; } else { return b; }</code></p>
+</details>
+<div class="exercise-editor">
+<div class="editor-toolbar">
+<button class="run-btn" onclick="runCode('exercise-20')">▶ Futtatás</button>
+<button class="reset-btn" onclick="resetCode('exercise-20')">↺ Visszaállítás</button>
+</div>
+<textarea id="exercise-20" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off">#include &lt;iostream&gt;
+using namespace std;
+
+// MEGOLDAS IDE:
+
+
+int main() {
+    // ELLENORZES:
+    if (bigger(10, 7) == 10 &amp;&amp; bigger(3, 9) == 9 &amp;&amp; bigger(5, 5) == 5) {
+        cout &lt;&lt; &quot;✓ OK — bigger(10,7) = &quot; &lt;&lt; bigger(10,7) &lt;&lt; endl;
+    } else {
+        cout &lt;&lt; &quot;✗ bigger(10,7) = 10, bigger(3,9) = 9 kene legyen!&quot; &lt;&lt; endl;
+    }
+    return 0;
+}</textarea>
+<div id="exercise-20-output" class="output-area">
+<span class="output-placeholder">Nyomd meg a ▶ Futtatás gombot az eredményért</span>
+</div>
+</div>
+</div>
+<div class="task-card">
+<div class="task-header">
+<h3>3. Udvozlo uzenet</h3>
+</div>
+<p class="task-desc">Irj egy <code class="inline">create_greeting</code> nevu fuggvenyt, ami kap egy <strong>string</strong> parametert (<code class="inline">name</code>)
+es <strong>visszaad egy stringet</strong>: <code class="inline">&quot;Udvozollek, [name]!&quot;</code></p>
+<details class="task-hint">
+<summary>💡 Tipp</summary>
+<p><code class="inline">string create_greeting(string name) { return &quot;Udvozollek, &quot; + name + &quot;!&quot;; }</code></p>
+</details>
+<div class="exercise-editor">
+<div class="editor-toolbar">
+<button class="run-btn" onclick="runCode('exercise-21')">▶ Futtatás</button>
+<button class="reset-btn" onclick="resetCode('exercise-21')">↺ Visszaállítás</button>
+</div>
+<textarea id="exercise-21" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off">#include &lt;iostream&gt;
 #include &lt;string&gt;
 using namespace std;
 
-// ============================================================
-// 1. feladat: Teglalap terulete
-//
-// Irj egy fuggvenyt `rectangle_area` neven, ami:
-//   - Kap ket int parametert: `width` (szelesseg) es `height` (magassag)
-//   - Visszaadja a teruletüket (szelesseg * magassag) int-kent
-//
-// Pelda: rectangle_area(5, 3) → 15
-// Tipp: int rectangle_area(int width, int height) { return ...; }
-// ============================================================
-
 // MEGOLDAS IDE:
 
-
-// ============================================================
-// 2. feladat: Nagyobb szam
-//
-// Irj egy fuggvenyt `bigger` neven, ami:
-//   - Kap ket int parametert: `a` es `b`
-//   - Visszaadja a NAGYOBBAT a ketto kozul
-//
-// Pelda: bigger(10, 7) → 10
-// Tipp: hasznalj if-else-t a fuggvenyen belul!
-// ============================================================
-
-// MEGOLDAS IDE:
-
-
-// ============================================================
-// 3. feladat: Udvozlo uzenet
-//
-// Irj egy fuggvenyt `create_greeting` neven, ami:
-//   - Kap egy string parametert: `name`
-//   - Visszaad EGY stringet: &quot;Udvozollek, [name]!&quot;
-//
-// Pelda: create_greeting(&quot;Kata&quot;) → &quot;Udvozollek, Kata!&quot;
-// Tipp: return &quot;Udvozollek, &quot; + name + &quot;!&quot;;
-// ============================================================
-
-// MEGOLDAS IDE:
-
-
-// ============================================================
-// 4. feladat: Szam oszthato-e?
-//
-// Irj egy fuggvenyt `is_divisible` neven, ami:
-//   - Kap ket int parametert: `number` es `divisor`
-//   - Visszaad true-t ha `number` oszthato `divisor`-ral,
-//     kulonben false-t
-//
-// Pelda: is_divisible(10, 5) → true
-//        is_divisible(10, 3) → false
-// Tipp: hasznald a % (modulo) operatort!
-// ============================================================
-
-// MEGOLDAS IDE:
-
-
-// ============================================================
-// 5. feladat: Faktorialis
-//
-// Irj egy fuggvenyt `factorial` neven, ami:
-//   - Kap egy int parametert: `n`
-//   - Visszaadja n! (n faktorialis) erteket
-//   - n! = 1 * 2 * 3 * ... * n
-//
-// Pelda: factorial(5) → 120 (mert 1*2*3*4*5 = 120)
-//        factorial(1) → 1
-// Tipp: hasznalj for ciklust! Kezdj result = 1 ertekkel.
-// ============================================================
-
-// MEGOLDAS IDE:
-
-
-// ============================================================
-// MAIN — itt fut az ellenorzes
-// ============================================================
 
 int main() {
-
-    // ============================================================
-    // ELLENORZES — ne modositsd ezt a reszt!
-    // ============================================================
-
-    cout &lt;&lt; endl;
-    cout &lt;&lt; &quot;==================================================&quot; &lt;&lt; endl;
-    cout &lt;&lt; &quot;EREDMENYEK&quot; &lt;&lt; endl;
-    cout &lt;&lt; &quot;==================================================&quot; &lt;&lt; endl;
-
-    int errors = 0;
-
-    // 1. feladat
-    if (rectangle_area(5, 3) == 15 &amp;&amp; rectangle_area(10, 10) == 100) {
-        cout &lt;&lt; &quot;✓ 1. feladat: rectangle_area — OK&quot; &lt;&lt; endl;
+    // ELLENORZES:
+    if (create_greeting(&quot;Kata&quot;) == &quot;Udvozollek, Kata!&quot;) {
+        cout &lt;&lt; &quot;✓ OK — &quot; &lt;&lt; create_greeting(&quot;Kata&quot;) &lt;&lt; endl;
     } else {
-        cout &lt;&lt; &quot;✗ 1. feladat: rectangle_area — Szelesseg * magassag! rectangle_area(5,3) = 15 kene legyen.&quot; &lt;&lt; endl;
-        errors++;
+        cout &lt;&lt; &quot;✗ create_greeting(\&quot;Kata\&quot;) = \&quot;Udvozollek, Kata!\&quot; kene legyen!&quot; &lt;&lt; endl;
     }
-
-    // 2. feladat
-    if (bigger(10, 7) == 10 &amp;&amp; bigger(3, 9) == 9 &amp;&amp; bigger(5, 5) == 5) {
-        cout &lt;&lt; &quot;✓ 2. feladat: bigger — OK&quot; &lt;&lt; endl;
-    } else {
-        cout &lt;&lt; &quot;✗ 2. feladat: bigger — A nagyobbat kell visszaadni! Hasznalj if-else-t.&quot; &lt;&lt; endl;
-        errors++;
-    }
-
-    // 3. feladat
-    if (create_greeting(&quot;Kata&quot;) == &quot;Udvozollek, Kata!&quot; &amp;&amp; create_greeting(&quot;Peter&quot;) == &quot;Udvozollek, Peter!&quot;) {
-        cout &lt;&lt; &quot;✓ 3. feladat: create_greeting — OK&quot; &lt;&lt; endl;
-    } else {
-        cout &lt;&lt; &quot;✗ 3. feladat: create_greeting — \&quot;Udvozollek, \&quot; + name + \&quot;!\&quot; legyen az eredmeny!&quot; &lt;&lt; endl;
-        errors++;
-    }
-
-    // 4. feladat
-    if (is_divisible(10, 5) == true &amp;&amp; is_divisible(10, 3) == false &amp;&amp; is_divisible(15, 3) == true) {
-        cout &lt;&lt; &quot;✓ 4. feladat: is_divisible — OK&quot; &lt;&lt; endl;
-    } else {
-        cout &lt;&lt; &quot;✗ 4. feladat: is_divisible — Hasznald: return number % divisor == 0;&quot; &lt;&lt; endl;
-        errors++;
-    }
-
-    // 5. feladat
-    if (factorial(5) == 120 &amp;&amp; factorial(1) == 1 &amp;&amp; factorial(3) == 6) {
-        cout &lt;&lt; &quot;✓ 5. feladat: factorial — OK&quot; &lt;&lt; endl;
-    } else {
-        cout &lt;&lt; &quot;✗ 5. feladat: factorial — 5! = 120, 3! = 6. Hasznalj for ciklust!&quot; &lt;&lt; endl;
-        errors++;
-    }
-
-    cout &lt;&lt; &quot;==================================================&quot; &lt;&lt; endl;
-    if (errors == 0) {
-        cout &lt;&lt; &quot;MINDEN FELADAT KESZ! Szolj nekem, es megnezem!&quot; &lt;&lt; endl;
-    } else {
-        cout &lt;&lt; &quot;Meg &quot; &lt;&lt; errors &lt;&lt; &quot; feladat van hatra. Hajra!&quot; &lt;&lt; endl;
-    }
-
     return 0;
-}
-</textarea>
-<div id="exercise-4-output" class="output-area">
+}</textarea>
+<div id="exercise-21-output" class="output-area">
 <span class="output-placeholder">Nyomd meg a ▶ Futtatás gombot az eredményért</span>
+</div>
+</div>
+</div>
+<div class="task-card">
+<div class="task-header">
+<h3>4. Oszthato-e?</h3>
+</div>
+<p class="task-desc">Irj egy <code class="inline">is_divisible</code> nevu fuggvenyt, ami kap ket <strong>int</strong>-et (<code class="inline">number</code> es <code class="inline">divisor</code>)
+es visszaad <strong>true</strong>-t ha <code class="inline">number</code> oszthato <code class="inline">divisor</code>-ral, kulonben <strong>false</strong>-t.</p>
+<details class="task-hint">
+<summary>💡 Tipp</summary>
+<p><code class="inline">bool is_divisible(int number, int divisor) { return number % divisor == 0; }</code></p>
+</details>
+<div class="exercise-editor">
+<div class="editor-toolbar">
+<button class="run-btn" onclick="runCode('exercise-22')">▶ Futtatás</button>
+<button class="reset-btn" onclick="resetCode('exercise-22')">↺ Visszaállítás</button>
+</div>
+<textarea id="exercise-22" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off">#include &lt;iostream&gt;
+using namespace std;
+
+// MEGOLDAS IDE:
+
+
+int main() {
+    // ELLENORZES:
+    if (is_divisible(10, 5) == true &amp;&amp; is_divisible(10, 3) == false) {
+        cout &lt;&lt; &quot;✓ OK — is_divisible(10,5)=true, is_divisible(10,3)=false&quot; &lt;&lt; endl;
+    } else {
+        cout &lt;&lt; &quot;✗ Hasznald: return number % divisor == 0;&quot; &lt;&lt; endl;
+    }
+    return 0;
+}</textarea>
+<div id="exercise-22-output" class="output-area">
+<span class="output-placeholder">Nyomd meg a ▶ Futtatás gombot az eredményért</span>
+</div>
+</div>
+</div>
+<div class="task-card">
+<div class="task-header">
+<h3>5. Faktorialis</h3>
+</div>
+<p class="task-desc">Irj egy <code class="inline">factorial</code> nevu fuggvenyt, ami kap egy <strong>int</strong> <code class="inline">n</code>-et
+es visszaadja <strong>n!</strong> erteket (1 * 2 * 3 * ... * n).
+Pelda: <code class="inline">factorial(5)</code> → <strong>120</strong></p>
+<details class="task-hint">
+<summary>💡 Tipp</summary>
+<p>Hasznalj for ciklust: <code class="inline">int result = 1; for (int i = 1; i &lt;= n; i++) { result = result * i; } return result;</code></p>
+</details>
+<div class="exercise-editor">
+<div class="editor-toolbar">
+<button class="run-btn" onclick="runCode('exercise-23')">▶ Futtatás</button>
+<button class="reset-btn" onclick="resetCode('exercise-23')">↺ Visszaállítás</button>
+</div>
+<textarea id="exercise-23" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off">#include &lt;iostream&gt;
+using namespace std;
+
+// MEGOLDAS IDE:
+
+
+int main() {
+    // ELLENORZES:
+    if (factorial(5) == 120 &amp;&amp; factorial(1) == 1 &amp;&amp; factorial(3) == 6) {
+        cout &lt;&lt; &quot;✓ OK — factorial(5) = &quot; &lt;&lt; factorial(5) &lt;&lt; endl;
+    } else {
+        cout &lt;&lt; &quot;✗ factorial(5) = 120, factorial(3) = 6 kene legyen!&quot; &lt;&lt; endl;
+    }
+    return 0;
+}</textarea>
+<div id="exercise-23-output" class="output-area">
+<span class="output-placeholder">Nyomd meg a ▶ Futtatás gombot az eredményért</span>
+</div>
 </div>
 </div>
 </div>
@@ -1726,7 +1833,7 @@ int main() {
 <script src="https://cdn.jsdelivr.net/npm/JSCPP@2.0.4/dist/JSCPP.es5.min.js"></script>
 <script>
 (function() {
-var ORIGINALS = {"exercise-0": '/*\n=============================================================\nGYAKORLO FELADATOK — C++ alapok: Hello World\nIrd meg a megoldasokat a MEGOLDAS IDE reszekhez!\nFuttasd a Futtatas gombbal az ellenorzeshez.\n=============================================================\n*/\n\n#include <iostream>\nusing namespace std;\n\nint main() {\n\n    // ============================================================\n    // 1. feladat: Udvozles\n    // Irasd ki a kepernyore: "Szia, C++!"\n    // Tipp: hasznald a cout-ot es az endl-t\n    // ============================================================\n\n    // MEGOLDAS IDE:\n\n\n    // ============================================================\n    // 2. feladat: Ket soros uzenet\n    // Irasd ki KET KULON SORBA:\n    //   "Tanulok programozni."\n    //   "Ez nagyon jo!"\n    // Tipp: ket kulon cout utasitas kell, mindketto endl-lel\n    // ============================================================\n\n    // MEGOLDAS IDE:\n\n\n    // ============================================================\n    // 3. feladat: Bemutatkozas\n    // Irasd ki EGYETLEN cout utasitassal:\n    //   "Nevem: Anna, korom: 15"\n    // Tipp: a << operatorral osszefuzheted a szoveget es a szamot\n    // Pelda: cout << "szoveg" << 42 << endl;\n    // ============================================================\n\n    // MEGOLDAS IDE:\n\n\n    // ============================================================\n    // 4. feladat: Keretes uzenet\n    // Irasd ki ezt a 3 sort (mindegyik kulon cout):\n    //   "===================="\n    //   "  HELLO C++ VILAG!  "\n    //   "===================="\n    // ============================================================\n\n    // MEGOLDAS IDE:\n\n\n    // ============================================================\n    // ELLENORZES — ne modositsd ezt a reszt!\n    // ============================================================\n\n    cout << endl;\n    cout << "==================================================" << endl;\n    cout << "Az ellenorzes vizualis: nézd meg fentebb," << endl;\n    cout << "hogy megjelentek-e a kert szovegek!" << endl;\n    cout << "==================================================" << endl;\n    cout << endl;\n    cout << "Ellenorizd:" << endl;\n    cout << "  1. Latod a \\"Szia, C++!\\" szoveget?" << endl;\n    cout << "  2. Ket kulon sorban van a ket uzenet?" << endl;\n    cout << "  3. A bemutatkozas egy sorban van szoveggel ES szammal?" << endl;\n    cout << "  4. A keretes uzenet 3 sorbol all?" << endl;\n    cout << endl;\n    cout << "Ha mind igen: MINDEN FELADAT KESZ! Szolj nekem!" << endl;\n\n    return 0;\n}\n', "exercise-1": '/*\n=============================================================\nGYAKORLO FELADATOK — C++ valtozok es tipusok\nIrd meg a megoldasokat a MEGOLDAS IDE reszekhez!\nFuttasd a Futtatas gombbal az ellenorzeshez.\n=============================================================\n*/\n\n#include <iostream>\n#include <string>\nusing namespace std;\n\nint main() {\n\n    // ============================================================\n    // 1. feladat: Egesz szam valtozo\n    // Hozz letre egy `my_age` nevu int valtozot a koroddal!\n    // ============================================================\n\n    // MEGOLDAS IDE:\n\n\n    // ============================================================\n    // 2. feladat: Tort szam\n    // Hozz letre egy `my_height` nevu double valtozot\n    // a magassagoddal meterben (pl. 1.72)!\n    // ============================================================\n\n    // MEGOLDAS IDE:\n\n\n    // ============================================================\n    // 3. feladat: Szoveg\n    // Hozz letre egy `my_name` nevu string valtozot a neveddel!\n    // Tipp: string my_name = "...";\n    // ============================================================\n\n    // MEGOLDAS IDE:\n\n\n    // ============================================================\n    // 4. feladat: Bemutatkozas\n    // Irasd ki EGYETLEN sorba:\n    //   "Szia! Nevem [nev], [kor] eves vagyok."\n    // Hasznald a fenti valtozokat (my_name, my_age)!\n    // Tipp: cout << "szoveg" << valtozo << "szoveg" << endl;\n    // ============================================================\n\n    // MEGOLDAS IDE:\n\n\n    // ============================================================\n    // 5. feladat: Szamolas\n    // Hozz letre ket int valtozot: `a` erteke 15, `b` erteke 4.\n    // Szamold ki es irasd ki:\n    //   - az osszeguket (a + b)\n    //   - a kulonbseguket (a - b)\n    //   - a szorzatukat (a * b)\n    // Mindegyiket kulon sorba, peldaul: "Osszeg: 19"\n    // ============================================================\n\n    // MEGOLDAS IDE:\n\n\n    // ============================================================\n    // ELLENORZES — ne modositsd ezt a reszt!\n    // ============================================================\n\n    cout << endl;\n    cout << "==================================================" << endl;\n    cout << "EREDMENYEK" << endl;\n    cout << "==================================================" << endl;\n\n    int errors = 0;\n\n    // 1. feladat\n    if (my_age > 0 && my_age < 120) {\n        cout << "✓ 1. feladat: my_age — OK (" << my_age << ")" << endl;\n    } else {\n        cout << "✗ 1. feladat: my_age — Adj meg egy valos kort!" << endl;\n        errors++;\n    }\n\n    // 2. feladat\n    if (my_height > 0.5 && my_height < 2.5) {\n        cout << "✓ 2. feladat: my_height — OK (" << my_height << " m)" << endl;\n    } else {\n        cout << "✗ 2. feladat: my_height — Adj meg valos magassagot meterben!" << endl;\n        errors++;\n    }\n\n    // 3. feladat\n    if (my_name.length() > 0) {\n        cout << "✓ 3. feladat: my_name — OK (\\"" << my_name << "\\")" << endl;\n    } else {\n        cout << "✗ 3. feladat: my_name — Ne hagyd uresen a neved!" << endl;\n        errors++;\n    }\n\n    // 4. feladat — vizualis ellenorzes\n    cout << "? 4. feladat: Nezd meg fentebb, megjelent-e a bemutatkozas!" << endl;\n\n    // 5. feladat\n    if (a == 15 && b == 4) {\n        cout << "✓ 5. feladat: a es b — OK" << endl;\n    } else {\n        cout << "✗ 5. feladat: a legyen 15, b legyen 4!" << endl;\n        errors++;\n    }\n\n    cout << "==================================================" << endl;\n    if (errors == 0) {\n        cout << "MINDEN FELADAT KESZ! Szolj nekem, es megnezem!" << endl;\n    } else {\n        cout << "Meg " << errors << " feladat van hatra. Hajra!" << endl;\n    }\n\n    return 0;\n}\n', "exercise-2": '/*\n=============================================================\nGYAKORLO FELADATOK — C++ feltetelek (if/else, switch)\nIrd meg a megoldasokat a MEGOLDAS IDE reszekhez!\nFuttasd a Futtatas gombbal az ellenorzeshez.\n=============================================================\n*/\n\n#include <iostream>\n#include <string>\nusing namespace std;\n\nint main() {\n\n    // ============================================================\n    // 1. feladat: Paros vagy paratlan?\n    //\n    // Adott egy `number` valtozo (erteke 7).\n    // Ird meg az if-else feltetelt, ami:\n    //   - Ha paros: kiirja "Paros"\n    //   - Ha paratlan: kiirja "Paratlan"\n    //\n    // Tipp: a % (modulo) operator megadja az osztás maradekát.\n    //       Ha number % 2 == 0, akkor paros!\n    // ============================================================\n\n    int number = 7;\n    string number_result = "";\n\n    // MEGOLDAS IDE:\n\n\n    // ============================================================\n    // 2. feladat: Jegyezes\n    //\n    // Adott egy `points` valtozo (erteke 73).\n    // Ird meg az if / else if / else lancot, ami beallitja\n    // a `grade` valtozo erteket:\n    //   90-100 pont → grade = "Jeles"\n    //   75-89  pont → grade = "Jo"\n    //   60-74  pont → grade = "Kozepes"\n    //   40-59  pont → grade = "Elegseges"\n    //   0-39   pont → grade = "Elegtelen"\n    //\n    // Tipp: felulrol lefele vizsgald, a >= operatorral!\n    // ============================================================\n\n    int points = 73;\n    string grade = "";\n\n    // MEGOLDAS IDE:\n\n\n    // ============================================================\n    // 3. feladat: Beleptetés\n    //\n    // Adott ket valtozo: `visitor_age` (22) es `has_id` (true).\n    // Ird meg a feltetelt:\n    //   - Ha 18 vagy idosebb ÉS van igazolványa → result = "Belephet"\n    //   - Kulonben → result = "Nem lephet be"\n    //\n    // Tipp: hasznald az && (ÉS) operatort!\n    // ============================================================\n\n    int visitor_age = 22;\n    bool has_id = true;\n    string entry_result = "";\n\n    // MEGOLDAS IDE:\n\n\n    // ============================================================\n    // 4. feladat: Evszak\n    //\n    // Adott a `month` valtozo (erteke 8, azaz augusztus).\n    // Hasznalj switch-et, es allitsd be a `season` valtozot:\n    //   12, 1, 2  → season = "Tel"\n    //   3, 4, 5   → season = "Tavasz"\n    //   6, 7, 8   → season = "Nyar"\n    //   9, 10, 11 → season = "Osz"\n    //\n    // Tipp: tobb case-t is irhatsz egymas ala break nelkul,\n    //       hogy "atfolyjanak" ugyanarra az eredmenyre:\n    //       case 6: case 7: case 8: ... break;\n    // ============================================================\n\n    int month = 8;\n    string season = "";\n\n    // MEGOLDAS IDE:\n\n\n    // ============================================================\n    // 5. feladat: Hany eves vagy kategoria\n    //\n    // Adott a `cat_age` valtozo (erteke 10).\n    // Ird meg a feltetelt:\n    //   - Ha 0-2   → category = "Csecsemo"\n    //   - Ha 3-5   → category = "Ovodas"\n    //   - Ha 6-14  → category = "Iskolás"\n    //   - Ha 15-17 → category = "Tinedzser"\n    //   - Ha 18+   → category = "Felnott"\n    //\n    // Tipp: hasznalj else if lancot!\n    // ============================================================\n\n    int cat_age = 10;\n    string category = "";\n\n    // MEGOLDAS IDE:\n\n\n    // ============================================================\n    // ELLENORZES — ne modositsd ezt a reszt!\n    // ============================================================\n\n    cout << endl;\n    cout << "==================================================" << endl;\n    cout << "EREDMENYEK" << endl;\n    cout << "==================================================" << endl;\n\n    int errors = 0;\n\n    // 1. feladat\n    if (number_result == "Paratlan") {\n        cout << "✓ 1. feladat: Paros/paratlan — OK" << endl;\n    } else {\n        cout << "✗ 1. feladat: Paros/paratlan — A 7 paratlan! Hasznald: number % 2" << endl;\n        errors++;\n    }\n\n    // 2. feladat\n    if (grade == "Kozepes") {\n        cout << "✓ 2. feladat: Jegyezes — OK (73 pont = " << grade << ")" << endl;\n    } else {\n        cout << "✗ 2. feladat: Jegyezes — 73 pont Kozepes kene legyen! Ellenorizd a hataroket." << endl;\n        errors++;\n    }\n\n    // 3. feladat\n    if (entry_result == "Belephet") {\n        cout << "✓ 3. feladat: Beleptetes — OK" << endl;\n    } else {\n        cout << "✗ 3. feladat: Beleptetes — 22 eves + van ID = Belephet! Hasznald az && operatort." << endl;\n        errors++;\n    }\n\n    // 4. feladat\n    if (season == "Nyar") {\n        cout << "✓ 4. feladat: Evszak — OK (8. honap = " << season << ")" << endl;\n    } else {\n        cout << "✗ 4. feladat: Evszak — Augusztus (8) = Nyar! Hasznalj switch-et." << endl;\n        errors++;\n    }\n\n    // 5. feladat\n    if (category == "Iskolás" || category == "Iskolas") {\n        cout << "✓ 5. feladat: Korkategoria — OK (10 eves = " << category << ")" << endl;\n    } else {\n        cout << "✗ 5. feladat: Korkategoria — 10 eves = Iskolas! Ellenorizd az else if lancot." << endl;\n        errors++;\n    }\n\n    cout << "==================================================" << endl;\n    if (errors == 0) {\n        cout << "MINDEN FELADAT KESZ! Szolj nekem, es megnezem!" << endl;\n    } else {\n        cout << "Meg " << errors << " feladat van hatra. Hajra!" << endl;\n    }\n\n    return 0;\n}\n', "exercise-3": '/*\n=============================================================\nGYAKORLO FELADATOK — C++ ciklusok (for, while)\nIrd meg a megoldasokat a MEGOLDAS IDE reszekhez!\nFuttasd a Futtatas gombbal az ellenorzeshez.\n=============================================================\n*/\n\n#include <iostream>\n#include <string>\nusing namespace std;\n\nint main() {\n\n    // ============================================================\n    // 1. feladat: Szamolas 1-tol 10-ig\n    //\n    // Irj egy for ciklust, ami kiirja a szamokat 1-tol 10-ig!\n    // Kozben szamold ossze oket a `sum` valtozoba.\n    //\n    // Vart eredmeny: sum = 55 (1+2+3+...+10)\n    // Tipp: for (int i = 1; i <= 10; i++) { ... }\n    // ============================================================\n\n    int sum = 0;\n\n    // MEGOLDAS IDE:\n\n\n    // ============================================================\n    // 2. feladat: Paros szamok\n    //\n    // Irj egy for ciklust, ami vegigmegy 1-tol 20-ig,\n    // de CSAK a paros szamokat adja hozza az `even_sum`-hoz.\n    //\n    // Vart eredmeny: even_sum = 110 (2+4+6+8+10+12+14+16+18+20)\n    // Tipp: hasznald az if-et a cikluson belul: if (i % 2 == 0)\n    // ============================================================\n\n    int even_sum = 0;\n\n    // MEGOLDAS IDE:\n\n\n    // ============================================================\n    // 3. feladat: Visszaszamlalas\n    //\n    // Irj egy for ciklust, ami visszafele szamol 10-tol 1-ig,\n    // es osszeepiti a `countdown` stringet.\n    // Minden szamot irj bele a countdown-ba ugy:\n    //   countdown = countdown + to_string(i) + " ";\n    //\n    // Vart eredmeny: countdown = "10 9 8 7 6 5 4 3 2 1 "\n    // Tipp: for (int i = 10; i >= 1; i--) { ... }\n    // ============================================================\n\n    string countdown = "";\n\n    // MEGOLDAS IDE:\n\n\n    // ============================================================\n    // 4. feladat: Hatvanyozas while ciklussal\n    //\n    // Adott a `base` valtozo (erteke 2).\n    // Irj egy while ciklust, ami addig szorozza `power` erteket\n    // `base`-zel, amig az el nem eri vagy meghaladja az 1000-et.\n    // Szamold meg, hanyszor szorzotal (`steps` valtozoba).\n    //\n    // Vart eredmeny: power = 1024, steps = 10\n    // (mert 2^10 = 1024, ami az elso 2-hatvany >= 1000)\n    // Tipp: while (power < 1000) { power = power * base; steps++; }\n    // ============================================================\n\n    int base = 2;\n    int power = 1;\n    int steps = 0;\n\n    // MEGOLDAS IDE:\n\n\n    // ============================================================\n    // 5. feladat: Csillag piramis\n    //\n    // Irj egymasba agyazott for ciklusokat, amik felépitik\n    // a `pyramid` stringet igy (5 sor):\n    //   "*\\n"\n    //   "**\\n"\n    //   "***\\n"\n    //   "****\\n"\n    //   "*****\\n"\n    //\n    // A kulso ciklus a sorokon megy (1-tol 5-ig).\n    // A belso ciklus annyi *-ot ir, ahany a sorszam.\n    // Minden sor vegen adj hozza "\\n"-t (ujsor karakter).\n    //\n    // Tipp:\n    //   for (int row = 1; row <= 5; row++) {\n    //       for (int col = 1; col <= row; col++) { ... }\n    //       pyramid = pyramid + "\\n";\n    //   }\n    // ============================================================\n\n    string pyramid = "";\n\n    // MEGOLDAS IDE:\n\n\n    // ============================================================\n    // ELLENORZES — ne modositsd ezt a reszt!\n    // ============================================================\n\n    cout << endl;\n    cout << "==================================================" << endl;\n    cout << "EREDMENYEK" << endl;\n    cout << "==================================================" << endl;\n\n    int errors = 0;\n\n    // 1. feladat\n    if (sum == 55) {\n        cout << "✓ 1. feladat: Osszeg 1-10 — OK (sum = " << sum << ")" << endl;\n    } else {\n        cout << "✗ 1. feladat: Osszeg 1-10 — Vart: 55, kaptam: " << sum << endl;\n        errors++;\n    }\n\n    // 2. feladat\n    if (even_sum == 110) {\n        cout << "✓ 2. feladat: Paros osszeg — OK (even_sum = " << even_sum << ")" << endl;\n    } else {\n        cout << "✗ 2. feladat: Paros osszeg — Vart: 110, kaptam: " << even_sum << endl;\n        errors++;\n    }\n\n    // 3. feladat\n    if (countdown == "10 9 8 7 6 5 4 3 2 1 ") {\n        cout << "✓ 3. feladat: Visszaszamlalas — OK" << endl;\n    } else {\n        cout << "✗ 3. feladat: Visszaszamlalas — Ellenorizd a ciklust! Kaptam: \\"" << countdown << "\\"" << endl;\n        errors++;\n    }\n\n    // 4. feladat\n    if (power == 1024 && steps == 10) {\n        cout << "✓ 4. feladat: Hatvanyozas — OK (2^" << steps << " = " << power << ")" << endl;\n    } else {\n        cout << "✗ 4. feladat: Hatvanyozas — Vart: power=1024, steps=10. Kaptam: " << power << ", " << steps << endl;\n        errors++;\n    }\n\n    // 5. feladat\n    string expected_pyramid = "*\\n**\\n***\\n****\\n*****\\n";\n    if (pyramid == expected_pyramid) {\n        cout << "✓ 5. feladat: Piramis — OK" << endl;\n        cout << pyramid;\n    } else {\n        cout << "✗ 5. feladat: Piramis — Ellenorizd a ket egymasba agyazott ciklust!" << endl;\n        if (pyramid.length() > 0) {\n            cout << "  Kaptam:" << endl << pyramid;\n        }\n        errors++;\n    }\n\n    cout << "==================================================" << endl;\n    if (errors == 0) {\n        cout << "MINDEN FELADAT KESZ! Szolj nekem, es megnezem!" << endl;\n    } else {\n        cout << "Meg " << errors << " feladat van hatra. Hajra!" << endl;\n    }\n\n    return 0;\n}\n', "exercise-4": '/*\n=============================================================\nGYAKORLO FELADATOK — C++ fuggvenyek\nIrd meg a megoldasokat a MEGOLDAS IDE reszekhez!\nFuttasd a Futtatas gombbal az ellenorzeshez.\n=============================================================\n*/\n\n#include <iostream>\n#include <string>\nusing namespace std;\n\n// ============================================================\n// 1. feladat: Teglalap terulete\n//\n// Irj egy fuggvenyt `rectangle_area` neven, ami:\n//   - Kap ket int parametert: `width` (szelesseg) es `height` (magassag)\n//   - Visszaadja a teruletüket (szelesseg * magassag) int-kent\n//\n// Pelda: rectangle_area(5, 3) → 15\n// Tipp: int rectangle_area(int width, int height) { return ...; }\n// ============================================================\n\n// MEGOLDAS IDE:\n\n\n// ============================================================\n// 2. feladat: Nagyobb szam\n//\n// Irj egy fuggvenyt `bigger` neven, ami:\n//   - Kap ket int parametert: `a` es `b`\n//   - Visszaadja a NAGYOBBAT a ketto kozul\n//\n// Pelda: bigger(10, 7) → 10\n// Tipp: hasznalj if-else-t a fuggvenyen belul!\n// ============================================================\n\n// MEGOLDAS IDE:\n\n\n// ============================================================\n// 3. feladat: Udvozlo uzenet\n//\n// Irj egy fuggvenyt `create_greeting` neven, ami:\n//   - Kap egy string parametert: `name`\n//   - Visszaad EGY stringet: "Udvozollek, [name]!"\n//\n// Pelda: create_greeting("Kata") → "Udvozollek, Kata!"\n// Tipp: return "Udvozollek, " + name + "!";\n// ============================================================\n\n// MEGOLDAS IDE:\n\n\n// ============================================================\n// 4. feladat: Szam oszthato-e?\n//\n// Irj egy fuggvenyt `is_divisible` neven, ami:\n//   - Kap ket int parametert: `number` es `divisor`\n//   - Visszaad true-t ha `number` oszthato `divisor`-ral,\n//     kulonben false-t\n//\n// Pelda: is_divisible(10, 5) → true\n//        is_divisible(10, 3) → false\n// Tipp: hasznald a % (modulo) operatort!\n// ============================================================\n\n// MEGOLDAS IDE:\n\n\n// ============================================================\n// 5. feladat: Faktorialis\n//\n// Irj egy fuggvenyt `factorial` neven, ami:\n//   - Kap egy int parametert: `n`\n//   - Visszaadja n! (n faktorialis) erteket\n//   - n! = 1 * 2 * 3 * ... * n\n//\n// Pelda: factorial(5) → 120 (mert 1*2*3*4*5 = 120)\n//        factorial(1) → 1\n// Tipp: hasznalj for ciklust! Kezdj result = 1 ertekkel.\n// ============================================================\n\n// MEGOLDAS IDE:\n\n\n// ============================================================\n// MAIN — itt fut az ellenorzes\n// ============================================================\n\nint main() {\n\n    // ============================================================\n    // ELLENORZES — ne modositsd ezt a reszt!\n    // ============================================================\n\n    cout << endl;\n    cout << "==================================================" << endl;\n    cout << "EREDMENYEK" << endl;\n    cout << "==================================================" << endl;\n\n    int errors = 0;\n\n    // 1. feladat\n    if (rectangle_area(5, 3) == 15 && rectangle_area(10, 10) == 100) {\n        cout << "✓ 1. feladat: rectangle_area — OK" << endl;\n    } else {\n        cout << "✗ 1. feladat: rectangle_area — Szelesseg * magassag! rectangle_area(5,3) = 15 kene legyen." << endl;\n        errors++;\n    }\n\n    // 2. feladat\n    if (bigger(10, 7) == 10 && bigger(3, 9) == 9 && bigger(5, 5) == 5) {\n        cout << "✓ 2. feladat: bigger — OK" << endl;\n    } else {\n        cout << "✗ 2. feladat: bigger — A nagyobbat kell visszaadni! Hasznalj if-else-t." << endl;\n        errors++;\n    }\n\n    // 3. feladat\n    if (create_greeting("Kata") == "Udvozollek, Kata!" && create_greeting("Peter") == "Udvozollek, Peter!") {\n        cout << "✓ 3. feladat: create_greeting — OK" << endl;\n    } else {\n        cout << "✗ 3. feladat: create_greeting — \\"Udvozollek, \\" + name + \\"!\\" legyen az eredmeny!" << endl;\n        errors++;\n    }\n\n    // 4. feladat\n    if (is_divisible(10, 5) == true && is_divisible(10, 3) == false && is_divisible(15, 3) == true) {\n        cout << "✓ 4. feladat: is_divisible — OK" << endl;\n    } else {\n        cout << "✗ 4. feladat: is_divisible — Hasznald: return number % divisor == 0;" << endl;\n        errors++;\n    }\n\n    // 5. feladat\n    if (factorial(5) == 120 && factorial(1) == 1 && factorial(3) == 6) {\n        cout << "✓ 5. feladat: factorial — OK" << endl;\n    } else {\n        cout << "✗ 5. feladat: factorial — 5! = 120, 3! = 6. Hasznalj for ciklust!" << endl;\n        errors++;\n    }\n\n    cout << "==================================================" << endl;\n    if (errors == 0) {\n        cout << "MINDEN FELADAT KESZ! Szolj nekem, es megnezem!" << endl;\n    } else {\n        cout << "Meg " << errors << " feladat van hatra. Hajra!" << endl;\n    }\n\n    return 0;\n}\n'};
+var ORIGINALS = {"exercise-0": '#include <iostream>\nusing namespace std;\nint main() {\n    // MEGOLDAS IDE:\n\n    return 0;\n}', "exercise-1": '#include <iostream>\nusing namespace std;\nint main() {\n    // MEGOLDAS IDE:\n\n    return 0;\n}', "exercise-2": '#include <iostream>\nusing namespace std;\nint main() {\n    // MEGOLDAS IDE:\n\n    return 0;\n}', "exercise-3": '#include <iostream>\nusing namespace std;\nint main() {\n    // MEGOLDAS IDE:\n\n    return 0;\n}', "exercise-4": '#include <iostream>\nusing namespace std;\nint main() {\n    // MEGOLDAS IDE:\n\n    // ELLENORZES:\n    if (my_age > 0 && my_age < 120) {\n        cout << "✓ OK — my_age = " << my_age << endl;\n    } else {\n        cout << "✗ Adj meg valos kort!" << endl;\n    }\n    return 0;\n}', "exercise-5": '#include <iostream>\nusing namespace std;\nint main() {\n    // MEGOLDAS IDE:\n\n    // ELLENORZES:\n    if (my_height > 0.5 && my_height < 2.5) {\n        cout << "✓ OK — my_height = " << my_height << " m" << endl;\n    } else {\n        cout << "✗ Adj meg valos magassagot meterben!" << endl;\n    }\n    return 0;\n}', "exercise-6": '#include <iostream>\n#include <string>\nusing namespace std;\nint main() {\n    // MEGOLDAS IDE:\n\n    // ELLENORZES:\n    if (my_name.length() > 0) {\n        cout << "✓ OK — my_name = \\"" << my_name << "\\"" << endl;\n    } else {\n        cout << "✗ Ne hagyd uresen a neved!" << endl;\n    }\n    return 0;\n}', "exercise-7": '#include <iostream>\n#include <string>\nusing namespace std;\nint main() {\n    // MEGOLDAS IDE:\n\n    return 0;\n}', "exercise-8": '#include <iostream>\nusing namespace std;\nint main() {\n    // MEGOLDAS IDE:\n\n    // ELLENORZES:\n    if (a == 15 && b == 4) {\n        cout << "✓ OK — a=" << a << ", b=" << b << endl;\n    } else {\n        cout << "✗ a legyen 15, b legyen 4!" << endl;\n    }\n    return 0;\n}', "exercise-9": '#include <iostream>\nusing namespace std;\nint main() {\n    int number = 7;\n\n    // MEGOLDAS IDE:\n\n    return 0;\n}', "exercise-10": '#include <iostream>\n#include <string>\nusing namespace std;\nint main() {\n    int points = 73;\n    string grade = "";\n\n    // MEGOLDAS IDE:\n\n    // ELLENORZES:\n    if (grade == "Kozepes") {\n        cout << "✓ OK — 73 pont = " << grade << endl;\n    } else {\n        cout << "✗ 73 pont = Kozepes kene legyen! Kaptam: \\"" << grade << "\\"" << endl;\n    }\n    return 0;\n}', "exercise-11": '#include <iostream>\nusing namespace std;\nint main() {\n    int visitor_age = 22;\n    bool has_id = true;\n\n    // MEGOLDAS IDE:\n\n    return 0;\n}', "exercise-12": '#include <iostream>\n#include <string>\nusing namespace std;\nint main() {\n    int month = 8;\n    string season = "";\n\n    // MEGOLDAS IDE:\n\n    // ELLENORZES:\n    if (season == "Nyar") {\n        cout << "✓ OK — 8. honap = " << season << endl;\n    } else {\n        cout << "✗ Augusztus = Nyar! Kaptam: \\"" << season << "\\"" << endl;\n    }\n    return 0;\n}', "exercise-13": '#include <iostream>\n#include <string>\nusing namespace std;\nint main() {\n    int cat_age = 10;\n    string category = "";\n\n    // MEGOLDAS IDE:\n\n    // ELLENORZES:\n    if (category == "Iskolas") {\n        cout << "✓ OK — 10 eves = " << category << endl;\n    } else {\n        cout << "✗ 10 eves = Iskolas! Kaptam: \\"" << category << "\\"" << endl;\n    }\n    return 0;\n}', "exercise-14": '#include <iostream>\nusing namespace std;\nint main() {\n    int sum = 0;\n\n    // MEGOLDAS IDE:\n\n    // ELLENORZES:\n    if (sum == 55) {\n        cout << "✓ OK — sum = " << sum << endl;\n    } else {\n        cout << "✗ Vart: 55, kaptam: " << sum << endl;\n    }\n    return 0;\n}', "exercise-15": '#include <iostream>\nusing namespace std;\nint main() {\n    int even_sum = 0;\n\n    // MEGOLDAS IDE:\n\n    // ELLENORZES:\n    if (even_sum == 110) {\n        cout << "✓ OK — even_sum = " << even_sum << endl;\n    } else {\n        cout << "✗ Vart: 110, kaptam: " << even_sum << endl;\n    }\n    return 0;\n}', "exercise-16": '#include <iostream>\n#include <string>\nusing namespace std;\nint main() {\n    string countdown = "";\n\n    // MEGOLDAS IDE:\n\n    // ELLENORZES:\n    if (countdown == "10 9 8 7 6 5 4 3 2 1 ") {\n        cout << "✓ OK — " << countdown << endl;\n    } else {\n        cout << "✗ Vart: \\"10 9 8 7 6 5 4 3 2 1 \\"" << endl;\n        cout << "  Kaptam: \\"" << countdown << "\\"" << endl;\n    }\n    return 0;\n}', "exercise-17": '#include <iostream>\nusing namespace std;\nint main() {\n    int power = 1;\n    int steps = 0;\n\n    // MEGOLDAS IDE:\n\n    // ELLENORZES:\n    if (power == 1024 && steps == 10) {\n        cout << "✓ OK — 2^" << steps << " = " << power << endl;\n    } else {\n        cout << "✗ Vart: power=1024, steps=10" << endl;\n        cout << "  Kaptam: power=" << power << ", steps=" << steps << endl;\n    }\n    return 0;\n}', "exercise-18": '#include <iostream>\n#include <string>\nusing namespace std;\nint main() {\n    string pyramid = "";\n\n    // MEGOLDAS IDE:\n\n    // ELLENORZES:\n    string expected = "*\\n**\\n***\\n****\\n*****\\n";\n    if (pyramid == expected) {\n        cout << "✓ OK" << endl;\n        cout << pyramid;\n    } else {\n        cout << "✗ Nem stimmel a piramis!" << endl;\n        cout << "Kaptam:" << endl << pyramid;\n    }\n    return 0;\n}', "exercise-19": '#include <iostream>\nusing namespace std;\n\n// MEGOLDAS IDE (a fuggvenyt a main ELE ird!):\n\n\nint main() {\n    // ELLENORZES:\n    if (rectangle_area(5, 3) == 15 && rectangle_area(10, 10) == 100) {\n        cout << "✓ OK — rectangle_area(5,3) = " << rectangle_area(5,3) << endl;\n    } else {\n        cout << "✗ rectangle_area(5,3) = 15 kene legyen!" << endl;\n    }\n    return 0;\n}', "exercise-20": '#include <iostream>\nusing namespace std;\n\n// MEGOLDAS IDE:\n\n\nint main() {\n    // ELLENORZES:\n    if (bigger(10, 7) == 10 && bigger(3, 9) == 9 && bigger(5, 5) == 5) {\n        cout << "✓ OK — bigger(10,7) = " << bigger(10,7) << endl;\n    } else {\n        cout << "✗ bigger(10,7) = 10, bigger(3,9) = 9 kene legyen!" << endl;\n    }\n    return 0;\n}', "exercise-21": '#include <iostream>\n#include <string>\nusing namespace std;\n\n// MEGOLDAS IDE:\n\n\nint main() {\n    // ELLENORZES:\n    if (create_greeting("Kata") == "Udvozollek, Kata!") {\n        cout << "✓ OK — " << create_greeting("Kata") << endl;\n    } else {\n        cout << "✗ create_greeting(\\"Kata\\") = \\"Udvozollek, Kata!\\" kene legyen!" << endl;\n    }\n    return 0;\n}', "exercise-22": '#include <iostream>\nusing namespace std;\n\n// MEGOLDAS IDE:\n\n\nint main() {\n    // ELLENORZES:\n    if (is_divisible(10, 5) == true && is_divisible(10, 3) == false) {\n        cout << "✓ OK — is_divisible(10,5)=true, is_divisible(10,3)=false" << endl;\n    } else {\n        cout << "✗ Hasznald: return number % divisor == 0;" << endl;\n    }\n    return 0;\n}', "exercise-23": '#include <iostream>\nusing namespace std;\n\n// MEGOLDAS IDE:\n\n\nint main() {\n    // ELLENORZES:\n    if (factorial(5) == 120 && factorial(1) == 1 && factorial(3) == 6) {\n        cout << "✓ OK — factorial(5) = " << factorial(5) << endl;\n    } else {\n        cout << "✗ factorial(5) = 120, factorial(3) = 6 kene legyen!" << endl;\n    }\n    return 0;\n}'};
 
   // ---- Accordion toggle ----
   window.toggleAccordion = function(btn) {

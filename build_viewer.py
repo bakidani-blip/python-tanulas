@@ -329,6 +329,146 @@ def render_code_block(code: str) -> str:
     return f'<pre class="code-block"><code>{escaped}</code></pre>'
 
 
+def parse_exercise_tasks(content: str) -> list[dict] | None:
+    """Ha a fajl @TASK markereket tartalmaz, task-okra bontja.
+
+    Visszaad egy listat:
+      [{"title": "...", "desc": "...", "hint": "...", "code": "..."}, ...]
+    Vagy None-t, ha nincs @TASK marker (regi formatum).
+    """
+    if "// @TASK" not in content and "# @TASK" not in content:
+        return None
+
+    tasks = []
+    current = None
+    mode = None  # "desc", "hint", "code"
+
+    for line in content.split("\n"):
+        stripped = line.strip()
+        # Komment prefix levagasa
+        clean = stripped
+        for prefix in ("// ", "# "):
+            if clean.startswith(prefix):
+                clean = clean[len(prefix):]
+                break
+
+        if stripped.endswith("@TASK") and len(stripped.split("@TASK")) == 2:
+            # Uj @TASK sor: "// @TASK 1. Cim" vagy "# @TASK 1. Cim"
+            pass  # Fall through to below check
+
+        if "@TASK" in stripped and ("// @TASK" in stripped or "# @TASK" in stripped):
+            if current and current.get("code"):
+                tasks.append(current)
+            title = clean.replace("@TASK", "").strip()
+            current = {"title": title, "desc": "", "hint": "", "code": ""}
+            mode = None
+            continue
+
+        if current is None:
+            continue
+
+        if clean.startswith("@DESC"):
+            text = clean[5:].strip()
+            if current["desc"]:
+                current["desc"] += "\n" + text
+            else:
+                current["desc"] = text
+            mode = "desc"
+            continue
+
+        if clean.startswith("@HINT"):
+            text = clean[5:].strip()
+            current["hint"] = text
+            mode = "hint"
+            continue
+
+        if clean.startswith("@CODE"):
+            mode = "code"
+            continue
+
+        if clean.startswith("@END"):
+            if current and current.get("code"):
+                # Trim trailing whitespace from code
+                current["code"] = current["code"].strip()
+                tasks.append(current)
+            current = None
+            mode = None
+            continue
+
+        # Folytatas sorok
+        if mode == "desc" and (stripped.startswith("// ") or stripped.startswith("# ")):
+            line_text = clean.strip()
+            if line_text and not line_text.startswith("@"):
+                current["desc"] += "\n" + line_text
+        elif mode == "hint" and (stripped.startswith("// ") or stripped.startswith("# ")):
+            line_text = clean.strip()
+            if line_text and not line_text.startswith("@"):
+                current["hint"] += "\n" + line_text
+        elif mode == "code":
+            if current["code"]:
+                current["code"] += "\n" + line
+            else:
+                current["code"] = line
+
+    if current and current.get("code"):
+        current["code"] = current["code"].strip()
+        tasks.append(current)
+
+    return tasks if tasks else None
+
+
+def render_exercise_tasks(tasks: list[dict], start_idx: int) -> tuple[str, int]:
+    """Task-alapu gyakorlatokat renderel kulon editorokkal.
+
+    Visszaadja a HTML stringet es az utolso exercise index-et.
+    """
+    parts = []
+    idx = start_idx
+
+    for task in tasks:
+        ex_id = f"exercise-{idx}"
+        escaped_code = html.escape(task["code"])
+
+        # Leiras formatazasa
+        desc_html = ""
+        if task["desc"]:
+            desc_escaped = html.escape(task["desc"])
+            desc_escaped = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", desc_escaped)
+            desc_escaped = re.sub(r"`(.+?)`", r'<code class="inline">\1</code>', desc_escaped)
+            desc_html = f'<p class="task-desc">{desc_escaped}</p>'
+
+        # Tipp
+        hint_html = ""
+        if task["hint"]:
+            hint_escaped = html.escape(task["hint"])
+            hint_escaped = re.sub(r"`(.+?)`", r'<code class="inline">\1</code>', hint_escaped)
+            hint_html = f'''<details class="task-hint">
+<summary>\U0001f4a1 Tipp</summary>
+<p>{hint_escaped}</p>
+</details>'''
+
+        parts.append(f'''<div class="task-card">
+<div class="task-header">
+<h3>{html.escape(task["title"])}</h3>
+</div>
+{desc_html}
+{hint_html}
+<div class="exercise-editor">
+<div class="editor-toolbar">
+<button class="run-btn" onclick="runCode('{ex_id}')">\u25b6 Futtat\u00e1s</button>
+<button class="reset-btn" onclick="resetCode('{ex_id}')">\u21ba Vissza\u00e1ll\u00edt\u00e1s</button>
+</div>
+<textarea id="{ex_id}" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off">{escaped_code}</textarea>
+<div id="{ex_id}-output" class="output-area">
+<span class="output-placeholder">Nyomd meg a \u25b6 Futtat\u00e1s gombot az eredm\u00e9ny\u00e9rt</span>
+</div>
+</div>
+</div>''')
+        idx += 1
+
+    return "\n".join(parts), idx
+
+
 def render_lesson(file_info: dict) -> str:
     """Egy lecke fajlt HTML-re alakit (csak olvasas)."""
     sections = parse_sections(file_info["content"], file_info["_config"])
@@ -371,7 +511,9 @@ def generate_html(pairs: list[dict], config: dict) -> str:
 
     # Tartalom panelek: lecke + accordion gyakorlat(ok)
     panels_html = []
+    originals = {}
     exercise_global_idx = 0
+
     for i, pair in enumerate(pairs):
         display = "" if i == 0 else ' style="display:none"'
         panels_html.append(f'<div class="panel" data-index="{i}"{display}>')
@@ -381,9 +523,29 @@ def generate_html(pairs: list[dict], config: dict) -> str:
 
         # Gyakorlat(ok) accordion-ban
         for ex in pair["exercises"]:
-            ex_id = f"exercise-{exercise_global_idx}"
-            escaped_content = html.escape(ex["content"])
-            panels_html.append(f'''
+            tasks = parse_exercise_tasks(ex["content"])
+
+            if tasks:
+                # Task-alapu formatum: kulon editor minden feladathoz
+                panels_html.append(f'''
+<div class="accordion">
+<button class="accordion-toggle" onclick="toggleAccordion(this)">
+<span>\u270f\ufe0f Gyakorlat: {html.escape(ex["title"])}</span>
+<span class="accordion-arrow">\u25bc</span>
+</button>
+<div class="accordion-content" style="display:none">''')
+                tasks_html, new_idx = render_exercise_tasks(tasks, exercise_global_idx)
+                panels_html.append(tasks_html)
+                panels_html.append('</div>\n</div>')
+
+                for task in tasks:
+                    originals[f"exercise-{exercise_global_idx}"] = task["code"]
+                    exercise_global_idx += 1
+            else:
+                # Regi formatum: egy nagy editor
+                ex_id = f"exercise-{exercise_global_idx}"
+                escaped_content = html.escape(ex["content"])
+                panels_html.append(f'''
 <div class="accordion">
 <button class="accordion-toggle" onclick="toggleAccordion(this)">
 <span>\u270f\ufe0f Gyakorlat: {html.escape(ex["title"])}</span>
@@ -402,17 +564,10 @@ def generate_html(pairs: list[dict], config: dict) -> str:
 </div>
 </div>
 </div>''')
-            exercise_global_idx += 1
+                originals[f"exercise-{exercise_global_idx}"] = ex["content"]
+                exercise_global_idx += 1
 
         panels_html.append('</div>')
-
-    # Original contents for reset
-    originals = {}
-    ex_idx = 0
-    for pair in pairs:
-        for ex in pair["exercises"]:
-            originals[f"exercise-{ex_idx}"] = ex["content"]
-            ex_idx += 1
 
     originals_js = "var ORIGINALS = {" + ", ".join(
         f'"{k}": {repr(v)}' for k, v in originals.items()
@@ -842,6 +997,48 @@ pre.code-block code {{
 .accordion-content {{
   padding: 16px;
   border-top: 1px solid var(--border);
+}}
+
+/* ============ TASK CARDS ============ */
+.task-card {{
+  margin-bottom: 24px;
+  padding: 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}}
+.task-card:last-child {{ margin-bottom: 0; }}
+.task-header h3 {{
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 8px;
+}}
+.task-desc {{
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 12px;
+}}
+.task-desc strong {{ color: var(--text-primary); }}
+.task-hint {{
+  margin-bottom: 12px;
+  background: var(--bg-surface);
+  border-radius: 8px;
+  padding: 2px 12px;
+}}
+.task-hint summary {{
+  cursor: pointer;
+  padding: 8px 0;
+  color: var(--accent-yellow);
+  font-weight: 600;
+  font-size: 0.9rem;
+  -webkit-tap-highlight-color: transparent;
+}}
+.task-hint p {{
+  padding: 0 0 10px 0;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
 }}
 
 .scroll-top {{

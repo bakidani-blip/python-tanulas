@@ -1,119 +1,101 @@
 /*
 =============================================================
 GYAKORLO FELADATOK — C++ valtozok es tipusok
-Ird meg a megoldasokat a MEGOLDAS IDE reszekhez!
-Futtasd a Futtatas gombbal az ellenorzeshez.
 =============================================================
 */
 
+// @TASK 1. Egesz szam valtozo
+// @DESC Hozz letre egy `my_age` nevu **int** valtozot a koroddal, es irasd ki!
+// @HINT `int my_age = 25;` majd `cout << my_age << endl;`
+// @CODE
+#include <iostream>
+using namespace std;
+int main() {
+    // MEGOLDAS IDE:
+
+    // ELLENORZES:
+    if (my_age > 0 && my_age < 120) {
+        cout << "✓ OK — my_age = " << my_age << endl;
+    } else {
+        cout << "✗ Adj meg valos kort!" << endl;
+    }
+    return 0;
+}
+// @END
+
+// @TASK 2. Tort szam
+// @DESC Hozz letre egy `my_height` nevu **double** valtozot a magassagoddal meterben (pl. `1.72`), es irasd ki!
+// @HINT `double my_height = 1.72;`
+// @CODE
+#include <iostream>
+using namespace std;
+int main() {
+    // MEGOLDAS IDE:
+
+    // ELLENORZES:
+    if (my_height > 0.5 && my_height < 2.5) {
+        cout << "✓ OK — my_height = " << my_height << " m" << endl;
+    } else {
+        cout << "✗ Adj meg valos magassagot meterben!" << endl;
+    }
+    return 0;
+}
+// @END
+
+// @TASK 3. Szoveg valtozo
+// @DESC Hozz letre egy `my_name` nevu **string** valtozot a neveddel, es irasd ki!
+// Ne felejtsd el: `#include <string>` is kell a programba!
+// @HINT `string my_name = "Kata";`
+// @CODE
 #include <iostream>
 #include <string>
 using namespace std;
-
 int main() {
-
-    // ============================================================
-    // 1. feladat: Egesz szam valtozo
-    // Hozz letre egy `my_age` nevu int valtozot a koroddal!
-    // ============================================================
-
     // MEGOLDAS IDE:
 
-
-    // ============================================================
-    // 2. feladat: Tort szam
-    // Hozz letre egy `my_height` nevu double valtozot
-    // a magassagoddal meterben (pl. 1.72)!
-    // ============================================================
-
-    // MEGOLDAS IDE:
-
-
-    // ============================================================
-    // 3. feladat: Szoveg
-    // Hozz letre egy `my_name` nevu string valtozot a neveddel!
-    // Tipp: string my_name = "...";
-    // ============================================================
-
-    // MEGOLDAS IDE:
-
-
-    // ============================================================
-    // 4. feladat: Bemutatkozas
-    // Irasd ki EGYETLEN sorba:
-    //   "Szia! Nevem [nev], [kor] eves vagyok."
-    // Hasznald a fenti valtozokat (my_name, my_age)!
-    // Tipp: cout << "szoveg" << valtozo << "szoveg" << endl;
-    // ============================================================
-
-    // MEGOLDAS IDE:
-
-
-    // ============================================================
-    // 5. feladat: Szamolas
-    // Hozz letre ket int valtozot: `a` erteke 15, `b` erteke 4.
-    // Szamold ki es irasd ki:
-    //   - az osszeguket (a + b)
-    //   - a kulonbseguket (a - b)
-    //   - a szorzatukat (a * b)
-    // Mindegyiket kulon sorba, peldaul: "Osszeg: 19"
-    // ============================================================
-
-    // MEGOLDAS IDE:
-
-
-    // ============================================================
-    // ELLENORZES — ne modositsd ezt a reszt!
-    // ============================================================
-
-    cout << endl;
-    cout << "==================================================" << endl;
-    cout << "EREDMENYEK" << endl;
-    cout << "==================================================" << endl;
-
-    int errors = 0;
-
-    // 1. feladat
-    if (my_age > 0 && my_age < 120) {
-        cout << "✓ 1. feladat: my_age — OK (" << my_age << ")" << endl;
-    } else {
-        cout << "✗ 1. feladat: my_age — Adj meg egy valos kort!" << endl;
-        errors++;
-    }
-
-    // 2. feladat
-    if (my_height > 0.5 && my_height < 2.5) {
-        cout << "✓ 2. feladat: my_height — OK (" << my_height << " m)" << endl;
-    } else {
-        cout << "✗ 2. feladat: my_height — Adj meg valos magassagot meterben!" << endl;
-        errors++;
-    }
-
-    // 3. feladat
+    // ELLENORZES:
     if (my_name.length() > 0) {
-        cout << "✓ 3. feladat: my_name — OK (\"" << my_name << "\")" << endl;
+        cout << "✓ OK — my_name = \"" << my_name << "\"" << endl;
     } else {
-        cout << "✗ 3. feladat: my_name — Ne hagyd uresen a neved!" << endl;
-        errors++;
+        cout << "✗ Ne hagyd uresen a neved!" << endl;
     }
+    return 0;
+}
+// @END
 
-    // 4. feladat — vizualis ellenorzes
-    cout << "? 4. feladat: Nezd meg fentebb, megjelent-e a bemutatkozas!" << endl;
-
-    // 5. feladat
-    if (a == 15 && b == 4) {
-        cout << "✓ 5. feladat: a es b — OK" << endl;
-    } else {
-        cout << "✗ 5. feladat: a legyen 15, b legyen 4!" << endl;
-        errors++;
-    }
-
-    cout << "==================================================" << endl;
-    if (errors == 0) {
-        cout << "MINDEN FELADAT KESZ! Szolj nekem, es megnezem!" << endl;
-    } else {
-        cout << "Meg " << errors << " feladat van hatra. Hajra!" << endl;
-    }
+// @TASK 4. Bemutatkozas valtozokkal
+// @DESC Hozz letre egy `name` (string) es egy `age` (int) valtozot.
+// Irasd ki egy sorban: **"Szia! Nevem [nev], [kor] eves vagyok."**
+// A valtozokat a `<<` operatorral fuzd bele!
+// @HINT `cout << "Szia! Nevem " << name << ", " << age << " eves vagyok." << endl;`
+// @CODE
+#include <iostream>
+#include <string>
+using namespace std;
+int main() {
+    // MEGOLDAS IDE:
 
     return 0;
 }
+// @END
+
+// @TASK 5. Szamolas
+// @DESC Hozz letre ket int valtozot: `a` erteke **15**, `b` erteke **4**.
+// Irasd ki harom kulon sorba az **osszeget**, **kulonbseget** es **szorzatot**!
+// Pelda kimenet: "Osszeg: 19"
+// @HINT Az osszeg: `a + b`, kulonbseg: `a - b`, szorzat: `a * b`
+// @CODE
+#include <iostream>
+using namespace std;
+int main() {
+    // MEGOLDAS IDE:
+
+    // ELLENORZES:
+    if (a == 15 && b == 4) {
+        cout << "✓ OK — a=" << a << ", b=" << b << endl;
+    } else {
+        cout << "✗ a legyen 15, b legyen 4!" << endl;
+    }
+    return 0;
+}
+// @END
