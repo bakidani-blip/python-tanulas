@@ -1,179 +1,101 @@
 """
 =============================================================
-  GYAKORLÓ FELADATOK — Python alapok
+GYAKORLO FELADATOK — Python alapok
 =============================================================
-
-Oldd meg az alábbi feladatokat!
-Minden feladatnál a "# MEGOLDÁS IDE" részt írd át.
-Ha kész vagy, futtasd a fájlt — a végén ellenőrzi magát.
-
-Futtasd:
-    python 01-python-clean-code/exercises/exercise_00_practice.py
 """
 
-
-# ============================================================
-# 1. feladat: Változók
-# Hozz létre 3 változót a saját adataiddal!
-# ============================================================
-
-my_name = "Dani"         # ← írd be a neved (szöveg)
-my_age = 19           # ← írd be a korod (szám)
-my_city = "Budapest"         # ← írd be a városod (szöveg)
-
-# Írd ki egy f-string-gel: "Szia! A nevem X, Y éves vagyok, Z-ban élek."
-# MEGOLDÁS IDE: 
-print(f"Szia, a nevem {my_name}, {my_age} éves vagyok, {my_city}-ben élek")
+# @TASK 1. Valtozok es kiiras
+# @DESC Hozz letre 3 valtozot: `my_name` (neved), `my_age` (korod), `my_city` (varosod).
+# Irasd ki f-stringgel: **"Szia! A nevem X, Y eves vagyok, Z-ban elek."**
+# @HINT `print(f"Szia! A nevem {my_name}, {my_age} eves vagyok, {my_city}-ban elek.")`
+# @CODE
+# MEGOLDAS IDE:
 
 
 
-# ============================================================
-# 2. feladat: Műveletek
-# Számold ki egy téglalap kerületét és területét!
-# Kerület = 2 * (a + b)
-# Terület = a * b
-# ============================================================
+# ELLENORZES:
+if my_name and my_age > 0 and my_city:
+    print("✓ OK — valtozok rendben")
+else:
+    print("✗ Toltsd ki a neved, korod, varosod!")
+# @END
 
+# @TASK 2. Muveletek
+# @DESC Adott egy teglalap: `width = 5`, `height = 8`.
+# Szamold ki a **keruletet** (`perimeter = 2 * (a + b)`) es a **teruletet** (`area = a * b`).
+# Irasd ki mindkettot!
+# @HINT `perimeter = 2 * (width + height)` es `area = width * height`
+# @CODE
 width = 5
 height = 8
 
-perimeter = (width + height) * 2   # ← számold ki a kerületet
-area = width * height        # ← számold ki a területet
-
-# MEGOLDÁS IDE:
+# MEGOLDAS IDE:
 
 
-print(f"A téglalap területe: {area}, kerülete: {perimeter}")
+
+# ELLENORZES:
+if perimeter == 26 and area == 40:
+    print("✓ OK — kerulet:", perimeter, "terulet:", area)
+else:
+    print("✗ Kerulet = 26 es terulet = 40 kene legyen!")
+# @END
+
+# @TASK 3. Lista muveletek
+# @DESC Adott egy bevasarlolista. **Adj hozza 2 uj elemet** (`.append()`),
+# es **torold a "kenyer" elemet** (`.remove()`)!
+# @HINT `shopping_list.append("vaj")` es `shopping_list.remove("kenyer")`
+# @CODE
+shopping_list = ["tej", "kenyer", "sajt", "tojas"]
+
+# MEGOLDAS IDE:
 
 
-# ============================================================
-# 3. feladat: Lista
-# Van egy bevásárlólista. Adj hozzá 2 új elemet,
-# és töröld a "kenyér" elemet!
-# ============================================================
 
-shopping_list = ["tej", "kenyér", "sajt", "tojás"]
+# ELLENORZES:
+if "kenyer" not in shopping_list and len(shopping_list) >= 5:
+    print("✓ OK — lista:", shopping_list)
+else:
+    print("✗ Adj hozza 2 elemet es torold a 'kenyer'-t!")
+    print("  Jelenlegi lista:", shopping_list)
+# @END
 
-# MEGOLDÁS IDE (használd az .append() és .remove() metódusokat):
-
-shopping_list.remove("kenyér")
-shopping_list.append("vaj")
-shopping_list.append("liszt")
-
-print(f"Bevásárlólista: {shopping_list}")
-
-
-# ============================================================
-# 4. feladat: Feltételek
-# Írd meg az alábbi függvényt, ami eldönti,
-# hogy egy szám páros vagy páratlan!
-# Tipp: ha a szám 2-vel osztva 0 maradékot ad → páros
-# ============================================================
-
+# @TASK 4. Feltetel — paros vagy paratlan
+# @DESC Ird meg az `even_or_odd` fuggvenyt: ha a szam **paros**, adjon vissza `"paros"`,
+# ha **paratlan**, adjon vissza `"paratlan"`.
+# @HINT Ha `number % 2 == 0`, akkor paros. Hasznalj `if/else`-t es `return`-t!
+# @CODE
 def even_or_odd(number):
-    """Visszaadja, hogy "páros" vagy "páratlan"."""
-    # MEGOLDÁS IDE:
-    if number % 2 == 0:
-        return "páros"
-    else:
-        return "páratlan"  # ← töröld ezt a sort és írd meg a megoldást
+    # MEGOLDAS IDE:
+    pass
 
+# ELLENORZES:
+if even_or_odd(4) == "paros" and even_or_odd(7) == "paratlan":
+    print("✓ OK — even_or_odd mukodik")
+else:
+    print("✗ even_or_odd(4) = 'paros' es even_or_odd(7) = 'paratlan' kene legyen!")
+# @END
 
-# ============================================================
-# 5. feladat: Ciklus
-# Írd ki a számokat 1-től 10-ig, de csak a párosakat!
-# Tipp: használj for ciklust és if feltételt
-# ============================================================
+# @TASK 5. Ciklus — paros szamok
+# @DESC Irj egy `for` ciklust, ami kiirja a **paros szamokat 1-tol 10-ig** (2, 4, 6, 8, 10).
+# @HINT `for i in range(1, 11):` es `if i % 2 == 0: print(i)`
+# @CODE
+print("Paros szamok 1-10:")
+# MEGOLDAS IDE:
 
-print("Páros számok 1-10:")
-# MEGOLDÁS IDE:
-for i in range(2, 11, 2):
-    print(i)
+# @END
 
-
-# ============================================================
-# 6. feladat: Függvény
-# Írj egy függvényt, ami kiszámolja egy lista átlagát!
-# Tipp: összeg / elemek száma → használd sum() és len()
-# ============================================================
-
+# @TASK 6. Fuggveny — atlag
+# @DESC Ird meg a `calculate_average` fuggvenyt, ami kap egy szamlistat
+# es **visszaadja az atlagot** (osszeg / elemszam).
+# @HINT `return sum(numbers) / len(numbers)`
+# @CODE
 def calculate_average(numbers):
-    """Kiszámolja és visszaadja a számok átlagát."""
-    # MEGOLDÁS IDE:
-    return sum(numbers) / len(numbers)    # ← töröld ezt a sort és írd meg a megoldást
+    # MEGOLDAS IDE:
+    pass
 
-# ============================================================
-# 7. feladat: Szótár
-# Hozz létre egy szótárat egy filmről! Legyen benne:
-# title, year, director, rating (1-10)
-# Aztán írd ki szépen formázva.
-# ============================================================
-
-movie = {
-    "title": "Interstellar",
-    "year": 2014,
-    "director": "Christopher Nolan",
-    "rating": 9.1
-}  # ← töltsd ki a szótárat
-
-# MEGOLDÁS IDE:
-
-
-
-# ============================================================
-# ELLENŐRZÉS — ne módosítsd ezt a részt!
-# ============================================================
-
-print("\n" + "=" * 50)
-print("EREDMÉNYEK")
-print("=" * 50)
-
-errors = 0
-
-# 1. feladat
-if my_name and my_age > 0 and my_city:
-    print("✓ 1. feladat: Változók — OK")
-else:
-    print("✗ 1. feladat: Változók — töltsd ki a neved, korod, városod!")
-    errors += 1
-
-# 2. feladat
-if perimeter == 2 * (width + height) and area == width * height:
-    print("✓ 2. feladat: Műveletek — OK")
-else:
-    print(f"✗ 2. feladat: Műveletek — kerület={perimeter} (helyes: {2*(width+height)}), terület={area} (helyes: {width*height})")
-    errors += 1
-
-# 3. feladat
-if "kenyér" not in shopping_list and len(shopping_list) >= 5:
-    print("✓ 3. feladat: Lista — OK")
-else:
-    print("✗ 3. feladat: Lista — adj hozzá 2 elemet és töröld a 'kenyér'-t!")
-    errors += 1
-
-# 4. feladat
-if even_or_odd(4) == "páros" and even_or_odd(7) == "páratlan":
-    print("✓ 4. feladat: Feltételek — OK")
-else:
-    print("✗ 4. feladat: Feltételek — a függvény nem ad jó eredményt!")
-    errors += 1
-
-# 6. feladat
+# ELLENORZES:
 if calculate_average([10, 20, 30]) == 20.0:
-    print("✓ 6. feladat: Függvény — OK")
+    print("✓ OK — atlag:", calculate_average([10, 20, 30]))
 else:
-    print("✗ 6. feladat: Függvény — az átlag nem stimmel!")
-    errors += 1
-
-# 7. feladat
-if movie.get("title") and movie.get("year") and movie.get("director") and movie.get("rating"):
-    print("✓ 7. feladat: Szótár — OK")
-else:
-    print("✗ 7. feladat: Szótár — töltsd ki a title, year, director, rating mezőket!")
-    errors += 1
-
-print("=" * 50)
-if errors == 0:
-    print("🎉 MINDEN FELADAT KÉSZ! Szólj nekem, és megnézem!")
-else:
-    print(f"Még {errors} feladat van hátra. Hajrá!")
+    print("✗ calculate_average([10, 20, 30]) = 20.0 kene legyen!")
+# @END
