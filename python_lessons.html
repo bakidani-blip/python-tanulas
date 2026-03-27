@@ -4460,37 +4460,25 @@ var ORIGINALS = {"exercise-0": '"""\n===========================================
     btn.classList.toggle('open', !isOpen);
   };
 
-  // ---- Skulpt Python runner ----
+  // ---- Code runner ----
+
   window.runCode = function(editorId) {
     var editor = document.getElementById(editorId);
     var outputEl = document.getElementById(editorId + '-output');
     var code = editor.value;
-
-    // Save to localStorage
     localStorage.setItem('code-' + editorId, code);
-
     outputEl.innerHTML = '';
     var outputText = '';
-
-    function outf(text) {
-      outputText += text;
-    }
+    function outf(text) { outputText += text; }
     function builtinRead(x) {
       if (Sk.builtinFiles === undefined || Sk.builtinFiles["files"][x] === undefined)
         throw "File not found: '" + x + "'";
       return Sk.builtinFiles["files"][x];
     }
-
-    Sk.configure({
-      output: outf,
-      read: builtinRead,
-      __future__: Sk.python3
-    });
-
+    Sk.configure({ output: outf, read: builtinRead, __future__: Sk.python3 });
     Sk.misceval.asyncToPromise(function() {
       return Sk.importMainWithBody("<stdin>", false, code, true);
     }).then(function() {
-      // Format output with colors
       var lines = outputText.split('\n');
       var html = lines.map(function(line) {
         if (line.indexOf('\u2713') >= 0 || line.indexOf('\u2714') >= 0 || line.indexOf('OK') >= 0 && line.indexOf('\u2713') >= 0) {
@@ -4505,7 +4493,6 @@ var ORIGINALS = {"exercise-0": '"""\n===========================================
       outputEl.innerHTML = html;
     }).catch(function(err) {
       var errMsg = err.toString();
-      // Make error message more helpful
       var match = errMsg.match(/line (\d+)/);
       var lineInfo = match ? ' (sor: ' + match[1] + ')' : '';
       outputEl.innerHTML = '<span class="output-error">Hiba' + lineInfo + ':\n' + escapeHtml(errMsg) + '</span>';
@@ -4535,12 +4522,10 @@ var ORIGINALS = {"exercise-0": '"""\n===========================================
     var saved = localStorage.getItem('code-' + editor.id);
     if (saved) editor.value = saved;
 
-    // Auto-save on change
     editor.addEventListener('input', function() {
       localStorage.setItem('code-' + this.id, this.value);
     });
 
-    // Tab key support in textarea
     editor.addEventListener('keydown', function(e) {
       if (e.key === 'Tab') {
         e.preventDefault();
@@ -4552,11 +4537,12 @@ var ORIGINALS = {"exercise-0": '"""\n===========================================
     });
   });
 
-  // ---- Syntax highlighting for lesson code blocks ----
+  // ---- Syntax highlighting ----
+
   var KW = new Set(['False','None','True','and','as','assert','async','await','break','class','continue','def','del','elif','else','except','finally','for','from','global','if','import','in','is','lambda','nonlocal','not','or','pass','raise','return','try','while','with','yield']);
   var BI = new Set(['print','len','range','int','str','float','list','dict','set','tuple','bool','input','open','type','isinstance','enumerate','zip','map','filter','sorted','reversed','sum','min','max','abs','round','any','all','super','property','staticmethod','classmethod','hasattr','getattr','setattr']);
 
-  function hlPy(code) {
+  function hlCode(code) {
     var r = '', i = 0;
     while (i < code.length) {
       if (code[i]==='@' && (i===0||code[i-1]==='\n')) { var e=code.indexOf('\n',i); if(e===-1)e=code.length; r+='<span class="syn-dec">'+code.slice(i,e)+'</span>'; i=e; continue; }
@@ -4573,7 +4559,7 @@ var ORIGINALS = {"exercise-0": '"""\n===========================================
   }
 
   document.querySelectorAll('pre.code-block code').forEach(function(el) {
-    el.innerHTML = hlPy(el.textContent);
+    el.innerHTML = hlCode(el.textContent);
   });
 
   // ---- Tab navigation ----
@@ -4640,8 +4626,8 @@ var ORIGINALS = {"exercise-0": '"""\n===========================================
   scrollBtn.addEventListener('click', function() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
-})();
 
+})();
 </script>
 </body>
 </html>
