@@ -1,30 +1,30 @@
 /*
 =============================================================
-GYAKORLO FELADATOK — C++ feltetelek (if/else, switch)
+GYAKORLÓ FELADATOK — C++ feltételek (if/else, switch)
 =============================================================
 */
 
-// @TASK 1. Paros vagy paratlan?
-// @DESC A `number` valtozo erteke **7**. Ird meg az if-else feltetelt:
-// ha paros → irasd ki **"Paros"**, ha paratlan → irasd ki **"Paratlan"**.
-// @HINT A `%` (modulo) operator megadja az osztas maradekat. Ha `number % 2 == 0`, akkor paros!
+// @TASK 1. Páros vagy páratlan?
+// @DESC A `number` változó értéke **7**. Írd meg az if-else feltételt:
+// ha páros → írasd ki **"Páros"**, ha páratlan → írasd ki **"Páratlan"**.
+// @HINT A `%` (modulo) operátor megadja az osztás maradékát. Ha `number % 2 == 0`, akkor páros!
 // @CODE
 #include <iostream>
 using namespace std;
 int main() {
     int number = 7;
 
-    // MEGOLDAS IDE:
+    // MEGOLDÁS IDE:
 
     return 0;
 }
 // @END
 
-// @TASK 2. Jegyezes
-// @DESC A `points` valtozo erteke **73**. Allitsd be a `grade` valtozot:
-// 90-100 → "Jeles", 75-89 → "Jo", 60-74 → "Kozepes", 40-59 → "Elegseges", 0-39 → "Elegtelen".
-// Vegul irasd ki a `grade`-et!
-// @HINT Hasznalj `if / else if / else` lancot, felulrol lefele: `if (points >= 90) { ... } else if ...`
+// @TASK 2. Jegyezés
+// @DESC A `points` változó értéke **73**. Állítsd be a `grade` változót:
+// 90-100 → "Jeles", 75-89 → "Jó", 60-74 → "Közepes", 40-59 → "Elégséges", 0-39 → "Elégtelen".
+// Végül írasd ki a `grade`-et!
+// @HINT Használj `if / else if / else` láncot, felülről lefelé: `if (points >= 90) { ... } else if ...`
 // @CODE
 #include <iostream>
 #include <string>
@@ -33,22 +33,22 @@ int main() {
     int points = 73;
     string grade = "";
 
-    // MEGOLDAS IDE:
+    // MEGOLDÁS IDE:
 
-    // ELLENORZES:
-    if (grade == "Kozepes") {
+    // ELLENŐRZÉS:
+    if (grade == "Közepes") {
         cout << "✓ OK — 73 pont = " << grade << endl;
     } else {
-        cout << "✗ 73 pont = Kozepes kene legyen! Kaptam: \"" << grade << "\"" << endl;
+        cout << "✗ 73 pont = Közepes kéne legyen! Kaptam: \"" << grade << "\"" << endl;
     }
     return 0;
 }
 // @END
 
-// @TASK 3. Beleptetes
-// @DESC Ket valtozo: `visitor_age` (22) es `has_id` (true).
-// Ha 18 vagy idosebb **ES** van igazolvanya → irasd ki **"Belephet"**, kulonben **"Nem lephet be"**.
-// @HINT Hasznald az `&&` (ES) operatort: `if (visitor_age >= 18 && has_id)`
+// @TASK 3. Beléptetés
+// @DESC Két változó: `visitor_age` (22) és `has_id` (true).
+// Ha 18 vagy idősebb **ÉS** van igazolványa → írasd ki **"Beléphet"**, különben **"Nem léphet be"**.
+// @HINT Használd az `&&` (ÉS) operátort: `if (visitor_age >= 18 && has_id)`
 // @CODE
 #include <iostream>
 using namespace std;
@@ -56,16 +56,16 @@ int main() {
     int visitor_age = 22;
     bool has_id = true;
 
-    // MEGOLDAS IDE:
+    // MEGOLDÁS IDE:
 
     return 0;
 }
 // @END
 
-// @TASK 4. Evszak meghatarozasa
-// @DESC A `month` valtozo erteke **8** (augusztus). Hasznalj **switch**-et es allitsd be a `season`-t:
-// 12,1,2 → "Tel" | 3,4,5 → "Tavasz" | 6,7,8 → "Nyar" | 9,10,11 → "Osz"
-// @HINT Tobb case-t is irhatsz egymas ala break nelkul: `case 6: case 7: case 8: season = "Nyar"; break;`
+// @TASK 4. Évszak meghatározása
+// @DESC A `month` változó értéke **8** (augusztus). Használj **switch**-et és állítsd be a `season`-t:
+// 12,1,2 → "Tél" | 3,4,5 → "Tavasz" | 6,7,8 → "Nyár" | 9,10,11 → "Ősz"
+// @HINT Több case-t is írhatsz egymás alá break nélkül: `case 6: case 7: case 8: season = "Nyár"; break;`
 // @CODE
 #include <iostream>
 #include <string>
@@ -74,22 +74,22 @@ int main() {
     int month = 8;
     string season = "";
 
-    // MEGOLDAS IDE:
+    // MEGOLDÁS IDE:
 
-    // ELLENORZES:
-    if (season == "Nyar") {
-        cout << "✓ OK — 8. honap = " << season << endl;
+    // ELLENŐRZÉS:
+    if (season == "Nyár") {
+        cout << "✓ OK — 8. hónap = " << season << endl;
     } else {
-        cout << "✗ Augusztus = Nyar! Kaptam: \"" << season << "\"" << endl;
+        cout << "✗ Augusztus = Nyár! Kaptam: \"" << season << "\"" << endl;
     }
     return 0;
 }
 // @END
 
-// @TASK 5. Korkategoria
-// @DESC A `cat_age` erteke **10**. Allitsd be a `category` valtozot:
-// 0-2 → "Csecsemo" | 3-5 → "Ovodas" | 6-14 → "Iskolas" | 15-17 → "Tinedzser" | 18+ → "Felnott"
-// @HINT Hasznalj `else if` lancot: `if (cat_age <= 2) { ... } else if (cat_age <= 5) { ... }`
+// @TASK 5. Korkategória
+// @DESC A `cat_age` értéke **10**. Állítsd be a `category` változót:
+// 0-2 → "Csecsemő" | 3-5 → "Óvodás" | 6-14 → "Iskolás" | 15-17 → "Tinédzser" | 18+ → "Felnőtt"
+// @HINT Használj `else if` láncot: `if (cat_age <= 2) { ... } else if (cat_age <= 5) { ... }`
 // @CODE
 #include <iostream>
 #include <string>
@@ -98,13 +98,13 @@ int main() {
     int cat_age = 10;
     string category = "";
 
-    // MEGOLDAS IDE:
+    // MEGOLDÁS IDE:
 
-    // ELLENORZES:
-    if (category == "Iskolas") {
-        cout << "✓ OK — 10 eves = " << category << endl;
+    // ELLENŐRZÉS:
+    if (category == "Iskolás") {
+        cout << "✓ OK — 10 éves = " << category << endl;
     } else {
-        cout << "✗ 10 eves = Iskolas! Kaptam: \"" << category << "\"" << endl;
+        cout << "✗ 10 éves = Iskolás! Kaptam: \"" << category << "\"" << endl;
     }
     return 0;
 }

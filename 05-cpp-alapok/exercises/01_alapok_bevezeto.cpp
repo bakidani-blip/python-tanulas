@@ -1,7 +1,7 @@
 /*
 =============================================================
-1. LECKE: C++ alapok — Hello World es a program felepitese
-Futtasd: a bongeszoben a Futtatas gombbal
+1. LECKE: C++ alapok — Hello World és a program felépítése
+Futtasd: a böngészőben a Futtatás gombbal
 =============================================================
 */
 
@@ -12,88 +12,88 @@ using namespace std;
 // MI AZ A C++?
 // ============================================================
 
-// A C++ az egyik legelterjedtebb programozasi nyelv a vilagon.
-// Jatekokat, operacios rendszereket, bongeszoket irnak benne.
+// A C++ az egyik legelterjedtebb programozási nyelv a világon.
+// Játékokat, operációs rendszereket, böngészőket írnak benne.
 //
-// Miert tanulod?
-// - **Gyors**: kozel van a hardverhez, ezert villamposan fut
-// - **Mindenhol hasznaljak**: jatek, auto, robot, telefon
-// - **Alapozas**: ha ezt megtanulod, barmi mas nyelv konnyu lesz
+// Miért tanulod?
+// - **Gyors**: közel van a hardverhez, ezért villámgyorsan fut
+// - **Mindenhol használják**: játék, autó, robot, telefon
+// - **Alapozás**: ha ezt megtanulod, bármi más nyelv könnyű lesz
 //
-// Ne ijedj meg a szintaxistol! Lepesrol lepesre haladunk.
+// Ne ijedj meg a szintaxistól! Lépésről lépésre haladunk.
 
 // ============================================================
-// AZ ELSO PROGRAM: HELLO WORLD
+// AZ ELSŐ PROGRAM: HELLO WORLD
 // ============================================================
 
-// Minden C++ program a `main()` fuggvennyel kezdodik.
-// Ez olyan, mint a belso ajto: a program ITT indul el.
+// Minden C++ program a `main()` függvénnyel kezdődik.
+// Ez olyan, mint a belső ajtó: a program ITT indul el.
 //
-// `#include <iostream>` — ez mondja meg a fordítonak:
-// "Szuksegem van az input/output eszkozokre" (pl. kiiras kepernyore).
+// `#include <iostream>` — ez mondja meg a fordítónak:
+// "Szükségem van az input/output eszközökre" (pl. kiírás képernyőre).
 //
-// `using namespace std;` — ez lehetove teszi, hogy `cout`-ot
-// irjunk `std::cout` helyett. Egyszeru rovidites.
+// `using namespace std;` — ez lehetővé teszi, hogy `cout`-ot
+// írjunk `std::cout` helyett. Egyszerű rövidítés.
 //
-// Nezzuk a legegyszerubb programot:
+// Nézzük a legegyszerűbb programot:
 
 int main() {
-    // `cout` = "character output" = kiiras a kepernyore
-    // `<<` = "kuldd oda" operator — azt jelenti: "ird ki ezt"
-    // `endl` = "end line" = uj sor (mint az Enter billentyű)
+    // `cout` = "character output" = kiírás a képernyőre
+    // `<<` = "küldd oda" operátor — azt jelenti: "írd ki ezt"
+    // `endl` = "end line" = új sor (mint az Enter billentyű)
 
-    cout << "Hello, Vilag!" << endl;
+    cout << "Hello, Világ!" << endl;
 
-    // A `return 0;` azt jelenti: "minden rendben, vege a programnak"
-    // 0 = siker, barmi mas = hiba tortent
+    // A `return 0;` azt jelenti: "minden rendben, vége a programnak"
+    // 0 = siker, bármi más = hiba történt
     return 0;
 }
 
 // ============================================================
-// HOGYAN OLVASSUK A KODOT?
+// HOGYAN OLVASSUK A KÓDOT?
 // ============================================================
 
-// Bontsuk darabokra az elso programunkat:
+// Bontsuk darabokra az első programunkat:
 //
-// 1. `#include <iostream>` — "importalj" eszkozoket (mint Pythonban az import)
-// 2. `using namespace std;` — hasznald az std (standard) nevteret
-// 3. `int main()` — a foprogram kezdete
-//    - `int` = egesz szamot ad vissza (a 0-t a vegen)
-//    - `main` = kotelező nev, innen indul a program
-//    - `()` = parameterlista (most ures)
-// 4. `{ ... }` — kapcsos zarojelek kozott van a program teste
-// 5. `cout << "szoveg" << endl;` — kiiras
-// 6. `return 0;` — program vege, sikeres
-// 7. Minden utasitas vegen **pontosvesszo** `;` — ez KOTELEZO!
+// 1. `#include <iostream>` — "importálj" eszközöket (mint Pythonban az import)
+// 2. `using namespace std;` — használd az std (standard) névteret
+// 3. `int main()` — a főprogram kezdete
+//    - `int` = egész számot ad vissza (a 0-t a végén)
+//    - `main` = kötelező név, innen indul a program
+//    - `()` = paraméterlista (most üres)
+// 4. `{ ... }` — kapcsos zárójelek között van a program teste
+// 5. `cout << "szöveg" << endl;` — kiírás
+// 6. `return 0;` — program vége, sikeres
+// 7. Minden utasítás végén **pontosvessző** `;` — ez KÖTELEZŐ!
 //
-// **Gyakori hiba**: elfelejtett pontosvesszo!
-// Ha a fordito furcsa hibat ir, eloszor ezt ellenorizd.
+// **Gyakori hiba**: elfelejtett pontosvessző!
+// Ha a fordító furcsa hibát ír, először ezt ellenőrizd.
 
 // ============================================================
-// TOBBSOROS KIIRAS
+// TÖBBSOROS KIÍRÁS
 // ============================================================
 
-// Tobb dolgot is kiirhatunk egymas utan:
+// Több dolgot is kiírhatunk egymás után:
 //
-// cout << "Elso sor" << endl;
-// cout << "Masodik sor" << endl;
+// cout << "Első sor" << endl;
+// cout << "Második sor" << endl;
 //
 // Vagy akár egyetlen sorban:
 //
-// cout << "Nev: " << "Kata" << ", Kor: " << 14 << endl;
+// cout << "Név: " << "Kata" << ", Kor: " << 14 << endl;
 //
-// A `<<` operator "osszefuzi" a darabokat.
-// Szamot es szoveget is vegyithetunk!
+// A `<<` operátor "összefűzi" a darabokat.
+// Számot és szöveget is vegyíthetünk!
 
 // ============================================================
-// OSSZEFOGLALAS
+// ÖSSZEFOGLALÁS
 // ============================================================
 
-// Amit ma megtanultal:
-// - Minden C++ program a `main()` fuggvennyel indul
-// - `#include <iostream>` kell a kiiras/beolvasashoz
-// - `cout << ... << endl;` = kiiras a kepernyore
-// - Minden sor vegen `;` pontosvesszo
-// - `return 0;` = sikeres program vege
+// Amit ma megtanultál:
+// - Minden C++ program a `main()` függvénnyel indul
+// - `#include <iostream>` kell a kiírás/beolvasáshoz
+// - `cout << ... << endl;` = kiírás a képernyőre
+// - Minden sor végén `;` pontosvessző
+// - `return 0;` = sikeres program vége
 //
-// A kovetkezo leckeben valtozokkal es tipusokkal foglalkozunk!
+// A következő leckében változókkal és típusokkal foglalkozunk!

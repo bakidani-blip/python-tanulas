@@ -1,7 +1,7 @@
 /*
 =============================================================
-3. LECKE: Feltetelek — dontes a programban
-Futtasd: a bongeszoben a Futtatas gombbal
+3. LECKE: Feltételek — döntés a programban
+Futtasd: a böngészőben a Futtatás gombbal
 =============================================================
 */
 
@@ -10,145 +10,145 @@ Futtasd: a bongeszoben a Futtatas gombbal
 using namespace std;
 
 // ============================================================
-// MIERT KELLENEK FELTETELEK?
+// MIÉRT KELLENEK FELTÉTELEK?
 // ============================================================
 
-// Kepzeld el, hogy a programod egy utat jar be.
-// Eddig ez az ut egyenes volt — minden sor lefutott, sorban.
+// Képzeld el, hogy a programod egy utat jár be.
+// Eddig ez az út egyenes volt — minden sor lefutott, sorban.
 //
-// De az eletben is donteseket hozunk:
-//   "Ha esik az eso, viszek esernyot. Kulonben nem."
+// De az életben is döntéseket hozunk:
+//   "Ha esik az eső, viszek esernyőt. Különben nem."
 //
-// A programban PONTOSAN igy mukodik a feltetel:
-//   if (feltetel) { csinalj valamit; }
-//   else { csinalj mast; }
+// A programban PONTOSAN így működik a feltétel:
+//   if (feltétel) { csinálj valamit; }
+//   else { csinálj mást; }
 //
-// A feltetel vagy IGAZ (true), vagy HAMIS (false).
-// Ez alapjan dont a program, melyik uton menjen tovabb.
+// A feltétel vagy IGAZ (true), vagy HAMIS (false).
+// Ez alapján dönt a program, melyik úton menjen tovább.
 
 int main() {
 
     // ============================================================
-    // 1. EGYSZERÜ IF — "ha igaz, csinalld meg"
+    // 1. EGYSZERŰ IF — "ha igaz, csináld meg"
     // ============================================================
 
-    // Az `if` a legegyszerubb feltetel.
-    // Ha a zarojelben levo dolog IGAZ, vegrehajtja a kapcsos zarojelek kozotti kodot.
-    // Ha HAMIS, atugorja.
+    // Az `if` a legegyszerűbb feltétel.
+    // Ha a zárójelben lévő dolog IGAZ, végrehajtja a kapcsos zárójelek közötti kódot.
+    // Ha HAMIS, átugorja.
 
     int age = 16;
 
     if (age >= 18) {
-        cout << "Felnoett vagy, mehetsz szavazni!" << endl;
+        cout << "Felnőtt vagy, mehetsz szavazni!" << endl;
     }
 
-    // Ez NEM fog kiirodni, mert 16 < 18, tehat a feltetel HAMIS.
-    // Probald meg atirni az age-et 20-ra es futtasd ujra!
+    // Ez NEM fog kiíródni, mert 16 < 18, tehát a feltétel HAMIS.
+    // Próbáld meg átírni az age-et 20-ra és futtasd újra!
 
     // ============================================================
-    // 2. IF-ELSE — "ha igaz, ezt csinalld, kulonben azt"
+    // 2. IF-ELSE — "ha igaz, ezt csináld, különben azt"
     // ============================================================
 
-    // Az `else` ag akkor fut le, ha a feltetel HAMIS.
-    // Igy mindig tortenik VALAMI — vagy az if, vagy az else.
+    // Az `else` ág akkor fut le, ha a feltétel HAMIS.
+    // Így mindig történik VALAMI — vagy az if, vagy az else.
 
     int temperature = 35;
 
     if (temperature > 30) {
         cout << "Nagyon meleg van! (" << temperature << " fok)" << endl;
     } else {
-        cout << "Elfogadhato a homerseklet. (" << temperature << " fok)" << endl;
+        cout << "Elfogadható a hőmérséklet. (" << temperature << " fok)" << endl;
     }
 
-    // Gondolj ra ugy: ez egy elgazas az uton.
-    // Vagy balra mesz (if), vagy jobbra (else). De valamelyikre MINDIG.
+    // Gondolj rá úgy: ez egy elágazás az úton.
+    // Vagy balra mész (if), vagy jobbra (else). De valamelyikre MINDIG.
 
     // ============================================================
-    // 3. OSSZEHASONLITO OPERATOROK
+    // 3. ÖSSZEHASONLÍTÓ OPERÁTOROK
     // ============================================================
 
-    // Ezekkel az operatorokkal hasonlitunk ossze ket erteket:
+    // Ezekkel az operátorokkal hasonlítunk össze két értéket:
     //
-    //   ==   egyenlo-e?          (VIGYAZZ: ket egyenloseg jel!)
-    //   !=   nem egyenlo-e?
+    //   ==   egyenlő-e?          (VIGYÁZZ: két egyenlőség jel!)
+    //   !=   nem egyenlő-e?
     //   >    nagyobb?
     //   <    kisebb?
-    //   >=   nagyobb vagy egyenlo?
-    //   <=   kisebb vagy egyenlo?
+    //   >=   nagyobb vagy egyenlő?
+    //   <=   kisebb vagy egyenlő?
     //
-    // **GYAKORI HIBA**: egy `=` az ERTEKADAS, ket `==` az OSSZEHASONLITAS!
-    //   age = 18   → "legyen 18"      (ertekadas)
-    //   age == 18  → "egyenlo 18-cal?" (kerdes)
+    // **GYAKORI HIBA**: egy `=` az ÉRTÉKADÁS, két `==` az ÖSSZEHASONLÍTÁS!
+    //   age = 18   → "legyen 18"      (értékadás)
+    //   age == 18  → "egyenlő 18-cal?" (kérdés)
 
     int score = 75;
 
     cout << endl;
     if (score == 100) {
-        cout << "Tokeletes pontszam!" << endl;
+        cout << "Tökéletes pontszám!" << endl;
     } else if (score >= 80) {
-        cout << "Nagyon jo eredmeny!" << endl;
+        cout << "Nagyon jó eredmény!" << endl;
     } else if (score >= 60) {
-        cout << "Atment!" << endl;
+        cout << "Átment!" << endl;
     } else {
-        cout << "Sajnos nem ment at." << endl;
+        cout << "Sajnos nem ment át." << endl;
     }
 
-    // Itt a valasz: "Atment!" — mert 75 >= 60 igaz.
-    // Fontos: a program FELULROL LEFELE vizsgalja a felteteleket,
-    // es az ELSO igaz agat hajtja vegre, a tobbit atugorja!
+    // Itt a válasz: "Átment!" — mert 75 >= 60 igaz.
+    // Fontos: a program FELÜLRŐL LEFELÉ vizsgálja a feltételeket,
+    // és az ELSŐ igaz ágat hajtja végre, a többit átugorja!
 
     // ============================================================
-    // 4. ELSE IF — tobb lehetoseg
+    // 4. ELSE IF — több lehetőség
     // ============================================================
 
-    // Az `else if` segitsegevel tobb agat is letre tudsz hozni.
-    // Olyan, mint egy tobbfele elgazas:
-    //   Ha A → csinalj X-et
-    //   Kulonben ha B → csinalj Y-t
-    //   Kulonben ha C → csinalj Z-t
-    //   Kulonben → csinalj valami mast
+    // Az `else if` segítségével több ágat is létre tudsz hozni.
+    // Olyan, mint egy többfelé elágazás:
+    //   Ha A → csinálj X-et
+    //   Különben ha B → csinálj Y-t
+    //   Különben ha C → csinálj Z-t
+    //   Különben → csinálj valami mást
 
     int hour = 14;
 
     cout << endl;
     if (hour < 6) {
-        cout << "Jo ejszakat!" << endl;
+        cout << "Jó éjszakát!" << endl;
     } else if (hour < 12) {
-        cout << "Jo reggelt!" << endl;
+        cout << "Jó reggelt!" << endl;
     } else if (hour < 18) {
-        cout << "Jo napot!" << endl;
+        cout << "Jó napot!" << endl;
     } else {
-        cout << "Jo estet!" << endl;
+        cout << "Jó estét!" << endl;
     }
 
-    // 14 ora → "Jo napot!" (mert 14 >= 12 es 14 < 18)
+    // 14 óra → "Jó napot!" (mert 14 >= 12 és 14 < 18)
 
     // ============================================================
-    // 5. LOGIKAI OPERATOROK — felteteleket kotni ossze
+    // 5. LOGIKAI OPERÁTOROK — feltételeket kötni össze
     // ============================================================
 
-    // Neha tobb feltetelt is vizsgalni akarunk egyszerre:
+    // Néha több feltételt is vizsgálni akarunk egyszerre:
     //
-    //   &&  — ÉS (and): MINDKET feltetelnek igaznak kell lennie
-    //   ||  — VAGY (or): LEGALABB az egyiknek igaznak kell lennie
-    //   !   — NEM (not): megforditja: igazbol hamis lesz, hamisbol igaz
+    //   &&  — ÉS (and): MINDKÉT feltételnek igaznak kell lennie
+    //   ||  — VAGY (or): LEGALÁBB az egyiknek igaznak kell lennie
+    //   !   — NEM (not): megfordítja: igazból hamis lesz, hamisból igaz
     //
     // Hasonlat:
-    //   && = "Elmegyek setalni, HA szep az ido ÉS van idom"
+    //   && = "Elmegyek sétálni, HA szép az idő ÉS van időm"
     //   || = "Boldog vagyok, HA nyaralok VAGY fagylaltot eszem"
-    //   !  = "NEM esik az eso" (az ellenkezoje)
+    //   !  = "NEM esik az eső" (az ellenkezője)
 
     int user_age = 20;
     bool has_ticket = true;
 
     cout << endl;
     if (user_age >= 18 && has_ticket) {
-        cout << "Belephet a koncertre!" << endl;
+        cout << "Beléphet a koncertre!" << endl;
     } else {
-        cout << "Nem lephet be." << endl;
+        cout << "Nem léphet be." << endl;
     }
 
-    // Mindketto igaz (20 >= 18 ÉS van jegye), tehat belephet.
+    // Mindkettő igaz (20 >= 18 ÉS van jegye), tehát beléphet.
 
     bool is_weekend = true;
     bool is_holiday = false;
@@ -156,29 +156,29 @@ int main() {
     if (is_weekend || is_holiday) {
         cout << "Szabad nap — pihenj!" << endl;
     } else {
-        cout << "Munkanap — hajra!" << endl;
+        cout << "Munkanap — hajrá!" << endl;
     }
 
     // ============================================================
-    // 6. SWITCH — valasztas tobb fix ertek kozul
+    // 6. SWITCH — választás több fix érték közül
     // ============================================================
 
-    // Ha egy valtozo erteket KONKRET ertekekhez hasonlitod
-    // (pl. 1, 2, 3), a `switch` attekinthetobb, mint sok else if.
+    // Ha egy változó értékét KONKRÉT értékekhez hasonlítod
+    // (pl. 1, 2, 3), a `switch` áttekinthetőbb, mint sok else if.
     //
-    // Gondolj ra, mint egy automatara:
-    //   Nyomd meg az 1-est → kapj kavet
-    //   Nyomd meg a 2-est → kapj teat
+    // Gondolj rá, mint egy automatára:
+    //   Nyomd meg az 1-est → kapj kávét
+    //   Nyomd meg a 2-est → kapj teát
     //   Nyomd meg a 3-ast → kapj vizet
-    //   Barmi mas → "ismeretlen gomb"
+    //   Bármi más → "ismeretlen gomb"
 
     int day = 3;
 
     cout << endl;
     switch (day) {
         case 1:
-            cout << "Hetfo" << endl;
-            break;  // FONTOS! break nelkul "lecsuszik" a kovetkezore!
+            cout << "Hétfő" << endl;
+            break;  // FONTOS! break nélkül "lecsúszik" a következőre!
         case 2:
             cout << "Kedd" << endl;
             break;
@@ -186,40 +186,40 @@ int main() {
             cout << "Szerda" << endl;
             break;
         case 4:
-            cout << "Csutortok" << endl;
+            cout << "Csütörtök" << endl;
             break;
         case 5:
-            cout << "Pentek" << endl;
+            cout << "Péntek" << endl;
             break;
         default:
-            cout << "Hetvege!" << endl;
+            cout << "Hétvége!" << endl;
             break;
     }
 
-    // A `break` KOTELEZO minden `case` vegen!
-    // Nelkule a program "atfolyik" a kovetkezo case-be
-    // (ez egy C++ sajatossag, es gyakori hibaforrás).
+    // A `break` KÖTELEZŐ minden `case` végén!
+    // Nélküle a program "átfolyik" a következő case-be
+    // (ez egy C++ sajátosság, és gyakori hibaforrás).
 
     // ============================================================
-    // OSSZEFOGLALAS
+    // ÖSSZEFOGLALÁS
     // ============================================================
 
-    // Amit ma megtanultal:
+    // Amit ma megtanultál:
     //
-    // | Szerkezet      | Mikor hasznald                      |
+    // | Szerkezet      | Mikor használd                      |
     // |----------------|-------------------------------------|
-    // | if             | Egyetlen feltetel vizsgalata         |
-    // | if-else        | Ket lehetoseg kozul valasztas       |
-    // | else if        | Tobb lehetoseg (lancolt feltetelek) |
-    // | switch-case    | Fix ertekek kozul valasztas          |
-    // | &&, ||, !      | Feltetelek osszekotese              |
+    // | if             | Egyetlen feltétel vizsgálata         |
+    // | if-else        | Két lehetőség közül választás       |
+    // | else if        | Több lehetőség (láncolt feltételek) |
+    // | switch-case    | Fix értékek közül választás          |
+    // | &&, ||, !      | Feltételek összekötése              |
     //
     // Fontos:
-    // - `==` az osszehasonlitas, `=` az ertekadas — ne keverd!
-    // - `switch`-ben mindig irj `break`-et!
-    // - A felteteleket felulrol lefele vizsgalja a program.
+    // - `==` az összehasonlítás, `=` az értékadás — ne keverd!
+    // - `switch`-ben mindig írj `break`-et!
+    // - A feltételeket felülről lefelé vizsgálja a program.
     //
-    // A kovetkezo leckeben ciklusokat tanulunk: for es while!
+    // A következő leckében ciklusokat tanulunk: for és while!
 
     return 0;
 }

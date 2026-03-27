@@ -1,7 +1,7 @@
 /*
 =============================================================
-4. LECKE: Ciklusok — ismetles a programban
-Futtasd: a bongeszoben a Futtatas gombbal
+4. LECKE: Ciklusok — ismétlés a programban
+Futtasd: a böngészőben a Futtatás gombbal
 =============================================================
 */
 
@@ -10,170 +10,170 @@ Futtasd: a bongeszoben a Futtatas gombbal
 using namespace std;
 
 // ============================================================
-// MIERT KELLENEK CIKLUSOK?
+// MIÉRT KELLENEK CIKLUSOK?
 // ============================================================
 
-// Kepzeld el, hogy 10-szer ki akarod irni: "Hello!"
-// Irhatnal 10 darab cout sort... de az borzaszto lenne.
+// Képzeld el, hogy 10-szer ki akarod írni: "Hello!"
+// Írhatnál 10 darab cout sort... de az borzasztó lenne.
 //
-// A ciklus (loop) megoldja ezt: megmondod MIT csinaljon,
-// es HANYSZOR — a gep megcsinalja helyetted.
+// A ciklus (loop) megoldja ezt: megmondod MIT csináljon,
+// és HÁNYSZOR — a gép megcsinálja helyetted.
 //
-// Ket fo ciklus letezik C++-ban:
-//   - `for`   — ha tudod, hanyszor kell ismetelni
-//   - `while` — ha nem tudod elore, meddig kell menni
+// Két fő ciklus létezik C++-ban:
+//   - `for`   — ha tudod, hányszor kell ismételni
+//   - `while` — ha nem tudod előre, meddig kell menni
 
 int main() {
 
     // ============================================================
-    // 1. FOR CIKLUS — "csinalld X-szer"
+    // 1. FOR CIKLUS — "csináld X-szer"
     // ============================================================
 
-    // A for ciklus 3 reszbol all:
+    // A for ciklus 3 részből áll:
     //
-    //   for (kezdoertek; feltetel; lepes) { ... }
+    //   for (kezdőérték; feltétel; lépés) { ... }
     //         ^            ^        ^
-    //         |            |        +-- minden kor vegen ez tortenik
-    //         |            +----------- amig ez IGAZ, fut a ciklus
-    //         +------------------------ egyszer, az elejen
+    //         |            |        +-- minden kör végén ez történik
+    //         |            +----------- amíg ez IGAZ, fut a ciklus
+    //         +------------------------ egyszer, az elején
     //
-    // Pelda: szamoljunk 1-tol 5-ig
+    // Példa: számoljunk 1-től 5-ig
 
-    cout << "Szamolas 1-tol 5-ig:" << endl;
+    cout << "Számolás 1-től 5-ig:" << endl;
     for (int i = 1; i <= 5; i++) {
-        // i++ ugyanaz mint i = i + 1 (novel eggyel)
+        // i++ ugyanaz mint i = i + 1 (növel eggyel)
         cout << "  " << i << endl;
     }
 
-    // Mi tortenik lepesrol lepesre:
-    //   1. i = 1 (kezdoertek)
-    //   2. 1 <= 5? IGAZ → kiir 1, majd i++ → i = 2
-    //   3. 2 <= 5? IGAZ → kiir 2, majd i++ → i = 3
-    //   4. 3 <= 5? IGAZ → kiir 3, majd i++ → i = 4
-    //   5. 4 <= 5? IGAZ → kiir 4, majd i++ → i = 5
-    //   6. 5 <= 5? IGAZ → kiir 5, majd i++ → i = 6
-    //   7. 6 <= 5? HAMIS → VEGE a ciklusnak!
+    // Mi történik lépésről lépésre:
+    //   1. i = 1 (kezdőérték)
+    //   2. 1 <= 5? IGAZ → kiír 1, majd i++ → i = 2
+    //   3. 2 <= 5? IGAZ → kiír 2, majd i++ → i = 3
+    //   4. 3 <= 5? IGAZ → kiír 3, majd i++ → i = 4
+    //   5. 4 <= 5? IGAZ → kiír 4, majd i++ → i = 5
+    //   6. 5 <= 5? IGAZ → kiír 5, majd i++ → i = 6
+    //   7. 6 <= 5? HAMIS → VÉGE a ciklusnak!
 
     // ============================================================
-    // 2. FOR CIKLUS — masik pelda
+    // 2. FOR CIKLUS — másik példa
     // ============================================================
 
-    // Szorozzunk! Irjuk ki a 3-as szorzotablat:
+    // Szorozzunk! Írjuk ki a 3-as szorzótáblát:
 
-    cout << endl << "3-as szorzotabla:" << endl;
+    cout << endl << "3-as szorzótábla:" << endl;
     for (int i = 1; i <= 10; i++) {
         cout << "  3 x " << i << " = " << 3 * i << endl;
     }
 
-    // A ciklus tokeletes ismetlodo mintakra!
+    // A ciklus tökéletes ismétlődő mintákra!
 
     // ============================================================
-    // 3. FOR CIKLUS — visszafele szamlalas
+    // 3. FOR CIKLUS — visszafelé számlálás
     // ============================================================
 
-    // Nem csak felfelé szamlalhatunk!
-    // i-- az i = i - 1 roviditese (csokkent eggyel)
+    // Nem csak felfelé számlálhatunk!
+    // i-- az i = i - 1 rövidítése (csökkent eggyel)
 
-    cout << endl << "Visszaszamlalas:" << endl;
+    cout << endl << "Visszaszámlálás:" << endl;
     for (int i = 5; i >= 1; i--) {
         cout << "  " << i << "..." << endl;
     }
     cout << "  START!" << endl;
 
     // ============================================================
-    // 4. WHILE CIKLUS — "amig igaz, csinalld"
+    // 4. WHILE CIKLUS — "amíg igaz, csináld"
     // ============================================================
 
-    // A `while` ciklus addig ismetel, amig a feltetel IGAZ.
-    // Hasznald, ha NEM TUDOD ELORE, hanyszor kell ismetelni.
+    // A `while` ciklus addig ismétél, amíg a feltétel IGAZ.
+    // Használd, ha NEM TUDOD ELŐRE, hányszor kell ismételni.
     //
-    // Gondolj ra igy:
-    //   "AMIG nem talaltam meg a kulcsomat, keresem tovabb."
+    // Gondolj rá így:
+    //   "AMÍG nem találtam meg a kulcsomat, keresem tovább."
 
-    cout << endl << "While ciklus — duplazas:" << endl;
+    cout << endl << "While ciklus — duplázás:" << endl;
     int value = 1;
     while (value < 100) {
         cout << "  " << value << endl;
-        value = value * 2;  // megduplazzuk
+        value = value * 2;  // megduplázzuk
     }
-    cout << "  Vegso ertek: " << value << endl;
+    cout << "  Végső érték: " << value << endl;
 
-    // Mi tortent:
+    // Mi történt:
     //   1 → 2 → 4 → 8 → 16 → 32 → 64 → 128 (STOP, mert 128 >= 100)
 
     // ============================================================
-    // 5. VEGTELEN CIKLUS VESZELYE
+    // 5. VÉGTELEN CIKLUS VESZÉLYE
     // ============================================================
 
-    // **VIGYAZZ!** Ha a feltetel SOHA nem lesz hamis,
-    // a ciklus orokke fut! Ezt vegtelen ciklusnak hivjak.
+    // **VIGYÁZZ!** Ha a feltétel SOHA nem lesz hamis,
+    // a ciklus örökké fut! Ezt végtelen ciklusnak hívják.
     //
-    // Rossz pelda (NE futtasd, lefagyhat!):
+    // Rossz példa (NE futtasd, lefagyhat!):
     //   while (true) { cout << "Help!" << endl; }
     //
-    // Kerdes: miert vegtelen ez?
+    // Kérdés: miért végtelen ez?
     // Mert `true` sosem lesz `false`!
     //
-    // Mindig gyozodj meg rola, hogy a ciklusod VALAHOL megall.
-    // A for ciklus biztonsagosabb, mert a lepes beepitett.
+    // Mindig győződj meg róla, hogy a ciklusod VALAHOL megáll.
+    // A for ciklus biztonságosabb, mert a lépés beépített.
 
     // ============================================================
-    // 6. BREAK ES CONTINUE
+    // 6. BREAK ÉS CONTINUE
     // ============================================================
 
-    // `break` — azonnal kilep a ciklusbol
-    // `continue` — atugorja az aktualis kort es megy a kovetkezore
+    // `break` — azonnal kilép a ciklusból
+    // `continue` — átugorja az aktuális kört és megy a következőre
 
-    cout << endl << "Break pelda — keressuk az elso 3-mal oszthatot:" << endl;
+    cout << endl << "Break példa — keressük az első 3-mal oszthatót:" << endl;
     for (int i = 1; i <= 20; i++) {
         if (i % 3 == 0) {
-            cout << "  Megtalaltam: " << i << endl;
-            break;  // Kilep a ciklusbol, nem keres tovabb
+            cout << "  Megtaláltam: " << i << endl;
+            break;  // Kilép a ciklusból, nem keres tovább
         }
     }
 
-    cout << endl << "Continue pelda — csak paros szamok:" << endl;
+    cout << endl << "Continue példa — csak páros számok:" << endl;
     for (int i = 1; i <= 10; i++) {
         if (i % 2 != 0) {
-            continue;  // Atugorja a paratlanokat
+            continue;  // Átugorja a páratlanokat
         }
         cout << "  " << i << endl;
     }
 
     // ============================================================
-    // 7. EGYMASBA AGYAZOTT CIKLUSOK
+    // 7. EGYMÁSBA ÁGYAZOTT CIKLUSOK
     // ============================================================
 
-    // Egy ciklust beletehetsz egy masik ciklusba!
-    // Pelda: szorzotabla
+    // Egy ciklust beletehetsz egy másik ciklusba!
+    // Példa: szorzótábla
 
-    cout << endl << "Szorzotabla (1-5):" << endl;
+    cout << endl << "Szorzótábla (1-5):" << endl;
     for (int i = 1; i <= 5; i++) {
         for (int j = 1; j <= 5; j++) {
-            // A belso ciklus TELJESEN lefut minden kulso lepesre
-            cout << i * j << "\t";  // \t = tab (tavolsag)
+            // A belső ciklus TELJESEN lefut minden külső lépésre
+            cout << i * j << "\t";  // \t = tab (távolság)
         }
-        cout << endl;  // Uj sor a kulso ciklus vegen
+        cout << endl;  // Új sor a külső ciklus végén
     }
 
     // ============================================================
-    // OSSZEFOGLALAS
+    // ÖSSZEFOGLALÁS
     // ============================================================
 
-    // | Ciklus   | Mikor hasznald                        |
+    // | Ciklus   | Mikor használd                        |
     // |----------|---------------------------------------|
-    // | for      | Ha tudod, hanyszor kell ismetelni     |
-    // | while    | Ha nem tudod elore, meddig kell menni |
-    // | break    | Azonnal kilep a ciklusbol             |
-    // | continue | Atugorja az aktualis kort             |
+    // | for      | Ha tudod, hányszor kell ismételni     |
+    // | while    | Ha nem tudod előre, meddig kell menni |
+    // | break    | Azonnal kilép a ciklusból             |
+    // | continue | Átugorja az aktuális kört             |
     //
     // Fontos:
-    // - i++ = novel 1-gyel, i-- = csokkent 1-gyel
-    // - Mindig gyozodj meg, hogy a ciklus VEGET ER!
-    // - Egymasba agyazott ciklusok: a belso teljesen lefut
-    //   minden kulso lepesre
+    // - i++ = növel 1-gyel, i-- = csökkent 1-gyel
+    // - Mindig győződj meg, hogy a ciklus VÉGET ÉR!
+    // - Egymásba ágyazott ciklusok: a belső teljesen lefut
+    //   minden külső lépésre
     //
-    // A kovetkezo leckeben fuggvenyeket tanulunk!
+    // A következő leckében függvényeket tanulunk!
 
     return 0;
 }

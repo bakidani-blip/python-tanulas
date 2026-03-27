@@ -544,34 +544,34 @@ Következő lépés: nyisd meg az exercise_00_practice.py fájlt
 
 <div class="accordion">
 <button class="accordion-toggle" onclick="toggleAccordion(this)">
-<span>✏️ Gyakorlat: GYAKORLO FELADATOK — Python alapok</span>
+<span>✏️ Gyakorlat: GYAKORLÓ FELADATOK — Python alapok</span>
 <span class="accordion-arrow">▼</span>
 </button>
 <div class="accordion-content" style="display:none">
 <div class="task-card">
 <div class="task-header">
-<h3>1. Valtozok es kiiras</h3>
+<h3>1. Változók és kiírás</h3>
 </div>
-<p class="task-desc">Hozz letre 3 valtozot: <code class="inline">my_name</code> (neved), <code class="inline">my_age</code> (korod), <code class="inline">my_city</code> (varosod).
-Irasd ki f-stringgel: <strong>&quot;Szia! A nevem X, Y eves vagyok, Z-ban elek.&quot;</strong></p>
+<p class="task-desc">Hozz létre 3 változót: <code class="inline">my_name</code> (neved), <code class="inline">my_age</code> (korod), <code class="inline">my_city</code> (városod).
+Írasd ki f-stringgel: <strong>&quot;Szia! A nevem X, Y éves vagyok, Z-ban élek.&quot;</strong></p>
 <details class="task-hint">
 <summary>💡 Tipp</summary>
-<p><code class="inline">print(f&quot;Szia! A nevem {my_name}, {my_age} eves vagyok, {my_city}-ban elek.&quot;)</code></p>
+<p><code class="inline">print(f&quot;Szia! A nevem {my_name}, {my_age} éves vagyok, {my_city}-ban élek.&quot;)</code></p>
 </details>
 <div class="exercise-editor">
 <div class="editor-toolbar">
 <button class="run-btn" onclick="runCode('exercise-0')">▶ Futtatás</button>
 <button class="reset-btn" onclick="resetCode('exercise-0')">↺ Visszaállítás</button>
 </div>
-<textarea id="exercise-0" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off"># MEGOLDAS IDE:
+<textarea id="exercise-0" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off"># MEGOLDÁS IDE:
 
 
 
-# ELLENORZES:
+# ELLENŐRZÉS:
 if my_name and my_age &gt; 0 and my_city:
-    print(&quot;✓ OK — valtozok rendben&quot;)
+    print(&quot;✓ OK — változók rendben&quot;)
 else:
-    print(&quot;✗ Toltsd ki a neved, korod, varosod!&quot;)</textarea>
+    print(&quot;✗ Töltsd ki a neved, korod, városod!&quot;)</textarea>
 <div id="exercise-0-output" class="output-area">
 <span class="output-placeholder">Nyomd meg a ▶ Futtatás gombot az eredményért</span>
 </div>
@@ -579,14 +579,14 @@ else:
 </div>
 <div class="task-card">
 <div class="task-header">
-<h3>2. Muveletek</h3>
+<h3>2. Műveletek</h3>
 </div>
-<p class="task-desc">Adott egy teglalap: <code class="inline">width = 5</code>, <code class="inline">height = 8</code>.
-Szamold ki a <strong>keruletet</strong> (<code class="inline">perimeter = 2 * (a + b)</code>) es a <strong>teruletet</strong> (<code class="inline">area = a * b</code>).
-Irasd ki mindkettot!</p>
+<p class="task-desc">Adott egy téglalap: <code class="inline">width = 5</code>, <code class="inline">height = 8</code>.
+Számold ki a <strong>kerületet</strong> (<code class="inline">perimeter = 2 * (a + b)</code>) és a <strong>területet</strong> (<code class="inline">area = a * b</code>).
+Írasd ki mindkettőt!</p>
 <details class="task-hint">
 <summary>💡 Tipp</summary>
-<p><code class="inline">perimeter = 2 * (width + height)</code> es <code class="inline">area = width * height</code></p>
+<p><code class="inline">perimeter = 2 * (width + height)</code> és <code class="inline">area = width * height</code></p>
 </details>
 <div class="exercise-editor">
 <div class="editor-toolbar">
@@ -596,15 +596,15 @@ Irasd ki mindkettot!</p>
 <textarea id="exercise-1" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off">width = 5
 height = 8
 
-# MEGOLDAS IDE:
+# MEGOLDÁS IDE:
 
 
 
-# ELLENORZES:
+# ELLENŐRZÉS:
 if perimeter == 26 and area == 40:
-    print(&quot;✓ OK — kerulet:&quot;, perimeter, &quot;terulet:&quot;, area)
+    print(&quot;✓ OK — kerület:&quot;, perimeter, &quot;terület:&quot;, area)
 else:
-    print(&quot;✗ Kerulet = 26 es terulet = 40 kene legyen!&quot;)</textarea>
+    print(&quot;✗ Kerület = 26 és terület = 40 kéne legyen!&quot;)</textarea>
 <div id="exercise-1-output" class="output-area">
 <span class="output-placeholder">Nyomd meg a ▶ Futtatás gombot az eredményért</span>
 </div>
@@ -612,13 +612,13 @@ else:
 </div>
 <div class="task-card">
 <div class="task-header">
-<h3>3. Lista muveletek</h3>
+<h3>3. Lista műveletek</h3>
 </div>
-<p class="task-desc">Adott egy bevasarlolista. <strong>Adj hozza 2 uj elemet</strong> (<code class="inline">.append()</code>),
-es <strong>torold a &quot;kenyer&quot; elemet</strong> (<code class="inline">.remove()</code>)!</p>
+<p class="task-desc">Adott egy bevásárlólista. <strong>Adj hozzá 2 új elemet</strong> (<code class="inline">.append()</code>),
+és <strong>töröld a &quot;kenyer&quot; elemet</strong> (<code class="inline">.remove()</code>)!</p>
 <details class="task-hint">
 <summary>💡 Tipp</summary>
-<p><code class="inline">shopping_list.append(&quot;vaj&quot;)</code> es <code class="inline">shopping_list.remove(&quot;kenyer&quot;)</code></p>
+<p><code class="inline">shopping_list.append(&quot;vaj&quot;)</code> és <code class="inline">shopping_list.remove(&quot;kenyer&quot;)</code></p>
 </details>
 <div class="exercise-editor">
 <div class="editor-toolbar">
@@ -627,15 +627,15 @@ es <strong>torold a &quot;kenyer&quot; elemet</strong> (<code class="inline">.re
 </div>
 <textarea id="exercise-2" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off">shopping_list = [&quot;tej&quot;, &quot;kenyer&quot;, &quot;sajt&quot;, &quot;tojas&quot;]
 
-# MEGOLDAS IDE:
+# MEGOLDÁS IDE:
 
 
 
-# ELLENORZES:
+# ELLENŐRZÉS:
 if &quot;kenyer&quot; not in shopping_list and len(shopping_list) &gt;= 5:
     print(&quot;✓ OK — lista:&quot;, shopping_list)
 else:
-    print(&quot;✗ Adj hozza 2 elemet es torold a &#x27;kenyer&#x27;-t!&quot;)
+    print(&quot;✗ Adj hozzá 2 elemet és töröld a &#x27;kenyer&#x27;-t!&quot;)
     print(&quot;  Jelenlegi lista:&quot;, shopping_list)</textarea>
 <div id="exercise-2-output" class="output-area">
 <span class="output-placeholder">Nyomd meg a ▶ Futtatás gombot az eredményért</span>
@@ -644,13 +644,13 @@ else:
 </div>
 <div class="task-card">
 <div class="task-header">
-<h3>4. Feltetel — paros vagy paratlan</h3>
+<h3>4. Feltétel — páros vagy páratlan</h3>
 </div>
-<p class="task-desc">Ird meg az <code class="inline">even_or_odd</code> fuggvenyt: ha a szam <strong>paros</strong>, adjon vissza <code class="inline">&quot;paros&quot;</code>,
-ha <strong>paratlan</strong>, adjon vissza <code class="inline">&quot;paratlan&quot;</code>.</p>
+<p class="task-desc">Írd meg az <code class="inline">even_or_odd</code> függvényt: ha a szám <strong>páros</strong>, adjon vissza <code class="inline">&quot;paros&quot;</code>,
+ha <strong>páratlan</strong>, adjon vissza <code class="inline">&quot;paratlan&quot;</code>.</p>
 <details class="task-hint">
 <summary>💡 Tipp</summary>
-<p>Ha <code class="inline">number % 2 == 0</code>, akkor paros. Hasznalj <code class="inline">if/else</code>-t es <code class="inline">return</code>-t!</p>
+<p>Ha <code class="inline">number % 2 == 0</code>, akkor páros. Használj <code class="inline">if/else</code>-t és <code class="inline">return</code>-t!</p>
 </details>
 <div class="exercise-editor">
 <div class="editor-toolbar">
@@ -658,14 +658,14 @@ ha <strong>paratlan</strong>, adjon vissza <code class="inline">&quot;paratlan&q
 <button class="reset-btn" onclick="resetCode('exercise-3')">↺ Visszaállítás</button>
 </div>
 <textarea id="exercise-3" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off">def even_or_odd(number):
-    # MEGOLDAS IDE:
+    # MEGOLDÁS IDE:
     pass
 
-# ELLENORZES:
+# ELLENŐRZÉS:
 if even_or_odd(4) == &quot;paros&quot; and even_or_odd(7) == &quot;paratlan&quot;:
-    print(&quot;✓ OK — even_or_odd mukodik&quot;)
+    print(&quot;✓ OK — even_or_odd működik&quot;)
 else:
-    print(&quot;✗ even_or_odd(4) = &#x27;paros&#x27; es even_or_odd(7) = &#x27;paratlan&#x27; kene legyen!&quot;)</textarea>
+    print(&quot;✗ even_or_odd(4) = &#x27;paros&#x27; és even_or_odd(7) = &#x27;paratlan&#x27; kéne legyen!&quot;)</textarea>
 <div id="exercise-3-output" class="output-area">
 <span class="output-placeholder">Nyomd meg a ▶ Futtatás gombot az eredményért</span>
 </div>
@@ -673,20 +673,20 @@ else:
 </div>
 <div class="task-card">
 <div class="task-header">
-<h3>5. Ciklus — paros szamok</h3>
+<h3>5. Ciklus — páros számok</h3>
 </div>
-<p class="task-desc">Irj egy <code class="inline">for</code> ciklust, ami kiirja a <strong>paros szamokat 1-tol 10-ig</strong> (2, 4, 6, 8, 10).</p>
+<p class="task-desc">Írj egy <code class="inline">for</code> ciklust, ami kiírja a <strong>páros számokat 1-től 10-ig</strong> (2, 4, 6, 8, 10).</p>
 <details class="task-hint">
 <summary>💡 Tipp</summary>
-<p><code class="inline">for i in range(1, 11):</code> es <code class="inline">if i % 2 == 0: print(i)</code></p>
+<p><code class="inline">for i in range(1, 11):</code> és <code class="inline">if i % 2 == 0: print(i)</code></p>
 </details>
 <div class="exercise-editor">
 <div class="editor-toolbar">
 <button class="run-btn" onclick="runCode('exercise-4')">▶ Futtatás</button>
 <button class="reset-btn" onclick="resetCode('exercise-4')">↺ Visszaállítás</button>
 </div>
-<textarea id="exercise-4" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off">print(&quot;Paros szamok 1-10:&quot;)
-# MEGOLDAS IDE:</textarea>
+<textarea id="exercise-4" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off">print(&quot;Páros számok 1-10:&quot;)
+# MEGOLDÁS IDE:</textarea>
 <div id="exercise-4-output" class="output-area">
 <span class="output-placeholder">Nyomd meg a ▶ Futtatás gombot az eredményért</span>
 </div>
@@ -694,10 +694,10 @@ else:
 </div>
 <div class="task-card">
 <div class="task-header">
-<h3>6. Fuggveny — atlag</h3>
+<h3>6. Függvény — átlag</h3>
 </div>
-<p class="task-desc">Ird meg a <code class="inline">calculate_average</code> fuggvenyt, ami kap egy szamlistat
-es <strong>visszaadja az atlagot</strong> (osszeg / elemszam).</p>
+<p class="task-desc">Írd meg a <code class="inline">calculate_average</code> függvényt, ami kap egy számlistát
+és <strong>visszaadja az átlagot</strong> (összeg / elemszám).</p>
 <details class="task-hint">
 <summary>💡 Tipp</summary>
 <p><code class="inline">return sum(numbers) / len(numbers)</code></p>
@@ -708,14 +708,14 @@ es <strong>visszaadja az atlagot</strong> (osszeg / elemszam).</p>
 <button class="reset-btn" onclick="resetCode('exercise-5')">↺ Visszaállítás</button>
 </div>
 <textarea id="exercise-5" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off">def calculate_average(numbers):
-    # MEGOLDAS IDE:
+    # MEGOLDÁS IDE:
     pass
 
-# ELLENORZES:
+# ELLENŐRZÉS:
 if calculate_average([10, 20, 30]) == 20.0:
-    print(&quot;✓ OK — atlag:&quot;, calculate_average([10, 20, 30]))
+    print(&quot;✓ OK — átlag:&quot;, calculate_average([10, 20, 30]))
 else:
-    print(&quot;✗ calculate_average([10, 20, 30]) = 20.0 kene legyen!&quot;)</textarea>
+    print(&quot;✗ calculate_average([10, 20, 30]) = 20.0 kéne legyen!&quot;)</textarea>
 <div id="exercise-5-output" class="output-area">
 <span class="output-placeholder">Nyomd meg a ▶ Futtatás gombot az eredményért</span>
 </div>
@@ -931,32 +931,32 @@ print(&quot;Következő lépés: oldd meg az exercise_01_elnevezes.py feladatait
 
 <div class="accordion">
 <button class="accordion-toggle" onclick="toggleAccordion(this)">
-<span>✏️ Gyakorlat: 1.1 GYAKORLAT: Valtozok es elnevezesek — Clean Code</span>
+<span>✏️ Gyakorlat: 1.1 GYAKORLAT: Változók és elnevezések — Clean Code</span>
 <span class="accordion-arrow">▼</span>
 </button>
 <div class="accordion-content" style="display:none">
 <div class="task-card">
 <div class="task-header">
-<h3>1. Valtozok atnevezese</h3>
+<h3>1. Változók átnevezése</h3>
 </div>
-<p class="task-desc">Az alabbi valtozoknak <strong>rossz a nevuk</strong>. Nevezd at oket ertelmes, <code class="inline">snake_case</code> nevekre!
-Az ertekuket <strong>NE valtoztasd</strong>, csak a nevet! Gondolj bele: mit TAROL a valtozo?</p>
+<p class="task-desc">Az alábbi változóknak <strong>rossz a nevük</strong>. Nevezd át őket értelmes, <code class="inline">snake_case</code> nevekre!
+Az értéküket <strong>NE változtasd</strong>, csak a nevet! Gondolj bele: mit TÁROL a változó?</p>
 <details class="task-hint">
 <summary>💡 Tipp</summary>
-<p>Pelda: <code class="inline">n</code> → <code class="inline">user_name</code>, <code class="inline">x</code> → <code class="inline">user_age</code>, <code class="inline">c</code> → <code class="inline">user_city</code></p>
+<p>Példa: <code class="inline">n</code> → <code class="inline">user_name</code>, <code class="inline">x</code> → <code class="inline">user_age</code>, <code class="inline">c</code> → <code class="inline">user_city</code></p>
 </details>
 <div class="exercise-editor">
 <div class="editor-toolbar">
 <button class="run-btn" onclick="runCode('exercise-6')">▶ Futtatás</button>
 <button class="reset-btn" onclick="resetCode('exercise-6')">↺ Visszaállítás</button>
 </div>
-<textarea id="exercise-6" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off"># Nevezd at ezeket ertelmes nevekre:
-n = &quot;Kiss Peter&quot;           # ez egy szemely neve
-x = 42                     # ez egy eletkor
-c = &quot;Budapest&quot;             # ez egy varos
+<textarea id="exercise-6" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off"># Nevezd át ezeket értelmes nevekre:
+n = &quot;Kiss Peter&quot;           # ez egy személy neve
+x = 42                     # ez egy életkor
+c = &quot;Budapest&quot;             # ez egy város
 
-# Irasd ki az uj nevu valtozokat:
-# MEGOLDAS IDE:</textarea>
+# Írasd ki az új nevű változókat:
+# MEGOLDÁS IDE:</textarea>
 <div id="exercise-6-output" class="output-area">
 <span class="output-placeholder">Nyomd meg a ▶ Futtatás gombot az eredményért</span>
 </div>
@@ -966,24 +966,24 @@ c = &quot;Budapest&quot;             # ez egy varos
 <div class="task-header">
 <h3>2. Konstansok</h3>
 </div>
-<p class="task-desc">Az alabbi ertekek <strong>SOHA nem valtoznak</strong> — konstansok.
-Nevezd at oket <strong>UPPER_SNAKE_CASE</strong> konvencio szerint!</p>
+<p class="task-desc">Az alábbi értékek <strong>SOHA nem változnak</strong> — konstansok.
+Nevezd át őket <strong>UPPER_SNAKE_CASE</strong> konvenció szerint!</p>
 <details class="task-hint">
 <summary>💡 Tipp</summary>
-<p>Pelda: <code class="inline">mr</code> → <code class="inline">MAX_RETRIES</code>, <code class="inline">tax</code> → <code class="inline">TAX_RATE</code></p>
+<p>Példa: <code class="inline">mr</code> → <code class="inline">MAX_RETRIES</code>, <code class="inline">tax</code> → <code class="inline">TAX_RATE</code></p>
 </details>
 <div class="exercise-editor">
 <div class="editor-toolbar">
 <button class="run-btn" onclick="runCode('exercise-7')">▶ Futtatás</button>
 <button class="reset-btn" onclick="resetCode('exercise-7')">↺ Visszaállítás</button>
 </div>
-<textarea id="exercise-7" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off"># Nevezd at UPPER_SNAKE_CASE-re:
-mr = 5                     # max probalkozasok szama
-tax = 0.27                 # adokulcs
-url = &quot;https://api.example.com/v2&quot;  # API webcim
+<textarea id="exercise-7" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off"># Nevezd át UPPER_SNAKE_CASE-re:
+mr = 5                     # max próbálkozások száma
+tax = 0.27                 # adókulcs
+url = &quot;https://api.example.com/v2&quot;  # API webcím
 
-# Irasd ki mindet:
-# MEGOLDAS IDE:</textarea>
+# Írasd ki mindet:
+# MEGOLDÁS IDE:</textarea>
 <div id="exercise-7-output" class="output-area">
 <span class="output-placeholder">Nyomd meg a ▶ Futtatás gombot az eredményért</span>
 </div>
@@ -991,27 +991,27 @@ url = &quot;https://api.example.com/v2&quot;  # API webcim
 </div>
 <div class="task-card">
 <div class="task-header">
-<h3>3. Boolean valtozok</h3>
+<h3>3. Boolean változók</h3>
 </div>
-<p class="task-desc">Boolean valtozok neve mindig <strong>kerdes</strong> legyen: <code class="inline">is_</code>, <code class="inline">has_</code>, <code class="inline">can_</code> elotaggal.
-Nevezd at az alabbiakat!</p>
+<p class="task-desc">Boolean változók neve mindig <strong>kérdés</strong> legyen: <code class="inline">is_</code>, <code class="inline">has_</code>, <code class="inline">can_</code> előtaggal.
+Nevezd át az alábbiakat!</p>
 <details class="task-hint">
 <summary>💡 Tipp</summary>
-<p>Pelda: <code class="inline">active</code> → <code class="inline">is_active</code>, <code class="inline">admin</code> → <code class="inline">is_admin</code></p>
+<p>Példa: <code class="inline">active</code> → <code class="inline">is_active</code>, <code class="inline">admin</code> → <code class="inline">is_admin</code></p>
 </details>
 <div class="exercise-editor">
 <div class="editor-toolbar">
 <button class="run-btn" onclick="runCode('exercise-8')">▶ Futtatás</button>
 <button class="reset-btn" onclick="resetCode('exercise-8')">↺ Visszaállítás</button>
 </div>
-<textarea id="exercise-8" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off"># Nevezd at is_/has_/can_ elotaggal:
-active = True               # aktiv-e a felhasznalo?
-admin = False               # adminisztrator-e?
+<textarea id="exercise-8" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off"># Nevezd át is_/has_/can_ előtaggal:
+active = True               # aktív-e a felhasználó?
+admin = False               # adminisztrátor-e?
 logged = True               # be van-e jelentkezve?
-items = False               # van-e termek a kosaraban?
+items = False               # van-e termék a kosarában?
 
-# Irasd ki mindet:
-# MEGOLDAS IDE:</textarea>
+# Írasd ki mindet:
+# MEGOLDÁS IDE:</textarea>
 <div id="exercise-8-output" class="output-area">
 <span class="output-placeholder">Nyomd meg a ▶ Futtatás gombot az eredményért</span>
 </div>
@@ -1019,26 +1019,26 @@ items = False               # van-e termek a kosaraban?
 </div>
 <div class="task-card">
 <div class="task-header">
-<h3>4. Fuggveny atnevezese</h3>
+<h3>4. Függvény átnevezése</h3>
 </div>
-<p class="task-desc">Az alabbi fuggvenynek rossz a neve ES a parametereinek neve is.
-A fuggveny egy <strong>teglalap teruletet</strong> szamolja ki (szelesseg * magassag).
-Nevezd at a fuggvenyt es a parametereit is!</p>
+<p class="task-desc">Az alábbi függvénynek rossz a neve ÉS a paramétereinek neve is.
+A függvény egy <strong>téglalap területét</strong> számolja ki (szélesség * magasság).
+Nevezd át a függvényt és a paramétereit is!</p>
 <details class="task-hint">
 <summary>💡 Tipp</summary>
-<p>Fuggvenynevek igevel kezdodnek: <code class="inline">calculate_area(width, height)</code></p>
+<p>Függvénynevek igével kezdődnek: <code class="inline">calculate_area(width, height)</code></p>
 </details>
 <div class="exercise-editor">
 <div class="editor-toolbar">
 <button class="run-btn" onclick="runCode('exercise-9')">▶ Futtatás</button>
 <button class="reset-btn" onclick="resetCode('exercise-9')">↺ Visszaállítás</button>
 </div>
-<textarea id="exercise-9" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off"># Nevezd at a fuggvenyt es a parametereit:
+<textarea id="exercise-9" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off"># Nevezd át a függvényt és a paramétereit:
 def calc(a, b):
     return a * b
 
-# Teszteld az uj nevu fuggvenyt:
-# MEGOLDAS IDE:</textarea>
+# Teszteld az új nevű függvényt:
+# MEGOLDÁS IDE:</textarea>
 <div id="exercise-9-output" class="output-area">
 <span class="output-placeholder">Nyomd meg a ▶ Futtatás gombot az eredményért</span>
 </div>
@@ -1046,10 +1046,10 @@ def calc(a, b):
 </div>
 <div class="task-card">
 <div class="task-header">
-<h3>5. Vegyes — teljes kod atiras</h3>
+<h3>5. Vegyes — teljes kód átírás</h3>
 </div>
-<p class="task-desc">Az alabbi kod egy vasarlast szamol ki. <strong>MINDEN elnevezes rossz</strong> benne.
-Ird at az OSSZES nevet — valtozot, konstanst, fuggvenyt! A <strong>logika</strong> maradjon!</p>
+<p class="task-desc">Az alábbi kód egy vásárlást számol ki. <strong>MINDEN elnevezés rossz</strong> benne.
+Írd át az ÖSSZES nevet — változót, konstanst, függvényt! A <strong>logika</strong> maradjon!</p>
 <details class="task-hint">
 <summary>💡 Tipp</summary>
 <p><code class="inline">t</code> → <code class="inline">TAX_RATE</code>, <code class="inline">f</code> → <code class="inline">calculate_total_price(net_price, quantity)</code></p>
@@ -1066,7 +1066,7 @@ def f(p, q):
     a = s * t
     return s + a
 
-# MEGOLDAS IDE — ird ujra az egeszet jo nevekkel:
+# MEGOLDÁS IDE — írd újra az egészet jó nevekkel:
 
 
 # Teszteld: calculate_total_price(1000, 3) = 3810.0</textarea>
@@ -1416,16 +1416,16 @@ Következő lépés: oldd meg az exercise_02_fuggvenyek.py feladatait!
 
 <div class="accordion">
 <button class="accordion-toggle" onclick="toggleAccordion(this)">
-<span>✏️ Gyakorlat: 1.2 GYAKORLAT: Fuggvenyek — Egy feladat, egy fuggveny</span>
+<span>✏️ Gyakorlat: 1.2 GYAKORLAT: Függvények — Egy feladat, egy függvény</span>
 <span class="accordion-arrow">▼</span>
 </button>
 <div class="accordion-content" style="display:none">
 <div class="task-card">
 <div class="task-header">
-<h3>1. Kor kerulete</h3>
+<h3>1. Kör kerülete</h3>
 </div>
-<p class="task-desc">Irj egy fuggvenyt <code class="inline">calculate_circumference</code> neven, ami kiszamolja egy <strong>kor keruletet</strong>.
-Keplet: <strong>kerulet = 2 * 3.14159 * sugar</strong>. A fuggveny VISSZAADJA az eredmenyt (<code class="inline">return</code>).</p>
+<p class="task-desc">Írj egy függvényt <code class="inline">calculate_circumference</code> néven, ami kiszámolja egy <strong>kör kerületét</strong>.
+Képlet: <strong>kerület = 2 * 3.14159 * sugár</strong>. A függvény VISSZAADJA az eredményt (<code class="inline">return</code>).</p>
 <details class="task-hint">
 <summary>💡 Tipp</summary>
 <p><code class="inline">def calculate_circumference(radius): return 2 * 3.14159 * radius</code></p>
@@ -1438,16 +1438,16 @@ Keplet: <strong>kerulet = 2 * 3.14159 * sugar</strong>. A fuggveny VISSZAADJA az
 <textarea id="exercise-11" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off">PI = 3.14159
 
 def calculate_circumference(radius):
-    # MEGOLDAS IDE:
+    # MEGOLDÁS IDE:
     pass
 
-# ELLENORZES:
+# ELLENŐRZÉS:
 result = calculate_circumference(10)
 expected = 2 * PI * 10
 if result is not None and abs(result - expected) &lt; 0.01:
-    print(&quot;✓ OK — kerulet:&quot;, round(result, 2))
+    print(&quot;✓ OK — kerület:&quot;, round(result, 2))
 else:
-    print(&quot;✗ calculate_circumference(10) =&quot;, round(expected, 2), &quot;kene legyen!&quot;)</textarea>
+    print(&quot;✗ calculate_circumference(10) =&quot;, round(expected, 2), &quot;kéne legyen!&quot;)</textarea>
 <div id="exercise-11-output" class="output-area">
 <span class="output-placeholder">Nyomd meg a ▶ Futtatás gombot az eredményért</span>
 </div>
@@ -1455,10 +1455,10 @@ else:
 </div>
 <div class="task-card">
 <div class="task-header">
-<h3>2. Atment-e a vizsgán?</h3>
+<h3>2. Átment-e a vizsgán?</h3>
 </div>
-<p class="task-desc">Irj egy fuggvenyt <code class="inline">is_passing</code> neven: ha a pontszam <strong>&gt;= 50</strong>, adjon vissza <code class="inline">True</code>,
-kulonben <code class="inline">False</code>. Boolean fuggveny → <code class="inline">is_</code> elotag!</p>
+<p class="task-desc">Írj egy függvényt <code class="inline">is_passing</code> néven: ha a pontszám <strong>&gt;= 50</strong>, adjon vissza <code class="inline">True</code>,
+különben <code class="inline">False</code>. Boolean függvény → <code class="inline">is_</code> előtag!</p>
 <details class="task-hint">
 <summary>💡 Tipp</summary>
 <p><code class="inline">return score &gt;= 50</code></p>
@@ -1469,14 +1469,14 @@ kulonben <code class="inline">False</code>. Boolean fuggveny → <code class="in
 <button class="reset-btn" onclick="resetCode('exercise-12')">↺ Visszaállítás</button>
 </div>
 <textarea id="exercise-12" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off">def is_passing(score):
-    # MEGOLDAS IDE:
+    # MEGOLDÁS IDE:
     pass
 
-# ELLENORZES:
+# ELLENŐRZÉS:
 if is_passing(75) == True and is_passing(50) == True and is_passing(49) == False:
-    print(&quot;✓ OK — is_passing mukodik&quot;)
+    print(&quot;✓ OK — is_passing működik&quot;)
 else:
-    print(&quot;✗ is_passing(75)=True, is_passing(50)=True, is_passing(49)=False kene!&quot;)</textarea>
+    print(&quot;✗ is_passing(75)=True, is_passing(50)=True, is_passing(49)=False kéne!&quot;)</textarea>
 <div id="exercise-12-output" class="output-area">
 <span class="output-placeholder">Nyomd meg a ▶ Futtatás gombot az eredményért</span>
 </div>
@@ -1484,10 +1484,10 @@ else:
 </div>
 <div class="task-card">
 <div class="task-header">
-<h3>3. Atlag szamolas</h3>
+<h3>3. Átlag számolás</h3>
 </div>
-<p class="task-desc">Irj egy fuggvenyt <code class="inline">calculate_average</code> neven: kap egy <strong>szamlistat</strong>,
-es visszaadja az <strong>atlagot</strong> (osszeg / elemszam).</p>
+<p class="task-desc">Írj egy függvényt <code class="inline">calculate_average</code> néven: kap egy <strong>számlistát</strong>,
+és visszaadja az <strong>átlagot</strong> (összeg / elemszám).</p>
 <details class="task-hint">
 <summary>💡 Tipp</summary>
 <p><code class="inline">return sum(scores) / len(scores)</code></p>
@@ -1498,16 +1498,16 @@ es visszaadja az <strong>atlagot</strong> (osszeg / elemszam).</p>
 <button class="reset-btn" onclick="resetCode('exercise-13')">↺ Visszaállítás</button>
 </div>
 <textarea id="exercise-13" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off">def calculate_average(scores):
-    # MEGOLDAS IDE:
+    # MEGOLDÁS IDE:
     pass
 
-# ELLENORZES:
+# ELLENŐRZÉS:
 test = [85, 42, 73, 91, 38, 67]
 avg = calculate_average(test)
 if avg is not None and abs(avg - 66.0) &lt; 0.01:
-    print(&quot;✓ OK — atlag:&quot;, round(avg, 1))
+    print(&quot;✓ OK — átlag:&quot;, round(avg, 1))
 else:
-    print(&quot;✗ calculate_average([85,42,73,91,38,67]) = 66.0 kene legyen!&quot;)</textarea>
+    print(&quot;✗ calculate_average([85,42,73,91,38,67]) = 66.0 kéne legyen!&quot;)</textarea>
 <div id="exercise-13-output" class="output-area">
 <span class="output-placeholder">Nyomd meg a ▶ Futtatás gombot az eredményért</span>
 </div>
@@ -1515,14 +1515,14 @@ else:
 </div>
 <div class="task-card">
 <div class="task-header">
-<h3>4. Koszontes alapertelmezett parameterrel</h3>
+<h3>4. Köszöntés alapértelmezett paraméterrel</h3>
 </div>
-<p class="task-desc">Irj egy fuggvenyt <code class="inline">create_greeting</code> neven:
-Kapja a <strong>nevet</strong> (kotelezo) es az <strong>idoszakot</strong> (alapertelmezetten <code class="inline">&quot;reggel&quot;</code>).
-<code class="inline">&quot;reggel&quot;</code> → <code class="inline">&quot;Jo reggelt, X!&quot;</code>, <code class="inline">&quot;este&quot;</code> → <code class="inline">&quot;Jo estet, X!&quot;</code>, barmi mas → <code class="inline">&quot;Szia, X!&quot;</code></p>
+<p class="task-desc">Írj egy függvényt <code class="inline">create_greeting</code> néven:
+Kapja a <strong>nevet</strong> (kötelező) és az <strong>időszakot</strong> (alapértelmezetten <code class="inline">&quot;reggel&quot;</code>).
+<code class="inline">&quot;reggel&quot;</code> → <code class="inline">&quot;Jo reggelt, X!&quot;</code>, <code class="inline">&quot;este&quot;</code> → <code class="inline">&quot;Jo estet, X!&quot;</code>, bármi más → <code class="inline">&quot;Szia, X!&quot;</code></p>
 <details class="task-hint">
 <summary>💡 Tipp</summary>
-<p><code class="inline">def create_greeting(name, time_of_day=&quot;reggel&quot;):</code> es hasznalj <code class="inline">if/elif/else</code>-t</p>
+<p><code class="inline">def create_greeting(name, time_of_day=&quot;reggel&quot;):</code> és használj <code class="inline">if/elif/else</code>-t</p>
 </details>
 <div class="exercise-editor">
 <div class="editor-toolbar">
@@ -1530,10 +1530,10 @@ Kapja a <strong>nevet</strong> (kotelezo) es az <strong>idoszakot</strong> (alap
 <button class="reset-btn" onclick="resetCode('exercise-14')">↺ Visszaállítás</button>
 </div>
 <textarea id="exercise-14" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off">def create_greeting(name, time_of_day=&quot;reggel&quot;):
-    # MEGOLDAS IDE:
+    # MEGOLDÁS IDE:
     pass
 
-# ELLENORZES:
+# ELLENŐRZÉS:
 g1 = create_greeting(&quot;Anna&quot;)
 g2 = create_greeting(&quot;Bela&quot;, &quot;este&quot;)
 g3 = create_greeting(&quot;Cecil&quot;, &quot;del&quot;)
@@ -1541,20 +1541,20 @@ errors = 0
 if g1 == &quot;Jo reggelt, Anna!&quot;:
     print(&quot;✓ create_greeting(&#x27;Anna&#x27;) — OK&quot;)
 else:
-    print(&quot;✗ Vart: &#x27;Jo reggelt, Anna!&#x27;, kaptam:&quot;, g1)
+    print(&quot;✗ Várt: &#x27;Jo reggelt, Anna!&#x27;, kaptam:&quot;, g1)
     errors += 1
 if g2 == &quot;Jo estet, Bela!&quot;:
     print(&quot;✓ create_greeting(&#x27;Bela&#x27;, &#x27;este&#x27;) — OK&quot;)
 else:
-    print(&quot;✗ Vart: &#x27;Jo estet, Bela!&#x27;, kaptam:&quot;, g2)
+    print(&quot;✗ Várt: &#x27;Jo estet, Bela!&#x27;, kaptam:&quot;, g2)
     errors += 1
 if g3 == &quot;Szia, Cecil!&quot;:
     print(&quot;✓ create_greeting(&#x27;Cecil&#x27;, &#x27;del&#x27;) — OK&quot;)
 else:
-    print(&quot;✗ Vart: &#x27;Szia, Cecil!&#x27;, kaptam:&quot;, g3)
+    print(&quot;✗ Várt: &#x27;Szia, Cecil!&#x27;, kaptam:&quot;, g3)
     errors += 1
 if errors == 0:
-    print(&quot;MINDEN FELADAT KESZ!&quot;)</textarea>
+    print(&quot;MINDEN FELADAT KÉSZ!&quot;)</textarea>
 <div id="exercise-14-output" class="output-area">
 <span class="output-placeholder">Nyomd meg a ▶ Futtatás gombot az eredményért</span>
 </div>
@@ -1562,14 +1562,14 @@ if errors == 0:
 </div>
 <div class="task-card">
 <div class="task-header">
-<h3>5. Pizza ar szamitas</h3>
+<h3>5. Pizza ár számítás</h3>
 </div>
-<p class="task-desc">Irj egy fuggvenyt <code class="inline">calculate_pizza_price</code> neven.
-Kapja: <code class="inline">size</code> (&quot;kicsi&quot;/&quot;kozepes&quot;/&quot;nagy&quot;), <code class="inline">quantity</code> (darabszam), <code class="inline">is_delivery</code> (True/False).
-Arak: kicsi=1500, kozepes=2200, nagy=2900. Ha kiszallitas: +500 Ft.</p>
+<p class="task-desc">Írj egy függvényt <code class="inline">calculate_pizza_price</code> néven.
+Kapja: <code class="inline">size</code> (&quot;kicsi&quot;/&quot;kozepes&quot;/&quot;nagy&quot;), <code class="inline">quantity</code> (darabszám), <code class="inline">is_delivery</code> (True/False).
+Árak: kicsi=1500, közepes=2200, nagy=2900. Ha kiszállítás: +500 Ft.</p>
 <details class="task-hint">
 <summary>💡 Tipp</summary>
-<p>Hasznalj szotarat: <code class="inline">prices = {&quot;kicsi&quot;: 1500, &quot;kozepes&quot;: 2200, &quot;nagy&quot;: 2900}</code></p>
+<p>Használj szótárat: <code class="inline">prices = {&quot;kicsi&quot;: 1500, &quot;kozepes&quot;: 2200, &quot;nagy&quot;: 2900}</code></p>
 </details>
 <div class="exercise-editor">
 <div class="editor-toolbar">
@@ -1579,17 +1579,17 @@ Arak: kicsi=1500, kozepes=2200, nagy=2900. Ha kiszallitas: +500 Ft.</p>
 <textarea id="exercise-15" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off">DELIVERY_FEE = 500
 
 def calculate_pizza_price(size, quantity, is_delivery):
-    # MEGOLDAS IDE:
+    # MEGOLDÁS IDE:
     pass
 
-# ELLENORZES:
+# ELLENŐRZÉS:
 p1 = calculate_pizza_price(&quot;kicsi&quot;, 2, False)
 p2 = calculate_pizza_price(&quot;nagy&quot;, 1, True)
 if p1 == 3000 and p2 == 3400:
-    print(&quot;✓ OK — kicsi x2 =&quot;, p1, &quot;, nagy x1 + kiszallitas =&quot;, p2)
+    print(&quot;✓ OK — kicsi x2 =&quot;, p1, &quot;, nagy x1 + kiszállítás =&quot;, p2)
 else:
-    print(&quot;✗ kicsi x2 = 3000 es nagy x1 + kiszallitas = 3400 kene!&quot;)
-    print(&quot;  Kaptam:&quot;, p1, &quot;es&quot;, p2)</textarea>
+    print(&quot;✗ kicsi x2 = 3000 és nagy x1 + kiszállítás = 3400 kéne!&quot;)
+    print(&quot;  Kaptam:&quot;, p1, &quot;és&quot;, p2)</textarea>
 <div id="exercise-15-output" class="output-area">
 <span class="output-placeholder">Nyomd meg a ▶ Futtatás gombot az eredményért</span>
 </div>
@@ -1975,45 +1975,45 @@ print(&quot;  Következő lecke: Gyakorlás! → exercise_03_dry_kiss.py&quot;)<
 
 <div class="accordion">
 <button class="accordion-toggle" onclick="toggleAccordion(this)">
-<span>✏️ Gyakorlat: 1.3 GYAKORLAT: DRY es KISS — Ne ismeteld magad!</span>
+<span>✏️ Gyakorlat: 1.3 GYAKORLAT: DRY és KISS — Ne ismételd magad!</span>
 <span class="accordion-arrow">▼</span>
 </button>
 <div class="accordion-content" style="display:none">
 <div class="task-card">
 <div class="task-header">
-<h3>1. Ismetlodo kod → fuggvenybe emeles</h3>
+<h3>1. Ismétlődő kód → függvénybe emelés</h3>
 </div>
-<p class="task-desc">Az alabbi 3 sor UGYANAZT csinalja: teglalap teruletet szamolja es kiirja.
-Ird meg a <code class="inline">calculate_rectangle_area(name, width, height)</code> fuggvenyt,
-ami kiirja <strong>&quot;{nev} terulete: {terulet} cm2&quot;</strong> es <strong>visszaadja</strong> a teruletet.</p>
+<p class="task-desc">Az alábbi 3 sor UGYANAZT csinálja: téglalap területét számolja és kiírja.
+Írd meg a <code class="inline">calculate_rectangle_area(name, width, height)</code> függvényt,
+ami kiírja <strong>&quot;{név} területe: {terület} cm2&quot;</strong> és <strong>visszaadja</strong> a területet.</p>
 <details class="task-hint">
 <summary>💡 Tipp</summary>
-<p><code class="inline">area = width * height</code>, <code class="inline">print(f&quot;{name} terulete: {area} cm2&quot;)</code>, <code class="inline">return area</code></p>
+<p><code class="inline">area = width * height</code>, <code class="inline">print(f&quot;{name} területe: {area} cm2&quot;)</code>, <code class="inline">return area</code></p>
 </details>
 <div class="exercise-editor">
 <div class="editor-toolbar">
 <button class="run-btn" onclick="runCode('exercise-16')">▶ Futtatás</button>
 <button class="reset-btn" onclick="resetCode('exercise-16')">↺ Visszaállítás</button>
 </div>
-<textarea id="exercise-16" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off"># Ezt az ismetlodo kodot kell kivaltanod egy fuggvennyel:
-# area_1 = 10 * 5    → print(&quot;Asztal terulete: 50 cm2&quot;)
-# area_2 = 3 * 7     → print(&quot;Konyv terulete: 21 cm2&quot;)
-# area_3 = 20 * 15   → print(&quot;Ablak terulete: 300 cm2&quot;)
+<textarea id="exercise-16" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off"># Ezt az ismétlődő kódot kell kiváltanod egy függvénnyel:
+# area_1 = 10 * 5    → print(&quot;Asztal területe: 50 cm2&quot;)
+# area_2 = 3 * 7     → print(&quot;Könyv területe: 21 cm2&quot;)
+# area_3 = 20 * 15   → print(&quot;Ablak területe: 300 cm2&quot;)
 
 def calculate_rectangle_area(name, width, height):
-    # MEGOLDAS IDE:
+    # MEGOLDÁS IDE:
     pass
 
-# ELLENORZES:
+# ELLENŐRZÉS:
 r1 = calculate_rectangle_area(&quot;Teszt&quot;, 10, 5)
 if r1 == 50:
     r2 = calculate_rectangle_area(&quot;Ablak&quot;, 20, 15)
     if r2 == 300:
-        print(&quot;✓ OK — fuggveny mukodik!&quot;)
+        print(&quot;✓ OK — függvény működik!&quot;)
     else:
-        print(&quot;✗ calculate_rectangle_area(&#x27;Ablak&#x27;, 20, 15) = 300 kene!&quot;)
+        print(&quot;✗ calculate_rectangle_area(&#x27;Ablak&#x27;, 20, 15) = 300 kéne!&quot;)
 else:
-    print(&quot;✗ calculate_rectangle_area(&#x27;Teszt&#x27;, 10, 5) = 50 kene! Kaptam:&quot;, r1)</textarea>
+    print(&quot;✗ calculate_rectangle_area(&#x27;Teszt&#x27;, 10, 5) = 50 kéne! Kaptam:&quot;, r1)</textarea>
 <div id="exercise-16-output" class="output-area">
 <span class="output-placeholder">Nyomd meg a ▶ Futtatás gombot az eredményért</span>
 </div>
@@ -2021,29 +2021,29 @@ else:
 </div>
 <div class="task-card">
 <div class="task-header">
-<h3>2. Magikus szam → konstansba</h3>
+<h3>2. Mágikus szám → konstansba</h3>
 </div>
-<p class="task-desc">Az AFA erteke (0.27) tobb helyen szerepel szamkent — ez &quot;magikus szam&quot;.
-Hozz letre egy <code class="inline">VAT_RATE = 0.27</code> konstanst, es ird meg a
-<code class="inline">calculate_gross_price(net_price)</code> fuggvenyt, ami visszaadja az <strong>afas arat</strong>.</p>
+<p class="task-desc">Az ÁFA értéke (0.27) több helyen szerepel számként — ez &quot;mágikus szám&quot;.
+Hozz létre egy <code class="inline">VAT_RATE = 0.27</code> konstanst, és írd meg a
+<code class="inline">calculate_gross_price(net_price)</code> függvényt, ami visszaadja az <strong>áfás árat</strong>.</p>
 <details class="task-hint">
 <summary>💡 Tipp</summary>
-<p>Afas ar = <code class="inline">net_price * (1 + VAT_RATE)</code>. Pelda: 1000 * 1.27 = 1270</p>
+<p>Áfás ár = <code class="inline">net_price * (1 + VAT_RATE)</code>. Példa: 1000 * 1.27 = 1270</p>
 </details>
 <div class="exercise-editor">
 <div class="editor-toolbar">
 <button class="run-btn" onclick="runCode('exercise-17')">▶ Futtatás</button>
 <button class="reset-btn" onclick="resetCode('exercise-17')">↺ Visszaállítás</button>
 </div>
-<textarea id="exercise-17" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off"># MEGOLDAS IDE — eloszor a konstans, aztan a fuggveny:
+<textarea id="exercise-17" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off"># MEGOLDÁS IDE — először a konstans, aztán a függvény:
 
 
-# ELLENORZES:
+# ELLENŐRZÉS:
 r = calculate_gross_price(1000)
 if r is not None and abs(r - 1270) &lt; 0.01:
-    print(&quot;✓ OK — 1000 Ft afasan:&quot;, r)
+    print(&quot;✓ OK — 1000 Ft áfásan:&quot;, r)
 else:
-    print(&quot;✗ calculate_gross_price(1000) = 1270 kene!&quot;)</textarea>
+    print(&quot;✗ calculate_gross_price(1000) = 1270 kéne!&quot;)</textarea>
 <div id="exercise-17-output" class="output-area">
 <span class="output-placeholder">Nyomd meg a ▶ Futtatás gombot az eredményért</span>
 </div>
@@ -2051,10 +2051,10 @@ else:
 </div>
 <div class="task-card">
 <div class="task-header">
-<h3>3. Tulbonyolitott kod → egyszerusites (KISS)</h3>
+<h3>3. Túlbonyolított kód → egyszerűsítés (KISS)</h3>
 </div>
-<p class="task-desc">Az alabbi fuggveny 15 sorban donti el, hogy egy szam pozitiv, negativ vagy nulla.
-Ird meg a <code class="inline">classify_number(number)</code> fuggvenyt <strong>3-4 sorban</strong>! Visszaadja: <code class="inline">&quot;pozitiv&quot;</code>, <code class="inline">&quot;negativ&quot;</code>, vagy <code class="inline">&quot;nulla&quot;</code>.</p>
+<p class="task-desc">Az alábbi függvény 15 sorban dönti el, hogy egy szám pozitív, negatív vagy nulla.
+Írd meg a <code class="inline">classify_number(number)</code> függvényt <strong>3-4 sorban</strong>! Visszaadja: <code class="inline">&quot;pozitiv&quot;</code>, <code class="inline">&quot;negativ&quot;</code>, vagy <code class="inline">&quot;nulla&quot;</code>.</p>
 <details class="task-hint">
 <summary>💡 Tipp</summary>
 <p><code class="inline">if number &gt; 0: return &quot;pozitiv&quot;</code> — <code class="inline">elif number &lt; 0: return &quot;negativ&quot;</code> — <code class="inline">else: return &quot;nulla&quot;</code></p>
@@ -2065,17 +2065,17 @@ Ird meg a <code class="inline">classify_number(number)</code> fuggvenyt <strong>
 <button class="reset-btn" onclick="resetCode('exercise-18')">↺ Visszaállítás</button>
 </div>
 <textarea id="exercise-18" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off">def classify_number(number):
-    # MEGOLDAS IDE (3-4 sor eleg!):
+    # MEGOLDÁS IDE (3-4 sor elég!):
     pass
 
-# ELLENORZES:
+# ELLENŐRZÉS:
 r1 = classify_number(42)
 r2 = classify_number(-7)
 r3 = classify_number(0)
 if r1 == &quot;pozitiv&quot; and r2 == &quot;negativ&quot; and r3 == &quot;nulla&quot;:
-    print(&quot;✓ OK — classify_number mukodik&quot;)
+    print(&quot;✓ OK — classify_number működik&quot;)
 else:
-    print(&quot;✗ 42=&#x27;pozitiv&#x27;, -7=&#x27;negativ&#x27;, 0=&#x27;nulla&#x27; kene!&quot;)
+    print(&quot;✗ 42=&#x27;pozitiv&#x27;, -7=&#x27;negativ&#x27;, 0=&#x27;nulla&#x27; kéne!&quot;)
     print(&quot;  Kaptam:&quot;, r1, r2, r3)</textarea>
 <div id="exercise-18-output" class="output-area">
 <span class="output-placeholder">Nyomd meg a ▶ Futtatás gombot az eredményért</span>
@@ -2084,11 +2084,11 @@ else:
 </div>
 <div class="task-card">
 <div class="task-header">
-<h3>4. Kedvezmeny szamitas (DRY + KISS)</h3>
+<h3>4. Kedvezmény számítás (DRY + KISS)</h3>
 </div>
-<p class="task-desc">Hozz letre egy <code class="inline">DISCOUNT_PERCENT = 20</code> konstanst es ird meg a
-<code class="inline">calculate_discounted_price(original_price)</code> fuggvenyt.
-Keplet: <strong>kedvezmenyes ar = eredeti ar * (1 - kedvezmeny/100)</strong></p>
+<p class="task-desc">Hozz létre egy <code class="inline">DISCOUNT_PERCENT = 20</code> konstanst és írd meg a
+<code class="inline">calculate_discounted_price(original_price)</code> függvényt.
+Képlet: <strong>kedvezményes ár = eredeti ár * (1 - kedvezmény/100)</strong></p>
 <details class="task-hint">
 <summary>💡 Tipp</summary>
 <p><code class="inline">return original_price * (1 - DISCOUNT_PERCENT / 100)</code> → 250000 * 0.8 = 200000</p>
@@ -2098,15 +2098,15 @@ Keplet: <strong>kedvezmenyes ar = eredeti ar * (1 - kedvezmeny/100)</strong></p>
 <button class="run-btn" onclick="runCode('exercise-19')">▶ Futtatás</button>
 <button class="reset-btn" onclick="resetCode('exercise-19')">↺ Visszaállítás</button>
 </div>
-<textarea id="exercise-19" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off"># MEGOLDAS IDE — konstans + fuggveny:
+<textarea id="exercise-19" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off"># MEGOLDÁS IDE — konstans + függvény:
 
 
-# ELLENORZES:
+# ELLENŐRZÉS:
 r = calculate_discounted_price(250000)
 if r is not None and abs(r - 200000) &lt; 0.01:
-    print(&quot;✓ OK — 250000 Ft 20% kedvezmeny:&quot;, r)
+    print(&quot;✓ OK — 250000 Ft 20% kedvezmény:&quot;, r)
 else:
-    print(&quot;✗ calculate_discounted_price(250000) = 200000 kene!&quot;)</textarea>
+    print(&quot;✗ calculate_discounted_price(250000) = 200000 kéne!&quot;)</textarea>
 <div id="exercise-19-output" class="output-area">
 <span class="output-placeholder">Nyomd meg a ▶ Futtatás gombot az eredményért</span>
 </div>
@@ -2114,11 +2114,11 @@ else:
 </div>
 <div class="task-card">
 <div class="task-header">
-<h3>5. Diak eredmeny kiiras</h3>
+<h3>5. Diák eredmény kiírás</h3>
 </div>
-<p class="task-desc">Ird meg a <code class="inline">print_student_result(name, grades)</code> fuggvenyt.
-Szamolja ki a jegyek <strong>atlaga</strong>t, irja ki: <strong>&quot;{nev}: atlag {atlag:.1f} - atment/megbukott&quot;</strong>
-(atment ha atlag &gt;= 2.0). <strong>Visszaadja</strong>: <code class="inline">True</code> ha atment, <code class="inline">False</code> ha megbukott.</p>
+<p class="task-desc">Írd meg a <code class="inline">print_student_result(name, grades)</code> függvényt.
+Számolja ki a jegyek <strong>átlagát</strong>, írja ki: <strong>&quot;{név}: átlag {átlag:.1f} - átment/megbukott&quot;</strong>
+(átment ha átlag &gt;= 2.0). <strong>Visszaadja</strong>: <code class="inline">True</code> ha átment, <code class="inline">False</code> ha megbukott.</p>
 <details class="task-hint">
 <summary>💡 Tipp</summary>
 <p><code class="inline">avg = sum(grades) / len(grades)</code>, <code class="inline">if avg &gt;= 2.0: ... return True else: ... return False</code></p>
@@ -2129,16 +2129,16 @@ Szamolja ki a jegyek <strong>atlaga</strong>t, irja ki: <strong>&quot;{nev}: atl
 <button class="reset-btn" onclick="resetCode('exercise-20')">↺ Visszaállítás</button>
 </div>
 <textarea id="exercise-20" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off">def print_student_result(name, grades):
-    # MEGOLDAS IDE:
+    # MEGOLDÁS IDE:
     pass
 
-# ELLENORZES:
+# ELLENŐRZÉS:
 r1 = print_student_result(&quot;Anna&quot;, [5, 4, 3])
 r2 = print_student_result(&quot;Bela&quot;, [1, 1, 1])
 if r1 == True and r2 == False:
-    print(&quot;✓ OK — fuggveny mukodik!&quot;)
+    print(&quot;✓ OK — függvény működik!&quot;)
 else:
-    print(&quot;✗ Anna [5,4,3] → True, Bela [1,1,1] → False kene!&quot;)</textarea>
+    print(&quot;✗ Anna [5,4,3] → True, Bela [1,1,1] → False kéne!&quot;)</textarea>
 <div id="exercise-20-output" class="output-area">
 <span class="output-placeholder">Nyomd meg a ▶ Futtatás gombot az eredményért</span>
 </div>
@@ -2488,17 +2488,17 @@ KÖVETKEZŐ LÉPÉS:
 
 <div class="accordion">
 <button class="accordion-toggle" onclick="toggleAccordion(this)">
-<span>✏️ Gyakorlat: 1.4 GYAKORLAT: Type hints es docstringek</span>
+<span>✏️ Gyakorlat: 1.4 GYAKORLAT: Type hints és docstringek</span>
 <span class="accordion-arrow">▼</span>
 </button>
 <div class="accordion-content" style="display:none">
 <div class="task-card">
 <div class="task-header">
-<h3>1. Tipusjelzes valtozokhoz</h3>
+<h3>1. Típusjelzés változókhoz</h3>
 </div>
-<p class="task-desc">Add hozza a megfelelo <strong>type hint</strong>-et az alabbi valtozokhoz!
-Pelda: <code class="inline">name = &quot;Dani&quot;</code> → <code class="inline">name: str = &quot;Dani&quot;</code>
-Tipusok: <code class="inline">int</code> (egesz), <code class="inline">float</code> (tizedes), <code class="inline">str</code> (szoveg), <code class="inline">bool</code> (True/False)</p>
+<p class="task-desc">Add hozzá a megfelelő <strong>type hint</strong>-et az alábbi változókhoz!
+Példa: <code class="inline">name = &quot;Dani&quot;</code> → <code class="inline">name: str = &quot;Dani&quot;</code>
+Típusok: <code class="inline">int</code> (egész), <code class="inline">float</code> (tizedes), <code class="inline">str</code> (szöveg), <code class="inline">bool</code> (True/False)</p>
 <details class="task-hint">
 <summary>💡 Tipp</summary>
 <p><code class="inline">player_name: str = &quot;Hero123&quot;</code>, <code class="inline">player_level: int = 42</code>, stb.</p>
@@ -2508,17 +2508,17 @@ Tipusok: <code class="inline">int</code> (egesz), <code class="inline">float</co
 <button class="run-btn" onclick="runCode('exercise-21')">▶ Futtatás</button>
 <button class="reset-btn" onclick="resetCode('exercise-21')">↺ Visszaállítás</button>
 </div>
-<textarea id="exercise-21" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off"># Add hozza a tipusjelzeseket (: tipus):
+<textarea id="exercise-21" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off"># Add hozzá a típusjelzéseket (: típus):
 player_name = &quot;Hero123&quot;
 player_level = 42
 player_health = 95.5
 is_alive = True
 
-# Irasd ki mindet:
-print(&quot;Jatekos:&quot;, player_name)
+# Írasd ki mindet:
+print(&quot;Játékos:&quot;, player_name)
 print(&quot;Szint:&quot;, player_level)
-print(&quot;Elet:&quot;, player_health)
-print(&quot;El:&quot;, is_alive)</textarea>
+print(&quot;Élet:&quot;, player_health)
+print(&quot;Él:&quot;, is_alive)</textarea>
 <div id="exercise-21-output" class="output-area">
 <span class="output-placeholder">Nyomd meg a ▶ Futtatás gombot az eredményért</span>
 </div>
@@ -2526,20 +2526,20 @@ print(&quot;El:&quot;, is_alive)</textarea>
 </div>
 <div class="task-card">
 <div class="task-header">
-<h3>2. Fuggveny tipusjelzesek</h3>
+<h3>2. Függvény típusjelzések</h3>
 </div>
-<p class="task-desc">Add hozza a <strong>parameterek</strong> es a <strong>visszateresi ertek</strong> tipusat az alabbi fuggvenyekhez!
-Pelda: <code class="inline">def add(a, b)</code> → <code class="inline">def add(a: int, b: int) -&gt; int:</code></p>
+<p class="task-desc">Add hozzá a <strong>paraméterek</strong> és a <strong>visszatérési érték</strong> típusát az alábbi függvényekhez!
+Példa: <code class="inline">def add(a, b)</code> → <code class="inline">def add(a: int, b: int) -&gt; int:</code></p>
 <details class="task-hint">
 <summary>💡 Tipp</summary>
-<p><code class="inline">def join_words(first: str, second: str) -&gt; str:</code> es hasonloan a tobbinel</p>
+<p><code class="inline">def join_words(first: str, second: str) -&gt; str:</code> és hasonlóan a többinél</p>
 </details>
 <div class="exercise-editor">
 <div class="editor-toolbar">
 <button class="run-btn" onclick="runCode('exercise-22')">▶ Futtatás</button>
 <button class="reset-btn" onclick="resetCode('exercise-22')">↺ Visszaállítás</button>
 </div>
-<textarea id="exercise-22" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off"># Add hozza a tipusjelzeseket:
+<textarea id="exercise-22" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off"># Add hozzá a típusjelzéseket:
 def join_words(first, second):
     return first + &quot; &quot; + second
 
@@ -2549,11 +2549,11 @@ def calculate_area(width, height):
 def is_old_enough(age, minimum_age):
     return age &gt;= minimum_age
 
-# ELLENORZES:
-print(&quot;Szavak:&quot;, join_words(&quot;hello&quot;, &quot;vilag&quot;))
-print(&quot;Terulet:&quot;, calculate_area(5.0, 3.0))
-print(&quot;Eleg idos:&quot;, is_old_enough(20, 18))
-print(&quot;✓ Ha a tipusjelzeseket hozzaadtad, a fuggvenyek ugyanugy mukodnek!&quot;)</textarea>
+# ELLENŐRZÉS:
+print(&quot;Szavak:&quot;, join_words(&quot;hello&quot;, &quot;világ&quot;))
+print(&quot;Terület:&quot;, calculate_area(5.0, 3.0))
+print(&quot;Elég idős:&quot;, is_old_enough(20, 18))
+print(&quot;✓ Ha a típusjelzéseket hozzáadtad, a függvények ugyanúgy működnek!&quot;)</textarea>
 <div id="exercise-22-output" class="output-area">
 <span class="output-placeholder">Nyomd meg a ▶ Futtatás gombot az eredményért</span>
 </div>
@@ -2561,10 +2561,10 @@ print(&quot;✓ Ha a tipusjelzeseket hozzaadtad, a fuggvenyek ugyanugy mukodnek!
 </div>
 <div class="task-card">
 <div class="task-header">
-<h3>3. Osszett tipusok</h3>
+<h3>3. Összetett típusok</h3>
 </div>
-<p class="task-desc">Add hozza a tipusjelzeseket az alabbi valtozokhoz!
-<code class="inline">list[str]</code> = szoveglista, <code class="inline">list[int]</code> = szamlista, <code class="inline">dict[str, int]</code> = szotar, <code class="inline">str | None</code> = opcionalis</p>
+<p class="task-desc">Add hozzá a típusjelzéseket az alábbi változókhoz!
+<code class="inline">list[str]</code> = szöveglista, <code class="inline">list[int]</code> = számlista, <code class="inline">dict[str, int]</code> = szótár, <code class="inline">str | None</code> = opcionális</p>
 <details class="task-hint">
 <summary>💡 Tipp</summary>
 <p><code class="inline">favorite_foods: list[str] = [...]</code>, <code class="inline">student_grades: dict[str, int] = {...}</code></p>
@@ -2574,17 +2574,17 @@ print(&quot;✓ Ha a tipusjelzeseket hozzaadtad, a fuggvenyek ugyanugy mukodnek!
 <button class="run-btn" onclick="runCode('exercise-23')">▶ Futtatás</button>
 <button class="reset-btn" onclick="resetCode('exercise-23')">↺ Visszaállítás</button>
 </div>
-<textarea id="exercise-23" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off"># Add hozza az osszetett tipusjelzeseket:
+<textarea id="exercise-23" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off"># Add hozzá az összetett típusjelzéseket:
 favorite_foods = [&quot;pizza&quot;, &quot;ramen&quot;, &quot;turos csusza&quot;]
 weekly_temps = [18, 22, 25, 19, 21]
 student_grades = {&quot;Anna&quot;: 5, &quot;Bela&quot;: 3, &quot;Cecil&quot;: 4}
 nickname = None
 
-print(&quot;Etelek:&quot;, favorite_foods)
-print(&quot;Homersekletek:&quot;, weekly_temps)
+print(&quot;Ételek:&quot;, favorite_foods)
+print(&quot;Hőmérsékletek:&quot;, weekly_temps)
 print(&quot;Jegyek:&quot;, student_grades)
-print(&quot;Becenev:&quot;, nickname)
-print(&quot;✓ Tipusjelzesek rendben, ha a kiiras mukodik!&quot;)</textarea>
+print(&quot;Becenév:&quot;, nickname)
+print(&quot;✓ Típusjelzések rendben, ha a kiírás működik!&quot;)</textarea>
 <div id="exercise-23-output" class="output-area">
 <span class="output-placeholder">Nyomd meg a ▶ Futtatás gombot az eredményért</span>
 </div>
@@ -2592,13 +2592,13 @@ print(&quot;✓ Tipusjelzesek rendben, ha a kiiras mukodik!&quot;)</textarea>
 </div>
 <div class="task-card">
 <div class="task-header">
-<h3>4. Docstring iras</h3>
+<h3>4. Docstring írás</h3>
 </div>
-<p class="task-desc">Az alabbi fuggvenynek <strong>van</strong> type hint-je, de <strong>nincs docstring</strong>-je.
-Irj hozza Google-style docstring-et: osszefoglalo, <code class="inline">Args:</code>, <code class="inline">Returns:</code> szekcio.</p>
+<p class="task-desc">Az alábbi függvénynek <strong>van</strong> type hint-je, de <strong>nincs docstring</strong>-je.
+Írj hozzá Google-style docstring-et: összefoglaló, <code class="inline">Args:</code>, <code class="inline">Returns:</code> szekció.</p>
 <details class="task-hint">
 <summary>💡 Tipp</summary>
-<p>A <code class="inline">pass</code>-t torold, es irj <code class="inline">&quot;&quot;&quot;...&quot;&quot;&quot;</code> docstring-et a <code class="inline">def</code> sor ala!</p>
+<p>A <code class="inline">pass</code>-t töröld, és írj <code class="inline">&quot;&quot;&quot;...&quot;&quot;&quot;</code> docstring-et a <code class="inline">def</code> sor alá!</p>
 </details>
 <div class="exercise-editor">
 <div class="editor-toolbar">
@@ -2606,16 +2606,16 @@ Irj hozza Google-style docstring-et: osszefoglalo, <code class="inline">Args:</c
 <button class="reset-btn" onclick="resetCode('exercise-24')">↺ Visszaállítás</button>
 </div>
 <textarea id="exercise-24" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off">def celsius_to_fahrenheit(celsius: float) -&gt; float:
-    # MEGOLDAS IDE — irj docstring-et:
+    # MEGOLDÁS IDE — írj docstring-et:
     pass
     return celsius * 9 / 5 + 32
 
-# ELLENORZES:
+# ELLENŐRZÉS:
 result = celsius_to_fahrenheit(100)
 if abs(result - 212.0) &lt; 0.01:
     print(&quot;✓ OK — 100°C =&quot;, result, &quot;°F&quot;)
 else:
-    print(&quot;✗ celsius_to_fahrenheit(100) = 212.0 kene!&quot;)</textarea>
+    print(&quot;✗ celsius_to_fahrenheit(100) = 212.0 kéne!&quot;)</textarea>
 <div id="exercise-24-output" class="output-area">
 <span class="output-placeholder">Nyomd meg a ▶ Futtatás gombot az eredményért</span>
 </div>
@@ -2625,38 +2625,38 @@ else:
 <div class="task-header">
 <h3>5. Komplett — type hints + docstring</h3>
 </div>
-<p class="task-desc">Irj egy TELJES fuggvenyt <code class="inline">calculate_shopping_total</code> neven:
-Kap egy <strong>szotarat</strong> (termek: ar) es egy <strong>kedvezmeny szazalekot</strong> (alapertelmezetten 0).
-Visszaadja a <strong>vegosszeget</strong> a kedvezmeny levonasa utan.
-Pelda: <code class="inline">{&quot;kenyer&quot;: 500, &quot;tej&quot;: 400}</code> 10% kedvezmeny → 810.0</p>
+<p class="task-desc">Írj egy TELJES függvényt <code class="inline">calculate_shopping_total</code> néven:
+Kap egy <strong>szótárat</strong> (termék: ár) és egy <strong>kedvezmény százalékot</strong> (alapértelmezetten 0).
+Visszaadja a <strong>végösszeget</strong> a kedvezmény levonása után.
+Példa: <code class="inline">{&quot;kenyer&quot;: 500, &quot;tej&quot;: 400}</code> 10% kedvezmény → 810.0</p>
 <details class="task-hint">
 <summary>💡 Tipp</summary>
 <p><code class="inline">def calculate_shopping_total(items: dict, discount: int = 0) -&gt; float:</code>
-osszeg = <code class="inline">sum(items.values())</code>, vegosszeg = <code class="inline">osszeg * (1 - discount / 100)</code></p>
+összeg = <code class="inline">sum(items.values())</code>, végösszeg = <code class="inline">összeg * (1 - discount / 100)</code></p>
 </details>
 <div class="exercise-editor">
 <div class="editor-toolbar">
 <button class="run-btn" onclick="runCode('exercise-25')">▶ Futtatás</button>
 <button class="reset-btn" onclick="resetCode('exercise-25')">↺ Visszaállítás</button>
 </div>
-<textarea id="exercise-25" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off"># MEGOLDAS IDE — irj type hint-eket, docstring-et, es a kodot:
+<textarea id="exercise-25" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off"># MEGOLDÁS IDE — írj type hint-eket, docstring-et, és a kódot:
 def calculate_shopping_total():
     pass
 
-# ELLENORZES:
+# ELLENŐRZÉS:
 items = {&quot;kenyer&quot;: 500, &quot;tej&quot;: 400, &quot;sajt&quot;: 800}
 try:
     r1 = calculate_shopping_total(items)
     r2 = calculate_shopping_total(items, 10)
     if r1 is not None and abs(r1 - 1700.0) &lt; 0.01:
         if r2 is not None and abs(r2 - 1530.0) &lt; 0.01:
-            print(&quot;✓ OK — kedvezmeny nelkul:&quot;, r1, &quot;, 10%-kal:&quot;, r2)
+            print(&quot;✓ OK — kedvezmény nélkül:&quot;, r1, &quot;, 10%-kal:&quot;, r2)
         else:
-            print(&quot;✗ 10% kedvezmeny: 1530.0 kene, kaptam:&quot;, r2)
+            print(&quot;✗ 10% kedvezmény: 1530.0 kéne, kaptam:&quot;, r2)
     else:
-        print(&quot;✗ Kedvezmeny nelkul: 1700.0 kene, kaptam:&quot;, r1)
+        print(&quot;✗ Kedvezmény nélkül: 1700.0 kéne, kaptam:&quot;, r1)
 except TypeError as e:
-    print(&quot;✗ A fuggvenynek 2 parametere legyen: (items, discount=0)&quot;)</textarea>
+    print(&quot;✗ A függvénynek 2 paramétere legyen: (items, discount=0)&quot;)</textarea>
 <div id="exercise-25-output" class="output-area">
 <span class="output-placeholder">Nyomd meg a ▶ Futtatás gombot az eredményért</span>
 </div>
@@ -2979,20 +2979,20 @@ print(&quot;Fájl: exercise_05_hibakezelés.py&quot;)</code></pre>
 
 <div class="accordion">
 <button class="accordion-toggle" onclick="toggleAccordion(this)">
-<span>✏️ Gyakorlat: GYAKORLAT 05 — Hibakezeles (Error Handling)</span>
+<span>✏️ Gyakorlat: GYAKORLAT 05 — Hibakezelés (Error Handling)</span>
 <span class="accordion-arrow">▼</span>
 </button>
 <div class="accordion-content" style="display:none">
 <div class="task-card">
 <div class="task-header">
-<h3>1. Alapveto try/except</h3>
+<h3>1. Alapvető try/except</h3>
 </div>
-<p class="task-desc">Ird meg a <code class="inline">safe_divide(a, b)</code> fuggvenyt: <strong>elosztja a-t b-vel</strong>.
-Ha <code class="inline">b</code> nulla → adjon vissza <code class="inline">None</code>-t (ne szalljon el a program!).
-Ha nincs hiba → adja vissza az eredmenyt.</p>
+<p class="task-desc">Írd meg a <code class="inline">safe_divide(a, b)</code> függvényt: <strong>elosztja a-t b-vel</strong>.
+Ha <code class="inline">b</code> nulla → adjon vissza <code class="inline">None</code>-t (ne szálljon el a program!).
+Ha nincs hiba → adja vissza az eredményt.</p>
 <details class="task-hint">
 <summary>💡 Tipp</summary>
-<p>Hasznalj <code class="inline">try/except ZeroDivisionError</code>-t!</p>
+<p>Használj <code class="inline">try/except ZeroDivisionError</code>-t!</p>
 </details>
 <div class="exercise-editor">
 <div class="editor-toolbar">
@@ -3000,17 +3000,17 @@ Ha nincs hiba → adja vissza az eredmenyt.</p>
 <button class="reset-btn" onclick="resetCode('exercise-26')">↺ Visszaállítás</button>
 </div>
 <textarea id="exercise-26" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off">def safe_divide(a, b):
-    # MEGOLDAS IDE:
+    # MEGOLDÁS IDE:
     pass
 
-# ELLENORZES:
+# ELLENŐRZÉS:
 r1 = safe_divide(10, 2)
 r2 = safe_divide(10, 0)
 if r1 == 5.0 and r2 is None:
     print(&quot;✓ OK — safe_divide(10,2) =&quot;, r1, &quot;, safe_divide(10,0) =&quot;, r2)
 else:
-    print(&quot;✗ safe_divide(10,2) = 5.0 es safe_divide(10,0) = None kene!&quot;)
-    print(&quot;  Kaptam:&quot;, r1, &quot;es&quot;, r2)</textarea>
+    print(&quot;✗ safe_divide(10,2) = 5.0 és safe_divide(10,0) = None kéne!&quot;)
+    print(&quot;  Kaptam:&quot;, r1, &quot;és&quot;, r2)</textarea>
 <div id="exercise-26-output" class="output-area">
 <span class="output-placeholder">Nyomd meg a ▶ Futtatás gombot az eredményért</span>
 </div>
@@ -3018,10 +3018,10 @@ else:
 </div>
 <div class="task-card">
 <div class="task-header">
-<h3>2. IndexError kezeles</h3>
+<h3>2. IndexError kezelés</h3>
 </div>
-<p class="task-desc">Ird meg a <code class="inline">safe_list_access(items, index)</code> fuggvenyt:
-Probald meg visszaadni a lista <code class="inline">index</code>-edik elemet.
+<p class="task-desc">Írd meg a <code class="inline">safe_list_access(items, index)</code> függvényt:
+Próbáld meg visszaadni a lista <code class="inline">index</code>-edik elemét.
 Ha <strong>nincs ilyen index</strong> → adj vissza: <code class="inline">&quot;Hiba: Nincs ilyen index: {index}&quot;</code></p>
 <details class="task-hint">
 <summary>💡 Tipp</summary>
@@ -3033,16 +3033,16 @@ Ha <strong>nincs ilyen index</strong> → adj vissza: <code class="inline">&quot
 <button class="reset-btn" onclick="resetCode('exercise-27')">↺ Visszaállítás</button>
 </div>
 <textarea id="exercise-27" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off">def safe_list_access(items, index):
-    # MEGOLDAS IDE:
+    # MEGOLDÁS IDE:
     pass
 
-# ELLENORZES:
+# ELLENŐRZÉS:
 r1 = safe_list_access([&quot;a&quot;, &quot;b&quot;, &quot;c&quot;], 1)
 r2 = safe_list_access([&quot;a&quot;, &quot;b&quot;, &quot;c&quot;], 10)
 if r1 == &quot;b&quot; and r2 == &quot;Hiba: Nincs ilyen index: 10&quot;:
-    print(&quot;✓ OK — lista eleres mukodik&quot;)
+    print(&quot;✓ OK — lista elérés működik&quot;)
 else:
-    print(&quot;✗ index 1 = &#x27;b&#x27; es index 10 = hibauzenet kene!&quot;)
+    print(&quot;✗ index 1 = &#x27;b&#x27; és index 10 = hibaüzenet kéne!&quot;)
     print(&quot;  Kaptam:&quot;, r1, &quot;|&quot;, r2)</textarea>
 <div id="exercise-27-output" class="output-area">
 <span class="output-placeholder">Nyomd meg a ▶ Futtatás gombot az eredményért</span>
@@ -3051,11 +3051,11 @@ else:
 </div>
 <div class="task-card">
 <div class="task-header">
-<h3>3. Szam konvertalas</h3>
+<h3>3. Szám konvertálás</h3>
 </div>
-<p class="task-desc">Ird meg a <code class="inline">safe_int_convert(value)</code> fuggvenyt:
-Probald meg <strong>szovegbol szamma</strong> alakitani (<code class="inline">int(value)</code>).
-Ha sikerul → add vissza a szamot. Ha nem (<code class="inline">ValueError</code>) → add vissza <code class="inline">None</code>-t.</p>
+<p class="task-desc">Írd meg a <code class="inline">safe_int_convert(value)</code> függvényt:
+Próbáld meg <strong>szövegből számmá</strong> alakítani (<code class="inline">int(value)</code>).
+Ha sikerül → add vissza a számot. Ha nem (<code class="inline">ValueError</code>) → add vissza <code class="inline">None</code>-t.</p>
 <details class="task-hint">
 <summary>💡 Tipp</summary>
 <p><code class="inline">try: return int(value)</code> / <code class="inline">except ValueError: return None</code></p>
@@ -3066,17 +3066,17 @@ Ha sikerul → add vissza a szamot. Ha nem (<code class="inline">ValueError</cod
 <button class="reset-btn" onclick="resetCode('exercise-28')">↺ Visszaállítás</button>
 </div>
 <textarea id="exercise-28" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off">def safe_int_convert(value):
-    # MEGOLDAS IDE:
+    # MEGOLDÁS IDE:
     pass
 
-# ELLENORZES:
+# ELLENŐRZÉS:
 r1 = safe_int_convert(&quot;42&quot;)
 r2 = safe_int_convert(&quot;hello&quot;)
 r3 = safe_int_convert(&quot;&quot;)
 if r1 == 42 and r2 is None and r3 is None:
-    print(&quot;✓ OK — konvertalas mukodik&quot;)
+    print(&quot;✓ OK — konvertálás működik&quot;)
 else:
-    print(&quot;✗ &#x27;42&#x27;=42, &#x27;hello&#x27;=None, &#x27;&#x27;=None kene!&quot;)
+    print(&quot;✗ &#x27;42&#x27;=42, &#x27;hello&#x27;=None, &#x27;&#x27;=None kéne!&quot;)
     print(&quot;  Kaptam:&quot;, r1, r2, r3)</textarea>
 <div id="exercise-28-output" class="output-area">
 <span class="output-placeholder">Nyomd meg a ▶ Futtatás gombot az eredményért</span>
@@ -3085,17 +3085,17 @@ else:
 </div>
 <div class="task-card">
 <div class="task-header">
-<h3>4. Sajat hiba dobasa (raise)</h3>
+<h3>4. Saját hiba dobása (raise)</h3>
 </div>
-<p class="task-desc">Ird meg a <code class="inline">create_profile(username, age)</code> fuggvenyt:
-Ellenorizd az inputot es <strong>dobj hibat</strong> ha:
-- <code class="inline">username</code> ures → <code class="inline">raise ValueError(&quot;A nev nem lehet ures!&quot;)</code>
-- <code class="inline">username</code> rovid (&lt; 3 kar.) → <code class="inline">raise ValueError(&quot;A nev legalabb 3 karakter legyen!&quot;)</code>
-- <code class="inline">age</code> nem pozitiv → <code class="inline">raise ValueError(&quot;Az eletkor pozitiv szam kell legyen!&quot;)</code>
+<p class="task-desc">Írd meg a <code class="inline">create_profile(username, age)</code> függvényt:
+Ellenőrizd az inputot és <strong>dobj hibát</strong> ha:
+- <code class="inline">username</code> üres → <code class="inline">raise ValueError(&quot;A név nem lehet üres!&quot;)</code>
+- <code class="inline">username</code> rövid (&lt; 3 kar.) → <code class="inline">raise ValueError(&quot;A név legalább 3 karakter legyen!&quot;)</code>
+- <code class="inline">age</code> nem pozitív → <code class="inline">raise ValueError(&quot;Az életkor pozitív szám kell legyen!&quot;)</code>
 Ha minden ok → add vissza: <code class="inline">{&quot;username&quot;: username, &quot;age&quot;: age}</code></p>
 <details class="task-hint">
 <summary>💡 Tipp</summary>
-<p><code class="inline">if username == &quot;&quot;: raise ValueError(&quot;A nev nem lehet ures!&quot;)</code></p>
+<p><code class="inline">if username == &quot;&quot;: raise ValueError(&quot;A név nem lehet üres!&quot;)</code></p>
 </details>
 <div class="exercise-editor">
 <div class="editor-toolbar">
@@ -3103,42 +3103,42 @@ Ha minden ok → add vissza: <code class="inline">{&quot;username&quot;: usernam
 <button class="reset-btn" onclick="resetCode('exercise-29')">↺ Visszaállítás</button>
 </div>
 <textarea id="exercise-29" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off">def create_profile(username, age):
-    # MEGOLDAS IDE:
+    # MEGOLDÁS IDE:
     pass
 
-# ELLENORZES:
+# ELLENŐRZÉS:
 errors = 0
 
 r = create_profile(&quot;Dani&quot;, 19)
 if r == {&quot;username&quot;: &quot;Dani&quot;, &quot;age&quot;: 19}:
     print(&quot;✓ create_profile(&#x27;Dani&#x27;, 19) — OK&quot;)
 else:
-    print(&quot;✗ create_profile(&#x27;Dani&#x27;, 19) szotar kene!&quot;)
+    print(&quot;✗ create_profile(&#x27;Dani&#x27;, 19) szótár kéne!&quot;)
     errors += 1
 
 try:
     create_profile(&quot;&quot;, 19)
-    print(&quot;✗ Ures nev — ValueError kene!&quot;)
+    print(&quot;✗ Üres név — ValueError kéne!&quot;)
     errors += 1
 except ValueError:
-    print(&quot;✓ Ures nev — ValueError OK&quot;)
+    print(&quot;✓ Üres név — ValueError OK&quot;)
 
 try:
     create_profile(&quot;ab&quot;, 19)
-    print(&quot;✗ Rovid nev — ValueError kene!&quot;)
+    print(&quot;✗ Rövid név — ValueError kéne!&quot;)
     errors += 1
 except ValueError:
-    print(&quot;✓ Rovid nev — ValueError OK&quot;)
+    print(&quot;✓ Rövid név — ValueError OK&quot;)
 
 try:
     create_profile(&quot;Dani&quot;, -5)
-    print(&quot;✗ Negativ kor — ValueError kene!&quot;)
+    print(&quot;✗ Negatív kor — ValueError kéne!&quot;)
     errors += 1
 except ValueError:
-    print(&quot;✓ Negativ kor — ValueError OK&quot;)
+    print(&quot;✓ Negatív kor — ValueError OK&quot;)
 
 if errors == 0:
-    print(&quot;MINDEN FELADAT KESZ!&quot;)</textarea>
+    print(&quot;MINDEN FELADAT KÉSZ!&quot;)</textarea>
 <div id="exercise-29-output" class="output-area">
 <span class="output-placeholder">Nyomd meg a ▶ Futtatás gombot az eredményért</span>
 </div>
@@ -3148,10 +3148,10 @@ if errors == 0:
 <div class="task-header">
 <h3>5. Mini bank</h3>
 </div>
-<p class="task-desc">Irj <code class="inline">get_balance(name)</code> es <code class="inline">transfer(sender, receiver, amount)</code> fuggvenyeket.
-<code class="inline">get_balance</code>: visszaadja az egyenleget. Ha nincs ilyen szemely → <code class="inline">raise KeyError(&quot;Ismeretlen: {name}&quot;)</code>.
-<code class="inline">transfer</code>: atutal penzt. Hibak: nem letezik szemely → <code class="inline">KeyError</code>, nincs eleg penz → <code class="inline">ValueError</code>.
-Siker → <code class="inline">&quot;Sikeres utalas: {amount} Ft&quot;</code> + modositja az egyenlegeket.</p>
+<p class="task-desc">Írj <code class="inline">get_balance(name)</code> és <code class="inline">transfer(sender, receiver, amount)</code> függvényeket.
+<code class="inline">get_balance</code>: visszaadja az egyenleget. Ha nincs ilyen személy → <code class="inline">raise KeyError(&quot;Ismeretlen: {name}&quot;)</code>.
+<code class="inline">transfer</code>: átutal pénzt. Hibák: nem létezik személy → <code class="inline">KeyError</code>, nincs elég pénz → <code class="inline">ValueError</code>.
+Siker → <code class="inline">&quot;Sikeres utalás: {amount} Ft&quot;</code> + módosítja az egyenlegeket.</p>
 <details class="task-hint">
 <summary>💡 Tipp</summary>
 <p><code class="inline">if name not in accounts: raise KeyError(...)</code> / <code class="inline">accounts[sender] -= amount</code></p>
@@ -3164,28 +3164,28 @@ Siker → <code class="inline">&quot;Sikeres utalas: {amount} Ft&quot;</code> + 
 <textarea id="exercise-30" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off">accounts = {&quot;Anna&quot;: 10000, &quot;Bela&quot;: 5000, &quot;Cecil&quot;: 0}
 
 def get_balance(name):
-    # MEGOLDAS IDE:
+    # MEGOLDÁS IDE:
     pass
 
 def transfer(sender, receiver, amount):
-    # MEGOLDAS IDE:
+    # MEGOLDÁS IDE:
     pass
 
-# ELLENORZES:
+# ELLENŐRZÉS:
 errors = 0
 
 if get_balance(&quot;Anna&quot;) == 10000:
     print(&quot;✓ get_balance(&#x27;Anna&#x27;) — OK&quot;)
 else:
-    print(&quot;✗ get_balance(&#x27;Anna&#x27;) = 10000 kene!&quot;)
+    print(&quot;✗ get_balance(&#x27;Anna&#x27;) = 10000 kéne!&quot;)
     errors += 1
 
 try:
     get_balance(&quot;Xyz&quot;)
-    print(&quot;✗ Ismeretlen szemely — KeyError kene!&quot;)
+    print(&quot;✗ Ismeretlen személy — KeyError kéne!&quot;)
     errors += 1
 except KeyError:
-    print(&quot;✓ Ismeretlen szemely — KeyError OK&quot;)
+    print(&quot;✓ Ismeretlen személy — KeyError OK&quot;)
 
 accounts[&quot;Anna&quot;] = 10000
 accounts[&quot;Bela&quot;] = 5000
@@ -3194,21 +3194,21 @@ if result is not None and &quot;Sikeres&quot; in result:
     if accounts[&quot;Anna&quot;] == 7000 and accounts[&quot;Bela&quot;] == 8000:
         print(&quot;✓ transfer — OK, egyenlegek stimmelnek&quot;)
     else:
-        print(&quot;✗ Anna=7000, Bela=8000 kene!&quot;)
+        print(&quot;✗ Anna=7000, Bela=8000 kéne!&quot;)
         errors += 1
 else:
-    print(&quot;✗ transfer visszateresi erteke &#x27;Sikeres...&#x27; kene!&quot;)
+    print(&quot;✗ transfer visszatérési értéke &#x27;Sikeres...&#x27; kéne!&quot;)
     errors += 1
 
 try:
     transfer(&quot;Cecil&quot;, &quot;Anna&quot;, 1000)
-    print(&quot;✗ Nincs fedezet — ValueError kene!&quot;)
+    print(&quot;✗ Nincs fedezet — ValueError kéne!&quot;)
     errors += 1
 except ValueError:
     print(&quot;✓ Nincs fedezet — ValueError OK&quot;)
 
 if errors == 0:
-    print(&quot;MINDEN FELADAT KESZ!&quot;)</textarea>
+    print(&quot;MINDEN FELADAT KÉSZ!&quot;)</textarea>
 <div id="exercise-30-output" class="output-area">
 <span class="output-placeholder">Nyomd meg a ▶ Futtatás gombot az eredményért</span>
 </div>
@@ -3234,7 +3234,7 @@ if errors == 0:
 <script src="https://skulpt.org/js/skulpt-stdlib.js"></script>
 <script>
 (function() {
-var ORIGINALS = {"exercise-0": '# MEGOLDAS IDE:\n\n\n\n# ELLENORZES:\nif my_name and my_age > 0 and my_city:\n    print("✓ OK — valtozok rendben")\nelse:\n    print("✗ Toltsd ki a neved, korod, varosod!")', "exercise-1": 'width = 5\nheight = 8\n\n# MEGOLDAS IDE:\n\n\n\n# ELLENORZES:\nif perimeter == 26 and area == 40:\n    print("✓ OK — kerulet:", perimeter, "terulet:", area)\nelse:\n    print("✗ Kerulet = 26 es terulet = 40 kene legyen!")', "exercise-2": 'shopping_list = ["tej", "kenyer", "sajt", "tojas"]\n\n# MEGOLDAS IDE:\n\n\n\n# ELLENORZES:\nif "kenyer" not in shopping_list and len(shopping_list) >= 5:\n    print("✓ OK — lista:", shopping_list)\nelse:\n    print("✗ Adj hozza 2 elemet es torold a \'kenyer\'-t!")\n    print("  Jelenlegi lista:", shopping_list)', "exercise-3": 'def even_or_odd(number):\n    # MEGOLDAS IDE:\n    pass\n\n# ELLENORZES:\nif even_or_odd(4) == "paros" and even_or_odd(7) == "paratlan":\n    print("✓ OK — even_or_odd mukodik")\nelse:\n    print("✗ even_or_odd(4) = \'paros\' es even_or_odd(7) = \'paratlan\' kene legyen!")', "exercise-4": 'print("Paros szamok 1-10:")\n# MEGOLDAS IDE:', "exercise-5": 'def calculate_average(numbers):\n    # MEGOLDAS IDE:\n    pass\n\n# ELLENORZES:\nif calculate_average([10, 20, 30]) == 20.0:\n    print("✓ OK — atlag:", calculate_average([10, 20, 30]))\nelse:\n    print("✗ calculate_average([10, 20, 30]) = 20.0 kene legyen!")', "exercise-6": '# Nevezd at ezeket ertelmes nevekre:\nn = "Kiss Peter"           # ez egy szemely neve\nx = 42                     # ez egy eletkor\nc = "Budapest"             # ez egy varos\n\n# Irasd ki az uj nevu valtozokat:\n# MEGOLDAS IDE:', "exercise-7": '# Nevezd at UPPER_SNAKE_CASE-re:\nmr = 5                     # max probalkozasok szama\ntax = 0.27                 # adokulcs\nurl = "https://api.example.com/v2"  # API webcim\n\n# Irasd ki mindet:\n# MEGOLDAS IDE:', "exercise-8": '# Nevezd at is_/has_/can_ elotaggal:\nactive = True               # aktiv-e a felhasznalo?\nadmin = False               # adminisztrator-e?\nlogged = True               # be van-e jelentkezve?\nitems = False               # van-e termek a kosaraban?\n\n# Irasd ki mindet:\n# MEGOLDAS IDE:', "exercise-9": '# Nevezd at a fuggvenyt es a parametereit:\ndef calc(a, b):\n    return a * b\n\n# Teszteld az uj nevu fuggvenyt:\n# MEGOLDAS IDE:', "exercise-10": 't = 0.27\n\ndef f(p, q):\n    s = p * q\n    a = s * t\n    return s + a\n\n# MEGOLDAS IDE — ird ujra az egeszet jo nevekkel:\n\n\n# Teszteld: calculate_total_price(1000, 3) = 3810.0', "exercise-11": 'PI = 3.14159\n\ndef calculate_circumference(radius):\n    # MEGOLDAS IDE:\n    pass\n\n# ELLENORZES:\nresult = calculate_circumference(10)\nexpected = 2 * PI * 10\nif result is not None and abs(result - expected) < 0.01:\n    print("✓ OK — kerulet:", round(result, 2))\nelse:\n    print("✗ calculate_circumference(10) =", round(expected, 2), "kene legyen!")', "exercise-12": 'def is_passing(score):\n    # MEGOLDAS IDE:\n    pass\n\n# ELLENORZES:\nif is_passing(75) == True and is_passing(50) == True and is_passing(49) == False:\n    print("✓ OK — is_passing mukodik")\nelse:\n    print("✗ is_passing(75)=True, is_passing(50)=True, is_passing(49)=False kene!")', "exercise-13": 'def calculate_average(scores):\n    # MEGOLDAS IDE:\n    pass\n\n# ELLENORZES:\ntest = [85, 42, 73, 91, 38, 67]\navg = calculate_average(test)\nif avg is not None and abs(avg - 66.0) < 0.01:\n    print("✓ OK — atlag:", round(avg, 1))\nelse:\n    print("✗ calculate_average([85,42,73,91,38,67]) = 66.0 kene legyen!")', "exercise-14": 'def create_greeting(name, time_of_day="reggel"):\n    # MEGOLDAS IDE:\n    pass\n\n# ELLENORZES:\ng1 = create_greeting("Anna")\ng2 = create_greeting("Bela", "este")\ng3 = create_greeting("Cecil", "del")\nerrors = 0\nif g1 == "Jo reggelt, Anna!":\n    print("✓ create_greeting(\'Anna\') — OK")\nelse:\n    print("✗ Vart: \'Jo reggelt, Anna!\', kaptam:", g1)\n    errors += 1\nif g2 == "Jo estet, Bela!":\n    print("✓ create_greeting(\'Bela\', \'este\') — OK")\nelse:\n    print("✗ Vart: \'Jo estet, Bela!\', kaptam:", g2)\n    errors += 1\nif g3 == "Szia, Cecil!":\n    print("✓ create_greeting(\'Cecil\', \'del\') — OK")\nelse:\n    print("✗ Vart: \'Szia, Cecil!\', kaptam:", g3)\n    errors += 1\nif errors == 0:\n    print("MINDEN FELADAT KESZ!")', "exercise-15": 'DELIVERY_FEE = 500\n\ndef calculate_pizza_price(size, quantity, is_delivery):\n    # MEGOLDAS IDE:\n    pass\n\n# ELLENORZES:\np1 = calculate_pizza_price("kicsi", 2, False)\np2 = calculate_pizza_price("nagy", 1, True)\nif p1 == 3000 and p2 == 3400:\n    print("✓ OK — kicsi x2 =", p1, ", nagy x1 + kiszallitas =", p2)\nelse:\n    print("✗ kicsi x2 = 3000 es nagy x1 + kiszallitas = 3400 kene!")\n    print("  Kaptam:", p1, "es", p2)', "exercise-16": '# Ezt az ismetlodo kodot kell kivaltanod egy fuggvennyel:\n# area_1 = 10 * 5    → print("Asztal terulete: 50 cm2")\n# area_2 = 3 * 7     → print("Konyv terulete: 21 cm2")\n# area_3 = 20 * 15   → print("Ablak terulete: 300 cm2")\n\ndef calculate_rectangle_area(name, width, height):\n    # MEGOLDAS IDE:\n    pass\n\n# ELLENORZES:\nr1 = calculate_rectangle_area("Teszt", 10, 5)\nif r1 == 50:\n    r2 = calculate_rectangle_area("Ablak", 20, 15)\n    if r2 == 300:\n        print("✓ OK — fuggveny mukodik!")\n    else:\n        print("✗ calculate_rectangle_area(\'Ablak\', 20, 15) = 300 kene!")\nelse:\n    print("✗ calculate_rectangle_area(\'Teszt\', 10, 5) = 50 kene! Kaptam:", r1)', "exercise-17": '# MEGOLDAS IDE — eloszor a konstans, aztan a fuggveny:\n\n\n# ELLENORZES:\nr = calculate_gross_price(1000)\nif r is not None and abs(r - 1270) < 0.01:\n    print("✓ OK — 1000 Ft afasan:", r)\nelse:\n    print("✗ calculate_gross_price(1000) = 1270 kene!")', "exercise-18": 'def classify_number(number):\n    # MEGOLDAS IDE (3-4 sor eleg!):\n    pass\n\n# ELLENORZES:\nr1 = classify_number(42)\nr2 = classify_number(-7)\nr3 = classify_number(0)\nif r1 == "pozitiv" and r2 == "negativ" and r3 == "nulla":\n    print("✓ OK — classify_number mukodik")\nelse:\n    print("✗ 42=\'pozitiv\', -7=\'negativ\', 0=\'nulla\' kene!")\n    print("  Kaptam:", r1, r2, r3)', "exercise-19": '# MEGOLDAS IDE — konstans + fuggveny:\n\n\n# ELLENORZES:\nr = calculate_discounted_price(250000)\nif r is not None and abs(r - 200000) < 0.01:\n    print("✓ OK — 250000 Ft 20% kedvezmeny:", r)\nelse:\n    print("✗ calculate_discounted_price(250000) = 200000 kene!")', "exercise-20": 'def print_student_result(name, grades):\n    # MEGOLDAS IDE:\n    pass\n\n# ELLENORZES:\nr1 = print_student_result("Anna", [5, 4, 3])\nr2 = print_student_result("Bela", [1, 1, 1])\nif r1 == True and r2 == False:\n    print("✓ OK — fuggveny mukodik!")\nelse:\n    print("✗ Anna [5,4,3] → True, Bela [1,1,1] → False kene!")', "exercise-21": '# Add hozza a tipusjelzeseket (: tipus):\nplayer_name = "Hero123"\nplayer_level = 42\nplayer_health = 95.5\nis_alive = True\n\n# Irasd ki mindet:\nprint("Jatekos:", player_name)\nprint("Szint:", player_level)\nprint("Elet:", player_health)\nprint("El:", is_alive)', "exercise-22": '# Add hozza a tipusjelzeseket:\ndef join_words(first, second):\n    return first + " " + second\n\ndef calculate_area(width, height):\n    return width * height\n\ndef is_old_enough(age, minimum_age):\n    return age >= minimum_age\n\n# ELLENORZES:\nprint("Szavak:", join_words("hello", "vilag"))\nprint("Terulet:", calculate_area(5.0, 3.0))\nprint("Eleg idos:", is_old_enough(20, 18))\nprint("✓ Ha a tipusjelzeseket hozzaadtad, a fuggvenyek ugyanugy mukodnek!")', "exercise-23": '# Add hozza az osszetett tipusjelzeseket:\nfavorite_foods = ["pizza", "ramen", "turos csusza"]\nweekly_temps = [18, 22, 25, 19, 21]\nstudent_grades = {"Anna": 5, "Bela": 3, "Cecil": 4}\nnickname = None\n\nprint("Etelek:", favorite_foods)\nprint("Homersekletek:", weekly_temps)\nprint("Jegyek:", student_grades)\nprint("Becenev:", nickname)\nprint("✓ Tipusjelzesek rendben, ha a kiiras mukodik!")', "exercise-24": 'def celsius_to_fahrenheit(celsius: float) -> float:\n    # MEGOLDAS IDE — irj docstring-et:\n    pass\n    return celsius * 9 / 5 + 32\n\n# ELLENORZES:\nresult = celsius_to_fahrenheit(100)\nif abs(result - 212.0) < 0.01:\n    print("✓ OK — 100°C =", result, "°F")\nelse:\n    print("✗ celsius_to_fahrenheit(100) = 212.0 kene!")', "exercise-25": '# MEGOLDAS IDE — irj type hint-eket, docstring-et, es a kodot:\ndef calculate_shopping_total():\n    pass\n\n# ELLENORZES:\nitems = {"kenyer": 500, "tej": 400, "sajt": 800}\ntry:\n    r1 = calculate_shopping_total(items)\n    r2 = calculate_shopping_total(items, 10)\n    if r1 is not None and abs(r1 - 1700.0) < 0.01:\n        if r2 is not None and abs(r2 - 1530.0) < 0.01:\n            print("✓ OK — kedvezmeny nelkul:", r1, ", 10%-kal:", r2)\n        else:\n            print("✗ 10% kedvezmeny: 1530.0 kene, kaptam:", r2)\n    else:\n        print("✗ Kedvezmeny nelkul: 1700.0 kene, kaptam:", r1)\nexcept TypeError as e:\n    print("✗ A fuggvenynek 2 parametere legyen: (items, discount=0)")', "exercise-26": 'def safe_divide(a, b):\n    # MEGOLDAS IDE:\n    pass\n\n# ELLENORZES:\nr1 = safe_divide(10, 2)\nr2 = safe_divide(10, 0)\nif r1 == 5.0 and r2 is None:\n    print("✓ OK — safe_divide(10,2) =", r1, ", safe_divide(10,0) =", r2)\nelse:\n    print("✗ safe_divide(10,2) = 5.0 es safe_divide(10,0) = None kene!")\n    print("  Kaptam:", r1, "es", r2)', "exercise-27": 'def safe_list_access(items, index):\n    # MEGOLDAS IDE:\n    pass\n\n# ELLENORZES:\nr1 = safe_list_access(["a", "b", "c"], 1)\nr2 = safe_list_access(["a", "b", "c"], 10)\nif r1 == "b" and r2 == "Hiba: Nincs ilyen index: 10":\n    print("✓ OK — lista eleres mukodik")\nelse:\n    print("✗ index 1 = \'b\' es index 10 = hibauzenet kene!")\n    print("  Kaptam:", r1, "|", r2)', "exercise-28": 'def safe_int_convert(value):\n    # MEGOLDAS IDE:\n    pass\n\n# ELLENORZES:\nr1 = safe_int_convert("42")\nr2 = safe_int_convert("hello")\nr3 = safe_int_convert("")\nif r1 == 42 and r2 is None and r3 is None:\n    print("✓ OK — konvertalas mukodik")\nelse:\n    print("✗ \'42\'=42, \'hello\'=None, \'\'=None kene!")\n    print("  Kaptam:", r1, r2, r3)', "exercise-29": 'def create_profile(username, age):\n    # MEGOLDAS IDE:\n    pass\n\n# ELLENORZES:\nerrors = 0\n\nr = create_profile("Dani", 19)\nif r == {"username": "Dani", "age": 19}:\n    print("✓ create_profile(\'Dani\', 19) — OK")\nelse:\n    print("✗ create_profile(\'Dani\', 19) szotar kene!")\n    errors += 1\n\ntry:\n    create_profile("", 19)\n    print("✗ Ures nev — ValueError kene!")\n    errors += 1\nexcept ValueError:\n    print("✓ Ures nev — ValueError OK")\n\ntry:\n    create_profile("ab", 19)\n    print("✗ Rovid nev — ValueError kene!")\n    errors += 1\nexcept ValueError:\n    print("✓ Rovid nev — ValueError OK")\n\ntry:\n    create_profile("Dani", -5)\n    print("✗ Negativ kor — ValueError kene!")\n    errors += 1\nexcept ValueError:\n    print("✓ Negativ kor — ValueError OK")\n\nif errors == 0:\n    print("MINDEN FELADAT KESZ!")', "exercise-30": 'accounts = {"Anna": 10000, "Bela": 5000, "Cecil": 0}\n\ndef get_balance(name):\n    # MEGOLDAS IDE:\n    pass\n\ndef transfer(sender, receiver, amount):\n    # MEGOLDAS IDE:\n    pass\n\n# ELLENORZES:\nerrors = 0\n\nif get_balance("Anna") == 10000:\n    print("✓ get_balance(\'Anna\') — OK")\nelse:\n    print("✗ get_balance(\'Anna\') = 10000 kene!")\n    errors += 1\n\ntry:\n    get_balance("Xyz")\n    print("✗ Ismeretlen szemely — KeyError kene!")\n    errors += 1\nexcept KeyError:\n    print("✓ Ismeretlen szemely — KeyError OK")\n\naccounts["Anna"] = 10000\naccounts["Bela"] = 5000\nresult = transfer("Anna", "Bela", 3000)\nif result is not None and "Sikeres" in result:\n    if accounts["Anna"] == 7000 and accounts["Bela"] == 8000:\n        print("✓ transfer — OK, egyenlegek stimmelnek")\n    else:\n        print("✗ Anna=7000, Bela=8000 kene!")\n        errors += 1\nelse:\n    print("✗ transfer visszateresi erteke \'Sikeres...\' kene!")\n    errors += 1\n\ntry:\n    transfer("Cecil", "Anna", 1000)\n    print("✗ Nincs fedezet — ValueError kene!")\n    errors += 1\nexcept ValueError:\n    print("✓ Nincs fedezet — ValueError OK")\n\nif errors == 0:\n    print("MINDEN FELADAT KESZ!")'};
+var ORIGINALS = {"exercise-0": '# MEGOLDÁS IDE:\n\n\n\n# ELLENŐRZÉS:\nif my_name and my_age > 0 and my_city:\n    print("✓ OK — változók rendben")\nelse:\n    print("✗ Töltsd ki a neved, korod, városod!")', "exercise-1": 'width = 5\nheight = 8\n\n# MEGOLDÁS IDE:\n\n\n\n# ELLENŐRZÉS:\nif perimeter == 26 and area == 40:\n    print("✓ OK — kerület:", perimeter, "terület:", area)\nelse:\n    print("✗ Kerület = 26 és terület = 40 kéne legyen!")', "exercise-2": 'shopping_list = ["tej", "kenyer", "sajt", "tojas"]\n\n# MEGOLDÁS IDE:\n\n\n\n# ELLENŐRZÉS:\nif "kenyer" not in shopping_list and len(shopping_list) >= 5:\n    print("✓ OK — lista:", shopping_list)\nelse:\n    print("✗ Adj hozzá 2 elemet és töröld a \'kenyer\'-t!")\n    print("  Jelenlegi lista:", shopping_list)', "exercise-3": 'def even_or_odd(number):\n    # MEGOLDÁS IDE:\n    pass\n\n# ELLENŐRZÉS:\nif even_or_odd(4) == "paros" and even_or_odd(7) == "paratlan":\n    print("✓ OK — even_or_odd működik")\nelse:\n    print("✗ even_or_odd(4) = \'paros\' és even_or_odd(7) = \'paratlan\' kéne legyen!")', "exercise-4": 'print("Páros számok 1-10:")\n# MEGOLDÁS IDE:', "exercise-5": 'def calculate_average(numbers):\n    # MEGOLDÁS IDE:\n    pass\n\n# ELLENŐRZÉS:\nif calculate_average([10, 20, 30]) == 20.0:\n    print("✓ OK — átlag:", calculate_average([10, 20, 30]))\nelse:\n    print("✗ calculate_average([10, 20, 30]) = 20.0 kéne legyen!")', "exercise-6": '# Nevezd át ezeket értelmes nevekre:\nn = "Kiss Peter"           # ez egy személy neve\nx = 42                     # ez egy életkor\nc = "Budapest"             # ez egy város\n\n# Írasd ki az új nevű változókat:\n# MEGOLDÁS IDE:', "exercise-7": '# Nevezd át UPPER_SNAKE_CASE-re:\nmr = 5                     # max próbálkozások száma\ntax = 0.27                 # adókulcs\nurl = "https://api.example.com/v2"  # API webcím\n\n# Írasd ki mindet:\n# MEGOLDÁS IDE:', "exercise-8": '# Nevezd át is_/has_/can_ előtaggal:\nactive = True               # aktív-e a felhasználó?\nadmin = False               # adminisztrátor-e?\nlogged = True               # be van-e jelentkezve?\nitems = False               # van-e termék a kosarában?\n\n# Írasd ki mindet:\n# MEGOLDÁS IDE:', "exercise-9": '# Nevezd át a függvényt és a paramétereit:\ndef calc(a, b):\n    return a * b\n\n# Teszteld az új nevű függvényt:\n# MEGOLDÁS IDE:', "exercise-10": 't = 0.27\n\ndef f(p, q):\n    s = p * q\n    a = s * t\n    return s + a\n\n# MEGOLDÁS IDE — írd újra az egészet jó nevekkel:\n\n\n# Teszteld: calculate_total_price(1000, 3) = 3810.0', "exercise-11": 'PI = 3.14159\n\ndef calculate_circumference(radius):\n    # MEGOLDÁS IDE:\n    pass\n\n# ELLENŐRZÉS:\nresult = calculate_circumference(10)\nexpected = 2 * PI * 10\nif result is not None and abs(result - expected) < 0.01:\n    print("✓ OK — kerület:", round(result, 2))\nelse:\n    print("✗ calculate_circumference(10) =", round(expected, 2), "kéne legyen!")', "exercise-12": 'def is_passing(score):\n    # MEGOLDÁS IDE:\n    pass\n\n# ELLENŐRZÉS:\nif is_passing(75) == True and is_passing(50) == True and is_passing(49) == False:\n    print("✓ OK — is_passing működik")\nelse:\n    print("✗ is_passing(75)=True, is_passing(50)=True, is_passing(49)=False kéne!")', "exercise-13": 'def calculate_average(scores):\n    # MEGOLDÁS IDE:\n    pass\n\n# ELLENŐRZÉS:\ntest = [85, 42, 73, 91, 38, 67]\navg = calculate_average(test)\nif avg is not None and abs(avg - 66.0) < 0.01:\n    print("✓ OK — átlag:", round(avg, 1))\nelse:\n    print("✗ calculate_average([85,42,73,91,38,67]) = 66.0 kéne legyen!")', "exercise-14": 'def create_greeting(name, time_of_day="reggel"):\n    # MEGOLDÁS IDE:\n    pass\n\n# ELLENŐRZÉS:\ng1 = create_greeting("Anna")\ng2 = create_greeting("Bela", "este")\ng3 = create_greeting("Cecil", "del")\nerrors = 0\nif g1 == "Jo reggelt, Anna!":\n    print("✓ create_greeting(\'Anna\') — OK")\nelse:\n    print("✗ Várt: \'Jo reggelt, Anna!\', kaptam:", g1)\n    errors += 1\nif g2 == "Jo estet, Bela!":\n    print("✓ create_greeting(\'Bela\', \'este\') — OK")\nelse:\n    print("✗ Várt: \'Jo estet, Bela!\', kaptam:", g2)\n    errors += 1\nif g3 == "Szia, Cecil!":\n    print("✓ create_greeting(\'Cecil\', \'del\') — OK")\nelse:\n    print("✗ Várt: \'Szia, Cecil!\', kaptam:", g3)\n    errors += 1\nif errors == 0:\n    print("MINDEN FELADAT KÉSZ!")', "exercise-15": 'DELIVERY_FEE = 500\n\ndef calculate_pizza_price(size, quantity, is_delivery):\n    # MEGOLDÁS IDE:\n    pass\n\n# ELLENŐRZÉS:\np1 = calculate_pizza_price("kicsi", 2, False)\np2 = calculate_pizza_price("nagy", 1, True)\nif p1 == 3000 and p2 == 3400:\n    print("✓ OK — kicsi x2 =", p1, ", nagy x1 + kiszállítás =", p2)\nelse:\n    print("✗ kicsi x2 = 3000 és nagy x1 + kiszállítás = 3400 kéne!")\n    print("  Kaptam:", p1, "és", p2)', "exercise-16": '# Ezt az ismétlődő kódot kell kiváltanod egy függvénnyel:\n# area_1 = 10 * 5    → print("Asztal területe: 50 cm2")\n# area_2 = 3 * 7     → print("Könyv területe: 21 cm2")\n# area_3 = 20 * 15   → print("Ablak területe: 300 cm2")\n\ndef calculate_rectangle_area(name, width, height):\n    # MEGOLDÁS IDE:\n    pass\n\n# ELLENŐRZÉS:\nr1 = calculate_rectangle_area("Teszt", 10, 5)\nif r1 == 50:\n    r2 = calculate_rectangle_area("Ablak", 20, 15)\n    if r2 == 300:\n        print("✓ OK — függvény működik!")\n    else:\n        print("✗ calculate_rectangle_area(\'Ablak\', 20, 15) = 300 kéne!")\nelse:\n    print("✗ calculate_rectangle_area(\'Teszt\', 10, 5) = 50 kéne! Kaptam:", r1)', "exercise-17": '# MEGOLDÁS IDE — először a konstans, aztán a függvény:\n\n\n# ELLENŐRZÉS:\nr = calculate_gross_price(1000)\nif r is not None and abs(r - 1270) < 0.01:\n    print("✓ OK — 1000 Ft áfásan:", r)\nelse:\n    print("✗ calculate_gross_price(1000) = 1270 kéne!")', "exercise-18": 'def classify_number(number):\n    # MEGOLDÁS IDE (3-4 sor elég!):\n    pass\n\n# ELLENŐRZÉS:\nr1 = classify_number(42)\nr2 = classify_number(-7)\nr3 = classify_number(0)\nif r1 == "pozitiv" and r2 == "negativ" and r3 == "nulla":\n    print("✓ OK — classify_number működik")\nelse:\n    print("✗ 42=\'pozitiv\', -7=\'negativ\', 0=\'nulla\' kéne!")\n    print("  Kaptam:", r1, r2, r3)', "exercise-19": '# MEGOLDÁS IDE — konstans + függvény:\n\n\n# ELLENŐRZÉS:\nr = calculate_discounted_price(250000)\nif r is not None and abs(r - 200000) < 0.01:\n    print("✓ OK — 250000 Ft 20% kedvezmény:", r)\nelse:\n    print("✗ calculate_discounted_price(250000) = 200000 kéne!")', "exercise-20": 'def print_student_result(name, grades):\n    # MEGOLDÁS IDE:\n    pass\n\n# ELLENŐRZÉS:\nr1 = print_student_result("Anna", [5, 4, 3])\nr2 = print_student_result("Bela", [1, 1, 1])\nif r1 == True and r2 == False:\n    print("✓ OK — függvény működik!")\nelse:\n    print("✗ Anna [5,4,3] → True, Bela [1,1,1] → False kéne!")', "exercise-21": '# Add hozzá a típusjelzéseket (: típus):\nplayer_name = "Hero123"\nplayer_level = 42\nplayer_health = 95.5\nis_alive = True\n\n# Írasd ki mindet:\nprint("Játékos:", player_name)\nprint("Szint:", player_level)\nprint("Élet:", player_health)\nprint("Él:", is_alive)', "exercise-22": '# Add hozzá a típusjelzéseket:\ndef join_words(first, second):\n    return first + " " + second\n\ndef calculate_area(width, height):\n    return width * height\n\ndef is_old_enough(age, minimum_age):\n    return age >= minimum_age\n\n# ELLENŐRZÉS:\nprint("Szavak:", join_words("hello", "világ"))\nprint("Terület:", calculate_area(5.0, 3.0))\nprint("Elég idős:", is_old_enough(20, 18))\nprint("✓ Ha a típusjelzéseket hozzáadtad, a függvények ugyanúgy működnek!")', "exercise-23": '# Add hozzá az összetett típusjelzéseket:\nfavorite_foods = ["pizza", "ramen", "turos csusza"]\nweekly_temps = [18, 22, 25, 19, 21]\nstudent_grades = {"Anna": 5, "Bela": 3, "Cecil": 4}\nnickname = None\n\nprint("Ételek:", favorite_foods)\nprint("Hőmérsékletek:", weekly_temps)\nprint("Jegyek:", student_grades)\nprint("Becenév:", nickname)\nprint("✓ Típusjelzések rendben, ha a kiírás működik!")', "exercise-24": 'def celsius_to_fahrenheit(celsius: float) -> float:\n    # MEGOLDÁS IDE — írj docstring-et:\n    pass\n    return celsius * 9 / 5 + 32\n\n# ELLENŐRZÉS:\nresult = celsius_to_fahrenheit(100)\nif abs(result - 212.0) < 0.01:\n    print("✓ OK — 100°C =", result, "°F")\nelse:\n    print("✗ celsius_to_fahrenheit(100) = 212.0 kéne!")', "exercise-25": '# MEGOLDÁS IDE — írj type hint-eket, docstring-et, és a kódot:\ndef calculate_shopping_total():\n    pass\n\n# ELLENŐRZÉS:\nitems = {"kenyer": 500, "tej": 400, "sajt": 800}\ntry:\n    r1 = calculate_shopping_total(items)\n    r2 = calculate_shopping_total(items, 10)\n    if r1 is not None and abs(r1 - 1700.0) < 0.01:\n        if r2 is not None and abs(r2 - 1530.0) < 0.01:\n            print("✓ OK — kedvezmény nélkül:", r1, ", 10%-kal:", r2)\n        else:\n            print("✗ 10% kedvezmény: 1530.0 kéne, kaptam:", r2)\n    else:\n        print("✗ Kedvezmény nélkül: 1700.0 kéne, kaptam:", r1)\nexcept TypeError as e:\n    print("✗ A függvénynek 2 paramétere legyen: (items, discount=0)")', "exercise-26": 'def safe_divide(a, b):\n    # MEGOLDÁS IDE:\n    pass\n\n# ELLENŐRZÉS:\nr1 = safe_divide(10, 2)\nr2 = safe_divide(10, 0)\nif r1 == 5.0 and r2 is None:\n    print("✓ OK — safe_divide(10,2) =", r1, ", safe_divide(10,0) =", r2)\nelse:\n    print("✗ safe_divide(10,2) = 5.0 és safe_divide(10,0) = None kéne!")\n    print("  Kaptam:", r1, "és", r2)', "exercise-27": 'def safe_list_access(items, index):\n    # MEGOLDÁS IDE:\n    pass\n\n# ELLENŐRZÉS:\nr1 = safe_list_access(["a", "b", "c"], 1)\nr2 = safe_list_access(["a", "b", "c"], 10)\nif r1 == "b" and r2 == "Hiba: Nincs ilyen index: 10":\n    print("✓ OK — lista elérés működik")\nelse:\n    print("✗ index 1 = \'b\' és index 10 = hibaüzenet kéne!")\n    print("  Kaptam:", r1, "|", r2)', "exercise-28": 'def safe_int_convert(value):\n    # MEGOLDÁS IDE:\n    pass\n\n# ELLENŐRZÉS:\nr1 = safe_int_convert("42")\nr2 = safe_int_convert("hello")\nr3 = safe_int_convert("")\nif r1 == 42 and r2 is None and r3 is None:\n    print("✓ OK — konvertálás működik")\nelse:\n    print("✗ \'42\'=42, \'hello\'=None, \'\'=None kéne!")\n    print("  Kaptam:", r1, r2, r3)', "exercise-29": 'def create_profile(username, age):\n    # MEGOLDÁS IDE:\n    pass\n\n# ELLENŐRZÉS:\nerrors = 0\n\nr = create_profile("Dani", 19)\nif r == {"username": "Dani", "age": 19}:\n    print("✓ create_profile(\'Dani\', 19) — OK")\nelse:\n    print("✗ create_profile(\'Dani\', 19) szótár kéne!")\n    errors += 1\n\ntry:\n    create_profile("", 19)\n    print("✗ Üres név — ValueError kéne!")\n    errors += 1\nexcept ValueError:\n    print("✓ Üres név — ValueError OK")\n\ntry:\n    create_profile("ab", 19)\n    print("✗ Rövid név — ValueError kéne!")\n    errors += 1\nexcept ValueError:\n    print("✓ Rövid név — ValueError OK")\n\ntry:\n    create_profile("Dani", -5)\n    print("✗ Negatív kor — ValueError kéne!")\n    errors += 1\nexcept ValueError:\n    print("✓ Negatív kor — ValueError OK")\n\nif errors == 0:\n    print("MINDEN FELADAT KÉSZ!")', "exercise-30": 'accounts = {"Anna": 10000, "Bela": 5000, "Cecil": 0}\n\ndef get_balance(name):\n    # MEGOLDÁS IDE:\n    pass\n\ndef transfer(sender, receiver, amount):\n    # MEGOLDÁS IDE:\n    pass\n\n# ELLENŐRZÉS:\nerrors = 0\n\nif get_balance("Anna") == 10000:\n    print("✓ get_balance(\'Anna\') — OK")\nelse:\n    print("✗ get_balance(\'Anna\') = 10000 kéne!")\n    errors += 1\n\ntry:\n    get_balance("Xyz")\n    print("✗ Ismeretlen személy — KeyError kéne!")\n    errors += 1\nexcept KeyError:\n    print("✓ Ismeretlen személy — KeyError OK")\n\naccounts["Anna"] = 10000\naccounts["Bela"] = 5000\nresult = transfer("Anna", "Bela", 3000)\nif result is not None and "Sikeres" in result:\n    if accounts["Anna"] == 7000 and accounts["Bela"] == 8000:\n        print("✓ transfer — OK, egyenlegek stimmelnek")\n    else:\n        print("✗ Anna=7000, Bela=8000 kéne!")\n        errors += 1\nelse:\n    print("✗ transfer visszatérési értéke \'Sikeres...\' kéne!")\n    errors += 1\n\ntry:\n    transfer("Cecil", "Anna", 1000)\n    print("✗ Nincs fedezet — ValueError kéne!")\n    errors += 1\nexcept ValueError:\n    print("✓ Nincs fedezet — ValueError OK")\n\nif errors == 0:\n    print("MINDEN FELADAT KÉSZ!")'};
 
   // ---- Accordion toggle ----
   window.toggleAccordion = function(btn) {

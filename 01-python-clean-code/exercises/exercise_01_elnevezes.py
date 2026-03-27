@@ -1,73 +1,73 @@
 """
 =============================================================
-1.1 GYAKORLAT: Valtozok es elnevezesek — Clean Code
+1.1 GYAKORLAT: Változók és elnevezések — Clean Code
 =============================================================
 """
 
-# @TASK 1. Valtozok atnevezese
-# @DESC Az alabbi valtozoknak **rossz a nevuk**. Nevezd at oket ertelmes, `snake_case` nevekre!
-# Az ertekuket **NE valtoztasd**, csak a nevet! Gondolj bele: mit TAROL a valtozo?
-# @HINT Pelda: `n` → `user_name`, `x` → `user_age`, `c` → `user_city`
+# @TASK 1. Változók átnevezése
+# @DESC Az alábbi változóknak **rossz a nevük**. Nevezd át őket értelmes, `snake_case` nevekre!
+# Az értéküket **NE változtasd**, csak a nevet! Gondolj bele: mit TÁROL a változó?
+# @HINT Példa: `n` → `user_name`, `x` → `user_age`, `c` → `user_city`
 # @CODE
-# Nevezd at ezeket ertelmes nevekre:
-n = "Kiss Peter"           # ez egy szemely neve
-x = 42                     # ez egy eletkor
-c = "Budapest"             # ez egy varos
+# Nevezd át ezeket értelmes nevekre:
+n = "Kiss Peter"           # ez egy személy neve
+x = 42                     # ez egy életkor
+c = "Budapest"             # ez egy város
 
-# Irasd ki az uj nevu valtozokat:
-# MEGOLDAS IDE:
+# Írasd ki az új nevű változókat:
+# MEGOLDÁS IDE:
 
 # @END
 
 # @TASK 2. Konstansok
-# @DESC Az alabbi ertekek **SOHA nem valtoznak** — konstansok.
-# Nevezd at oket **UPPER_SNAKE_CASE** konvencio szerint!
-# @HINT Pelda: `mr` → `MAX_RETRIES`, `tax` → `TAX_RATE`
+# @DESC Az alábbi értékek **SOHA nem változnak** — konstansok.
+# Nevezd át őket **UPPER_SNAKE_CASE** konvenció szerint!
+# @HINT Példa: `mr` → `MAX_RETRIES`, `tax` → `TAX_RATE`
 # @CODE
-# Nevezd at UPPER_SNAKE_CASE-re:
-mr = 5                     # max probalkozasok szama
-tax = 0.27                 # adokulcs
-url = "https://api.example.com/v2"  # API webcim
+# Nevezd át UPPER_SNAKE_CASE-re:
+mr = 5                     # max próbálkozások száma
+tax = 0.27                 # adókulcs
+url = "https://api.example.com/v2"  # API webcím
 
-# Irasd ki mindet:
-# MEGOLDAS IDE:
+# Írasd ki mindet:
+# MEGOLDÁS IDE:
 
 # @END
 
-# @TASK 3. Boolean valtozok
-# @DESC Boolean valtozok neve mindig **kerdes** legyen: `is_`, `has_`, `can_` elotaggal.
-# Nevezd at az alabbiakat!
-# @HINT Pelda: `active` → `is_active`, `admin` → `is_admin`
+# @TASK 3. Boolean változók
+# @DESC Boolean változók neve mindig **kérdés** legyen: `is_`, `has_`, `can_` előtaggal.
+# Nevezd át az alábbiakat!
+# @HINT Példa: `active` → `is_active`, `admin` → `is_admin`
 # @CODE
-# Nevezd at is_/has_/can_ elotaggal:
-active = True               # aktiv-e a felhasznalo?
-admin = False               # adminisztrator-e?
+# Nevezd át is_/has_/can_ előtaggal:
+active = True               # aktív-e a felhasználó?
+admin = False               # adminisztrátor-e?
 logged = True               # be van-e jelentkezve?
-items = False               # van-e termek a kosaraban?
+items = False               # van-e termék a kosarában?
 
-# Irasd ki mindet:
-# MEGOLDAS IDE:
+# Írasd ki mindet:
+# MEGOLDÁS IDE:
 
 # @END
 
-# @TASK 4. Fuggveny atnevezese
-# @DESC Az alabbi fuggvenynek rossz a neve ES a parametereinek neve is.
-# A fuggveny egy **teglalap teruletet** szamolja ki (szelesseg * magassag).
-# Nevezd at a fuggvenyt es a parametereit is!
-# @HINT Fuggvenynevek igevel kezdodnek: `calculate_area(width, height)`
+# @TASK 4. Függvény átnevezése
+# @DESC Az alábbi függvénynek rossz a neve ÉS a paramétereinek neve is.
+# A függvény egy **téglalap területét** számolja ki (szélesség * magasság).
+# Nevezd át a függvényt és a paramétereit is!
+# @HINT Függvénynevek igével kezdődnek: `calculate_area(width, height)`
 # @CODE
-# Nevezd at a fuggvenyt es a parametereit:
+# Nevezd át a függvényt és a paramétereit:
 def calc(a, b):
     return a * b
 
-# Teszteld az uj nevu fuggvenyt:
-# MEGOLDAS IDE:
+# Teszteld az új nevű függvényt:
+# MEGOLDÁS IDE:
 
 # @END
 
-# @TASK 5. Vegyes — teljes kod atiras
-# @DESC Az alabbi kod egy vasarlast szamol ki. **MINDEN elnevezes rossz** benne.
-# Ird at az OSSZES nevet — valtozot, konstanst, fuggvenyt! A **logika** maradjon!
+# @TASK 5. Vegyes — teljes kód átírás
+# @DESC Az alábbi kód egy vásárlást számol ki. **MINDEN elnevezés rossz** benne.
+# Írd át az ÖSSZES nevet — változót, konstanst, függvényt! A **logika** maradjon!
 # @HINT `t` → `TAX_RATE`, `f` → `calculate_total_price(net_price, quantity)`
 # @CODE
 t = 0.27
@@ -77,7 +77,7 @@ def f(p, q):
     a = s * t
     return s + a
 
-# MEGOLDAS IDE — ird ujra az egeszet jo nevekkel:
+# MEGOLDÁS IDE — írd újra az egészet jó nevekkel:
 
 
 # Teszteld: calculate_total_price(1000, 3) = 3810.0

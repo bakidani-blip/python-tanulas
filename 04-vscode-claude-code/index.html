@@ -1,0 +1,2218 @@
+<!DOCTYPE html>
+<html lang="hu" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Interaktív oktatás a VS Code fejlesztőkörnyezetről és a Claude Code AI asszisztensről">
+  <title>VS Code & Claude Code | Tanulj hatékonyabban kódolni</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    /* ============ CSS VÁLTOZÓK & TÉMA ============ */
+    :root {
+      --bg-primary: #1e1e2e;
+      --bg-secondary: #181825;
+      --bg-card: #313244;
+      --bg-card-hover: #45475a;
+      --bg-surface: #11111b;
+      --text-primary: #cdd6f4;
+      --text-secondary: #a6adc8;
+      --text-muted: #6c7086;
+      --accent: #89b4fa;
+      --accent-hover: #74c7ec;
+      --accent-green: #a6e3a1;
+      --accent-yellow: #f9e2af;
+      --accent-red: #f38ba8;
+      --accent-purple: #cba6f7;
+      --accent-peach: #fab387;
+      --border: #45475a;
+      --glass: rgba(30, 30, 46, 0.8);
+      --shadow: rgba(0, 0, 0, 0.3);
+      --font-sans: 'Inter', -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --radius: 12px;
+      --radius-sm: 8px;
+      --transition: 0.3s ease;
+    }
+
+    [data-theme="light"] {
+      --bg-primary: #eff1f5;
+      --bg-secondary: #e6e9ef;
+      --bg-card: #ffffff;
+      --bg-card-hover: #dce0e8;
+      --bg-surface: #ccd0da;
+      --text-primary: #4c4f69;
+      --text-secondary: #6c6f85;
+      --text-muted: #9ca0b0;
+      --accent: #1e66f5;
+      --accent-hover: #209fb5;
+      --accent-green: #40a02b;
+      --accent-yellow: #df8e1d;
+      --accent-red: #d20f39;
+      --accent-purple: #8839ef;
+      --accent-peach: #fe640b;
+      --border: #ccd0da;
+      --glass: rgba(239, 241, 245, 0.85);
+      --shadow: rgba(0, 0, 0, 0.1);
+    }
+
+    /* ============ RESET & ALAP ============ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.7;
+      transition: background var(--transition), color var(--transition);
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    section {
+      padding: 5rem 0;
+    }
+
+    h1, h2, h3, h4 { line-height: 1.3; font-weight: 700; }
+    h2 { font-size: 2.2rem; margin-bottom: 1rem; }
+    h3 { font-size: 1.5rem; margin-bottom: 0.75rem; }
+
+    a { color: var(--accent); text-decoration: none; transition: color var(--transition); }
+    a:hover { color: var(--accent-hover); }
+
+    code {
+      font-family: var(--font-mono);
+      background: var(--bg-surface);
+      padding: 0.15em 0.4em;
+      border-radius: 4px;
+      font-size: 0.9em;
+    }
+
+    .section-label {
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .section-desc {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin-bottom: 3rem;
+    }
+
+    /* ============ SCROLL PROGRESS ============ */
+    #scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-purple));
+      width: 0%;
+      z-index: 1001;
+      transition: none;
+    }
+
+    /* ============ NAVIGÁCIÓ ============ */
+    nav {
+      position: fixed;
+      top: 3px;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: var(--glass);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      transition: background var(--transition);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .nav-logo {
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .nav-logo span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      font-weight: 500;
+      padding: 0.25rem 0;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width var(--transition);
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after { width: 100%; }
+
+    .theme-toggle {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--text-primary);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      transition: all var(--transition);
+    }
+
+    .theme-toggle:hover {
+      background: var(--bg-card-hover);
+      transform: rotate(20deg);
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text-primary);
+      transition: all var(--transition);
+      border-radius: 2px;
+    }
+
+    /* ============ HERO ============ */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      padding: 6rem 1.5rem 4rem;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--accent), var(--accent-purple), var(--accent-peach), var(--accent));
+      background-size: 300% 300%;
+      animation: gradientShift 8s ease infinite;
+      opacity: 0.08;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .hero-content { position: relative; z-index: 1; }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, var(--accent), var(--accent-purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .hero-badges {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+
+    .badge {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 0.5rem 1.2rem;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--accent);
+      color: #1e1e2e;
+      padding: 1rem 2.5rem;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      border: none;
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(137, 180, 250, 0.3);
+      color: #1e1e2e;
+    }
+
+    .floating-code {
+      position: absolute;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      opacity: 0.15;
+      pointer-events: none;
+    }
+
+    .floating-code:nth-child(1) { top: 15%; left: 5%; animation: float 6s ease-in-out infinite; }
+    .floating-code:nth-child(2) { top: 25%; right: 8%; animation: float 8s ease-in-out infinite 1s; }
+    .floating-code:nth-child(3) { bottom: 20%; left: 10%; animation: float 7s ease-in-out infinite 2s; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(2deg); }
+    }
+
+    /* ============ SCROLL ANIMÁCIÓK ============ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ============ KÁRTYA RENDSZER ============ */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      transition: all var(--transition);
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px var(--shadow);
+      border-color: var(--accent);
+    }
+
+    .card-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .card h3 { font-size: 1.2rem; }
+    .card p { color: var(--text-secondary); font-size: 0.95rem; }
+
+    /* ============ VS CODE MOCKUP ============ */
+    .vscode-mockup {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .vscode-titlebar {
+      display: flex;
+      align-items: center;
+      padding: 0.5rem 1rem;
+      background: var(--bg-secondary);
+      gap: 0.5rem;
+    }
+
+    .titlebar-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+    .titlebar-dot.red { background: #f38ba8; }
+    .titlebar-dot.yellow { background: #f9e2af; }
+    .titlebar-dot.green { background: #a6e3a1; }
+
+    .titlebar-title {
+      flex: 1;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .vscode-body {
+      display: grid;
+      grid-template-columns: 50px 200px 1fr;
+      grid-template-rows: 1fr 150px;
+      min-height: 350px;
+    }
+
+    .vscode-region {
+      padding: 1rem;
+      cursor: pointer;
+      transition: all var(--transition);
+      position: relative;
+      border: 2px solid transparent;
+    }
+
+    .vscode-region:hover,
+    .vscode-region.active {
+      border-color: var(--accent);
+      background: rgba(137, 180, 250, 0.05);
+    }
+
+    .vscode-region .region-label {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .vscode-activitybar {
+      grid-row: 1 / 3;
+      background: var(--bg-secondary);
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 0.75rem;
+      gap: 1rem;
+    }
+
+    .activity-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 4px;
+      background: var(--bg-card);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+    }
+
+    .vscode-sidebar {
+      grid-row: 1 / 3;
+      background: var(--bg-secondary);
+      border-right: 1px solid var(--border);
+    }
+
+    .vscode-editor {
+      background: var(--bg-primary);
+    }
+
+    .vscode-terminal {
+      grid-column: 3;
+      background: var(--bg-surface);
+      border-top: 1px solid var(--border);
+    }
+
+    .mockup-info {
+      background: var(--bg-card);
+      border: 1px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin-top: 1.5rem;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+      display: none;
+    }
+
+    .mockup-info.visible { display: block; }
+
+    .mockup-info h4 { color: var(--accent); margin-bottom: 0.5rem; }
+
+    /* ============ SHORTCUT KÁRTYÁK ============ */
+    .shortcut-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+    }
+
+    .shortcut-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      transition: all var(--transition);
+    }
+
+    .shortcut-card:hover {
+      border-color: var(--accent);
+      transform: translateX(4px);
+    }
+
+    .kbd {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      padding: 0.35rem 0.65rem;
+      border-radius: 6px;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 600;
+      white-space: nowrap;
+      min-width: fit-content;
+      box-shadow: 0 2px 0 var(--border);
+    }
+
+    .shortcut-desc {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+
+    /* ============ ACCORDION ============ */
+    .accordion { max-width: 800px; }
+
+    .accordion-item {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      margin-bottom: 0.75rem;
+      overflow: hidden;
+      background: var(--bg-card);
+    }
+
+    .accordion-header {
+      padding: 1.25rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-weight: 600;
+      transition: background var(--transition);
+      border: none;
+      background: transparent;
+      color: var(--text-primary);
+      width: 100%;
+      text-align: left;
+      font-family: var(--font-sans);
+      font-size: 1rem;
+    }
+
+    .accordion-header:hover { background: var(--bg-card-hover); }
+
+    .accordion-arrow {
+      transition: transform var(--transition);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .accordion-item.open .accordion-arrow { transform: rotate(180deg); }
+
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+
+    .accordion-content-inner {
+      padding: 0 1.25rem 1.25rem;
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.8;
+    }
+
+    /* ============ TAB INTERFACE ============ */
+    .tabs {
+      margin-bottom: 2rem;
+    }
+
+    .tab-buttons {
+      display: flex;
+      gap: 0.5rem;
+      overflow-x: auto;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+      scrollbar-width: thin;
+    }
+
+    .tab-btn {
+      padding: 0.6rem 1.2rem;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      font-weight: 500;
+      border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+      white-space: nowrap;
+      transition: all var(--transition);
+      position: relative;
+    }
+
+    .tab-btn:hover { color: var(--text-primary); background: var(--bg-card); }
+
+    .tab-btn.active {
+      color: var(--accent);
+      background: var(--bg-card);
+    }
+
+    .tab-btn.active::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--accent);
+    }
+
+    .tab-panel {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .tab-panel.active { display: block; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .tab-panel-content {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+    }
+
+    .tab-panel-content h4 { margin-bottom: 0.75rem; color: var(--accent); }
+
+    .tab-example {
+      background: var(--bg-surface);
+      border-radius: var(--radius-sm);
+      padding: 1rem 1.25rem;
+      margin-top: 1rem;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--accent-green);
+      overflow-x: auto;
+    }
+
+    /* ============ PERMISSION MODES ============ */
+    .modes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .mode-card {
+      background: var(--bg-card);
+      border: 2px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      text-align: center;
+      transition: all var(--transition);
+    }
+
+    .mode-card:hover { border-color: var(--accent); }
+
+    .mode-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .mode-card h4 {
+      font-size: 1.1rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .mode-card p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    .mode-tag {
+      display: inline-block;
+      padding: 0.2rem 0.8rem;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-top: 1rem;
+    }
+
+    /* ============ CODE BLOCK ============ */
+    .code-block {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .code-block-header {
+      background: var(--bg-secondary);
+      padding: 0.5rem 1rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border);
+      font-family: var(--font-mono);
+    }
+
+    .code-block pre {
+      padding: 1.25rem;
+      overflow-x: auto;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      line-height: 1.8;
+      color: var(--text-primary);
+    }
+
+    .code-comment { color: var(--text-muted); }
+    .code-key { color: var(--accent-purple); }
+    .code-string { color: var(--accent-green); }
+    .code-keyword { color: var(--accent-red); }
+
+    /* ============ WORKFLOW STEPPER ============ */
+    .stepper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      flex-wrap: wrap;
+      margin: 2rem 0;
+    }
+
+    .step {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem 1.5rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      transition: all var(--transition);
+    }
+
+    .step:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .step-num {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #1e1e2e;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+
+    .step-text { font-weight: 600; font-size: 0.9rem; }
+
+    .step-arrow {
+      color: var(--text-muted);
+      font-size: 1.5rem;
+      padding: 0 0.5rem;
+    }
+
+    /* ============ USE CASE KÁRTYÁK ============ */
+    .usecase-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: all var(--transition);
+    }
+
+    .usecase-card:hover { border-color: var(--accent); }
+
+    .usecase-header {
+      padding: 1.5rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .usecase-icon { font-size: 1.5rem; }
+
+    .usecase-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+
+    .usecase-body-inner {
+      padding: 0 1.5rem 1.5rem;
+      border-top: 1px solid var(--border);
+      padding-top: 1.25rem;
+    }
+
+    .usecase-card.open .usecase-body { max-height: 300px; }
+
+    .prompt-example {
+      background: var(--bg-surface);
+      border-radius: var(--radius-sm);
+      padding: 1rem;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--accent-green);
+      margin-top: 0.75rem;
+    }
+
+    .prompt-example::before {
+      content: '> ';
+      color: var(--accent);
+    }
+
+    /* ============ TERMINÁL SZIMULÁCIÓ ============ */
+    .terminal {
+      background: #0d0d1a;
+      border-radius: var(--radius);
+      overflow: hidden;
+      max-width: 800px;
+      margin: 0 auto;
+      border: 1px solid var(--border);
+    }
+
+    .terminal-header {
+      display: flex;
+      align-items: center;
+      padding: 0.75rem 1rem;
+      background: #1a1a2e;
+      gap: 0.5rem;
+    }
+
+    .terminal-header .titlebar-dot { width: 10px; height: 10px; }
+    .terminal-header span {
+      flex: 1;
+      text-align: center;
+      font-size: 0.75rem;
+      color: #6c7086;
+      font-family: var(--font-mono);
+    }
+
+    .terminal-body {
+      padding: 1.25rem;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      min-height: 250px;
+      line-height: 1.8;
+      color: #cdd6f4;
+    }
+
+    .terminal-line { margin-bottom: 0.25rem; }
+    .terminal-prompt { color: #a6e3a1; }
+    .terminal-command { color: #cdd6f4; }
+    .terminal-output { color: #a6adc8; }
+    .terminal-accent { color: #89b4fa; }
+    .terminal-cursor {
+      display: inline-block;
+      width: 8px;
+      height: 1.1em;
+      background: #cdd6f4;
+      animation: blink 1s step-end infinite;
+      vertical-align: text-bottom;
+    }
+
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+
+    .terminal-controls {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 1.5rem;
+    }
+
+    .terminal-btn {
+      padding: 0.6rem 1.5rem;
+      border-radius: 50px;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+
+    .terminal-btn:hover {
+      border-color: var(--accent);
+      background: var(--bg-card-hover);
+    }
+
+    /* ============ KVÍZ ============ */
+    .quiz-container {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .quiz-box {
+      background: var(--bg-card);
+      border: 2px solid var(--border);
+      border-radius: var(--radius);
+      padding: 3rem 2rem;
+      transition: all 0.2s ease;
+    }
+
+    .quiz-box.correct {
+      border-color: var(--accent-green);
+      box-shadow: 0 0 30px rgba(166, 227, 161, 0.15);
+    }
+
+    .quiz-box.wrong {
+      border-color: var(--accent-red);
+      animation: shake 0.5s ease;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-8px); }
+      40%, 80% { transform: translateX(8px); }
+    }
+
+    .quiz-question {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .quiz-hint {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 2rem;
+    }
+
+    .quiz-keys-display {
+      font-family: var(--font-mono);
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      min-height: 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .quiz-score {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .quiz-score-item {
+      text-align: center;
+    }
+
+    .quiz-score-num {
+      font-size: 2rem;
+      font-weight: 800;
+    }
+
+    .quiz-score-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .quiz-progress-bar {
+      height: 4px;
+      background: var(--bg-surface);
+      border-radius: 2px;
+      margin-bottom: 2rem;
+      overflow: hidden;
+    }
+
+    .quiz-progress-fill {
+      height: 100%;
+      background: var(--accent);
+      border-radius: 2px;
+      transition: width 0.3s ease;
+    }
+
+    .quiz-start-btn {
+      padding: 0.8rem 2rem;
+      border-radius: 50px;
+      border: none;
+      background: var(--accent);
+      color: #1e1e2e;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      font-family: var(--font-sans);
+      transition: all var(--transition);
+    }
+
+    .quiz-start-btn:hover { transform: translateY(-2px); }
+
+    /* ============ INSTALL STEPS ============ */
+    .install-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      counter-reset: step;
+    }
+
+    .install-step {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      position: relative;
+      counter-increment: step;
+      transition: all var(--transition);
+    }
+
+    .install-step:hover { border-color: var(--accent); }
+
+    .install-step::before {
+      content: counter(step);
+      position: absolute;
+      top: -12px;
+      left: 1.25rem;
+      width: 28px;
+      height: 28px;
+      background: var(--accent);
+      color: #1e1e2e;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.85rem;
+    }
+
+    .install-step h4 {
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+    }
+
+    .install-step p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    /* ============ FOOTER ============ */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 3rem 0;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    footer a { color: var(--accent); }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 1rem;
+      list-style: none;
+    }
+
+    /* ============ RESPONSIVE ============ */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--glass);
+        backdrop-filter: blur(20px);
+        padding: 1rem 1.5rem;
+        gap: 0.75rem;
+        border-bottom: 1px solid var(--border);
+      }
+      .hamburger { display: flex; }
+
+      h2 { font-size: 1.7rem; }
+
+      .vscode-body {
+        grid-template-columns: 40px 1fr;
+        grid-template-rows: auto auto auto;
+        min-height: 300px;
+      }
+      .vscode-sidebar { display: none; }
+      .vscode-editor { grid-column: 2; }
+      .vscode-terminal { grid-column: 1 / -1; }
+
+      .stepper { flex-direction: column; }
+      .step-arrow { transform: rotate(90deg); }
+
+      .modes-grid { grid-template-columns: 1fr; }
+      .shortcut-grid { grid-template-columns: 1fr; }
+      .card-grid { grid-template-columns: 1fr; }
+      .install-steps { grid-template-columns: 1fr; }
+
+      section { padding: 3rem 0; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Scroll Progress -->
+  <div id="scroll-progress"></div>
+
+  <!-- Navigáció -->
+  <nav>
+    <div class="nav-inner">
+      <div class="nav-logo"><span>&lt;/&gt;</span> VS Code + Claude Code</div>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#vscode">VS Code</a></li>
+        <li><a href="#claude-code">Claude Code</a></li>
+        <li><a href="#gyakorlat">Gyakorlat</a></li>
+        <li><a href="#kviz">Kvíz</a></li>
+      </ul>
+      <div style="display:flex;align-items:center;gap:0.75rem;">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Téma váltás">&#9790;</button>
+        <button class="hamburger" id="hamburger" aria-label="Menü">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="floating-code">def hello():<br>&nbsp;&nbsp;print("Szia!")</div>
+    <div class="floating-code">git commit -m "feat: ..."</div>
+    <div class="floating-code">claude "Javítsd ki a hibát"</div>
+    <div class="hero-content">
+      <h1>Tanulj hatékonyabban kódolni</h1>
+      <p class="hero-subtitle">
+        Ismerd meg a VS Code fejlesztőkörnyezetet és a Claude Code AI asszisztenst — a modern fejlesztés két legfontosabb eszközét.
+      </p>
+      <div class="hero-badges">
+        <div class="badge">&#9997; Ingyenes eszközök</div>
+        <div class="badge">&#9889; AI-alapú fejlesztés</div>
+        <div class="badge">&#127891; Kezdőbarát</div>
+      </div>
+      <a href="#vscode" class="cta-btn">Kezdjük el &#8594;</a>
+    </div>
+  </section>
+
+  <!-- ============ VS CODE ALAPOK ============ -->
+  <section id="vscode">
+    <div class="container">
+      <div class="reveal">
+        <p class="section-label">1. rész</p>
+        <h2>Mi az a VS Code?</h2>
+        <p class="section-desc">
+          A Visual Studio Code (VS Code) a Microsoft ingyenes, nyílt forráskódú kódszerkesztője. Könnyűsúlyú, de rendkívül bővíthető — a világ legnépszerűbb fejlesztőeszköze.
+        </p>
+      </div>
+
+      <div class="card-grid reveal">
+        <div class="card">
+          <span class="card-icon">&#128640;</span>
+          <h3>Gyors és könnyű</h3>
+          <p>Másodpercek alatt elindul, nem lassítja a géped. Nem úgy, mint a teljes IDE-k (pl. PyCharm), a VS Code minimális erőforrást használ.</p>
+        </div>
+        <div class="card">
+          <span class="card-icon">&#128268;</span>
+          <h3>Bővíthető</h3>
+          <p>Több ezer bővítmény érhető el: Python, Git, AI eszközök, témák és sok más. A Marketplace-en mindent megtalálsz.</p>
+        </div>
+        <div class="card">
+          <span class="card-icon">&#127760;</span>
+          <h3>Platformfüggetlen</h3>
+          <p>Windows, macOS és Linux rendszeren is fut. A beállításaid szinkronizálhatók gépek között.</p>
+        </div>
+        <div class="card">
+          <span class="card-icon">&#128187;</span>
+          <h3>Beépített terminál</h3>
+          <p>Nem kell külön terminált nyitnod — közvetlenül a szerkesztőből futtathatod a parancsaidat és a Python scriptjeidet.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VS Code UI Mockup -->
+  <section>
+    <div class="container">
+      <div class="reveal">
+        <p class="section-label">Ismerd meg a felületet</p>
+        <h2>A VS Code felépítése</h2>
+        <p class="section-desc">Kattints a különböző területekre, hogy megtudd, mire valók!</p>
+      </div>
+
+      <div class="vscode-mockup reveal">
+        <div class="vscode-titlebar">
+          <span class="titlebar-dot red"></span>
+          <span class="titlebar-dot yellow"></span>
+          <span class="titlebar-dot green"></span>
+          <span class="titlebar-title">app.py — tanulás — VS Code</span>
+        </div>
+        <div class="vscode-body">
+          <div class="vscode-activitybar vscode-region" data-region="activitybar">
+            <div class="activity-icon">&#128196;</div>
+            <div class="activity-icon">&#128269;</div>
+            <div class="activity-icon">&#128268;</div>
+          </div>
+          <div class="vscode-sidebar vscode-region" data-region="sidebar">
+            <span class="region-label">Oldalsáv<br>(Sidebar)</span>
+          </div>
+          <div class="vscode-editor vscode-region" data-region="editor">
+            <span class="region-label">Szerkesztő<br>(Editor)</span>
+          </div>
+          <div class="vscode-terminal vscode-region" data-region="terminal">
+            <span class="region-label">Terminál (Terminal)</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="mockup-info" id="mockup-info">
+        <h4 id="mockup-info-title"></h4>
+        <p id="mockup-info-text"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Billentyűparancsok -->
+  <section>
+    <div class="container">
+      <div class="reveal">
+        <p class="section-label">Gyorsítsd fel a munkádat</p>
+        <h2>Billentyűparancsok</h2>
+        <p class="section-desc">Ezekkel a gyorsbillentyűkkel sokkal hatékonyabban dolgozol. macOS-en a Cmd, Windowson a Ctrl billentyű az alap.</p>
+      </div>
+
+      <div class="shortcut-grid reveal">
+        <div class="shortcut-card">
+          <span class="kbd">&#8984; P</span>
+          <span class="shortcut-desc">Fájl gyors megnyitása</span>
+        </div>
+        <div class="shortcut-card">
+          <span class="kbd">&#8984; &#8679; P</span>
+          <span class="shortcut-desc">Parancspaletta (Command Palette)</span>
+        </div>
+        <div class="shortcut-card">
+          <span class="kbd">&#8984; B</span>
+          <span class="shortcut-desc">Oldalsáv megjelenítése/elrejtése</span>
+        </div>
+        <div class="shortcut-card">
+          <span class="kbd">&#8984; `</span>
+          <span class="shortcut-desc">Beépített terminál megnyitása</span>
+        </div>
+        <div class="shortcut-card">
+          <span class="kbd">&#8984; D</span>
+          <span class="shortcut-desc">Következő egyező szöveg kijelölése</span>
+        </div>
+        <div class="shortcut-card">
+          <span class="kbd">&#8984; /</span>
+          <span class="shortcut-desc">Sor kommentezése/feloldása</span>
+        </div>
+        <div class="shortcut-card">
+          <span class="kbd">&#8997; &#8679; F</span>
+          <span class="shortcut-desc">Kód formázása</span>
+        </div>
+        <div class="shortcut-card">
+          <span class="kbd">&#8984; &#8679; X</span>
+          <span class="shortcut-desc">Bővítmények (Extensions)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bővítmények -->
+  <section>
+    <div class="container">
+      <div class="reveal">
+        <p class="section-label">Tedd még jobbá</p>
+        <h2>Ajánlott bővítmények</h2>
+        <p class="section-desc">Ezek a bővítmények teszik igazán hatékonnyá a VS Code-ot Python fejlesztéshez.</p>
+      </div>
+
+      <div class="accordion reveal">
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span>&#128013; Python (Microsoft)</span>
+            <span class="accordion-arrow">&#9660;</span>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-content-inner">
+              Az alapvető Python bővítmény. IntelliSense (kódkiegészítés), hibakeresés (debugging), linting, formázás és Jupyter notebook támogatás. Ezt mindenképp telepítsd!
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span>&#128270; Pylint / Ruff</span>
+            <span class="accordion-arrow">&#9660;</span>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-content-inner">
+              Kódelemző (linter), ami jelzi a hibákat, rossz szokásokat és a nem PEP 8 szabványos kódot. A Ruff a modern, gyorsabb alternatíva. Nagyon hasznos clean code tanulásnál!
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span>&#128202; GitLens</span>
+            <span class="accordion-arrow">&#9660;</span>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-content-inner">
+              Megmutatja, ki és mikor módosította az egyes sorokat (git blame). Hasznos csapatmunkában és a kódtörténet megértéséhez.
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span>&#127912; Prettier / Black Formatter</span>
+            <span class="accordion-arrow">&#9660;</span>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-content-inner">
+              Automatikus kódformázó. Mentéskor egységes formátumra hozza a kódodat. Python-hoz a Black Formatter a legjobb választás — konzisztens, vitát nem tűrő formázás.
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span>&#9889; Claude Code (Anthropic)</span>
+            <span class="accordion-arrow">&#9660;</span>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-content-inner">
+              AI kódolási asszisztens, ami közvetlenül a VS Code-ban fut. Többfájlos szerkesztés, terminálparancsok, Git műveletek — minderről bővebben a következő szekcióban!
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CLAUDE CODE ============ -->
+  <section id="claude-code">
+    <div class="container">
+      <div class="reveal">
+        <p class="section-label">2. rész</p>
+        <h2>Mi az a Claude Code?</h2>
+        <p class="section-desc">
+          A Claude Code az Anthropic agentikus kódolási asszisztense. Nem csak javasol — olvas, szerkeszt, futtat és ellenőriz. Olyan, mint egy tapasztalt fejlesztő a képernyőd mellett.
+        </p>
+      </div>
+
+      <div class="card-grid reveal">
+        <div class="card">
+          <span class="card-icon">&#129302;</span>
+          <h3>Agentikus megközelítés</h3>
+          <p>Nem csak válaszol a kérdéseidre — önállóan felfedezi a kódbázist, megtervezi a megoldást, végrehajtja és ellenőrzi.</p>
+        </div>
+        <div class="card">
+          <span class="card-icon">&#128221;</span>
+          <h3>Többfájlos szerkesztés</h3>
+          <p>Egyszerre több fájlt tud módosítani, megérti az összefüggéseket az importok és függőségek között.</p>
+        </div>
+        <div class="card">
+          <span class="card-icon">&#128274;</span>
+          <h3>Engedélykérés</h3>
+          <p>Minden módosítás előtt megkérdezi, hogy jóváhagyod-e. Te irányítasz — a diff nézetben látod a változásokat.</p>
+        </div>
+        <div class="card">
+          <span class="card-icon">&#129520;</span>
+          <h3>MCP integráció</h3>
+          <p>Külső eszközökhöz csatlakozhat: adatbázisok, böngésző, Slack, GitHub — a Model Context Protocol segítségével.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Telepítés -->
+  <section>
+    <div class="container">
+      <div class="reveal">
+        <p class="section-label">Első lépések</p>
+        <h2>Telepítés és beállítás</h2>
+      </div>
+
+      <div class="install-steps reveal">
+        <div class="install-step">
+          <h4>VS Code bővítmény</h4>
+          <p>Nyisd meg a bővítményeket (<code>&#8984;&#8679;X</code>), keresd meg a "Claude Code" bővítményt és telepítsd.</p>
+        </div>
+        <div class="install-step">
+          <h4>Bejelentkezés</h4>
+          <p>Kattints a Claude Code ikonra és jelentkezz be az Anthropic fiókoddal.</p>
+        </div>
+        <div class="install-step">
+          <h4>Első kérdés</h4>
+          <p>Írd be: <code>"Mesélj erről a projektről"</code> — Claude feltérképezi a kódbázisodat.</p>
+        </div>
+        <div class="install-step">
+          <h4>CLAUDE.md létrehozása</h4>
+          <p>Hozz létre egy <code>CLAUDE.md</code> fájlt a projekt gyökerében a konvenciókkal és preferenciákkal.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fő képességek - Tab interface -->
+  <section>
+    <div class="container">
+      <div class="reveal">
+        <p class="section-label">Képességek</p>
+        <h2>Mit tud a Claude Code?</h2>
+        <p class="section-desc">Fedezd fel a Claude Code legfontosabb funkcióit — kattints a fülekre!</p>
+      </div>
+
+      <div class="tabs reveal">
+        <div class="tab-buttons">
+          <button class="tab-btn active" data-tab="codegen">Kódgenerálás</button>
+          <button class="tab-btn" data-tab="files">Fájlműveletek</button>
+          <button class="tab-btn" data-tab="terminal">Terminál</button>
+          <button class="tab-btn" data-tab="git">Git</button>
+          <button class="tab-btn" data-tab="mcp">MCP</button>
+          <button class="tab-btn" data-tab="slash">Parancsok</button>
+          <button class="tab-btn" data-tab="hooks">Hookok</button>
+          <button class="tab-btn" data-tab="agents">Agensek</button>
+        </div>
+
+        <div class="tab-panel active" data-panel="codegen">
+          <div class="tab-panel-content">
+            <h4>Kódgenerálás és szerkesztés</h4>
+            <p>Claude Code képes új kódot írni, meglévőt módosítani, és akár több fájlban egyszerre refaktorálni. Minden változtatást diff nézetben mutat — te döntöd el, hogy elfogadod-e.</p>
+            <div class="tab-example">"Írj egy Python függvényt, ami ellenőrzi, hogy egy szám prímszám-e"</div>
+          </div>
+        </div>
+
+        <div class="tab-panel" data-panel="files">
+          <div class="tab-panel-content">
+            <h4>Fájlműveletek és @-hivatkozások</h4>
+            <p>A <code>@fájlnév</code> szintaxissal közvetlenül hivatkozhatsz fájlokra. Claude képes olvasni, létrehozni és módosítani fájlokat. Még PDF-eket és képeket is megért!</p>
+            <div class="tab-example">"@app.py — add hozzá az input validálást a process_data függvényhez"</div>
+          </div>
+        </div>
+
+        <div class="tab-panel" data-panel="terminal">
+          <div class="tab-panel-content">
+            <h4>Terminál parancsok futtatása</h4>
+            <p>Claude képes shell parancsokat futtatni: teszteket indítani, csomagokat telepíteni, build-et futtatni. Az eredményt látja és reagál rá.</p>
+            <div class="tab-example">"Futtasd le a teszteket és javítsd ki az esetleges hibákat"</div>
+          </div>
+        </div>
+
+        <div class="tab-panel" data-panel="git">
+          <div class="tab-panel-content">
+            <h4>Git műveletek</h4>
+            <p>Commitol, brancheket kezel, PR-t nyit a GitHub-on. Automatikusan ír commit üzenetet a változásaid alapján.</p>
+            <div class="tab-example">"Commitold el a változásokat értelmes üzenettel, majd nyiss egy PR-t"</div>
+          </div>
+        </div>
+
+        <div class="tab-panel" data-panel="mcp">
+          <div class="tab-panel-content">
+            <h4>MCP szerverek (Model Context Protocol)</h4>
+            <p>Külső eszközöket csatlakoztathatsz: adatbázisok (PostgreSQL), böngésző, Slack, GitHub API, és sok más. Nyílt szabvány, bárki írhat MCP szervert.</p>
+            <div class="tab-example">"Csatlakozz az adatbázishoz és kérdezd le az aktív felhasználókat"</div>
+          </div>
+        </div>
+
+        <div class="tab-panel" data-panel="slash">
+          <div class="tab-panel-content">
+            <h4>Slash parancsok és skillek</h4>
+            <p>A <code>/</code> karakterrel éred el a parancsokat: <code>/model</code> (modellváltás), <code>/compact</code> (kontextus tömörítés), <code>/memory</code> (memória kezelés). Saját skilleket is létrehozhatsz!</p>
+            <div class="tab-example">/model — modellváltás &nbsp;|&nbsp; /compact — kontextus tömörítés &nbsp;|&nbsp; /memory — memória</div>
+          </div>
+        </div>
+
+        <div class="tab-panel" data-panel="hooks">
+          <div class="tab-panel-content">
+            <h4>Hookok — automatizálás</h4>
+            <p>Shell parancsok, amik automatikusan futnak bizonyos eseményekre: fájl szerkesztés előtt/után, munkamenet indulásakor. Például: automatikus formázás minden mentés után.</p>
+            <div class="tab-example">Pre-tool hook: "ruff format" → minden fájl szerkesztés előtt formáz</div>
+          </div>
+        </div>
+
+        <div class="tab-panel" data-panel="agents">
+          <div class="tab-panel-content">
+            <h4>Agentikus kódolás — szubágensek</h4>
+            <p>Claude képes alágenseket indítani, amelyek párhuzamosan dolgoznak különböző feladatokon. Minden ágens saját kontextussal rendelkezik és visszajelentést ad.</p>
+            <div class="tab-example">"Keress rá, hol használjuk a process_data függvényt a kódbázisban"<br>→ Claude egy Explore ágenst indít a kereséshez</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Engedélyezési módok -->
+  <section>
+    <div class="container">
+      <div class="reveal">
+        <p class="section-label">Irányítás</p>
+        <h2>Engedélyezési módok</h2>
+        <p class="section-desc">Te döntöd el, mennyire legyen önálló a Claude Code. Három mód közül választhatsz.</p>
+      </div>
+
+      <div class="modes-grid reveal">
+        <div class="mode-card">
+          <div class="mode-icon">&#128737;</div>
+          <h4>Alapértelmezett (Default)</h4>
+          <p>Claude minden fájlmódosítás és parancs futtatás előtt megkérdezi a jóváhagyásodat. A legbiztonságosabb mód kezdőknek.</p>
+          <span class="mode-tag" style="background: rgba(166,227,161,0.15); color: var(--accent-green);">Ajánlott kezdőknek</span>
+        </div>
+        <div class="mode-card">
+          <div class="mode-icon">&#128203;</div>
+          <h4>Terv mód (Plan)</h4>
+          <p>Claude először megtervezi a megoldást és megmutatja neked. Csak a terv elfogadása után kezd el kódot írni.</p>
+          <span class="mode-tag" style="background: rgba(137,180,250,0.15); color: var(--accent);">Komplex feladatokhoz</span>
+        </div>
+        <div class="mode-card">
+          <div class="mode-icon">&#9889;</div>
+          <h4>Automatikus (Auto-accept)</h4>
+          <p>Claude önállóan dolgozik, automatikusan elfogad minden műveletet. Csak akkor használd, ha megbízol a folyamatban!</p>
+          <span class="mode-tag" style="background: rgba(243,139,168,0.15); color: var(--accent-red);">Haladóknak</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLAUDE.md -->
+  <section>
+    <div class="container">
+      <div class="reveal">
+        <p class="section-label">Konfiguráció</p>
+        <h2>CLAUDE.md — A projekt memóriája</h2>
+        <p class="section-desc">Hozz létre egy <code>CLAUDE.md</code> fájlt a projekted gyökerében, és Claude mindig emlékezni fog a konvencióidra.</p>
+      </div>
+
+      <div class="code-block reveal">
+        <div class="code-block-header">CLAUDE.md</div>
+        <pre><span class="code-comment"># Projekt konvenciók</span>
+
+<span class="code-comment">## Build parancsok</span>
+<span class="code-key">-</span> Tesztek futtatása: <span class="code-string">`python -m pytest`</span>
+<span class="code-key">-</span> Linter: <span class="code-string">`ruff check .`</span>
+<span class="code-key">-</span> Formázás: <span class="code-string">`ruff format .`</span>
+
+<span class="code-comment">## Kódolási szabályok</span>
+<span class="code-key">-</span> Python <span class="code-string">3.12+</span> szintaxis
+<span class="code-key">-</span> Type hintek minden függvényen
+<span class="code-key">-</span> Docstringek Google stílusban
+<span class="code-key">-</span> Magyar kommentek, angol változónevek
+
+<span class="code-comment">## Architektúra</span>
+<span class="code-key">-</span> <span class="code-string">src/</span> — forráskód
+<span class="code-key">-</span> <span class="code-string">tests/</span> — tesztek (pytest)
+<span class="code-key">-</span> <span class="code-string">alembic/</span> — migrációk</pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- Best Practices -->
+  <section>
+    <div class="container">
+      <div class="reveal">
+        <p class="section-label">Tippek</p>
+        <h2>Hatékony használat</h2>
+        <p class="section-desc">Az aranyszabály: Felfedezés → Tervezés → Kódolás. Ne ugorj rögtön a kódolásba!</p>
+      </div>
+
+      <div class="stepper reveal">
+        <div class="step">
+          <span class="step-num">1</span>
+          <span class="step-text">Felfedezés</span>
+        </div>
+        <span class="step-arrow">&#8594;</span>
+        <div class="step">
+          <span class="step-num">2</span>
+          <span class="step-text">Tervezés</span>
+        </div>
+        <span class="step-arrow">&#8594;</span>
+        <div class="step">
+          <span class="step-num">3</span>
+          <span class="step-text">Kódolás</span>
+        </div>
+        <span class="step-arrow">&#8594;</span>
+        <div class="step">
+          <span class="step-num">4</span>
+          <span class="step-text">Ellenőrzés</span>
+        </div>
+      </div>
+
+      <div class="card-grid reveal" style="margin-top: 2rem;">
+        <div class="card">
+          <h3>&#128269; Légy konkrét</h3>
+          <p>Írd le pontosan, mit szeretnél. Hivatkozz fájlokra, függvényekre, adj kontextust. Minél pontosabb a kérés, annál jobb az eredmény.</p>
+        </div>
+        <div class="card">
+          <h3>&#128203; Kérj tervet először</h3>
+          <p>Komplex feladatnál használd a Plan módot, vagy kérd meg Claude-ot: "Tervezd meg először, ne kódolj még!"</p>
+        </div>
+        <div class="card">
+          <h3>&#9989; Ellenőriztesd</h3>
+          <p>Kérd meg, hogy futtassa le a teszteket, vagy ellenőrizze a kódot. "Futtasd a teszteket és javítsd ki a hibákat."</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ GYAKORLAT ============ -->
+  <section id="gyakorlat">
+    <div class="container">
+      <div class="reveal">
+        <p class="section-label">3. rész</p>
+        <h2>Gyakorlati felhasználás</h2>
+        <p class="section-desc">Néhány valós helyzet, ahol a Claude Code igazán ragyog. Kattints a kártyákra a példa promptokért!</p>
+      </div>
+
+      <div class="card-grid reveal">
+        <div class="usecase-card">
+          <div class="usecase-header" onclick="this.parentElement.classList.toggle('open')">
+            <span class="usecase-icon">&#128027;</span>
+            <div>
+              <h3 style="margin:0">Hibakeresés (Debugging)</h3>
+              <p style="margin:0;color:var(--text-secondary);font-size:0.9rem">Amikor a kódod hibát dob és nem tudod, miért.</p>
+            </div>
+          </div>
+          <div class="usecase-body">
+            <div class="usecase-body-inner">
+              <p>Másold be a hibaüzenetet és kérd Claude segítségét:</p>
+              <div class="prompt-example">TypeError: 'NoneType' object is not subscriptable — javítsd ki ezt a hibát az app.py fájlban</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="usecase-card">
+          <div class="usecase-header" onclick="this.parentElement.classList.toggle('open')">
+            <span class="usecase-icon">&#128296;</span>
+            <div>
+              <h3 style="margin:0">Refaktorálás</h3>
+              <p style="margin:0;color:var(--text-secondary);font-size:0.9rem">Működő, de csúnya kód átalakítása szebb formára.</p>
+            </div>
+          </div>
+          <div class="usecase-body">
+            <div class="usecase-body-inner">
+              <p>Claude megérti a kód struktúráját és képes tisztább formára hozni:</p>
+              <div class="prompt-example">@utils.py — refaktoráld ezt a fájlt: bonts ki kisebb függvényeket és adj hozzá type hinteket</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="usecase-card">
+          <div class="usecase-header" onclick="this.parentElement.classList.toggle('open')">
+            <span class="usecase-icon">&#128300;</span>
+            <div>
+              <h3 style="margin:0">Tesztek írása</h3>
+              <p style="margin:0;color:var(--text-secondary);font-size:0.9rem">Automatikus tesztgenerálás a kódodhoz.</p>
+            </div>
+          </div>
+          <div class="usecase-body">
+            <div class="usecase-body-inner">
+              <p>Claude képes pytest teszteket generálni, amik lefedik a szélsőeseteket is:</p>
+              <div class="prompt-example">Írj unit teszteket a @models.py összes függvényéhez pytest-tel</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="usecase-card">
+          <div class="usecase-header" onclick="this.parentElement.classList.toggle('open')">
+            <span class="usecase-icon">&#127891;</span>
+            <div>
+              <h3 style="margin:0">Tanulás és megértés</h3>
+              <p style="margin:0;color:var(--text-secondary);font-size:0.9rem">Ismeretlen kód vagy koncepció megértése.</p>
+            </div>
+          </div>
+          <div class="usecase-body">
+            <div class="usecase-body-inner">
+              <p>Kérdezz bátran — Claude részletesen és magyarul elmagyarázza:</p>
+              <div class="prompt-example">Magyarázd el, mit csinál ez a dekorátor és miért használjuk itt</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="usecase-card">
+          <div class="usecase-header" onclick="this.parentElement.classList.toggle('open')">
+            <span class="usecase-icon">&#128640;</span>
+            <div>
+              <h3 style="margin:0">Feature építése</h3>
+              <p style="margin:0;color:var(--text-secondary);font-size:0.9rem">Új funkció megvalósítása a nulláról.</p>
+            </div>
+          </div>
+          <div class="usecase-body">
+            <div class="usecase-body-inner">
+              <p>Írd le, mit szeretnél, és Claude megtervezi és megvalósítja:</p>
+              <div class="prompt-example">Építs egy REST API végpontot, ami listázza a felhasználókat. Használj FastAPI-t és Pydantic modelleket.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Terminál szimuláció -->
+  <section>
+    <div class="container">
+      <div class="reveal">
+        <p class="section-label">Élő demo</p>
+        <h2>Így néz ki a gyakorlatban</h2>
+        <p class="section-desc">Nézd meg, hogyan dolgozik a Claude Code egy valós feladaton!</p>
+      </div>
+
+      <div class="terminal reveal">
+        <div class="terminal-header">
+          <span class="titlebar-dot red"></span>
+          <span class="titlebar-dot yellow"></span>
+          <span class="titlebar-dot green"></span>
+          <span>Terminal — claude</span>
+        </div>
+        <div class="terminal-body" id="terminal-body">
+          <div class="terminal-cursor"></div>
+        </div>
+      </div>
+
+      <div class="terminal-controls reveal">
+        <button class="terminal-btn" id="terminal-replay">&#8634; Újra lejátszás</button>
+        <button class="terminal-btn" id="terminal-next">Következő példa &#8594;</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ KVÍZ ============ -->
+  <section id="kviz">
+    <div class="container">
+      <div class="reveal">
+        <p class="section-label">Teszeld magad</p>
+        <h2>Billentyűparancs kvíz</h2>
+        <p class="section-desc">Mennyire ismered a VS Code és Claude Code gyorsbillentyűit? Nyomd meg a helyes billentyűkombinációt!</p>
+      </div>
+
+      <div class="quiz-container reveal">
+        <div class="quiz-score" id="quiz-score" style="display:none;">
+          <div class="quiz-score-item">
+            <div class="quiz-score-num" id="quiz-correct" style="color:var(--accent-green)">0</div>
+            <div class="quiz-score-label">Helyes</div>
+          </div>
+          <div class="quiz-score-item">
+            <div class="quiz-score-num" id="quiz-current">1</div>
+            <div class="quiz-score-label">/ összesen</div>
+          </div>
+        </div>
+
+        <div class="quiz-progress-bar" id="quiz-progress" style="display:none;">
+          <div class="quiz-progress-fill" id="quiz-progress-fill"></div>
+        </div>
+
+        <div class="quiz-box" id="quiz-box">
+          <div id="quiz-content">
+            <p style="font-size:1.1rem;margin-bottom:1.5rem;color:var(--text-secondary)">
+              Teszeld a tudásodat! 8 kérdés a VS Code és Claude Code billentyűparancsairól.
+            </p>
+            <button class="quiz-start-btn" id="quiz-start">Kvíz indítása</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Források -->
+  <section>
+    <div class="container">
+      <div class="reveal">
+        <p class="section-label">Források</p>
+        <h2>Megbízható források</h2>
+        <p class="section-desc">Az oktatási anyag az alábbi hivatalos forrásokra épül.</p>
+      </div>
+      <div class="card-grid reveal">
+        <a href="https://code.visualstudio.com/docs" target="_blank" rel="noopener" class="card" style="text-decoration:none">
+          <span class="card-icon">&#128218;</span>
+          <h3>VS Code Docs</h3>
+          <p>A Visual Studio Code hivatalos dokumentációja a Microsofttól.</p>
+        </a>
+        <a href="https://docs.anthropic.com/en/docs/claude-code/overview" target="_blank" rel="noopener" class="card" style="text-decoration:none">
+          <span class="card-icon">&#129302;</span>
+          <h3>Claude Code Docs</h3>
+          <p>Az Anthropic hivatalos Claude Code dokumentációja — telepítés, képességek, best practices.</p>
+        </a>
+        <a href="https://modelcontextprotocol.io" target="_blank" rel="noopener" class="card" style="text-decoration:none">
+          <span class="card-icon">&#128268;</span>
+          <h3>MCP Docs</h3>
+          <p>A Model Context Protocol hivatalos oldala — nyílt szabvány AI eszközök integrációjához.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>VS Code + Claude Code oktatás — a <strong>tanulás</strong> projekt része</p>
+      <ul class="footer-links">
+        <li><a href="#vscode">VS Code</a></li>
+        <li><a href="#claude-code">Claude Code</a></li>
+        <li><a href="#gyakorlat">Gyakorlat</a></li>
+        <li><a href="#">Vissza a tetejére &#8593;</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <!-- ============ JAVASCRIPT ============ -->
+  <script>
+    /* ============ TÉMA VÁLTÓ ============ */
+    const themeToggle = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+
+    function setTheme(theme) {
+      html.setAttribute('data-theme', theme);
+      localStorage.setItem('theme', theme);
+      themeToggle.innerHTML = theme === 'dark' ? '&#9790;' : '&#9728;';
+    }
+
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    setTheme(savedTheme);
+
+    themeToggle.addEventListener('click', () => {
+      const current = html.getAttribute('data-theme');
+      setTheme(current === 'dark' ? 'light' : 'dark');
+    });
+
+    /* ============ HAMBURGER MENÜ ============ */
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+
+    // Menü bezárás kattintásra
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => navLinks.classList.remove('open'));
+    });
+
+    /* ============ SCROLL PROGRESS ============ */
+    const scrollProgress = document.getElementById('scroll-progress');
+
+    function updateScrollProgress() {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const percent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      scrollProgress.style.width = percent + '%';
+    }
+
+    window.addEventListener('scroll', () => requestAnimationFrame(updateScrollProgress));
+
+    /* ============ AKTÍV NAV LINK ============ */
+    const sections = document.querySelectorAll('section[id]');
+
+    function updateActiveNav() {
+      const scrollY = window.scrollY + 100;
+      sections.forEach(section => {
+        const top = section.offsetTop;
+        const height = section.offsetHeight;
+        const id = section.getAttribute('id');
+        const link = navLinks.querySelector(`a[href="#${id}"]`);
+        if (link) {
+          if (scrollY >= top && scrollY < top + height) {
+            link.classList.add('active');
+          } else {
+            link.classList.remove('active');
+          }
+        }
+      });
+    }
+
+    window.addEventListener('scroll', () => requestAnimationFrame(updateActiveNav));
+
+    /* ============ SCROLL ANIMÁCIÓK ============ */
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    /* ============ VS CODE MOCKUP ============ */
+    const mockupInfo = document.getElementById('mockup-info');
+    const mockupTitle = document.getElementById('mockup-info-title');
+    const mockupText = document.getElementById('mockup-info-text');
+
+    const regionData = {
+      activitybar: {
+        title: 'Activity Bar (Tevékenységsáv)',
+        text: 'A bal szélső keskeny sáv ikonokkal. Itt váltasz a különböző nézetek között: Fájlböngésző, Keresés, Verziókezelés (Git), Hibakereső, Bővítmények. Minden ikon egy új panelt nyit az oldalsávban.'
+      },
+      sidebar: {
+        title: 'Sidebar (Oldalsáv)',
+        text: 'Az Activity Bar melletti szélesebb panel. Megmutatja a projektfájlokat fastruktúrában, keresési eredményeket, Git változásokat. A Cmd+B billentyűvel jelenítheted meg vagy rejtheted el.'
+      },
+      editor: {
+        title: 'Editor (Szerkesztő)',
+        text: 'A fő munkaterület, ahol a kódot írod és szerkeszted. Több fájlt is megnyithatsz egymás melletti füleken. Itt jelenik meg a szintaxiskiemelés, a kódkiegészítés és a hibák jelzése.'
+      },
+      terminal: {
+        title: 'Terminal (Terminál)',
+        text: 'Beépített parancssor a szerkesztő alján. Python scripteket futtathatsz (python app.py), csomagokat telepíthetsz (pip install), és Git parancsokat adhatsz ki — mindezt a VS Code elhagyása nélkül! Cmd+` billentyűvel nyitod meg.'
+      }
+    };
+
+    document.querySelectorAll('.vscode-region').forEach(region => {
+      region.addEventListener('click', () => {
+        const key = region.dataset.region;
+        const data = regionData[key];
+        if (!data) return;
+
+        // Aktív régió kiemelése
+        document.querySelectorAll('.vscode-region').forEach(r => r.classList.remove('active'));
+        region.classList.add('active');
+
+        // Info panel megjelenítése
+        mockupTitle.textContent = data.title;
+        mockupText.textContent = data.text;
+        mockupInfo.classList.add('visible');
+      });
+    });
+
+    /* ============ ACCORDION ============ */
+    document.querySelectorAll('.accordion-header').forEach(header => {
+      header.addEventListener('click', () => {
+        const item = header.parentElement;
+        const wasOpen = item.classList.contains('open');
+        const content = item.querySelector('.accordion-content');
+
+        // Többi bezárása
+        item.parentElement.querySelectorAll('.accordion-item').forEach(other => {
+          other.classList.remove('open');
+          other.querySelector('.accordion-content').style.maxHeight = '0';
+        });
+
+        if (!wasOpen) {
+          item.classList.add('open');
+          content.style.maxHeight = content.scrollHeight + 'px';
+        }
+      });
+    });
+
+    /* ============ TAB INTERFACE ============ */
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const tabId = btn.dataset.tab;
+        const container = btn.closest('.tabs');
+
+        container.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        container.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+
+        btn.classList.add('active');
+        container.querySelector(`[data-panel="${tabId}"]`).classList.add('active');
+      });
+    });
+
+    /* ============ TERMINÁL SZIMULÁCIÓ ============ */
+    const terminalBody = document.getElementById('terminal-body');
+
+    const scenarios = [
+      {
+        name: 'Palindrom ellenőrző',
+        steps: [
+          { type: 'prompt', text: '$ claude' },
+          { type: 'output', text: '\n╭──────────────────────────────────╮' },
+          { type: 'output', text: '│  Claude Code  v1.0               │' },
+          { type: 'output', text: '╰──────────────────────────────────╯\n' },
+          { type: 'prompt', text: '> Írj egy Python függvényt ami palindromot ellenőriz' },
+          { type: 'output', text: '\n📝 Létrehozom a palindrome.py fájlt...\n' },
+          { type: 'code', text: 'def is_palindrome(text: str) -> bool:\n    """Ellenőrzi, hogy a szöveg palindrom-e."""\n    cleaned = text.lower().replace(" ", "")\n    return cleaned == cleaned[::-1]' },
+          { type: 'output', text: '\n✅ palindrome.py létrehozva!' },
+          { type: 'output', text: '🧪 Tesztek futtatása... Minden teszt sikeres!' },
+        ]
+      },
+      {
+        name: 'Hibakeresés',
+        steps: [
+          { type: 'prompt', text: '$ claude' },
+          { type: 'prompt', text: '> @app.py — TypeError: \'NoneType\' kapok a 42. sorban' },
+          { type: 'output', text: '\n🔍 Vizsgálom az app.py fájlt...\n' },
+          { type: 'output', text: '📋 A hiba oka: a get_user() függvény None-t ad\n   vissza, ha nem talál felhasználót, de a 42.\n   sorban nem ellenőrizzük ezt.\n' },
+          { type: 'code', text: '# Javítás: None ellenőrzés hozzáadása\nuser = get_user(user_id)\nif user is None:\n    raise ValueError(f"User {user_id} not found")\nresult = user["name"]  # Most már biztonságos' },
+          { type: 'output', text: '\n✅ app.py módosítva — diff elfogadásra vár' },
+        ]
+      },
+      {
+        name: 'Git commit',
+        steps: [
+          { type: 'prompt', text: '$ claude' },
+          { type: 'prompt', text: '> Commitold el a változásokat' },
+          { type: 'output', text: '\n📂 Változások vizsgálata...\n' },
+          { type: 'output', text: '  M  app.py         (+15, -3)\n  A  tests/test_app.py  (+42)\n  M  requirements.txt   (+1)\n' },
+          { type: 'output', text: '💬 Javasolt commit üzenet:\n' },
+          { type: 'code', text: 'feat: add user validation and error handling\n\n- Add None check for get_user() return value\n- Add unit tests for user validation\n- Add pytest to requirements' },
+          { type: 'output', text: '\n✅ Commit létrehozva: abc1234' },
+        ]
+      }
+    ];
+
+    let currentScenario = 0;
+    let isPlaying = false;
+
+    function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    async function typeText(element, text, speed = 25) {
+      for (let i = 0; i < text.length; i++) {
+        element.textContent += text[i];
+        if (text[i] !== ' ') await sleep(speed);
+      }
+    }
+
+    async function playScenario(index) {
+      if (isPlaying) return;
+      isPlaying = true;
+      currentScenario = index;
+      terminalBody.innerHTML = '';
+
+      const scenario = scenarios[index];
+      for (const step of scenario.steps) {
+        const line = document.createElement('div');
+        line.className = 'terminal-line';
+
+        if (step.type === 'prompt') {
+          const promptSpan = document.createElement('span');
+          promptSpan.className = step.text.startsWith('$') ? 'terminal-prompt' : 'terminal-accent';
+          line.appendChild(promptSpan);
+          terminalBody.appendChild(line);
+          await typeText(promptSpan, step.text, 35);
+          await sleep(400);
+        } else if (step.type === 'output') {
+          line.className = 'terminal-line terminal-output';
+          terminalBody.appendChild(line);
+          await typeText(line, step.text, 10);
+          await sleep(200);
+        } else if (step.type === 'code') {
+          const pre = document.createElement('pre');
+          pre.style.cssText = 'color: #a6e3a1; margin: 0.5rem 0; padding: 0.75rem; background: rgba(166,227,161,0.05); border-radius: 6px; font-size: 0.8rem;';
+          terminalBody.appendChild(pre);
+          await typeText(pre, step.text, 12);
+          await sleep(300);
+        }
+
+        terminalBody.scrollTop = terminalBody.scrollHeight;
+      }
+
+      // Végső kurzor
+      const cursor = document.createElement('span');
+      cursor.className = 'terminal-cursor';
+      terminalBody.appendChild(cursor);
+
+      isPlaying = false;
+    }
+
+    // Terminál vezérlés
+    document.getElementById('terminal-replay').addEventListener('click', () => {
+      playScenario(currentScenario);
+    });
+
+    document.getElementById('terminal-next').addEventListener('click', () => {
+      const next = (currentScenario + 1) % scenarios.length;
+      playScenario(next);
+    });
+
+    // Auto-indítás amikor látható
+    const terminalObserver = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting && !isPlaying && terminalBody.children.length <= 1) {
+        playScenario(0);
+      }
+    }, { threshold: 0.3 });
+
+    terminalObserver.observe(terminalBody);
+
+    /* ============ BILLENTYŰPARANCS KVÍZ ============ */
+    const quizQuestions = [
+      { question: 'Fájl gyors megnyitása', hint: 'Keress fájlt név alapján', keys: { metaKey: true, key: 'p' } },
+      { question: 'Parancspaletta megnyitása', hint: 'Az összes parancs egy helyen', keys: { metaKey: true, shiftKey: true, key: 'p' } },
+      { question: 'Oldalsáv megjelenítése / elrejtése', hint: 'Fájlböngésző ki-be', keys: { metaKey: true, key: 'b' } },
+      { question: 'Beépített terminál', hint: 'Parancssor a szerkesztőben', keys: { metaKey: true, key: '`' } },
+      { question: 'Sor kommentezése', hint: '# komment hozzáadása / eltávolítása', keys: { metaKey: true, key: '/' } },
+      { question: 'Bővítmények megnyitása', hint: 'Extensions / Marketplace', keys: { metaKey: true, shiftKey: true, key: 'x' } },
+      { question: 'Fókusz váltás (Claude Code ↔ Editor)', hint: 'Claude Code billentyűparancs', keys: { metaKey: true, key: 'Escape' } },
+      { question: 'Következő egyező szöveg kijelölése', hint: 'Multi-kurzor szerkesztés', keys: { metaKey: true, key: 'd' } },
+    ];
+
+    let quizState = { active: false, index: 0, correct: 0 };
+
+    const quizBox = document.getElementById('quiz-box');
+    const quizContent = document.getElementById('quiz-content');
+    const quizScore = document.getElementById('quiz-score');
+    const quizProgress = document.getElementById('quiz-progress');
+    const quizProgressFill = document.getElementById('quiz-progress-fill');
+
+    document.getElementById('quiz-start').addEventListener('click', startQuiz);
+
+    function startQuiz() {
+      quizState = { active: true, index: 0, correct: 0 };
+      quizScore.style.display = 'flex';
+      quizProgress.style.display = 'block';
+      showQuestion();
+    }
+
+    function showQuestion() {
+      if (quizState.index >= quizQuestions.length) {
+        endQuiz();
+        return;
+      }
+
+      const q = quizQuestions[quizState.index];
+      document.getElementById('quiz-correct').textContent = quizState.correct;
+      document.getElementById('quiz-current').textContent = `${quizState.index + 1} / ${quizQuestions.length}`;
+      quizProgressFill.style.width = ((quizState.index) / quizQuestions.length * 100) + '%';
+
+      quizContent.innerHTML = `
+        <p class="quiz-question">${q.question}</p>
+        <p class="quiz-hint">${q.hint}</p>
+        <div class="quiz-keys-display" id="quiz-keys">Nyomd meg a billentyűkombinációt...</div>
+      `;
+      quizBox.className = 'quiz-box';
+    }
+
+    function endQuiz() {
+      quizState.active = false;
+      quizProgressFill.style.width = '100%';
+
+      const percent = Math.round((quizState.correct / quizQuestions.length) * 100);
+      let message = '';
+      if (percent === 100) message = 'Tökéletes! Minden gyorsbillentyűt ismersz!';
+      else if (percent >= 75) message = 'Nagyon jó! Szinte mindent tudsz!';
+      else if (percent >= 50) message = 'Jó kezdet! Gyakorolj még egy kicsit!';
+      else message = 'Ne csüggedj! Gyakorlással menni fog!';
+
+      quizContent.innerHTML = `
+        <p class="quiz-question">${quizState.correct} / ${quizQuestions.length} helyes válasz</p>
+        <p style="font-size:1.5rem;margin-bottom:1rem">${percent}%</p>
+        <p style="color:var(--text-secondary);margin-bottom:2rem">${message}</p>
+        <button class="quiz-start-btn" onclick="startQuiz()">Újra próbálom</button>
+      `;
+    }
+
+    function matchKeys(event, expected) {
+      const metaMatch = expected.metaKey ? (event.metaKey || event.ctrlKey) : true;
+      const shiftMatch = expected.shiftKey ? event.shiftKey : !event.shiftKey;
+      const keyMatch = event.key.toLowerCase() === expected.key.toLowerCase();
+      return metaMatch && shiftMatch && keyMatch;
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (!quizState.active) return;
+
+      // Csak speciális billentyűkombinációkat figyeljük
+      if (!e.metaKey && !e.ctrlKey) return;
+
+      e.preventDefault();
+
+      const q = quizQuestions[quizState.index];
+      const keysDisplay = document.getElementById('quiz-keys');
+
+      // Megjelenítjük a nyomott billentyűket
+      const parts = [];
+      if (e.metaKey || e.ctrlKey) parts.push('⌘');
+      if (e.shiftKey) parts.push('⇧');
+      if (e.altKey) parts.push('⌥');
+      if (e.key !== 'Meta' && e.key !== 'Control' && e.key !== 'Shift' && e.key !== 'Alt') {
+        parts.push(e.key.toUpperCase());
+      }
+
+      if (keysDisplay) {
+        keysDisplay.innerHTML = parts.map(k => `<span class="kbd">${k}</span>`).join(' ');
+      }
+
+      if (matchKeys(e, q.keys)) {
+        quizState.correct++;
+        quizBox.className = 'quiz-box correct';
+        setTimeout(() => {
+          quizState.index++;
+          showQuestion();
+        }, 800);
+      } else {
+        quizBox.className = 'quiz-box wrong';
+        setTimeout(() => {
+          quizBox.className = 'quiz-box';
+        }, 500);
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,7 +1,7 @@
 /*
 =============================================================
-2. LECKE: Valtozok es tipusok — adatok tarolasa C++-ban
-Futtasd: a bongeszoben a Futtatas gombbal
+2. LECKE: Változók és típusok — adatok tárolása C++-ban
+Futtasd: a böngészőben a Futtatás gombbal
 =============================================================
 */
 
@@ -10,31 +10,31 @@ Futtasd: a bongeszoben a Futtatas gombbal
 using namespace std;
 
 // ============================================================
-// MI AZ A VALTOZO?
+// MI AZ A VÁLTOZÓ?
 // ============================================================
 
-// A valtozo olyan, mint egy **cimkezett doboz**.
-// Beleteszel valamit (egy szamot, szoveget), es kesobb
-// a cimke (a nev) alapjan elokeresheted.
+// A változó olyan, mint egy **címkézett doboz**.
+// Beleteszel valamit (egy számot, szöveget), és később
+// a címke (a név) alapján előkeresheted.
 //
-// Pythonban csak irtad: `age = 25` es kesz.
-// C++-ban meg kell mondanod a **tipust** is:
+// Pythonban csak írtad: `age = 25` és kész.
+// C++-ban meg kell mondanod a **típust** is:
 //
 //   int age = 25;
 //   ^   ^     ^
-//   |   |     +-- ertek (mit teszel a dobozba)
-//   |   +-------- nev (a cimke a dobozon)
-//   +------------ tipus (milyen doboz — szamnak? szovegnek?)
+//   |   |     +-- érték (mit teszel a dobozba)
+//   |   +-------- név (a címke a dobozon)
+//   +------------ típus (milyen doboz — számnak? szövegnek?)
 //
-// Miert kell tipus? Mert a gep igy tudja, mennyi helyet
-// foglaljon a memoriaban es hogyan kezelje az adatot.
+// Miért kell típus? Mert a gép így tudja, mennyi helyet
+// foglaljon a memóriában és hogyan kezelje az adatot.
 
 // ============================================================
-// EGESZ SZAMOK: int
+// EGÉSZ SZÁMOK: int
 // ============================================================
 
-// Az `int` (integer = egesz szam) a leggyakoribb tipusok egyike.
-// Egesz szamokat tarol: 0, 1, -5, 42, 1000000
+// Az `int` (integer = egész szám) a leggyakoribb típusok egyike.
+// Egész számokat tárol: 0, 1, -5, 42, 1000000
 
 int main() {
     int age = 25;
@@ -42,19 +42,19 @@ int main() {
     int temperature = -3;
 
     cout << "Kor: " << age << endl;
-    cout << "Pontszam: " << score << endl;
-    cout << "Homerseklet: " << temperature << " fok" << endl;
+    cout << "Pontszám: " << score << endl;
+    cout << "Hőmérséklet: " << temperature << " fok" << endl;
 
-    // Szamolas valtozokkal — ugyanugy mint matek:
+    // Számolás változókkal — ugyanúgy mint matek:
     int sum = age + score;
-    cout << "Osszeg: " << sum << endl;
+    cout << "Összeg: " << sum << endl;
 
     // ============================================================
-    // TORTEK: double
+    // TÖRTEK: double
     // ============================================================
 
-    // Ha tizedesjegyekre van szukseged, hasznalj `double`-t.
-    // (Van `float` is, de a `double` pontosabb — hasznald azt.)
+    // Ha tizedesjegyekre van szükséged, használj `double`-t.
+    // (Van `float` is, de a `double` pontosabb — használd azt.)
 
     double pi = 3.14159;
     double price = 990.5;
@@ -62,10 +62,10 @@ int main() {
 
     cout << endl;
     cout << "Pi: " << pi << endl;
-    cout << "Ar: " << price << " Ft" << endl;
-    cout << "Magassag: " << height << " m" << endl;
+    cout << "Ár: " << price << " Ft" << endl;
+    cout << "Magasság: " << height << " m" << endl;
 
-    // **VIGYAZZ**: int / int = int (levagja a tortet!)
+    // **VIGYÁZZ**: int / int = int (levágja a törtet!)
     int a = 7;
     int b = 2;
     cout << endl;
@@ -73,20 +73,20 @@ int main() {
     cout << "7.0 / 2 double-lel: " << 7.0 / 2 << endl;  // 3.5 (ez a helyes)
 
     // ============================================================
-    // SZOVEG: string
+    // SZÖVEG: string
     // ============================================================
 
-    // Szoveget a `string` tipussal tarolunk.
-    // Ehhez kell a `#include <string>` a fajl elejen.
+    // Szöveget a `string` típussal tárolunk.
+    // Ehhez kell a `#include <string>` a fájl elején.
 
     string name = "Kata";
     string city = "Budapest";
 
     cout << endl;
-    cout << "Nev: " << name << endl;
-    cout << "Varos: " << city << endl;
+    cout << "Név: " << name << endl;
+    cout << "Város: " << city << endl;
 
-    // Szovegek osszefuzese a `+` operatorral:
+    // Szövegek összefűzése a `+` operátorral:
     string greeting = "Hello, " + name + "!";
     cout << greeting << endl;
 
@@ -94,66 +94,66 @@ int main() {
     // EGYETLEN KARAKTER: char
     // ============================================================
 
-    // A `char` egyetlen karaktert tarol. Aposztroffal adjuk meg!
-    // (Nem idezojellel — az a string!)
+    // A `char` egyetlen karaktert tárol. Aposztróftal adjuk meg!
+    // (Nem idézőjellel — az a string!)
 
     char grade = 'A';
     char initial = 'K';
 
     cout << endl;
     cout << "Jegy: " << grade << endl;
-    cout << "Kezdobetu: " << initial << endl;
+    cout << "Kezdőbetű: " << initial << endl;
 
     // ============================================================
     // IGAZ/HAMIS: bool
     // ============================================================
 
-    // A `bool` (boolean) csak ket erteket vehet fel: true vagy false.
-    // Olyan, mint egy villanykapcsolo: be vagy ki.
+    // A `bool` (boolean) csak két értéket vehet fel: true vagy false.
+    // Olyan, mint egy villanykapcsoló: be vagy ki.
 
     bool is_student = true;
     bool has_license = false;
 
     cout << endl;
-    cout << "Diak? " << is_student << endl;       // 1 = true
+    cout << "Diák? " << is_student << endl;       // 1 = true
     cout << "Van jogsi? " << has_license << endl;  // 0 = false
 
-    // Megjegyzes: C++-ban a true = 1, false = 0 jelenik meg.
-    // Ha "true"/"false" szoveget akarsz, hasznalj feltetelt (kovetkezo lecke).
+    // Megjegyzés: C++-ban a true = 1, false = 0 jelenik meg.
+    // Ha "true"/"false" szöveget akarsz, használj feltételt (következő lecke).
 
     // ============================================================
     // KONSTANSOK: const
     // ============================================================
 
-    // Ha egy ertek SOHA nem valtozik, tedd ele a `const` szot.
-    // Ez megvedi a veletlenszeru felulirástol.
+    // Ha egy érték SOHA nem változik, tedd elé a `const` szót.
+    // Ez megvédi a véletlenszerű felülírástól.
 
     const double GRAVITY = 9.81;
     const int MAX_PLAYERS = 4;
 
     cout << endl;
-    cout << "Gravitacio: " << GRAVITY << " m/s2" << endl;
-    cout << "Max jatekos: " << MAX_PLAYERS << endl;
+    cout << "Gravitáció: " << GRAVITY << " m/s2" << endl;
+    cout << "Max játékos: " << MAX_PLAYERS << endl;
 
-    // Ha megprobalnad megvaltoztatni, fordítasi hibat kapnal:
-    // GRAVITY = 10.0;  // HIBA! const-ot nem lehet modositani!
+    // Ha megpróbálnád megváltoztatni, fordítási hibát kapnál:
+    // GRAVITY = 10.0;  // HIBA! const-ot nem lehet módosítani!
 
     // ============================================================
-    // OSSZEFOGLALAS
+    // ÖSSZEFOGLALÁS
     // ============================================================
 
-    // Tipusok amit ma megtanultal:
+    // Típusok amit ma megtanultál:
     //
-    // | Tipus    | Mire jo           | Pelda              |
+    // | Típus    | Mire jó           | Példa              |
     // |----------|-------------------|--------------------|
-    // | int      | Egesz szamok      | int age = 25;      |
-    // | double   | Tortek/tizedesek  | double pi = 3.14;  |
-    // | string   | Szoveg            | string s = "Hello";|
+    // | int      | Egész számok      | int age = 25;      |
+    // | double   | Törtek/tizedesek  | double pi = 3.14;  |
+    // | string   | Szöveg            | string s = "Hello";|
     // | char     | Egy karakter      | char c = 'A';      |
     // | bool     | Igaz/hamis        | bool ok = true;    |
-    // | const    | Valtozhatatlan    | const int X = 10;  |
+    // | const    | Változhatatlan    | const int X = 10;  |
     //
-    // A kovetkezo leckeben feltetelek jonnek: if, else, switch!
+    // A következő leckében feltételek jönnek: if, else, switch!
 
     return 0;
 }

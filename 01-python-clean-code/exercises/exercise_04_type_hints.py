@@ -1,34 +1,34 @@
 """
 =============================================================
-1.4 GYAKORLAT: Type hints es docstringek
+1.4 GYAKORLAT: Type hints és docstringek
 =============================================================
 """
 
-# @TASK 1. Tipusjelzes valtozokhoz
-# @DESC Add hozza a megfelelo **type hint**-et az alabbi valtozokhoz!
-# Pelda: `name = "Dani"` → `name: str = "Dani"`
-# Tipusok: `int` (egesz), `float` (tizedes), `str` (szoveg), `bool` (True/False)
+# @TASK 1. Típusjelzés változókhoz
+# @DESC Add hozzá a megfelelő **type hint**-et az alábbi változókhoz!
+# Példa: `name = "Dani"` → `name: str = "Dani"`
+# Típusok: `int` (egész), `float` (tizedes), `str` (szöveg), `bool` (True/False)
 # @HINT `player_name: str = "Hero123"`, `player_level: int = 42`, stb.
 # @CODE
-# Add hozza a tipusjelzeseket (: tipus):
+# Add hozzá a típusjelzéseket (: típus):
 player_name = "Hero123"
 player_level = 42
 player_health = 95.5
 is_alive = True
 
-# Irasd ki mindet:
-print("Jatekos:", player_name)
+# Írasd ki mindet:
+print("Játékos:", player_name)
 print("Szint:", player_level)
-print("Elet:", player_health)
-print("El:", is_alive)
+print("Élet:", player_health)
+print("Él:", is_alive)
 # @END
 
-# @TASK 2. Fuggveny tipusjelzesek
-# @DESC Add hozza a **parameterek** es a **visszateresi ertek** tipusat az alabbi fuggvenyekhez!
-# Pelda: `def add(a, b)` → `def add(a: int, b: int) -> int:`
-# @HINT `def join_words(first: str, second: str) -> str:` es hasonloan a tobbinel
+# @TASK 2. Függvény típusjelzések
+# @DESC Add hozzá a **paraméterek** és a **visszatérési érték** típusát az alábbi függvényekhez!
+# Példa: `def add(a, b)` → `def add(a: int, b: int) -> int:`
+# @HINT `def join_words(first: str, second: str) -> str:` és hasonlóan a többinél
 # @CODE
-# Add hozza a tipusjelzeseket:
+# Add hozzá a típusjelzéseket:
 def join_words(first, second):
     return first + " " + second
 
@@ -38,73 +38,73 @@ def calculate_area(width, height):
 def is_old_enough(age, minimum_age):
     return age >= minimum_age
 
-# ELLENORZES:
-print("Szavak:", join_words("hello", "vilag"))
-print("Terulet:", calculate_area(5.0, 3.0))
-print("Eleg idos:", is_old_enough(20, 18))
-print("✓ Ha a tipusjelzeseket hozzaadtad, a fuggvenyek ugyanugy mukodnek!")
+# ELLENŐRZÉS:
+print("Szavak:", join_words("hello", "világ"))
+print("Terület:", calculate_area(5.0, 3.0))
+print("Elég idős:", is_old_enough(20, 18))
+print("✓ Ha a típusjelzéseket hozzáadtad, a függvények ugyanúgy működnek!")
 # @END
 
-# @TASK 3. Osszett tipusok
-# @DESC Add hozza a tipusjelzeseket az alabbi valtozokhoz!
-# `list[str]` = szoveglista, `list[int]` = szamlista, `dict[str, int]` = szotar, `str | None` = opcionalis
+# @TASK 3. Összetett típusok
+# @DESC Add hozzá a típusjelzéseket az alábbi változókhoz!
+# `list[str]` = szöveglista, `list[int]` = számlista, `dict[str, int]` = szótár, `str | None` = opcionális
 # @HINT `favorite_foods: list[str] = [...]`, `student_grades: dict[str, int] = {...}`
 # @CODE
-# Add hozza az osszetett tipusjelzeseket:
+# Add hozzá az összetett típusjelzéseket:
 favorite_foods = ["pizza", "ramen", "turos csusza"]
 weekly_temps = [18, 22, 25, 19, 21]
 student_grades = {"Anna": 5, "Bela": 3, "Cecil": 4}
 nickname = None
 
-print("Etelek:", favorite_foods)
-print("Homersekletek:", weekly_temps)
+print("Ételek:", favorite_foods)
+print("Hőmérsékletek:", weekly_temps)
 print("Jegyek:", student_grades)
-print("Becenev:", nickname)
-print("✓ Tipusjelzesek rendben, ha a kiiras mukodik!")
+print("Becenév:", nickname)
+print("✓ Típusjelzések rendben, ha a kiírás működik!")
 # @END
 
-# @TASK 4. Docstring iras
-# @DESC Az alabbi fuggvenynek **van** type hint-je, de **nincs docstring**-je.
-# Irj hozza Google-style docstring-et: osszefoglalo, `Args:`, `Returns:` szekcio.
-# @HINT A `pass`-t torold, es irj `"""..."""` docstring-et a `def` sor ala!
+# @TASK 4. Docstring írás
+# @DESC Az alábbi függvénynek **van** type hint-je, de **nincs docstring**-je.
+# Írj hozzá Google-style docstring-et: összefoglaló, `Args:`, `Returns:` szekció.
+# @HINT A `pass`-t töröld, és írj `"""..."""` docstring-et a `def` sor alá!
 # @CODE
 def celsius_to_fahrenheit(celsius: float) -> float:
-    # MEGOLDAS IDE — irj docstring-et:
+    # MEGOLDÁS IDE — írj docstring-et:
     pass
     return celsius * 9 / 5 + 32
 
-# ELLENORZES:
+# ELLENŐRZÉS:
 result = celsius_to_fahrenheit(100)
 if abs(result - 212.0) < 0.01:
     print("✓ OK — 100°C =", result, "°F")
 else:
-    print("✗ celsius_to_fahrenheit(100) = 212.0 kene!")
+    print("✗ celsius_to_fahrenheit(100) = 212.0 kéne!")
 # @END
 
 # @TASK 5. Komplett — type hints + docstring
-# @DESC Irj egy TELJES fuggvenyt `calculate_shopping_total` neven:
-# Kap egy **szotarat** (termek: ar) es egy **kedvezmeny szazalekot** (alapertelmezetten 0).
-# Visszaadja a **vegosszeget** a kedvezmeny levonasa utan.
-# Pelda: `{"kenyer": 500, "tej": 400}` 10% kedvezmeny → 810.0
+# @DESC Írj egy TELJES függvényt `calculate_shopping_total` néven:
+# Kap egy **szótárat** (termék: ár) és egy **kedvezmény százalékot** (alapértelmezetten 0).
+# Visszaadja a **végösszeget** a kedvezmény levonása után.
+# Példa: `{"kenyer": 500, "tej": 400}` 10% kedvezmény → 810.0
 # @HINT `def calculate_shopping_total(items: dict, discount: int = 0) -> float:`
-# osszeg = `sum(items.values())`, vegosszeg = `osszeg * (1 - discount / 100)`
+# összeg = `sum(items.values())`, végösszeg = `összeg * (1 - discount / 100)`
 # @CODE
-# MEGOLDAS IDE — irj type hint-eket, docstring-et, es a kodot:
+# MEGOLDÁS IDE — írj type hint-eket, docstring-et, és a kódot:
 def calculate_shopping_total():
     pass
 
-# ELLENORZES:
+# ELLENŐRZÉS:
 items = {"kenyer": 500, "tej": 400, "sajt": 800}
 try:
     r1 = calculate_shopping_total(items)
     r2 = calculate_shopping_total(items, 10)
     if r1 is not None and abs(r1 - 1700.0) < 0.01:
         if r2 is not None and abs(r2 - 1530.0) < 0.01:
-            print("✓ OK — kedvezmeny nelkul:", r1, ", 10%-kal:", r2)
+            print("✓ OK — kedvezmény nélkül:", r1, ", 10%-kal:", r2)
         else:
-            print("✗ 10% kedvezmeny: 1530.0 kene, kaptam:", r2)
+            print("✗ 10% kedvezmény: 1530.0 kéne, kaptam:", r2)
     else:
-        print("✗ Kedvezmeny nelkul: 1700.0 kene, kaptam:", r1)
+        print("✗ Kedvezmény nélkül: 1700.0 kéne, kaptam:", r1)
 except TypeError as e:
-    print("✗ A fuggvenynek 2 parametere legyen: (items, discount=0)")
+    print("✗ A függvénynek 2 paramétere legyen: (items, discount=0)")
 # @END

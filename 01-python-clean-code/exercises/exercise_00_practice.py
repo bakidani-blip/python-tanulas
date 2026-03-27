@@ -1,101 +1,101 @@
 """
 =============================================================
-GYAKORLO FELADATOK — Python alapok
+GYAKORLÓ FELADATOK — Python alapok
 =============================================================
 """
 
-# @TASK 1. Valtozok es kiiras
-# @DESC Hozz letre 3 valtozot: `my_name` (neved), `my_age` (korod), `my_city` (varosod).
-# Irasd ki f-stringgel: **"Szia! A nevem X, Y eves vagyok, Z-ban elek."**
-# @HINT `print(f"Szia! A nevem {my_name}, {my_age} eves vagyok, {my_city}-ban elek.")`
+# @TASK 1. Változók és kiírás
+# @DESC Hozz létre 3 változót: `my_name` (neved), `my_age` (korod), `my_city` (városod).
+# Írasd ki f-stringgel: **"Szia! A nevem X, Y éves vagyok, Z-ban élek."**
+# @HINT `print(f"Szia! A nevem {my_name}, {my_age} éves vagyok, {my_city}-ban élek.")`
 # @CODE
-# MEGOLDAS IDE:
+# MEGOLDÁS IDE:
 
 
 
-# ELLENORZES:
+# ELLENŐRZÉS:
 if my_name and my_age > 0 and my_city:
-    print("✓ OK — valtozok rendben")
+    print("✓ OK — változók rendben")
 else:
-    print("✗ Toltsd ki a neved, korod, varosod!")
+    print("✗ Töltsd ki a neved, korod, városod!")
 # @END
 
-# @TASK 2. Muveletek
-# @DESC Adott egy teglalap: `width = 5`, `height = 8`.
-# Szamold ki a **keruletet** (`perimeter = 2 * (a + b)`) es a **teruletet** (`area = a * b`).
-# Irasd ki mindkettot!
-# @HINT `perimeter = 2 * (width + height)` es `area = width * height`
+# @TASK 2. Műveletek
+# @DESC Adott egy téglalap: `width = 5`, `height = 8`.
+# Számold ki a **kerületet** (`perimeter = 2 * (a + b)`) és a **területet** (`area = a * b`).
+# Írasd ki mindkettőt!
+# @HINT `perimeter = 2 * (width + height)` és `area = width * height`
 # @CODE
 width = 5
 height = 8
 
-# MEGOLDAS IDE:
+# MEGOLDÁS IDE:
 
 
 
-# ELLENORZES:
+# ELLENŐRZÉS:
 if perimeter == 26 and area == 40:
-    print("✓ OK — kerulet:", perimeter, "terulet:", area)
+    print("✓ OK — kerület:", perimeter, "terület:", area)
 else:
-    print("✗ Kerulet = 26 es terulet = 40 kene legyen!")
+    print("✗ Kerület = 26 és terület = 40 kéne legyen!")
 # @END
 
-# @TASK 3. Lista muveletek
-# @DESC Adott egy bevasarlolista. **Adj hozza 2 uj elemet** (`.append()`),
-# es **torold a "kenyer" elemet** (`.remove()`)!
-# @HINT `shopping_list.append("vaj")` es `shopping_list.remove("kenyer")`
+# @TASK 3. Lista műveletek
+# @DESC Adott egy bevásárlólista. **Adj hozzá 2 új elemet** (`.append()`),
+# és **töröld a "kenyer" elemet** (`.remove()`)!
+# @HINT `shopping_list.append("vaj")` és `shopping_list.remove("kenyer")`
 # @CODE
 shopping_list = ["tej", "kenyer", "sajt", "tojas"]
 
-# MEGOLDAS IDE:
+# MEGOLDÁS IDE:
 
 
 
-# ELLENORZES:
+# ELLENŐRZÉS:
 if "kenyer" not in shopping_list and len(shopping_list) >= 5:
     print("✓ OK — lista:", shopping_list)
 else:
-    print("✗ Adj hozza 2 elemet es torold a 'kenyer'-t!")
+    print("✗ Adj hozzá 2 elemet és töröld a 'kenyer'-t!")
     print("  Jelenlegi lista:", shopping_list)
 # @END
 
-# @TASK 4. Feltetel — paros vagy paratlan
-# @DESC Ird meg az `even_or_odd` fuggvenyt: ha a szam **paros**, adjon vissza `"paros"`,
-# ha **paratlan**, adjon vissza `"paratlan"`.
-# @HINT Ha `number % 2 == 0`, akkor paros. Hasznalj `if/else`-t es `return`-t!
+# @TASK 4. Feltétel — páros vagy páratlan
+# @DESC Írd meg az `even_or_odd` függvényt: ha a szám **páros**, adjon vissza `"paros"`,
+# ha **páratlan**, adjon vissza `"paratlan"`.
+# @HINT Ha `number % 2 == 0`, akkor páros. Használj `if/else`-t és `return`-t!
 # @CODE
 def even_or_odd(number):
-    # MEGOLDAS IDE:
+    # MEGOLDÁS IDE:
     pass
 
-# ELLENORZES:
+# ELLENŐRZÉS:
 if even_or_odd(4) == "paros" and even_or_odd(7) == "paratlan":
-    print("✓ OK — even_or_odd mukodik")
+    print("✓ OK — even_or_odd működik")
 else:
-    print("✗ even_or_odd(4) = 'paros' es even_or_odd(7) = 'paratlan' kene legyen!")
+    print("✗ even_or_odd(4) = 'paros' és even_or_odd(7) = 'paratlan' kéne legyen!")
 # @END
 
-# @TASK 5. Ciklus — paros szamok
-# @DESC Irj egy `for` ciklust, ami kiirja a **paros szamokat 1-tol 10-ig** (2, 4, 6, 8, 10).
-# @HINT `for i in range(1, 11):` es `if i % 2 == 0: print(i)`
+# @TASK 5. Ciklus — páros számok
+# @DESC Írj egy `for` ciklust, ami kiírja a **páros számokat 1-től 10-ig** (2, 4, 6, 8, 10).
+# @HINT `for i in range(1, 11):` és `if i % 2 == 0: print(i)`
 # @CODE
-print("Paros szamok 1-10:")
-# MEGOLDAS IDE:
+print("Páros számok 1-10:")
+# MEGOLDÁS IDE:
 
 # @END
 
-# @TASK 6. Fuggveny — atlag
-# @DESC Ird meg a `calculate_average` fuggvenyt, ami kap egy szamlistat
-# es **visszaadja az atlagot** (osszeg / elemszam).
+# @TASK 6. Függvény — átlag
+# @DESC Írd meg a `calculate_average` függvényt, ami kap egy számlistát
+# és **visszaadja az átlagot** (összeg / elemszám).
 # @HINT `return sum(numbers) / len(numbers)`
 # @CODE
 def calculate_average(numbers):
-    # MEGOLDAS IDE:
+    # MEGOLDÁS IDE:
     pass
 
-# ELLENORZES:
+# ELLENŐRZÉS:
 if calculate_average([10, 20, 30]) == 20.0:
-    print("✓ OK — atlag:", calculate_average([10, 20, 30]))
+    print("✓ OK — átlag:", calculate_average([10, 20, 30]))
 else:
-    print("✗ calculate_average([10, 20, 30]) = 20.0 kene legyen!")
+    print("✗ calculate_average([10, 20, 30]) = 20.0 kéne legyen!")
 # @END

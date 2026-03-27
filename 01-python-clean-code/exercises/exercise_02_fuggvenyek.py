@@ -1,74 +1,74 @@
 """
 =============================================================
-1.2 GYAKORLAT: Fuggvenyek — Egy feladat, egy fuggveny
+1.2 GYAKORLAT: Függvények — Egy feladat, egy függvény
 =============================================================
 """
 
-# @TASK 1. Kor kerulete
-# @DESC Irj egy fuggvenyt `calculate_circumference` neven, ami kiszamolja egy **kor keruletet**.
-# Keplet: **kerulet = 2 * 3.14159 * sugar**. A fuggveny VISSZAADJA az eredmenyt (`return`).
+# @TASK 1. Kör kerülete
+# @DESC Írj egy függvényt `calculate_circumference` néven, ami kiszámolja egy **kör kerületét**.
+# Képlet: **kerület = 2 * 3.14159 * sugár**. A függvény VISSZAADJA az eredményt (`return`).
 # @HINT `def calculate_circumference(radius): return 2 * 3.14159 * radius`
 # @CODE
 PI = 3.14159
 
 def calculate_circumference(radius):
-    # MEGOLDAS IDE:
+    # MEGOLDÁS IDE:
     pass
 
-# ELLENORZES:
+# ELLENŐRZÉS:
 result = calculate_circumference(10)
 expected = 2 * PI * 10
 if result is not None and abs(result - expected) < 0.01:
-    print("✓ OK — kerulet:", round(result, 2))
+    print("✓ OK — kerület:", round(result, 2))
 else:
-    print("✗ calculate_circumference(10) =", round(expected, 2), "kene legyen!")
+    print("✗ calculate_circumference(10) =", round(expected, 2), "kéne legyen!")
 # @END
 
-# @TASK 2. Atment-e a vizsgán?
-# @DESC Irj egy fuggvenyt `is_passing` neven: ha a pontszam **>= 50**, adjon vissza `True`,
-# kulonben `False`. Boolean fuggveny → `is_` elotag!
+# @TASK 2. Átment-e a vizsgán?
+# @DESC Írj egy függvényt `is_passing` néven: ha a pontszám **>= 50**, adjon vissza `True`,
+# különben `False`. Boolean függvény → `is_` előtag!
 # @HINT `return score >= 50`
 # @CODE
 def is_passing(score):
-    # MEGOLDAS IDE:
+    # MEGOLDÁS IDE:
     pass
 
-# ELLENORZES:
+# ELLENŐRZÉS:
 if is_passing(75) == True and is_passing(50) == True and is_passing(49) == False:
-    print("✓ OK — is_passing mukodik")
+    print("✓ OK — is_passing működik")
 else:
-    print("✗ is_passing(75)=True, is_passing(50)=True, is_passing(49)=False kene!")
+    print("✗ is_passing(75)=True, is_passing(50)=True, is_passing(49)=False kéne!")
 # @END
 
-# @TASK 3. Atlag szamolas
-# @DESC Irj egy fuggvenyt `calculate_average` neven: kap egy **szamlistat**,
-# es visszaadja az **atlagot** (osszeg / elemszam).
+# @TASK 3. Átlag számolás
+# @DESC Írj egy függvényt `calculate_average` néven: kap egy **számlistát**,
+# és visszaadja az **átlagot** (összeg / elemszám).
 # @HINT `return sum(scores) / len(scores)`
 # @CODE
 def calculate_average(scores):
-    # MEGOLDAS IDE:
+    # MEGOLDÁS IDE:
     pass
 
-# ELLENORZES:
+# ELLENŐRZÉS:
 test = [85, 42, 73, 91, 38, 67]
 avg = calculate_average(test)
 if avg is not None and abs(avg - 66.0) < 0.01:
-    print("✓ OK — atlag:", round(avg, 1))
+    print("✓ OK — átlag:", round(avg, 1))
 else:
-    print("✗ calculate_average([85,42,73,91,38,67]) = 66.0 kene legyen!")
+    print("✗ calculate_average([85,42,73,91,38,67]) = 66.0 kéne legyen!")
 # @END
 
-# @TASK 4. Koszontes alapertelmezett parameterrel
-# @DESC Irj egy fuggvenyt `create_greeting` neven:
-# Kapja a **nevet** (kotelezo) es az **idoszakot** (alapertelmezetten `"reggel"`).
-# `"reggel"` → `"Jo reggelt, X!"`, `"este"` → `"Jo estet, X!"`, barmi mas → `"Szia, X!"`
-# @HINT `def create_greeting(name, time_of_day="reggel"):` es hasznalj `if/elif/else`-t
+# @TASK 4. Köszöntés alapértelmezett paraméterrel
+# @DESC Írj egy függvényt `create_greeting` néven:
+# Kapja a **nevet** (kötelező) és az **időszakot** (alapértelmezetten `"reggel"`).
+# `"reggel"` → `"Jo reggelt, X!"`, `"este"` → `"Jo estet, X!"`, bármi más → `"Szia, X!"`
+# @HINT `def create_greeting(name, time_of_day="reggel"):` és használj `if/elif/else`-t
 # @CODE
 def create_greeting(name, time_of_day="reggel"):
-    # MEGOLDAS IDE:
+    # MEGOLDÁS IDE:
     pass
 
-# ELLENORZES:
+# ELLENŐRZÉS:
 g1 = create_greeting("Anna")
 g2 = create_greeting("Bela", "este")
 g3 = create_greeting("Cecil", "del")
@@ -76,40 +76,40 @@ errors = 0
 if g1 == "Jo reggelt, Anna!":
     print("✓ create_greeting('Anna') — OK")
 else:
-    print("✗ Vart: 'Jo reggelt, Anna!', kaptam:", g1)
+    print("✗ Várt: 'Jo reggelt, Anna!', kaptam:", g1)
     errors += 1
 if g2 == "Jo estet, Bela!":
     print("✓ create_greeting('Bela', 'este') — OK")
 else:
-    print("✗ Vart: 'Jo estet, Bela!', kaptam:", g2)
+    print("✗ Várt: 'Jo estet, Bela!', kaptam:", g2)
     errors += 1
 if g3 == "Szia, Cecil!":
     print("✓ create_greeting('Cecil', 'del') — OK")
 else:
-    print("✗ Vart: 'Szia, Cecil!', kaptam:", g3)
+    print("✗ Várt: 'Szia, Cecil!', kaptam:", g3)
     errors += 1
 if errors == 0:
-    print("MINDEN FELADAT KESZ!")
+    print("MINDEN FELADAT KÉSZ!")
 # @END
 
-# @TASK 5. Pizza ar szamitas
-# @DESC Irj egy fuggvenyt `calculate_pizza_price` neven.
-# Kapja: `size` ("kicsi"/"kozepes"/"nagy"), `quantity` (darabszam), `is_delivery` (True/False).
-# Arak: kicsi=1500, kozepes=2200, nagy=2900. Ha kiszallitas: +500 Ft.
-# @HINT Hasznalj szotarat: `prices = {"kicsi": 1500, "kozepes": 2200, "nagy": 2900}`
+# @TASK 5. Pizza ár számítás
+# @DESC Írj egy függvényt `calculate_pizza_price` néven.
+# Kapja: `size` ("kicsi"/"kozepes"/"nagy"), `quantity` (darabszám), `is_delivery` (True/False).
+# Árak: kicsi=1500, közepes=2200, nagy=2900. Ha kiszállítás: +500 Ft.
+# @HINT Használj szótárat: `prices = {"kicsi": 1500, "kozepes": 2200, "nagy": 2900}`
 # @CODE
 DELIVERY_FEE = 500
 
 def calculate_pizza_price(size, quantity, is_delivery):
-    # MEGOLDAS IDE:
+    # MEGOLDÁS IDE:
     pass
 
-# ELLENORZES:
+# ELLENŐRZÉS:
 p1 = calculate_pizza_price("kicsi", 2, False)
 p2 = calculate_pizza_price("nagy", 1, True)
 if p1 == 3000 and p2 == 3400:
-    print("✓ OK — kicsi x2 =", p1, ", nagy x1 + kiszallitas =", p2)
+    print("✓ OK — kicsi x2 =", p1, ", nagy x1 + kiszállítás =", p2)
 else:
-    print("✗ kicsi x2 = 3000 es nagy x1 + kiszallitas = 3400 kene!")
-    print("  Kaptam:", p1, "es", p2)
+    print("✗ kicsi x2 = 3000 és nagy x1 + kiszállítás = 3400 kéne!")
+    print("  Kaptam:", p1, "és", p2)
 # @END
